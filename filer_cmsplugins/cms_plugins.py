@@ -1,9 +1,12 @@
 from cms.plugin_pool import plugin_pool
 from cms.plugin_base import CMSPluginBase
 from django.utils.translation import ugettext_lazy as _
-from filer_cmsplugins.models import FilerImage, FilerTeaser
+from filer_cmsplugins.models import FilerImage, FilerTeaser, FilerFile
+from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
+from cms.settings import CMS_MEDIA_URL
 
-class ImagePlugin(CMSPluginBase):
+class FilerImagePlugin(CMSPluginBase):
     model = FilerImage
     name = _("Image (Filer)")
     render_template = "filer_cmsplugins/image.html"
@@ -40,9 +43,9 @@ class ImagePlugin(CMSPluginBase):
         return context
     def icon_src(self, instance):
         return instance.image.thumbnails['admin_tiny_icon']
-plugin_pool.register_plugin(ImagePlugin)
+plugin_pool.register_plugin(FilerImagePlugin)
 
-class ImageFilerTeaserPlugin(CMSPluginBase):
+class FilerTeaserPlugin(CMSPluginBase):
     model = FilerTeaser
     name = _("Teaser (Filer)")
     render_template = "filer_cmsplugins/teaser.html"
@@ -60,7 +63,31 @@ class ImageFilerTeaserPlugin(CMSPluginBase):
             'link':link
         })
         return context
-plugin_pool.register_plugin(ImageFilerTeaserPlugin)
+plugin_pool.register_plugin(FilerTeaserPlugin)
+
+class FilerFilePlugin(CMSPluginBase):
+    model = FilerFile
+    name = _("File (Filer)")
+    render_template = "filer_cmsplugins/file.html"
+    text_enabled = True
+    
+    def render(self, context, instance, placeholder):  
+        context.update({
+            'object':instance, 
+            'placeholder':placeholder
+        })    
+        return context
+
+    def icon_src(self, instance):
+        file_icon = instance.get_icon_url()
+        if file_icon: return file_icon
+        return CMS_MEDIA_URL + u"images/plugins/file.png"
+    
+plugin_pool.register_plugin(FilerFilePlugin)
+
+
+
+
 
 '''
 class ImageFolderPlugin(CMSPluginBase):
