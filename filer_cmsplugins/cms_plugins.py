@@ -4,7 +4,6 @@ from django.utils.translation import ugettext_lazy as _
 from filer_cmsplugins.models import FilerImage, FilerTeaser, FilerFile
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
-from cms.settings import CMS_MEDIA_URL
 
 class FilerImagePlugin(CMSPluginBase):
     model = FilerImage
@@ -81,7 +80,7 @@ class FilerFilePlugin(CMSPluginBase):
     def icon_src(self, instance):
         file_icon = instance.get_icon_url()
         if file_icon: return file_icon
-        return CMS_MEDIA_URL + u"images/plugins/file.png"
+        return settings.CMS_MEDIA_URL + u"images/plugins/file.png"
     
 plugin_pool.register_plugin(FilerFilePlugin)
 
