@@ -6,7 +6,7 @@ def read(fname):
 
 setup(
     name = "cmsplugin-filer",
-    version = "0.0.2a",
+    version = "0.0.5a",
     url = 'http://github.com/stefanfoulis/django-filer-cmsplugins',
     license = 'BSD',
     description = "django-cms plugins for django-filer",
@@ -15,11 +15,6 @@ setup(
     author_email = 'stefan.foulis@gmail.com',
     packages = find_packages('src'),
     package_dir = {'':'src'},
-    #package_dir = {
-    #    'cmsplugin_filer_file':'src/cmsplugin_filer_file',
-    #    'cmsplugin_filer_image':'src/cmsplugin_filer_image',
-    #    'cmsplugin_filer_teaser':'src/cmsplugin_filer_teaser',
-    #},
     install_requires = ['setuptools','django','django-cms',],
     classifiers = [
         'Development Status :: 4 - Beta',
@@ -29,5 +24,7 @@ setup(
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Topic :: Internet :: WWW/HTTP',
-    ]
+    ],
+    include_package_data=True,
+    zip_safe = False
 )

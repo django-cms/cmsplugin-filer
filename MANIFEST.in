@@ -1,2 +1,2 @@
 include README
-recursive-include src/*/templates *
+recursive-include src/*/templates/ *
