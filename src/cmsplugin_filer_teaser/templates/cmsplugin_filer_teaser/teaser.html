@@ -1,5 +1,5 @@
 {% load i18n thumbnail %}
-<div{% if object.style %} class="{{ object.style}}"{% endif %}>
+<div{% if object.style %} class="{{ object.style }}"{% endif %}>
 <h2>{{ object.title|title }}</h2>
 {% if object.image %}
 	{% if link %}<a href="{{ link }}">{% endif %}
