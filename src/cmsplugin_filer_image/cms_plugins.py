@@ -12,7 +12,8 @@ class FilerImagePlugin(CMSPluginBase):
     raw_id_fields = ('image',)
     
     def render(self, context, instance, placeholder):
-        # this code for automatic 960 grid image resizing should not be here
+        # TODO: this scaling code needs to be in a common place
+        # use the placeholder width as a hint for sizing
         placeholder_width = context.get('width', None)
         if instance.use_autoscale and placeholder_width:
             width = placeholder_width

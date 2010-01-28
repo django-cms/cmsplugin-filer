@@ -27,3 +27,15 @@ class FilerTeaser(CMSPlugin):
     
     def __unicode__(self):
         return self.title
+
+    @property
+    def link(self):
+        try:
+            if self.free_link:
+                return self.free_link
+            elif self.page_link and self.page_link:
+                return self.page_link.get_absolute_url()
+            else:
+                return ''
+        except Exception, e:
+            print e
