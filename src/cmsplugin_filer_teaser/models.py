@@ -9,12 +9,16 @@ from filer.fields.file import FilerFileField
 from cms import settings as cms_settings
 from django.conf import settings
 
+CMSPLUGIN_FILER_TEASER_STYLE_CHOICES = getattr( settings, 'CMSPLUGIN_FILER_TEASER_STYLE_CHOICES',() )
+
 class FilerTeaser(CMSPlugin):
     """
     A Teaser
     """
     title = models.CharField(_("title"), max_length=255)
     image = FilerImageField(blank=True, null=True)
+    
+    style = models.CharField(_("teaser style"), max_length=255, null=True, blank=True, choices=CMSPLUGIN_FILER_TEASER_STYLE_CHOICES)
     
     use_autoscale = models.BooleanField(_("use automatic scaling"), default=True, 
                                         help_text=_('tries to auto scale the image based on the placeholder context'))
