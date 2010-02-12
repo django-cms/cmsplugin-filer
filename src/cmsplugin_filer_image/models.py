@@ -15,9 +15,9 @@ class FilerImage(CMSPlugin):
     FLOAT_CHOICES = ((LEFT, _("left")),
                      (RIGHT, _("right")),
                      )
+    caption = models.CharField(null=True, blank=True, max_length=255)
     image = FilerImageField()
     alt_text = models.CharField(null=True, blank=True, max_length=255)
-    caption = models.CharField(null=True, blank=True, max_length=255)
     
     use_autoscale = models.BooleanField(_("use automatic scaling"), default=True, 
                                         help_text=_('tries to auto scale the image based on the placeholder context'))
