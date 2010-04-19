@@ -2,12 +2,12 @@
 <div{% if object.style %} class="{{ object.style }}"{% endif %}>
 <h2>{{ object.title|title }}</h2>
 {% if object.image %}
-	{% if link %}<a href="{{ link }}">{% endif %}
+	{% if link %}<a href="{{ link }}"{% if obj.target_blank %} target="_blank"{% endif %}>{% endif %}
 		<img alt="{% if object.alt %}{{ object.alt }}{% endif %}" src="{% thumbnail object.image image_size crop,upscale %}" />
 	{% if link %}</a>{% endif %}
 {% endif %}
 {% if object.description %}
 <p>{{ object.description }}</p>
 {% endif %}
-{% if link %}<a href="{{ link }}">{% trans "more" %} &#187;</a>{% endif %}
+{% if link %}<a href="{{ link }}"{% if obj.target_blank %} target="_blank"{% endif %}>{% trans "more" %} &#187;</a>{% endif %}
 </div>

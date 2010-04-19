@@ -29,6 +29,8 @@ class FilerTeaser(CMSPlugin):
     page_link = models.ForeignKey(Page, verbose_name=_("page"), null=True, blank=True, help_text=_("if present image will be clickable"))
     description = models.TextField(_("description"), blank=True, null=True)
     
+    target_blank = models.BooleanField(_("open link in new window"), default=False)
+    
     def __unicode__(self):
         return self.title
 
