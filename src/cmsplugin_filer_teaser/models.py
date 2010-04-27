@@ -15,7 +15,7 @@ class FilerTeaser(CMSPlugin):
     """
     A Teaser
     """
-    title = models.CharField(_("title"), max_length=255)
+    title = models.CharField(_("title"), max_length=255, blank=True)
     image = FilerImageField(blank=True, null=True)
     
     style = models.CharField(_("teaser style"), max_length=255, null=True, blank=True, choices=CMSPLUGIN_FILER_TEASER_STYLE_CHOICES)

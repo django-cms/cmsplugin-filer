@@ -1,6 +1,6 @@
 {% load i18n thumbnail %}
 <div{% if object.style %} class="{{ object.style }}"{% endif %}>
-<h2>{{ object.title|title }}</h2>
+{% if object.title %}<h2>{{ object.title|title }}</h2>{% endif %}
 {% if object.image %}
 	{% if link %}<a href="{{ link }}"{% if obj.target_blank %} target="_blank"{% endif %}>{% endif %}
 		<img alt="{% if object.alt %}{{ object.alt }}{% endif %}" src="{% thumbnail object.image image_size crop,upscale %}" />
