@@ -1,6 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from cms.models import CMSPlugin, Page
+from cms.models.fields import PageField
 from sorl.thumbnail.main import DjangoThumbnail
 from django.utils.translation import ugettext_lazy as _
 from posixpath import join, basename, splitext, exists
@@ -17,6 +18,7 @@ class FilerTeaser(CMSPlugin):
     """
     title = models.CharField(_("title"), max_length=255)
     image = FilerImageField(blank=True, null=True)
+    image_url = models.URLField(_("alternative image url"), verify_exists=False, null=True, blank=True, default=None)
     
     style = models.CharField(_("teaser style"), max_length=255, null=True, blank=True, choices=CMSPLUGIN_FILER_TEASER_STYLE_CHOICES)
     
@@ -26,7 +28,7 @@ class FilerTeaser(CMSPlugin):
     height = models.PositiveIntegerField(null=True, blank=True)
     
     free_link = models.CharField(_("link"), max_length=255, blank=True, null=True, help_text=_("if present image will be clickable"))
-    page_link = models.ForeignKey(Page, verbose_name=_("page"), null=True, blank=True, help_text=_("if present image will be clickable"))
+    page_link = PageField(verbose_name=_("page"), null=True, blank=True, help_text=_("if present image will be clickable"))
     description = models.TextField(_("description"), blank=True, null=True)
     
     target_blank = models.BooleanField(_("open link in new window"), default=False)
