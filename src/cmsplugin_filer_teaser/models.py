@@ -17,6 +17,7 @@ class FilerTeaser(CMSPlugin):
     """
     title = models.CharField(_("title"), max_length=255, blank=True)
     image = FilerImageField(blank=True, null=True)
+    external_image = models.URLField(blank=True, null=True)
     
     style = models.CharField(_("teaser style"), max_length=255, null=True, blank=True, choices=CMSPLUGIN_FILER_TEASER_STYLE_CHOICES)
     

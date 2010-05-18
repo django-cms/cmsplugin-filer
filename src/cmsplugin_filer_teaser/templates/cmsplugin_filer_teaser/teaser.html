@@ -1,9 +1,13 @@
 {% load i18n thumbnail %}
 <div{% if object.style %} class="{{ object.style }}"{% endif %}>
 {% if object.title %}<h2>{{ object.title|title }}</h2>{% endif %}
-{% if object.image %}
+{% if object.image or object.external_image %}
 	{% if link %}<a href="{{ link }}"{% if obj.target_blank %} target="_blank"{% endif %}>{% endif %}
+		{% if object.image %}
 		<img alt="{% if object.alt %}{{ object.alt }}{% endif %}" src="{% thumbnail object.image image_size crop,upscale %}" />
+		{% else %}
+		<img alt="{% if object.alt %}{{ object.alt }}{% endif %}" src="{{ object.external_image }}" width="{{ image_width }}" height="{{ image_height }}" />
+		{% endif %}
 	{% if link %}</a>{% endif %}
 {% endif %}
 {% if object.description %}
