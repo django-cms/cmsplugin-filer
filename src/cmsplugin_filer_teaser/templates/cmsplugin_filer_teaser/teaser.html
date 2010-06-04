@@ -3,7 +3,11 @@
 <h2>{{ object.title }}</h2>
 {% if object.image or object.image_url %}
 	{% if link %}<a href="{{ link }}"{% if obj.target_blank %} target="_blank"{% endif %}>{% endif %}
-		<img alt="{% if object.alt %}{{ object.alt }}{% endif %}" src="{% if object.image_url %}{{ object.image_url }}{% else %}{% thumbnail object.image image_size crop,upscale %}{% endif %}" />
+		{% if object.image_url %}
+            <img alt="{% if object.alt %}{{ object.alt }}{% endif %}" src="{{ object.image_url }}"{% if object.width or object.height %} style="{% if object.width %}width:{{ object.width }}px;{% endif %}{% if object.height %}height:{{ object.height }}px;{% endif %}"{% endif %} />
+        {% else %}                  
+            <img alt="{% if object.alt %}{{ object.alt }}{% endif %}" src="{% thumbnail object.image image_size|extra_padding_x:34 crop,upscale %}" />
+        {% endif %}
 	{% if link %}</a>{% endif %}
 {% endif %}
 {% if object.description %}

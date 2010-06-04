@@ -33,6 +33,12 @@ class FilerTeaser(CMSPlugin):
     
     target_blank = models.BooleanField(_("open link in new window"), default=False)
     
+    def clean(self):
+        from django.core.exceptions import ValidationError
+        # Make sure that either image or image_url is set
+        if self.image and self.image_url:
+            raise ValidationError(_('Either an image or an image url must be selected.'))
+    
     def __unicode__(self):
         return self.title
 
