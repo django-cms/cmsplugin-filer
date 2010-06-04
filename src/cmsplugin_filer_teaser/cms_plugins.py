@@ -29,7 +29,6 @@ class FilerTeaserPlugin(CMSPluginBase):
                 # height was not externally defined: use ratio to scale it by the width
                 height = int( float(width)*float(instance.image.height)/float(instance.image.width) )
             context.update({'image_size': u'%sx%s' % (width, height),})
-            print width, height
         context.update({
             'object':instance, 
             'placeholder':placeholder,
