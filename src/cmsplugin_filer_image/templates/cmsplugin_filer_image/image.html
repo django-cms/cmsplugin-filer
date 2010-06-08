@@ -1,4 +1,4 @@
-{% load thumbnail %}
+{% load thumbnail filermedia %}
 {% if link %}<a href="{{ link }}">{% endif %}
 {% if object.image_url %}
     <img{% if object.float %} class="{{ object.float }}"{% endif %} alt="{% if object.alt %}{{ object.alt }}{% endif %}" src="{{ object.image_url }}"{% if object.width or object.height %} style="{% if object.width %}width:{{ object.width }}px;{% endif %}{% if object.height %}height:{{ object.height }}px;{% endif %}"{% endif %} />
