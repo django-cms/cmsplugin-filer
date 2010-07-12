@@ -1,13 +1,13 @@
 {% load i18n thumbnail %}
 <div{% if object.style %} class="{{ object.style }}"{% endif %}>
-{% if object.title %}<h2>{{ object.title|title }}</h2>{% endif %}
-{% if object.image or object.external_image %}
+<h2>{{ object.title }}</h2>
+{% if object.image or object.image_url %}
 	{% if link %}<a href="{{ link }}"{% if obj.target_blank %} target="_blank"{% endif %}>{% endif %}
-		{% if object.image %}
-		<img alt="{% if object.alt %}{{ object.alt }}{% endif %}" src="{% thumbnail object.image image_size crop,upscale %}" />
-		{% else %}
-		<img alt="{% if object.alt %}{{ object.alt }}{% endif %}" src="{{ object.external_image }}" width="{{ image_width }}" height="{{ image_height }}" />
-		{% endif %}
+		{% if object.image_url %}
+            <img alt="{% if object.alt %}{{ object.alt }}{% endif %}" src="{{ object.image_url }}"{% if object.width or object.height %} style="{% if object.width %}width:{{ object.width }}px;{% endif %}{% if object.height %}height:{{ object.height }}px;{% endif %}"{% endif %} />
+        {% else %}                  
+            <img alt="{% if object.alt %}{{ object.alt }}{% endif %}" src="{% thumbnail object.image image_size crop,upscale %}" />
+        {% endif %}
 	{% if link %}</a>{% endif %}
 {% endif %}
 {% if object.description %}

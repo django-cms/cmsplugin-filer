@@ -1,0 +1,58 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-04-28 11:22+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n>1;\n"
+
+#: cms_plugins.py:9
+msgid "Image (Filer)"
+msgstr ""
+
+#: models.py:15
+msgid "left"
+msgstr ""
+
+#: models.py:16
+msgid "right"
+msgstr ""
+
+#: models.py:22
+msgid "use automatic scaling"
+msgstr ""
+
+#: models.py:23
+msgid "tries to auto scale the image based on the placeholder context"
+msgstr ""
+
+#: models.py:26
+msgid "side"
+msgstr ""
+
+#: models.py:28
+msgid "link"
+msgstr ""
+
+#: models.py:29 models.py:31
+msgid "if present image will be clickable"
+msgstr ""
+
+#: models.py:30
+msgid "page"
+msgstr ""
+
+#: models.py:32
+msgid "description"
+msgstr ""
