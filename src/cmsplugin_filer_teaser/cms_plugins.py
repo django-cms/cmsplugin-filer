@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 import models
 from django.conf import settings
 
+
 class FilerTeaserPlugin(CMSPluginBase):
     model = models.FilerTeaser
     name = _("Teaser (Filer)")
@@ -34,7 +35,7 @@ class FilerTeaserPlugin(CMSPluginBase):
         context.update({
             'object':instance, 
             'placeholder':placeholder,
-            'link':instance.link,
+            'link': instance.link,
         })
         return context
 plugin_pool.register_plugin(FilerTeaserPlugin)
