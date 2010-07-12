@@ -1,8 +1,8 @@
 from django import forms
-from cmsplugin_filer_video.models import Video
+from cmsplugin_filer_video.models import FilerVideo
 
 class VideoForm(forms.ModelForm):
     
     class Meta:
-        model = Video
+        model = FilerVideo
         exclude = ('page', 'position', 'placeholder', 'language', 'plugin_type')
