@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 import models
 from django.conf import settings
 
+
 class FilerTeaserPlugin(CMSPluginBase):
     model = models.FilerTeaser
     name = _("Teaser (Filer)")
@@ -28,11 +29,13 @@ class FilerTeaserPlugin(CMSPluginBase):
             else:
                 # height was not externally defined: use ratio to scale it by the width
                 height = int( float(width)*float(instance.image.height)/float(instance.image.width) )
-            context.update({'image_size': u'%sx%s' % (width, height),})
+            context.update({'image_size': u'%sx%s' % (width, height),
+                            'image_width': width,
+                            'image_height': height})
         context.update({
             'object':instance, 
             'placeholder':placeholder,
-            'link':instance.link,
+            'link': instance.link,
         })
         return context
 plugin_pool.register_plugin(FilerTeaserPlugin)

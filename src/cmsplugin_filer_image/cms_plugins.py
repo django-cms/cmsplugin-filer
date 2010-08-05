@@ -37,7 +37,6 @@ class FilerImagePlugin(CMSPluginBase):
                 height = int( float(width)*float(instance.image.height)/float(instance.image.width) )
         else:
             width, height = instance.width, instance.height
-        
         context.update({
             'object':instance,
             'link':instance.link, 
