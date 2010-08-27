@@ -1,7 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from cms.models import CMSPlugin, Page
-from sorl.thumbnail.main import DjangoThumbnail
 from django.utils.translation import ugettext_lazy as _
 from posixpath import join, basename, splitext, exists
 from filer.fields.image import FilerImageField
