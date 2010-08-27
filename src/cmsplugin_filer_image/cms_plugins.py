@@ -14,14 +14,38 @@ class FilerImagePlugin(CMSPluginBase):
     text_enabled = True
     raw_id_fields = ('image',)
     admin_preview = False
+    fieldsets = (
+        (None, {
+            'fields': ('caption', 'image', 'image_url', 'alt_text',
+                       'thumbnail_option',)
+        }),
+        ('advanced thumbnail option', {
+            'classes': ('collapse',),
+            'fields': ('use_autoscale', 'width', 'height', 'float')
+        }),
+        ('More', {
+            'classes': ('collapse',),
+            'fields': ('free_link', 'page_link', 'description',)
+        }),        
+        
+    )
     
     def render(self, context, instance, placeholder):
         # TODO: this scaling code needs to be in a common place
         # use the placeholder width as a hint for sizing
         placeholder_width = context.get('width', None)
         if instance.image:
-            if instance.use_autoscale and placeholder_width:
-                width = placeholder_width
+            
+            if instance.thumbnail_option:
+                if instance.thumbnail_option.width:
+                    width = instance.thumbnail_option.width
+                if instance.thumbnail_option.height:
+                    height = instance.thumbnail_option.height
+                else:
+                    # height was not externally defined: use ratio to scale it by the width
+                    height = int( float(width)*float(instance.image.height)/float(instance.image.width) )
+            elif instance.use_autoscale and placeholder_width:
+                width = placeholder_width    
             else:
                 if instance.width:
                     width = instance.width

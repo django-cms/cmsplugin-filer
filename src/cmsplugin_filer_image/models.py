@@ -19,8 +19,8 @@ class FilerImage(CMSPlugin):
     image = FilerImageField(null=True, blank=True, default=None)
     image_url = models.URLField(_("alternative image url"), verify_exists=False, null=True, blank=True, default=None)
     alt_text = models.CharField(null=True, blank=True, max_length=255)
-    
-    use_autoscale = models.BooleanField(_("use automatic scaling"), default=True, 
+    thumbnail_option = models.ForeignKey('ThumbnailOption', null=True, blank=True)
+    use_autoscale = models.BooleanField(_("use automatic scaling"), default=False, 
                                         help_text=_('tries to auto scale the image based on the placeholder context'))
     width = models.PositiveIntegerField(null=True, blank=True)
     height = models.PositiveIntegerField(null=True, blank=True)
@@ -56,3 +56,23 @@ class FilerImage(CMSPlugin):
             return self.page_link.get_absolute_url()
         else:
             return ''
+        
+        
+class ThumbnailOption(models.Model):
+    """
+    This class defines the option use to create the thumbnail.
+    """
+    name = models.CharField(max_length=100)
+    width = models.IntegerField(help_text=_('width in pixel.'))
+    height = models.IntegerField(help_text=_('height in pixel.'))
+    is_cropped = models.BooleanField(default=True)
+    is_scaled = models.BooleanField(default=True)
+    
+    class Meta:
+        ordering = ('width', 'height')
+        
+    def __unicode__(self):
+        return u'%s -- %s x %s' %(self.name, self.width, self.height)
+        
+
+    
