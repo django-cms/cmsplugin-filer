@@ -9,7 +9,7 @@ from filer.settings import FILER_ADMIN_ICON_SIZES, FILER_PUBLICMEDIA_PREFIX, FIL
 
 class FilerImagePlugin(CMSPluginBase):
     model = models.FilerImage
-    name = _("Image (Filer)")
+    name = _("Image")
     render_template = "cmsplugin_filer_image/image.html"
     text_enabled = True
     raw_id_fields = ('image',)
