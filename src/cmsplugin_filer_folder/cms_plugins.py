@@ -32,21 +32,19 @@ class FilerFolderPlugin(CMSPluginBase):
     def get_children(self, folder):
         return folder.get_children()
         
-    def get_plugin_media(self, request, context, plugin):
-        return Media(
-            js=[join(settings.CMS_MEDIA_URL, path) for path in(
-                'filer/slideshow2/js/mootools.js',
-                'filer/slideshow2/js/slideshow.flash.js',
-                'filer/slideshow2/js/slideshow.fold.js',
-                'filer/slideshow2/js/slideshow.js',
-                'filer/slideshow2/js/slideshow.kenburns.js',
-                'filer/slideshow2/js/slideshow.push.js',
-            )],
-            css={
-                'all': [join(settings.CMS_MEDIA_URL, path) for path in(
-                    'filer/slideshow2/css/slideshow.css',)]
-            }
-        )
+    class PluginMedia:
+        js = [join(settings.CMS_MEDIA_URL, path) for path in(
+            'filer/slideshow2/js/mootools.js',
+            'filer/slideshow2/js/slideshow.flash.js',
+            'filer/slideshow2/js/slideshow.fold.js',
+            'filer/slideshow2/js/slideshow.js',
+            'filer/slideshow2/js/slideshow.kenburns.js',
+            'filer/slideshow2/js/slideshow.push.js',
+        )],
+        css = {
+            'all': [join(settings.CMS_MEDIA_URL, path) for path in(
+                'filer/slideshow2/css/slideshow.css',)]
+        }
     
     def render(self, context, instance, placeholder):
         
