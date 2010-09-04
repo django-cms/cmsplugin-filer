@@ -1,7 +1,23 @@
-{{ object.title }}
-{{ object.folder.name }}
+{% firstof object.title object.folder.name  %}
 
 <div>
     <!--The files should go there    -->
-    
+    <p>folders</p>
+    <ul>
+        {% for folder in folder_children %}
+            <li>{{ folder }}</li>
+        {% endfor %}
+    </ul>
+    <p>Files</p>
+    <ul>
+        {% for files in folder_files %}
+            <li>{{ files }}</li>
+        {% endfor %}
+    </ul>
+    <p>Images</p>
+    <ul>
+        {% for image in folder_images %}
+            <li>{{ image }}</li>
+        {% endfor %}
+    </ul>
 </div>
