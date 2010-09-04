@@ -1,3 +1,4 @@
+from os.path import join
 from cms.plugin_pool import plugin_pool
 from cms.plugin_base import CMSPluginBase
 from django.utils.translation import ugettext_lazy as _
@@ -29,7 +30,6 @@ class FilerFolderPlugin(CMSPluginBase):
     
     def render(self, context, instance, placeholder):
         
-        #import ipdb; ipdb.set_trace()
         folder_files = self.get_folder_files(instance.folder,
                                              context['request'].user)
         folder_images = self.get_folder_images(instance.folder,
@@ -44,5 +44,18 @@ class FilerFolderPlugin(CMSPluginBase):
             'placeholder':placeholder
         })    
         return context
+    
+    class Media:
+        js = [join(settings.CMS_MEDIA_URL, path) for path in(
+                'filer/slideshow2/js/mootools.js',
+                'filer/slideshow2/js/slideshow.flash.js',
+                'filer/slideshow2/js/slideshow.fold.js',
+                'filer/slideshow2/js/slideshow.js',
+                'filer/slideshow2/js/slideshow.kenburns.js',
+                'filer/slideshow2/js/slideshow.push.js',
+            )]
+        css = [join(settings.CMS_MEDIA_URL, path) for path in(
+                'filer/slideshow2/css/slideshow.css',
+            )]
 
 plugin_pool.register_plugin(FilerFolderPlugin)
