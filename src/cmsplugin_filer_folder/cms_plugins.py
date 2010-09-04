@@ -2,14 +2,33 @@ from os.path import join
 from cms.plugin_pool import plugin_pool
 from cms.plugin_base import CMSPluginBase
 from django.utils.translation import ugettext_lazy as _
+from django.forms.models import ModelForm
 import models
 from django.conf import settings
+
+class FilerFolderAdminForm(ModelForm):
+    model = models.FilerFolder
+    
+    class Media:
+        js = [join(settings.CMS_MEDIA_URL, path) for path in(
+                'filer/slideshow2/js/mootools.js',
+                'filer/slideshow2/js/slideshow.flash.js',
+                'filer/slideshow2/js/slideshow.fold.js',
+                'filer/slideshow2/js/slideshow.js',
+                'filer/slideshow2/js/slideshow.kenburns.js',
+                'filer/slideshow2/js/slideshow.push.js',
+            )]
+        css = {
+            'all': [join(settings.CMS_MEDIA_URL, path) for path in(
+                'filer/slideshow2/css/slideshow.css',)]
+        }
 
 class FilerFolderPlugin(CMSPluginBase):
     model = models.FilerFolder
     name = _("Folder")
     render_template = "cmsplugin_filer_folder/folder.html"
     text_enabled = True
+    form = FilerFolderAdminForm
     
     def get_folder_files(self, folder, user):
         qs_files = folder.files.filter(image__isnull=True)
@@ -45,17 +64,6 @@ class FilerFolderPlugin(CMSPluginBase):
         })    
         return context
     
-    class Media:
-        js = [join(settings.CMS_MEDIA_URL, path) for path in(
-                'filer/slideshow2/js/mootools.js',
-                'filer/slideshow2/js/slideshow.flash.js',
-                'filer/slideshow2/js/slideshow.fold.js',
-                'filer/slideshow2/js/slideshow.js',
-                'filer/slideshow2/js/slideshow.kenburns.js',
-                'filer/slideshow2/js/slideshow.push.js',
-            )]
-        css = [join(settings.CMS_MEDIA_URL, path) for path in(
-                'filer/slideshow2/css/slideshow.css',
-            )]
+
 
 plugin_pool.register_plugin(FilerFolderPlugin)
