@@ -83,15 +83,12 @@ class FilerImagePlugin(CMSPluginBase):
             'object':instance,
             'link':instance.link,
             'thumbnail': thumbnail,
-            #'image_url':instance.scaled_image_url,
-            'image_size': u'%sx%s' % (width, height),
             'placeholder':placeholder
         })
         return context
     
     def icon_src(self, instance):
         if instance.image:
-            import ipdb; ipdb.set_trace()
             # TODO: Find a cleaner way
             # Fake the context because it is not available at this stage
             # this will cause a bug when using autoscale
