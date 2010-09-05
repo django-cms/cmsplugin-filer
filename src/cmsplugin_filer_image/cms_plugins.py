@@ -21,7 +21,8 @@ class FilerImagePlugin(CMSPluginBase):
         }),
         ('advanced thumbnail option', {
             'classes': ('collapse',),
-            'fields': ('use_autoscale', 'width', 'height', 'float')
+            'fields': ('use_autoscale', 'width', 'height',
+                       'crop', 'upscale','float')
         }),
         ('More', {
             'classes': ('collapse',),
@@ -68,10 +69,16 @@ class FilerImagePlugin(CMSPluginBase):
         if instance.image:
             width, height = self._get_thumbnail_size(context, instance)
             # build thumbnail options
+            if instance.thumbnail_option:
+                crop = instance.thumbnail_option.crop
+                upscale = instance.thumbnail_option.upscale
+            else:
+                crop = instance.crop
+                upscale = instance.upscale
             thumbnail_opts = {
                 'size': self._get_thumbnail_size(context, instance),
-                'crop': True, #instance.crop,
-                'upscale': True, #instance.upscale,
+                'crop': crop,
+                'upscale': upscale,
             }
             return instance.image.image.file.get_thumbnail(thumbnail_opts)
     
