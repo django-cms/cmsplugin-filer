@@ -30,27 +30,30 @@ class FilerImagePlugin(CMSPluginBase):
         
     )
     
-    def render(self, context, instance, placeholder):
-        # TODO: this scaling code needs to be in a common place
-        # use the placeholder width as a hint for sizing
+    def _get_thumbnail_size(self, context, instance):
+        """
+        Return the size of the thumbnail that should be inserted
+        """
+        
         placeholder_width = context.get('width', None)
-        if instance.image:
-            
-            if instance.thumbnail_option:
-                if instance.thumbnail_option.width:
-                    width = instance.thumbnail_option.width
-                if instance.thumbnail_option.height:
-                    height = instance.thumbnail_option.height
-                else:
-                    # height was not externally defined: use ratio to scale it by the width
-                    height = int( float(width)*float(instance.image.height)/float(instance.image.width) )
-            elif instance.use_autoscale and placeholder_width:
-                width = placeholder_width    
+        if instance.thumbnail_option:
+            if instance.thumbnail_option.width:
+                width = instance.thumbnail_option.width
+            if instance.thumbnail_option.height:
+                height = instance.thumbnail_option.height
             else:
-                if instance.width:
-                    width = instance.width
-                else:
-                    width = instance.image.width
+                # height was not externally defined: use ratio to scale it by the width
+                height = int( float(width)*float(instance.image.height)/float(instance.image.width) )
+        elif instance.use_autoscale and placeholder_width:
+            # use the placeholder width as a hint for sizing
+            width = placeholder_width
+            # height was not externally defined: use ratio to scale it by the width
+            height = int( float(width)*float(instance.image.height)/float(instance.image.width) )
+        else:
+            if instance.width:
+                width = instance.width
+            else:
+                width = instance.image.width
             if instance.height:
                 height = instance.height
                 if width == instance.image.width:
@@ -59,19 +62,41 @@ class FilerImagePlugin(CMSPluginBase):
             else:
                 # height was not externally defined: use ratio to scale it by the width
                 height = int( float(width)*float(instance.image.height)/float(instance.image.width) )
-        else:
-            width, height = instance.width, instance.height
+        return (width, height)
+       
+    def get_thumbnail(self, context, instance):
+        if instance.image:
+            width, height = self._get_thumbnail_size(context, instance)
+            # build thumbnail options
+            thumbnail_opts = {
+                'size': self._get_thumbnail_size(context, instance),
+                'crop': True, #instance.crop,
+                'upscale': True, #instance.upscale,
+            }
+            return instance.image.image.file.get_thumbnail(thumbnail_opts)
+    
+    def render(self, context, instance, placeholder):
+        if instance.image:
+            width, height = self._get_thumbnail_size(context, instance)
+        thumbnail = self.get_thumbnail(context, instance)
         context.update({
             'object':instance,
-            'link':instance.link, 
+            'link':instance.link,
+            'thumbnail': thumbnail,
             #'image_url':instance.scaled_image_url,
             'image_size': u'%sx%s' % (width, height),
             'placeholder':placeholder
         })
         return context
+    
     def icon_src(self, instance):
         if instance.image:
-            return instance.image.thumbnails['admin_tiny_icon']
+            import ipdb; ipdb.set_trace()
+            # TODO: Find a cleaner way
+            # Fake the context because it is not available at this stage
+            # this will cause a bug when using autoscale
+            thumbnail = self.get_thumbnail({}, instance)
+            return thumbnail.url
         else:
             return os.path.normpath(u"%s/icons/missingfile_%sx%s.png" % (FILER_STATICMEDIA_PREFIX, 32, 32,))
 plugin_pool.register_plugin(FilerImagePlugin)
