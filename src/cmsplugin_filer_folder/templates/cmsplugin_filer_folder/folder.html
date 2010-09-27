@@ -1,23 +1,49 @@
+{% load i18n thumbnail sekizai_tags %}
+{% addtoblock "css" %}<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}cmsplugin_filer_folder/css/slideshow.css" media="screen, projection" />{% endaddtoblock "css" %}
+{% addtoblock "js" %}<script type="text/javascript" src="{{ MEDIA_URL }}cmsplugin_filer_folder/js/jquery.cycle.lite-1.0.js"></script>{% endaddtoblock "js" %}
+{% addtoblock "js" %}
+<script type="text/javascript">
+//<![CDATA[
+jQuery(document).ready(function ($) {
+    $('.cmsplugin_filer_folder_slidshow').cycle({
+        fx: 'fade'
+    }); 
+});
+//]]>
+</script>
+{% endaddtoblock %}
+
+
 {% firstof object.title object.folder.name  %}
 
-<div>
-    <!--The files should go there    -->
-    <p>folders</p>
-    <ul>
-        {% for folder in folder_children %}
-            <li>{{ folder }}</li>
-        {% endfor %}
-    </ul>
-    <p>Files</p>
-    <ul>
-        {% for files in folder_files %}
-            <li>{{ files }}</li>
-        {% endfor %}
-    </ul>
-    <p>Images</p>
-    <ul>
+{% if object.view_option == "list" %}
+    <div class="cmsplugin_filer_folder_list" id="folder_{{ instance.id }}">
+        <!--The files should go there    -->
+        <p>folders</p>
+        <ul>
+            {% for folder in folder_children %}
+                <li>{{ folder }}</li>
+            {% endfor %}
+        </ul>
+        <p>Files</p>
+        <ul>
+            {% for files in folder_files %}
+                <li>{{ files }}</li>
+            {% endfor %}
+        </ul>
+        <p>Images</p>
+        <ul>
+            {% for image in folder_images %}
+                <li><img src="{% thumbnail image.file 32x32 crop=True upscale=True %}"></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% else %}
+    <!-- start: slideshow -->
+    <div class="cmsplugin_filer_folder_slidshow" id="folder_{{ object.id }}">
         {% for image in folder_images %}
-            <li>{{ image }}</li>
+            <img src="{% thumbnail image.file 200x200 crop=True upscale=True %}">
         {% endfor %}
-    </ul>
-</div>
+    </div>
+    <!-- end: gallery -->
+{% endif %}
