@@ -6,6 +6,10 @@ from posixpath import join, basename, splitext, exists
 from filer.fields.folder import FilerFolderField
 from django.conf import settings
 
+VIEW_OPTIONS = (
+    ("list", "List"),
+    ("slideshow", "slideshow")
+)
 
 class FilerFolder(CMSPlugin):
     """
@@ -14,6 +18,8 @@ class FilerFolder(CMSPlugin):
     Default template displays files store inside this folder.
     """
     title = models.CharField(_("title"), max_length=255, null=True, blank=True)
+    view_option = models.CharField(_("view option"),max_length=10,
+                            choices=VIEW_OPTIONS, default="list")
     folder = FilerFolderField()
     
         
