@@ -1,6 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from cms.models import CMSPlugin, Page
+from cms.models.fields import PageField
 from django.utils.translation import ugettext_lazy as _
 from posixpath import join, basename, splitext, exists
 from filer.fields.image import FilerImageField
@@ -27,8 +28,8 @@ class FilerImage(CMSPlugin):
     
     free_link = models.CharField(_("link"), max_length=255, blank=True, null=True, 
                                  help_text=_("if present image will be clickable"))
-    page_link = models.ForeignKey(Page, verbose_name=_("page"), null=True, blank=True, 
-                                  help_text=_("if present image will be clickable"))
+    page_link = PageField(null=True, blank=True, 
+                          help_text=_("if present image will be clickable"))
     description = models.TextField(_("description"), blank=True, null=True)
     
     def clean(self):
