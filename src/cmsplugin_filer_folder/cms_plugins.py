@@ -12,8 +12,8 @@ class FilerFolderPlugin(CMSPluginBase):
     model = models.FilerFolder
     name = _("Folder")
     render_template = "cmsplugin_filer_folder/folder.html"
-    text_enabled = True
-    #form = FilerFolderAdminForm
+    text_enabled = False
+    admin_preview = False
     
     def get_folder_files(self, folder, user):
         qs_files = folder.files.filter(image__isnull=True)
@@ -32,19 +32,6 @@ class FilerFolderPlugin(CMSPluginBase):
     def get_children(self, folder):
         return folder.get_children()
         
-    class PluginMedia:
-        js = [join(settings.CMS_MEDIA_URL, path) for path in(
-            'filer/slideshow2/js/mootools.js',
-            'filer/slideshow2/js/slideshow.flash.js',
-            'filer/slideshow2/js/slideshow.fold.js',
-            'filer/slideshow2/js/slideshow.js',
-            'filer/slideshow2/js/slideshow.kenburns.js',
-            'filer/slideshow2/js/slideshow.push.js',
-        )],
-        css = {
-            'all': [join(settings.CMS_MEDIA_URL, path) for path in(
-                'filer/slideshow2/css/slideshow.css',)]
-        }
     
     def render(self, context, instance, placeholder):
         
@@ -55,11 +42,11 @@ class FilerFolderPlugin(CMSPluginBase):
         folder_folders = self.get_children(instance.folder)
         
         context.update({
-            'object':instance,
+            'object': instance,
             'folder_files': folder_files,
             'folder_images': folder_images,
             'folder_folders': folder_folders,
-            'placeholder':placeholder
+            'placeholder': placeholder
         })    
         return context
     

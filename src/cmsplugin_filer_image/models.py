@@ -24,6 +24,8 @@ class FilerImage(CMSPlugin):
                                         help_text=_('tries to auto scale the image based on the placeholder context'))
     width = models.PositiveIntegerField(null=True, blank=True)
     height = models.PositiveIntegerField(null=True, blank=True)
+    crop = models.BooleanField(default=True)
+    upscale = models.BooleanField(default=True)
     float = models.CharField(_("side"), max_length=10, blank=True, null=True, choices=FLOAT_CHOICES)
     
     free_link = models.CharField(_("link"), max_length=255, blank=True, null=True, 
@@ -65,8 +67,8 @@ class ThumbnailOption(models.Model):
     name = models.CharField(max_length=100)
     width = models.IntegerField(help_text=_('width in pixel.'))
     height = models.IntegerField(help_text=_('height in pixel.'))
-    is_cropped = models.BooleanField(default=True)
-    is_scaled = models.BooleanField(default=True)
+    crop = models.BooleanField(default=True)
+    upscale = models.BooleanField(default=True)
     
     class Meta:
         ordering = ('width', 'height')
