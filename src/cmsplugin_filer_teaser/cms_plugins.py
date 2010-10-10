@@ -33,7 +33,7 @@ class FilerTeaserPlugin(CMSPluginBase):
                             'image_width': width,
                             'image_height': height})
         context.update({
-            'object':instance, 
+            'instance':instance, 
             'placeholder':placeholder,
             'link': instance.link,
         })
