@@ -26,7 +26,7 @@ class FilerImage(CMSPlugin):
     height = models.PositiveIntegerField(null=True, blank=True)
     crop = models.BooleanField(default=True)
     upscale = models.BooleanField(default=True)
-    float = models.CharField(_("side"), max_length=10, blank=True, null=True, choices=FLOAT_CHOICES)
+    alignment = models.CharField(_("image alignment"), max_length=10, blank=True, null=True, choices=FLOAT_CHOICES)
     
     free_link = models.CharField(_("link"), max_length=255, blank=True, null=True, 
                                  help_text=_("if present image will be clickable"))
