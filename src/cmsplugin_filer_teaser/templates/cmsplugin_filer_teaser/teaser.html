@@ -1,17 +1,17 @@
 {% load i18n thumbnail %}
-<div{% if object.style %} class="{{ object.style }}"{% endif %}>
-<h2>{{ object.title }}</h2>
-{% if object.image or object.image_url %}
+<div{% if instance.style %} class="{{ instance.style }}"{% endif %}>
+<h2>{{ instance.title }}</h2>
+{% if instance.image or instance.image_url %}
 	{% if link %}<a href="{{ link }}"{% if obj.target_blank %} target="_blank"{% endif %}>{% endif %}
-		{% if object.image_url %}
-            <img alt="{% if object.alt %}{{ object.alt }}{% endif %}" src="{{ object.image_url }}"{% if object.width or object.height %} style="{% if object.width %}width:{{ object.width }}px;{% endif %}{% if object.height %}height:{{ object.height }}px;{% endif %}"{% endif %} />
+		{% if instance.image_url %}
+            <img alt="{% if instance.alt %}{{ instance.alt }}{% endif %}" src="{{ instance.image_url }}"{% if instance.width or instance.height %} style="{% if instance.width %}width:{{ instance.width }}px;{% endif %}{% if instance.height %}height:{{ instance.height }}px;{% endif %}"{% endif %} />
         {% else %}                  
-            <img alt="{% if object.alt %}{{ object.alt }}{% endif %}" src="{% thumbnail object.image image_size crop,upscale %}" />
+            <img alt="{% if instance.alt %}{{ instance.alt }}{% endif %}" src="{% thumbnail instance.image image_size crop,upscale %}" />
         {% endif %}
 	{% if link %}</a>{% endif %}
 {% endif %}
-{% if object.description %}
-<p>{{ object.description }}</p>
+{% if instance.description %}
+<p>{{ instance.description }}</p>
 {% endif %}
 {% if link %}<a href="{{ link }}"{% if obj.target_blank %} target="_blank"{% endif %}>{% trans "more" %} &#187;</a>{% endif %}
 </div>
