@@ -5,8 +5,8 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(
-    name = "cmsplugin-filer",
-    version = "0.0.6a14",
+    name = "cmsplugin-filer-easy-thumbnails",
+    version = "0.7a1",
     url = 'http://github.com/stefanfoulis/cmsplugin-filer',
     license = 'BSD',
     description = "django-cms plugins for django-filer",
