@@ -10,7 +10,7 @@ setup(
     url = 'http://github.com/stefanfoulis/cmsplugin-filer',
     license = 'BSD',
     description = "django-cms plugins for django-filer",
-    long_description = read('README'),
+    long_description = read('README.rst'),
     author = 'Stefan Foulis',
     author_email = 'stefan.foulis@gmail.com',
     packages = find_packages('src'),
