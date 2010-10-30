@@ -1,2 +1,5 @@
+include AUTHORS
+include LICENSE
 include README
+include HISTORY
 recursive-include src/*/templates *
