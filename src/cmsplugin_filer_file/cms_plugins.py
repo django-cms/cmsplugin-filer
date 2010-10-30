@@ -6,7 +6,7 @@ from django.conf import settings
 
 class FilerFilePlugin(CMSPluginBase):
     model = models.FilerFile
-    name = _("File (Filer)")
+    name = _("File")
     render_template = "cmsplugin_filer_file/file.html"
     text_enabled = True
     
