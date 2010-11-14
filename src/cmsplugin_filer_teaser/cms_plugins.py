@@ -21,9 +21,12 @@ class FilerTeaserPlugin(CMSPluginBase):
         width, height = None, None
         subject_location = False
         placeholder_width = context.get('width', None)
+        placeholder_height = context.get('height', None)
         if instance.use_autoscale and placeholder_width:
             # use the placeholder width as a hint for sizing
             width = int(placeholder_width)
+        if instance.use_autoscale and placeholder_height:
+            height = int(placeholder_height)
         elif instance.width:
             width = instance.width
         if instance.height:
