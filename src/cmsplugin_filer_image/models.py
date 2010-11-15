@@ -15,22 +15,22 @@ class FilerImage(CMSPlugin):
     FLOAT_CHOICES = ((LEFT, _("left")),
                      (RIGHT, _("right")),
                      )
-    caption = models.CharField(null=True, blank=True, max_length=255)
+    caption = models.CharField(_("caption"), null=True, blank=True, max_length=255)
     image = FilerImageField(null=True, blank=True, default=None)
     image_url = models.URLField(_("alternative image url"), verify_exists=False, null=True, blank=True, default=None)
-    alt_text = models.CharField(null=True, blank=True, max_length=255)
-    thumbnail_option = models.ForeignKey('ThumbnailOption', null=True, blank=True)
+    alt_text = models.CharField(_("alt text"), null=True, blank=True, max_length=255)
+    thumbnail_option = models.ForeignKey('ThumbnailOption', null=True, blank=True, verbose_name=_("thumbnail option"))
     use_autoscale = models.BooleanField(_("use automatic scaling"), default=False, 
                                         help_text=_('tries to auto scale the image based on the placeholder context'))
-    width = models.PositiveIntegerField(null=True, blank=True)
-    height = models.PositiveIntegerField(null=True, blank=True)
-    crop = models.BooleanField(default=True)
-    upscale = models.BooleanField(default=True)
+    width = models.PositiveIntegerField(_("width"), null=True, blank=True)
+    height = models.PositiveIntegerField(_("height"), null=True, blank=True)
+    crop = models.BooleanField(_("crop"), default=True)
+    upscale = models.BooleanField(_("upscale"), default=True)
     alignment = models.CharField(_("image alignment"), max_length=10, blank=True, null=True, choices=FLOAT_CHOICES)
     
     free_link = models.CharField(_("link"), max_length=255, blank=True, null=True, 
                                  help_text=_("if present image will be clickable"))
-    page_link = PageField(null=True, blank=True, 
+    page_link = PageField(_("page link"), null=True, blank=True, 
                           help_text=_("if present image will be clickable"))
     description = models.TextField(_("description"), blank=True, null=True)
     
@@ -45,7 +45,7 @@ class FilerImage(CMSPlugin):
         if self.image:
             return self.image.label
         else:
-            return u"Image Publication %s" % self.caption
+            return unicode( _("Image Publication %(caption)s") % self.caption)
         return ''
     @property
     def alt(self): 
