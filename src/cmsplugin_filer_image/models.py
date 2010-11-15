@@ -31,7 +31,8 @@ class FilerImage(CMSPlugin):
     free_link = models.CharField(_("link"), max_length=255, blank=True, null=True, 
                                  help_text=_("if present image will be clickable"))
     page_link = PageField(null=True, blank=True, 
-                          help_text=_("if present image will be clickable"))
+                          help_text=_("if present image will be clickable"),
+                          verbose_name=_("page link"))
     description = models.TextField(_("description"), blank=True, null=True)
     
     class Meta:
@@ -68,14 +69,16 @@ class ThumbnailOption(models.Model):
     """
     This class defines the option use to create the thumbnail.
     """
-    name = models.CharField(max_length=100)
-    width = models.IntegerField(help_text=_('width in pixel.'))
-    height = models.IntegerField(help_text=_('height in pixel.'))
-    crop = models.BooleanField(default=True)
-    upscale = models.BooleanField(default=True)
+    name = models.CharField(_("name"), max_length=100)
+    width = models.IntegerField(_("width"), help_text=_('width in pixel.'))
+    height = models.IntegerField(_("height"), help_text=_('height in pixel.'))
+    crop = models.BooleanField(_("crop"), default=True)
+    upscale = models.BooleanField(_("upscale"), default=True)
     
     class Meta:
         ordering = ('width', 'height')
+        verbose_name = _("thumbnail option")
+        verbose_name_plural = _("thumbnail options")
         
     def __unicode__(self):
         return u'%s -- %s x %s' %(self.name, self.width, self.height)
