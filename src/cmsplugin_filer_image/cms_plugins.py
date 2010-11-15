@@ -28,7 +28,7 @@ class FilerImagePlugin(CMSPluginBase):
         (None, {
             'fields': ('alignment',)
         }),
-        ('More', {
+        (_('more'), {
             'classes': ('collapse',),
             'fields': (('free_link', 'page_link',), 'description',)
         }),        
