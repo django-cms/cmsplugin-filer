@@ -30,9 +30,13 @@ class FilerImage(CMSPlugin):
     
     free_link = models.CharField(_("link"), max_length=255, blank=True, null=True, 
                                  help_text=_("if present image will be clickable"))
-    page_link = PageField(_("page link"), null=True, blank=True, 
+    page_link = PageField(null=True, blank=True, 
                           help_text=_("if present image will be clickable"))
     description = models.TextField(_("description"), blank=True, null=True)
+    
+    class Meta:
+        verbose_name = _("filer image")
+        verbose_name_plural = _("filer images")
     
     def clean(self):
         from django.core.exceptions import ValidationError
