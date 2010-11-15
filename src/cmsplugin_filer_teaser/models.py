@@ -23,7 +23,7 @@ class FilerTeaser(CMSPlugin):
     height = models.PositiveIntegerField(_("height"), null=True, blank=True)
     
     free_link = models.CharField(_("link"), max_length=255, blank=True, null=True, help_text=_("if present image will be clickable"))
-    page_link = PageField(verbose_name=_("page"), null=True, blank=True, help_text=_("if present image will be clickable"))
+    page_link = PageField(null=True, blank=True, help_text=_("if present image will be clickable"), verbose_name=_("page link"))
     description = models.TextField(_("description"), blank=True, null=True)
     
     target_blank = models.BooleanField(_("open link in new window"), default=False)
