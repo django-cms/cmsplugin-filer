@@ -43,6 +43,7 @@ class FilerImagePlugin(CMSPluginBase):
         crop, upscale = False, False
         subject_location = False
         placeholder_width = context.get('width', None)
+        placeholder_height = context.get('height', None)
         if instance.thumbnail_option:
             # thumbnail option overrides everything else
             if instance.thumbnail_option.width:
@@ -57,7 +58,9 @@ class FilerImagePlugin(CMSPluginBase):
                 width = int(placeholder_width)
             elif instance.width:
                 width = instance.width
-            if instance.height:
+            if instance.use_autoscale and placeholder_height:
+                height = int(placeholder_height)
+            elif instance.height:
                 height = instance.height
             crop = instance.crop
             upscale = instance.upscale
