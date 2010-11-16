@@ -18,7 +18,7 @@ class FilerImagePlugin(CMSPluginBase):
         (None, {
             'fields': ('caption', ('image', 'image_url',), 'alt_text',)
         }),
-        (_('image resizing options'), {
+        (_('Image resizing options'), {
             'fields': ('use_autoscale', 'thumbnail_option',)
         }),
         (None, {
@@ -28,7 +28,7 @@ class FilerImagePlugin(CMSPluginBase):
         (None, {
             'fields': ('alignment',)
         }),
-        ('More', {
+        (_('More'), {
             'classes': ('collapse',),
             'fields': (('free_link', 'page_link',), 'description',)
         }),        

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-28 11:22+0200\n"
+"POT-Creation-Date: 2010-11-16 09:13+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,46 +17,62 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
 
-#: cms_plugins.py:9
-msgid "Teaser (Filer)"
+#: cms_plugins.py:14
+msgid "Teaser"
 msgstr ""
 
-#: models.py:18
+#: models.py:14
 msgid "title"
 msgstr ""
 
-#: models.py:21
+#: models.py:16
+msgid "alternative image url"
+msgstr ""
+
+#: models.py:18
 msgid "teaser style"
 msgstr ""
 
-#: models.py:23
+#: models.py:20
 msgid "use automatic scaling"
 msgstr ""
 
-#: models.py:24
+#: models.py:21
 msgid "tries to auto scale the image based on the placeholder context"
 msgstr ""
 
-#: models.py:28
+#: models.py:22
+msgid "width"
+msgstr ""
+
+#: models.py:23
+msgid "height"
+msgstr ""
+
+#: models.py:25
 msgid "link"
 msgstr ""
 
-#: models.py:28 models.py:29
+#: models.py:25 models.py:26
 msgid "if present image will be clickable"
 msgstr ""
 
-#: models.py:29
-msgid "page"
+#: models.py:26
+msgid "page link"
 msgstr ""
 
-#: models.py:30
+#: models.py:27
 msgid "description"
 msgstr ""
 
-#: models.py:32
+#: models.py:29
 msgid "open link in new window"
 msgstr ""
 
-#: templates/cmsplugin_filer_teaser/teaser.html:12
+#: models.py:35
+msgid "Either an image or an image url must be selected."
+msgstr ""
+
+#: templates/cmsplugin_filer_teaser/teaser.html:17
 msgid "more"
 msgstr ""
