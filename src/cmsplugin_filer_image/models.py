@@ -16,7 +16,7 @@ class FilerImage(CMSPlugin):
                      (RIGHT, _("right")),
                      )
     caption = models.CharField(_("caption"), null=True, blank=True, max_length=255)
-    image = FilerImageField(null=True, blank=True, default=None)
+    image = FilerImageField(null=True, blank=True, default=None, verbose_name=_("image"))
     image_url = models.URLField(_("alternative image url"), verify_exists=False, null=True, blank=True, default=None)
     alt_text = models.CharField(_("alt text"), null=True, blank=True, max_length=255)
     thumbnail_option = models.ForeignKey('ThumbnailOption', null=True, blank=True, verbose_name=_("thumbnail option"))
@@ -50,7 +50,7 @@ class FilerImage(CMSPlugin):
         if self.image:
             return self.image.label
         else:
-            return unicode( _("Image Publication %(caption)s") % self.caption)
+            return unicode( _("Image Publication %(caption)s") % {'caption': self.caption} )
         return ''
     @property
     def alt(self): 
