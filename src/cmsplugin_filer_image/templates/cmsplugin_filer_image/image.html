@@ -15,10 +15,10 @@
 
 {% if instance.image %}
 	{% thumbnail instance.image size crop=opts.crop upscale=opts.upscale subject_location=opts.subject_location as thumbnail %}
-	{% if link %}<a href="{{ link }}">{% endif %}<img{% if instance.alignment %} class="{{ object.alignment }}"{% endif %} alt="{% if object.alt %}{{ object.alt }}{% endif %}" src="{{ thumbnail.url }}" />{% if link %}</a>{% endif %}
+	{% if link %}<a href="{{ link }}">{% endif %}<img{% if instance.alignment %} class="{{ instance.alignment }}"{% endif %} alt="{% if instance.alt %}{{ instance.alt }}{% endif %}" src="{{ thumbnail.url }}" />{% if link %}</a>{% endif %}
 {% else %}
 	{# just a plain link to some external image #}
-	{% if link %}<a href="{{ link }}">{% endif %}<img{% if instance.alignment %} class="{{ object.alignment }}"{% endif %} alt="{% if object.alt %}{{ object.alt }}{% endif %}" src="{{ instance.image_url }}" width="{{ size.0 }}" height="{{ size.1 }}" />{% if link %}</a>{% endif %}
+	{% if link %}<a href="{{ link }}">{% endif %}<img{% if instance.alignment %} class="{{ instance.alignment }}"{% endif %} alt="{% if instance.alt %}{{ instance.alt }}{% endif %}" src="{{ instance.image_url }}" width="{{ size.0 }}" height="{{ size.1 }}" />{% if link %}</a>{% endif %}
 {% endif %}
 
 {% endspaceless %}
