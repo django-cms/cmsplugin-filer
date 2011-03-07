@@ -19,19 +19,19 @@ jQuery(document).ready(function ($) {
 {% if object.view_option == "list" %}
     <div class="cmsplugin_filer_folder_list" id="folder_{{ instance.id }}">
         <!--The files should go there    -->
-        <p>folders</p>
+        <p>{% trans "Folders" %}</p>
         <ul>
             {% for folder in folder_children %}
                 <li>{{ folder }}</li>
             {% endfor %}
         </ul>
-        <p>Files</p>
+        <p>{% trans "Files" %}</p>
         <ul>
             {% for files in folder_files %}
                 <li>{{ files }}</li>
             {% endfor %}
         </ul>
-        <p>Images</p>
+        <p>{% trans "Images" %}</p>
         <ul>
             {% for image in folder_images %}
                 <li><img src="{% thumbnail image.file 32x32 crop=True upscale=True %}"></li>
