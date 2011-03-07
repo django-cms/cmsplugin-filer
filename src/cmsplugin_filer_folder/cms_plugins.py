@@ -23,7 +23,7 @@ class FilerFolderPlugin(CMSPluginBase):
             return qs_files.filter(is_public=True)
     
     def get_folder_images(self, folder, user):
-        qs_files = folder.files.filter(image__isnull=False)
+        qs_files = folder.files.filter(_file_type_plugin_name='Image')
         if user.is_staff:
             return qs_files
         else:
