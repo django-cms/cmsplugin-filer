@@ -1,16 +1,19 @@
+import os
 from cms.plugin_pool import plugin_pool
 from cms.plugin_base import CMSPluginBase
 from django.utils.translation import ugettext_lazy as _
 from cmsplugin_filer_video import settings
 from cmsplugin_filer_video.models import FilerVideo
 from cmsplugin_filer_video.forms import VideoForm
+from filer.settings import FILER_STATICMEDIA_PREFIX
 
 class FilerVideoPlugin(CMSPluginBase):
     model = FilerVideo
     name = _("Video (Filer)")
     form = VideoForm
     
-    render_template = "cms/plugins/video.html"
+    render_template = "cmsplugin_filer_video/video.html"
+    text_enabled = True
     
     general_fields = [
         ('movie', 'movie_url'),
@@ -46,7 +49,7 @@ class FilerVideoPlugin(CMSPluginBase):
         ]
     
     class PluginMedia:
-        js = ('http://ajax.googleapis.com/ajax/libs/swfobject/2.1/swfobject.js',)
+        js = ('https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js',)
         
     def render(self, context, instance, placeholder):
         context.update({
@@ -55,4 +58,7 @@ class FilerVideoPlugin(CMSPluginBase):
         })
         return context
     
+    def icon_src(self, instance):
+        # TODO: Use real video icon where there will be one
+        return os.path.normpath(u"%s/icons/file_%sx%s.png" % (FILER_STATICMEDIA_PREFIX, 32, 32,))
 plugin_pool.register_plugin(FilerVideoPlugin)
