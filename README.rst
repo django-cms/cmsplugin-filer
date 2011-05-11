@@ -28,3 +28,5 @@ add the plugins to ``INSTALLED_APPS``::
     )
 
 and then run ``syncdb`` or ``migrate`` if you're using South.
+
+You can also set ``FILER_IMAGE_USE_ICON`` in your ``settings.py`` to configure ``cmsplugin_filer_image`` plugin to use 32x32 icons for representing plugin instances.

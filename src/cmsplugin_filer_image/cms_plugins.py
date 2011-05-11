@@ -101,10 +101,13 @@ class FilerImagePlugin(CMSPluginBase):
     
     def icon_src(self, instance):
         if instance.image:
-            # Fake the context with a reasonable width value because it is not 
-            # available at this stage
-            thumbnail = self.get_thumbnail({'width':200}, instance)
-            return thumbnail.url
+            if getattr(settings, 'FILER_IMAGE_USE_ICON', False) and '32' in instance.image.icons:
+                return instance.image.icons['32']
+            else:
+                # Fake the context with a reasonable width value because it is not 
+                # available at this stage
+                thumbnail = self.get_thumbnail({'width':200}, instance)
+                return thumbnail.url
         else:
             return os.path.normpath(u"%s/icons/missingfile_%sx%s.png" % (FILER_STATICMEDIA_PREFIX, 32, 32,))
 plugin_pool.register_plugin(FilerImagePlugin)
