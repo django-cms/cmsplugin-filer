@@ -59,6 +59,5 @@ class FilerVideoPlugin(CMSPluginBase):
         return context
     
     def icon_src(self, instance):
-        # TODO: Use real video icon where there will be one
-        return os.path.normpath(u"%s/icons/file_%sx%s.png" % (FILER_STATICMEDIA_PREFIX, 32, 32,))
+        return os.path.normpath(u"%s/icons/video_%sx%s.png" % (FILER_STATICMEDIA_PREFIX, 32, 32,))
 plugin_pool.register_plugin(FilerVideoPlugin)
