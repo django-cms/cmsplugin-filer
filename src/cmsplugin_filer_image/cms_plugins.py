@@ -30,7 +30,7 @@ class FilerImagePlugin(CMSPluginBase):
         }),
         (_('More'), {
             'classes': ('collapse',),
-            'fields': (('free_link', 'page_link',), 'description',)
+            'fields': (('free_link', 'page_link', 'original_link'), 'description',)
         }),        
         
     )

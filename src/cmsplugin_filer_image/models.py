@@ -33,6 +33,7 @@ class FilerImage(CMSPlugin):
     page_link = PageField(null=True, blank=True, 
                           help_text=_("if present image will be clickable"),
                           verbose_name=_("page link"))
+    original_link = models.BooleanField(_("link original image"), default=False, help_text=_("if present image will be clickable"))
     description = models.TextField(_("description"), blank=True, null=True)
     
     class Meta:
@@ -59,8 +60,13 @@ class FilerImage(CMSPlugin):
     def link(self):
         if self.free_link:
             return self.free_link
-        elif self.page_link and self.page_link:
+        elif self.page_link:
             return self.page_link.get_absolute_url()
+        elif self.original_link:
+            if self.image:
+                return self.image.url
+            else:
+                return self.image_url
         else:
             return ''
         
@@ -84,4 +90,3 @@ class ThumbnailOption(models.Model):
         return u'%s -- %s x %s' %(self.name, self.width, self.height)
         
 
-    
