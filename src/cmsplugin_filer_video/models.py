@@ -13,8 +13,8 @@ class FilerVideo(CMSPlugin):
     movie_url = models.CharField(_('movie url'), max_length=255, help_text=_('vimeo or youtube video url. Example: http://www.youtube.com/watch?v=YFa59lK-kpo'), blank=True, null=True)
     image = FilerImageField(verbose_name=_('image'), help_text=_('preview image file'), null=True, blank=True, related_name='filer_video_image')
     
-    width = models.PositiveSmallIntegerField(_('width'))
-    height = models.PositiveSmallIntegerField(_('height'))
+    width = models.PositiveSmallIntegerField(_('width'), default=settings.VIDEO_WIDTH)
+    height = models.PositiveSmallIntegerField(_('height'), default=settings.VIDEO_HEIGHT)
     
     auto_play = models.BooleanField(_('auto play'), default=settings.VIDEO_AUTOPLAY)
     auto_hide = models.BooleanField(_('auto hide'), default=settings.VIDEO_AUTOHIDE)
