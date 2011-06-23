@@ -15,7 +15,7 @@ class FilerImage(CMSPlugin):
     FLOAT_CHOICES = ((LEFT, _("left")),
                      (RIGHT, _("right")),
                      )
-    caption = models.CharField(_("caption"), null=True, blank=True, max_length=255)
+    caption_text = models.CharField(_("caption text"), null=True, blank=True, max_length=255)
     image = FilerImageField(null=True, blank=True, default=None, verbose_name=_("image"))
     image_url = models.URLField(_("alternative image url"), verify_exists=False, null=True, blank=True, default=None)
     alt_text = models.CharField(_("alt text"), null=True, blank=True, max_length=255)
@@ -51,11 +51,20 @@ class FilerImage(CMSPlugin):
         if self.image:
             return self.image.label
         else:
-            return unicode( _("Image Publication %(caption)s") % {'caption': self.caption} )
+            return unicode( _("Image Publication %(caption)s") % {'caption': self.caption or self.alt} )
         return ''
     @property
-    def alt(self): 
-        return self.alt_text
+    def caption(self):
+        if self.image:
+            return self.caption_text or self.image.default_caption
+        else:
+            return self.caption_text
+    @property
+    def alt(self):
+        if self.image:
+            return self.alt_text or self.image.default_alt_text or self.image.label
+        else:
+            return self.alt_text
     @property
     def link(self):
         if self.free_link:
