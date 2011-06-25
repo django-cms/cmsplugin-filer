@@ -6,6 +6,7 @@ from django.forms.models import ModelForm
 import models
 from django.conf import settings
 from django.forms.widgets import Media
+from filer.models.imagemodels import Image
 
 
 class FilerFolderPlugin(CMSPluginBase):
@@ -23,7 +24,7 @@ class FilerFolderPlugin(CMSPluginBase):
             return qs_files.filter(is_public=True)
     
     def get_folder_images(self, folder, user):
-        qs_files = folder.files.filter(_file_type_plugin_name='Image')
+        qs_files = folder.files.instance_of(Image)
         if user.is_staff:
             return qs_files
         else:
