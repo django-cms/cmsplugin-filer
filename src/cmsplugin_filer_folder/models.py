@@ -7,8 +7,8 @@ from filer.fields.folder import FilerFolderField
 from django.conf import settings
 
 VIEW_OPTIONS = (
-    ("list", "List"),
-    ("slideshow", "slideshow")
+    ("list", _("List")),
+    ("slideshow", _("Slideshow"))
 )
 
 class FilerFolder(CMSPlugin):
