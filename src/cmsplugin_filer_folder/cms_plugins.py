@@ -44,8 +44,8 @@ class FilerFolderPlugin(CMSPluginBase):
         
         context.update({
             'object': instance,
-            'folder_files': folder_files,
-            'folder_images': folder_images,
+            'folder_files': sorted(folder_files),
+            'folder_images': sorted(folder_images),
             'folder_folders': folder_folders,
             'placeholder': placeholder
         })    
