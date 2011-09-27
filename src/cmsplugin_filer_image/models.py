@@ -2,7 +2,6 @@ from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from cms.models import CMSPlugin, Page
 from cms.models.fields import PageField
-from django.utils.translation import ugettext_lazy as _
 from posixpath import join, basename, splitext, exists
 from filer.fields.image import FilerImageField
 from filer.fields.file import FilerFileField
@@ -33,6 +32,7 @@ class FilerImage(CMSPlugin):
     page_link = PageField(null=True, blank=True, 
                           help_text=_("if present image will be clickable"),
                           verbose_name=_("page link"))
+    file_link = FilerFileField(null=True, blank=True, default=None, verbose_name=_("file link"), help_text=_("if present image will be clickable"), related_name='+')
     original_link = models.BooleanField(_("link original image"), default=False, help_text=_("if present image will be clickable"))
     description = models.TextField(_("description"), blank=True, null=True)
     
@@ -71,6 +71,8 @@ class FilerImage(CMSPlugin):
             return self.free_link
         elif self.page_link:
             return self.page_link.get_absolute_url()
+        elif self.file_link:
+            return self.file_link.url
         elif self.original_link:
             if self.image:
                 return self.image.url
