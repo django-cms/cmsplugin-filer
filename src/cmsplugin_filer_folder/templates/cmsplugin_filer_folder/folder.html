@@ -39,7 +39,7 @@ jQuery(document).ready(function ($) {
         <p>{% trans "Images" %}</p>
         <ul>
             {% for image in folder_images %}
-                <li><img src="{% thumbnail image.file 32x32 crop=True upscale=True %}" width="32" height="32" alt="{{ image.label }}"></li>
+                <li><img src="{% thumbnail image.file 32x32 crop="True" upscale="True" %}" width="32" height="32" alt="{{ image.label }}"></li>
             {% endfor %}
         </ul>
         {% endif %}
@@ -48,7 +48,7 @@ jQuery(document).ready(function ($) {
     <!-- start: slideshow -->
     <div class="cmsplugin_filer_folder_slidshow" id="folder_{{ object.id }}">
         {% for image in folder_images %}
-            <img src="{% thumbnail image.file 200x200 crop=True upscale=True %}">
+            <img src="{% thumbnail image.file 200x200 crop="True" upscale="True" %}">
         {% endfor %}
     </div>
     <!-- end: gallery -->
