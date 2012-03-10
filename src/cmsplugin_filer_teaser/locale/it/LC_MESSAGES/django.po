@@ -1,78 +1,79 @@
-# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
+# Iacopo Spalletti <i.spalletti@nephila.it>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-11-16 09:13+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2012-03-10 12:43+0100\n"
+"Last-Translator: Iacopo Spalletti <i.spalletti@nephila.it>\n"
+"Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"Language: it\n"
+"X-Generator: Lokalize 1.2\n"
 
 #: cms_plugins.py:14
 msgid "Teaser"
-msgstr ""
+msgstr "Richiamo pagina"
 
 #: models.py:14
 msgid "title"
-msgstr ""
+msgstr "titolo"
 
 #: models.py:16
 msgid "alternative image url"
-msgstr ""
+msgstr "URL alternativo per l'immagine"
 
 #: models.py:18
 msgid "teaser style"
-msgstr ""
+msgstr "stile richiamo"
 
 #: models.py:20
 msgid "use automatic scaling"
-msgstr ""
+msgstr "usa ridimensionamento automatico"
 
 #: models.py:21
 msgid "tries to auto scale the image based on the placeholder context"
-msgstr ""
+msgstr "prova a dimensionare l'immagine in base al contesto del placeholder"
 
 #: models.py:22
 msgid "width"
-msgstr ""
+msgstr "larghezza"
 
 #: models.py:23
 msgid "height"
-msgstr ""
+msgstr "altezza"
 
 #: models.py:25
 msgid "link"
-msgstr ""
+msgstr "link"
 
 #: models.py:25 models.py:26
 msgid "if present image will be clickable"
-msgstr ""
+msgstr "se presente, l'immagine sarà cliccabile"
 
 #: models.py:26
 msgid "page link"
-msgstr ""
+msgstr "link a pagina"
 
 #: models.py:27
 msgid "description"
-msgstr ""
+msgstr "descrizione"
 
 #: models.py:29
 msgid "open link in new window"
-msgstr ""
+msgstr "apri link in una nuova finestra"
 
 #: models.py:35
 msgid "Either an image or an image url must be selected."
-msgstr ""
+msgstr "Deve essere selezionata un'immagine o un indirizzo di immagine"
 
 #: templates/cmsplugin_filer_teaser/teaser.html:17
 msgid "more"
-msgstr ""
+msgstr "vedi"
+
