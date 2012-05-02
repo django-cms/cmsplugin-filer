@@ -3,3 +3,4 @@ include LICENSE
 include README.rst
 include HISTORY
 recursive-include src/*/templates *
+recursive-include src/*/media *
