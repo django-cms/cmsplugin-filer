@@ -1,131 +1,143 @@
-# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
+# Iacopo Spalletti <i.spalletti@nephila.it>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-16 09:12+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2012-03-13 20:52+0100\n"
+"PO-Revision-Date: 2012-03-13 20:30+0100\n"
+"Last-Translator: Iacopo Spalletti <i.spalletti@nephila.it>\n"
+"Language-Team: Italian <kde-i18n-it@kde.org>\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.2\n"
 
 #: cms_plugins.py:12
 msgid "Image"
-msgstr ""
+msgstr "Immagine"
 
 #: cms_plugins.py:21
 msgid "Image resizing options"
-msgstr ""
+msgstr "Opzioni ridimensionamento immagine"
 
 #: cms_plugins.py:31
 msgid "More"
-msgstr ""
+msgstr "Vedi"
+
+#: models.py:14
+msgid "left"
+msgstr "sinistra"
 
 #: models.py:15
-msgid "left"
-msgstr ""
-
-#: models.py:16
 msgid "right"
-msgstr ""
+msgstr "destra"
+
+#: models.py:17
+msgid "caption text"
+msgstr "didascalia"
 
 #: models.py:18
-msgid "caption"
-msgstr ""
+msgid "image"
+msgstr "Immagine"
+
+#: models.py:19
+msgid "alternative image url"
+msgstr "URL alternativo per l'immagine"
 
 #: models.py:20
-msgid "alternative image url"
-msgstr ""
-
-#: models.py:21
 msgid "alt text"
-msgstr ""
+msgstr "testo alternativo"
 
-#: models.py:22 models.py:80
+#: models.py:21 models.py:97
 msgid "thumbnail option"
-msgstr ""
+msgstr "opzioni miniature"
+
+#: models.py:22
+msgid "use automatic scaling"
+msgstr "usa ridimensionamento automatico"
 
 #: models.py:23
-msgid "use automatic scaling"
-msgstr ""
-
-#: models.py:24
 msgid "tries to auto scale the image based on the placeholder context"
-msgstr ""
+msgstr "prova a dimensionare l'immagine in base al contesto del placeholder"
 
-#: models.py:25 models.py:73
+#: models.py:24 models.py:90
 msgid "width"
-msgstr ""
+msgstr "larghezza"
 
-#: models.py:26 models.py:74
+#: models.py:25 models.py:91
 msgid "height"
-msgstr ""
+msgstr "altezza"
 
-#: models.py:27 models.py:75
+#: models.py:26 models.py:92
 msgid "crop"
-msgstr ""
+msgstr "taglia"
 
-#: models.py:28 models.py:76
+#: models.py:27 models.py:93
 msgid "upscale"
-msgstr ""
+msgstr "ingrandisci"
 
-#: models.py:29
+#: models.py:28
 msgid "image alignment"
-msgstr ""
+msgstr "allineamento immagine"
 
-#: models.py:31
+#: models.py:30
 msgid "link"
-msgstr ""
+msgstr "link"
 
-#: models.py:32 models.py:34
+#: models.py:31 models.py:33 models.py:35 models.py:36
 msgid "if present image will be clickable"
-msgstr ""
+msgstr "se presente, l'immagine sarà cliccabile"
+
+#: models.py:34
+msgid "page link"
+msgstr "link a pagina"
 
 #: models.py:35
-msgid "page link"
-msgstr ""
+msgid "file link"
+msgstr "link a file"
 
 #: models.py:36
-msgid "description"
-msgstr ""
+msgid "link original image"
+msgstr "link all'immagine originale"
 
-#: models.py:39
-msgid "filer image"
-msgstr ""
+#: models.py:37
+msgid "description"
+msgstr "descrizione"
 
 #: models.py:40
+msgid "filer image"
+msgstr "immagine"
+
+#: models.py:41
 msgid "filer images"
-msgstr ""
+msgstr "immagini"
 
-#: models.py:46
+#: models.py:47
 msgid "Either an image or an image url must be selected."
-msgstr ""
+msgstr "Deve essere selezionata un'immagine o un indirizzo di immagine"
 
-#: models.py:53
+#: models.py:54
 #, python-format
 msgid "Image Publication %(caption)s"
-msgstr ""
+msgstr "Pubblicazione immagine %(caption)s"
 
-#: models.py:72
+#: models.py:89
 msgid "name"
-msgstr ""
+msgstr "nome"
 
-#: models.py:73
+#: models.py:90
 msgid "width in pixel."
-msgstr ""
+msgstr "larghezza in pixel."
 
-#: models.py:74
+#: models.py:91
 msgid "height in pixel."
-msgstr ""
+msgstr "altezza in pixel."
 
-#: models.py:81
+#: models.py:98
 msgid "thumbnail options"
-msgstr ""
+msgstr "opzioni miniature"
