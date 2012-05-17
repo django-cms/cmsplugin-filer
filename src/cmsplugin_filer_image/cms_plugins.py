@@ -8,6 +8,7 @@ from django.conf import settings
 from filer.settings import FILER_STATICMEDIA_PREFIX
 
 class FilerImagePlugin(CMSPluginBase):
+    module = 'Filer'
     model = models.FilerImage
     name = _("Image")
     render_template = "cmsplugin_filer_image/image.html"
@@ -31,10 +32,10 @@ class FilerImagePlugin(CMSPluginBase):
         (_('More'), {
             'classes': ('collapse',),
             'fields': (('free_link', 'page_link', 'file_link', 'original_link'), 'description',)
-        }),        
-        
+        }),
+
     )
-    
+
     def _get_thumbnail_options(self, context, instance):
         """
         Return the size and options of the thumbnail that should be inserted
@@ -83,11 +84,11 @@ class FilerImagePlugin(CMSPluginBase):
                 'crop': crop,
                 'upscale': upscale,
                 'subject_location': subject_location}
-       
+
     def get_thumbnail(self, context, instance):
         if instance.image:
             return instance.image.image.file.get_thumbnail(self._get_thumbnail_options(context, instance))
-    
+
     def render(self, context, instance, placeholder):
         options = self._get_thumbnail_options(context, instance)
         context.update({
@@ -98,13 +99,13 @@ class FilerImagePlugin(CMSPluginBase):
             'placeholder': placeholder
         })
         return context
-    
+
     def icon_src(self, instance):
         if instance.image:
             if getattr(settings, 'FILER_IMAGE_USE_ICON', False) and '32' in instance.image.icons:
                 return instance.image.icons['32']
             else:
-                # Fake the context with a reasonable width value because it is not 
+                # Fake the context with a reasonable width value because it is not
                 # available at this stage
                 thumbnail = self.get_thumbnail({'width':200}, instance)
                 return thumbnail.url

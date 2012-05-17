@@ -7,13 +7,14 @@ from django.conf import settings
 
 class FilerTeaserPlugin(CMSPluginBase):
     """
-    TODO: this plugin is becoming very similar to the image plugin... code 
+    TODO: this plugin is becoming very similar to the image plugin... code
           should be re-used somehow.
     """
+    module = 'Filer'
     model = models.FilerTeaser
     name = _("Teaser")
     render_template = "cmsplugin_filer_teaser/teaser.html"
-    
+
     def _get_thumbnail_options(self, context, instance):
         """
         Return the size and options of the thumbnail that should be inserted
@@ -48,11 +49,11 @@ class FilerTeaserPlugin(CMSPluginBase):
                 height = instance.image.height
         return {'size': (width, height),
                 'subject_location': subject_location}
-       
+
     def get_thumbnail(self, context, instance):
         if instance.image:
             return instance.image.image.file.get_thumbnail(self._get_thumbnail_options(context, instance))
-    
+
     def render(self, context, instance, placeholder):
         options = self._get_thumbnail_options(context, instance)
         context.update({
