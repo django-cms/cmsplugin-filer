@@ -9,13 +9,20 @@ setup(
     version = "0.8.0",
     url = 'http://github.com/stefanfoulis/cmsplugin-filer',
     license = 'BSD',
+    platforms=['OS Independent'],
     description = "django-cms plugins for django-filer",
     long_description = read('README.rst'),
     author = 'Stefan Foulis',
     author_email = 'stefan.foulis@gmail.com',
     packages = find_packages('src'),
     package_dir = {'':'src'},
-    #install_requires = ['setuptools','django','django-cms',],
+    install_requires = (
+        'Django>=1.2',
+        'django-cms>=2.1',
+        'django-filer>=0.8'
+    ),
+    include_package_data=True,
+    zip_safe = False,
     classifiers = [
         'Development Status :: 4 - Beta',
         'Framework :: Django',
@@ -25,6 +32,8 @@ setup(
         'Programming Language :: Python',
         'Topic :: Internet :: WWW/HTTP',
     ],
-    include_package_data=True,
-    zip_safe = False
+    test_suite='setuptest.SetupTestSuite',
+    tests_require=(
+        'django-setuptest',
+    ),
 )
