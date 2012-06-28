@@ -25,6 +25,16 @@ setup(
         'Programming Language :: Python',
         'Topic :: Internet :: WWW/HTTP',
     ],
+    install_requires=[
+        "Django >= 1.3",
+        "django-cms >= 2.2",
+        "django-sekizai >= 0.4.2",
+        "easy_thumbnails >= 1.0"
+        "django-filer-dev"
+    ],
     include_package_data=True,
-    zip_safe = False
+    zip_safe = False,
+    dependency_links=[
+        "https://github.com/stefanofoulis/django-filer/zipball/develop#egg=django-filer-dev",
+        ],
 )
