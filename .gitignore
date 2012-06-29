@@ -13,3 +13,6 @@ build
 .project
 .pydevproject
 *~
+*.egg
+coverage.xml
+pep8.txt
