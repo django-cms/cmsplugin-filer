@@ -13,8 +13,8 @@ setup(
     long_description = read('README.rst'),
     author = 'Stefan Foulis',
     author_email = 'stefan.foulis@gmail.com',
-    packages = find_packages('src'),
-    package_dir = {'':'src'},
+    packages = find_packages(),
+    #package_dir = {'':'src'},
     #install_requires = ['setuptools','django','django-cms',],
     classifiers = [
         'Development Status :: 4 - Beta',
