@@ -1,7 +1,7 @@
-{% load i18n js %}
+{% load i18n sekizai_tags js %}
 
 <div id="flash-plugin-{{ object.id }}">{% trans 'Missing flash plugin. Download <a href="http://adobe.com/flashplayer">here</a>.' %}</div>
-
+{% addtoblock "js" %}<script type="text/javascript" src="{{ STATIC_URL }}cms/js/libs/swfobject.min.js"></script>{% endaddtoblock %}
 <script type="text/javascript">
 //<![CDATA[
 	var flashvars = {};
@@ -10,7 +10,7 @@
 	flashvars.image = "{{ object.image.url }}";
 	{% endif %}
 	
-	flashvars.autoplay = "{{ object.auto_play|bool }}";			
+	flashvars.autoplay = "{{ object.auto_play|bool }}";
 	flashvars.loop = "{{ object.loop|bool }}";
 	flashvars.autohide = "{{ object.auto_hide|bool }}";
 	flashvars.fullscreen = "{{ object.fullscreen|bool }}";
@@ -28,10 +28,10 @@
 	params.allowfullscreen = "true";
 	params.allowscriptaccess = "always";
 	params.bgcolor = "#{{ object.bgcolor }}";
-        params.wmode = "transparent";
+	params.wmode = "opaque";
 	
 	var attributes = {};
 	attributes.align = "middle";
 	
-	swfobject.embedSWF("{{ CMS_MEDIA_URL }}swf/player.swf", "flash-plugin-{{ object.id }}", "{{ object.get_width }}", "{{ object.get_height }}", "9.0.45", "{{ CMS_MEDIA_URL }}swf/expressInstall.swf", flashvars, params, attributes);
+	swfobject.embedSWF("{{ STATIC_URL }}cms/swf/player.swf", "flash-plugin-{{ object.id }}", "{{ object.get_width }}", "{{ object.get_height }}", "9", "{{ STATIC_URL }}cms/swf/expressInstall.swf", flashvars, params, attributes);
 //]]></script>
