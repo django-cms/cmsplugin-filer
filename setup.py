@@ -15,6 +15,12 @@ setup(
     author_email = 'stefan.foulis@gmail.com',
     packages = find_packages('src'),
     package_dir = {'':'src'},
+    install_requires=[
+        "django < 1.4",
+        "django-cms >= 2.2",
+        "django-sekizai >= 0.4.2",
+        "django-filer >= 0.8, < 0.9"
+    ],
     #install_requires = ['setuptools','django','django-cms',],
     classifiers = [
         'Development Status :: 4 - Beta',
