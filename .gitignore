@@ -16,3 +16,4 @@ build
 *.egg
 coverage.xml
 pep8.txt
+.idea
