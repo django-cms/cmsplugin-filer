@@ -6,6 +6,10 @@ from django.db import models
 
 class Migration(SchemaMigration):
 
+    depends_on = (
+        ("filer", "0008_polymorphic__del_field_file__file_type_plugin_name"),
+        )
+
     def forwards(self, orm):
         
         # Adding model 'FilerVideo'
