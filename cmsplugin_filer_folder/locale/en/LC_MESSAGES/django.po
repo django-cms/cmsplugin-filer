@@ -8,18 +8,43 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-16 09:15+0100\n"
+"POT-Creation-Date: 2012-07-13 19:04+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: cms_plugins.py:9
-msgid "File"
+#: cms_plugins.py:15
+msgid "Folder"
 msgstr ""
 
-#: models.py:28
+#: models.py:9
+msgid "List"
+msgstr ""
+
+#: models.py:9
+msgid "Slideshow"
+msgstr ""
+
+#: models.py:17
 msgid "title"
+msgstr ""
+
+#: models.py:18
+msgid "view option"
+msgstr ""
+
+#: templates/cmsplugin_filer_folder/folder.html:23
+msgid "Folders"
+msgstr ""
+
+#: templates/cmsplugin_filer_folder/folder.html:31
+msgid "Files"
+msgstr ""
+
+#: templates/cmsplugin_filer_folder/folder.html:39
+msgid "Images"
 msgstr ""
