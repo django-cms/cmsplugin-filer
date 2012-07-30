@@ -6,6 +6,7 @@ from posixpath import join, basename, splitext, exists
 from filer.fields.image import FilerImageField
 from filer.fields.file import FilerFileField
 from django.conf import settings
+from cmsplugin_filer_utils import FilerPluginManager
 
 
 class FilerFile(CMSPlugin):
@@ -27,6 +28,8 @@ class FilerFile(CMSPlugin):
     """
     title = models.CharField(_("title"), max_length=255, null=True, blank=True)
     file = FilerFileField()
+
+    objects = FilerPluginManager(select_related=('file',))
     
     def get_icon_url(self):
         return self.file.icons['32']
