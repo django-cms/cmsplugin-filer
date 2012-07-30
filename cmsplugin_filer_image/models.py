@@ -7,6 +7,8 @@ from filer.fields.image import FilerImageField
 from filer.fields.file import FilerFileField
 from cms import settings as cms_settings
 from django.conf import settings
+from cmsplugin_filer_utils import FilerPluginManager
+
 
 class FilerImage(CMSPlugin):
     LEFT = "left"
@@ -35,7 +37,13 @@ class FilerImage(CMSPlugin):
     file_link = FilerFileField(null=True, blank=True, default=None, verbose_name=_("file link"), help_text=_("if present image will be clickable"), related_name='+')
     original_link = models.BooleanField(_("link original image"), default=False, help_text=_("if present image will be clickable"))
     description = models.TextField(_("description"), blank=True, null=True)
-    
+
+    # we only add the image to select_related. page_link and file_link are FKs
+    # as well, but they are not used often enough to warrant the impact of two
+    # additional LEFT OUTER JOINs.
+    objects = FilerPluginManager(select_related=('image',))
+
+
     class Meta:
         verbose_name = _("filer image")
         verbose_name_plural = _("filer images")
