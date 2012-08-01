@@ -27,10 +27,11 @@ setup(
     test_suite='setuptest.SetupTestSuite',
     tests_require=(
         'django-setuptest',
+        'argparse',  # apparently needed by django-setuptest on python 2.6
     ),
     install_requires=[
-        "Django >= 1.3",
-        "django-cms >= 2.2",
+        'Django>=1.3,<1.5',
+        "django-cms>=2.2,<2.4",
         "django-sekizai >= 0.4.2",
         "easy_thumbnails >= 1.0"
         "django-filer-dev"
