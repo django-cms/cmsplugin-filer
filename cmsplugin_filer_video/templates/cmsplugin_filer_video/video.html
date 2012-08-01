@@ -1,4 +1,4 @@
-{% load i18n sekizai_tags js %}
+{% load i18n sekizai_tags cmsplugin_filer_js_tmp %}
 
 <div id="flash-plugin-{{ object.id }}">{% trans 'Missing flash plugin. Download <a href="http://adobe.com/flashplayer">here</a>.' %}</div>
 {% addtoblock "js" %}<script type="text/javascript" src="{{ STATIC_URL }}cms/js/libs/swfobject.min.js"></script>{% endaddtoblock %}

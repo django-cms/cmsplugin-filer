@@ -5,6 +5,8 @@ from cms.models.fields import PageField
 from filer.fields.image import FilerImageField
 from django.conf import settings
 
+from cmsplugin_filer_utils import FilerPluginManager
+
 CMSPLUGIN_FILER_TEASER_STYLE_CHOICES = getattr( settings, 'CMSPLUGIN_FILER_TEASER_STYLE_CHOICES',() )
 
 class FilerTeaser(CMSPlugin):
@@ -27,6 +29,8 @@ class FilerTeaser(CMSPlugin):
     description = models.TextField(_("description"), blank=True, null=True)
     
     target_blank = models.BooleanField(_("open link in new window"), default=False)
+
+    objects = FilerPluginManager(select_related=('image', 'page_link'))
     
     def clean(self):
         from django.core.exceptions import ValidationError

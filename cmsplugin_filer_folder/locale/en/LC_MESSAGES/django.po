@@ -17,10 +17,34 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: cms_plugins.py:10
-msgid "File"
+#: cms_plugins.py:15
+msgid "Folder"
 msgstr ""
 
-#: models.py:28
+#: models.py:9
+msgid "List"
+msgstr ""
+
+#: models.py:9
+msgid "Slideshow"
+msgstr ""
+
+#: models.py:17
 msgid "title"
+msgstr ""
+
+#: models.py:18
+msgid "view option"
+msgstr ""
+
+#: templates/cmsplugin_filer_folder/folder.html:23
+msgid "Folders"
+msgstr ""
+
+#: templates/cmsplugin_filer_folder/folder.html:31
+msgid "Files"
+msgstr ""
+
+#: templates/cmsplugin_filer_folder/folder.html:39
+msgid "Images"
 msgstr ""
