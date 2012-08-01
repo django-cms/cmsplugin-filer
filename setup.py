@@ -34,11 +34,11 @@ setup(
         "django-cms>=2.2,<2.4",
         "django-sekizai>=0.4.2",
         "easy_thumbnails>=1.0",
-        "django-filer>=0.9,<0.10,==dev",  # remove ==dev once 0.9 is released
+        "django-filer>=0.9a1.dev1",  # remove ==dev once 0.9 is released
     ],
     include_package_data=True,
     zip_safe = False,
     dependency_links=[
-        "https://github.com/stefanfoulis/django-filer/tarball/develop#egg=django-filer-dev",
+        "https://github.com/stefanfoulis/django-filer/tarball/develop#egg=django-filer-0.9a1.dev1",
     ],
 )
