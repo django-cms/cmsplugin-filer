@@ -1,2 +1,2 @@
 #!/bin/bash
-pip install $DJANGO $DJANGO_CMS django-mptt==0.5.1 PIL django-staticfiles
+pip install $DJANGO $DJANGO_CMS $DJANGO_FILER django-mptt==0.5.1 PIL django-staticfiles

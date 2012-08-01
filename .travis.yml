@@ -1,12 +1,11 @@
 language: python
 python:
   - 2.6
-  - 2.7
 install:
   - ./.travis_setup
 env:
-  - DJANGO="django>=1.3,<1.4" DJANGO_CMS="django-cms>=2.2,<2.3"
-  - DJANGO="django>=1.3,<1.4" DJANGO_CMS="django-cms>=2.3,<2.4"
-  - DJANGO="django>=1.4,<1.5" DJANGO_CMS="django-cms>=2.2,<2.3"
-  - DJANGO="django>=1.4,<1.5" DJANGO_CMS="django-cms>=2.3,<2.4"
+  - DJANGO="django>=1.3,<1.4" DJANGO_CMS="django-cms>=2.2,<2.3" DJANGO_FILER="https://github.com/stefanfoulis/django-filer/tarball/0.9a1.dev1#egg=django-filer-0.9a1.dev1"
+  - DJANGO="django>=1.3,<1.4" DJANGO_CMS="django-cms>=2.3,<2.4" DJANGO_FILER="https://github.com/stefanfoulis/django-filer/tarball/0.9a1.dev1#egg=django-filer-0.9a1.dev1"
+  - DJANGO="django>=1.4,<1.5" DJANGO_CMS="django-cms>=2.2,<2.3" DJANGO_FILER="https://github.com/stefanfoulis/django-filer/tarball/0.9a1.dev1#egg=django-filer-0.9a1.dev1"
+  - DJANGO="django>=1.4,<1.5" DJANGO_CMS="django-cms>=2.3,<2.4" DJANGO_FILER="https://github.com/stefanfoulis/django-filer/tarball/0.9a1.dev1#egg=django-filer-0.9a1.dev1"
 script: python setup.py test
