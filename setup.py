@@ -26,7 +26,7 @@ setup(
     ],
     test_suite='setuptest.setuptest.SetupTestSuite',
     tests_require=(
-        'django-setuptest',
+        'django-setuptest>=0.1.1',
         'argparse',  # apparently needed by django-setuptest on python 2.6
     ),
     install_requires=[
