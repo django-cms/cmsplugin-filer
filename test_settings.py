@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     "cmsplugin_filer_image",
     "cmsplugin_filer_teaser",
     "cmsplugin_filer_video",
+    "cmsplugin_filer_utils",  # only needed for test templates
 ]
 
 TEMPLATE_CONTEXT_PROCESSORS = [
@@ -37,7 +38,9 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "django.core.context_processors.media",
     "django.contrib.messages.context_processors.messages"
 ]
-CMS_TEMPLATES = []
+CMS_TEMPLATES = [
+#    'cmsplugin_filer/tests/master.html',
+]
 
 ROOT_URLCONF = "test_urls"
 
