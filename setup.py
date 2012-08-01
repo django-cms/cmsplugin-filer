@@ -6,7 +6,7 @@ def read(fname):
 
 setup(
     name = "cmsplugin-filer",
-    version = "0.8.0",
+    version = "0.9a1.dev1",
     url = 'http://github.com/stefanfoulis/cmsplugin-filer',
     license = 'BSD',
     platforms=['OS Independent'],
@@ -34,11 +34,11 @@ setup(
         "django-cms>=2.2,<2.4",
         "django-sekizai>=0.4.2",
         "easy_thumbnails>=1.0",
-        "django-filer>=0.9a1.dev1",
+        "django-filer>=0.9,<0.10,==dev",  # remove ==dev once 0.9 is released
     ],
     include_package_data=True,
     zip_safe = False,
     dependency_links=[
-        "https://github.com/stefanfoulis/django-filer/tarball/0.9a1.dev1#egg=django-filer-0.9a1.dev1",
+        "https://github.com/stefanfoulis/django-filer/tarball/develop#egg=django-filer-dev",
     ],
 )
