@@ -30,11 +30,11 @@ setup(
         "django-cms >= 2.2",
         "django-sekizai >= 0.4.2",
         "easy_thumbnails >= 1.0",
-        "django-filer >= 0.9a1.dev1"
+        # "django-filer >= 0.9a1.dev1"  # requires
     ],
     include_package_data=True,
     zip_safe = False,
-    dependency_links=[
-        "https://github.com/stefanfoulis/django-filer/zipball/develop#egg=django-filer-0.9a2.dev1",
-        ],
+#    dependency_links=[
+#        "https://github.com/stefanfoulis/django-filer/zipball/develop#egg=django-filer-0.9a2.dev1",
+#        ],
 )
