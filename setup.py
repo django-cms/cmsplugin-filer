@@ -35,6 +35,6 @@ setup(
     include_package_data=True,
     zip_safe = False,
     dependency_links=[
-        "https://github.com/stefanofoulis/django-filer/zipball/develop#egg=django-filer-dev",
+        "https://github.com/stefanfoulis/django-filer/zipball/develop#egg=django-filer-dev",
         ],
 )
