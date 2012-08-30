@@ -38,10 +38,10 @@ class FilerFile(CMSPlugin):
         return exists(self.file.path);
 
     def get_file_name(self):
-        return basename(self.file.path)
+        return self.file.name
 
     def get_ext(self):
-        return splitext(self.get_file_name())[1][1:]
+        return self.file.extension
 
     def __unicode__(self):
         if self.title:
