@@ -1,6 +1,14 @@
 Changelog for django-filer-cmsplugins
 =====================================
 
+0.9.0 (2012-09-05)
+------------------
+
+* various bugfixes
+* new link plugin
+* Django 1.4 support
+* django-cms 2.3
+
 0.8.0 (2010-10-31)
 ------------------
 

@@ -8,7 +8,7 @@ versions that use file fields from django-filer.
 Dependencies
 ------------
 
-* django-filer >= 0.9 (unrealeased: use develop branch from https://github.com/stefanfoulis/django-filer)
+* django-filer >= 0.9
 * Django >= 1.3
 * django-cms >= 2.2
 * django-sekizai >= 0.4.2
