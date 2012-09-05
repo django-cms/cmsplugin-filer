@@ -2,4 +2,6 @@ include AUTHORS
 include LICENSE
 include README.rst
 include HISTORY
-recursive-include src/*/templates *
+recursive-include */templates *
+recursive-include */static *
+recursive-include */locale *

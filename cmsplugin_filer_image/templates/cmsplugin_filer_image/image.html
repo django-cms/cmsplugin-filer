@@ -1,0 +1,24 @@
+{% load thumbnail filer_tags filer_image_tags %}{% spaceless %}
+{% comment %}
+	You may change the image size for special cases in your project by overriding
+	this template. There are a few size manipulation filters for this in
+	`filer_image_tags`: 
+	
+	{% if placeholder == 'my_special_sidebar' %}
+		{% thumbnail instance.image opts.size|extra_padding_y:10 crop=opts.crop upscale=opts.upscale as thumbnail %}
+	{% else %}
+		{% thumbnail instance.image opts.size crop=opts.crop upscale=opts.upscale as thumbnail %}
+	{% endif %}
+	{% if link %}<a href="{{ link }}">{% endif %}<img{% if instance.alignment %} class="{{ instance.alignment }}"{% endif %} alt="{% if instance.alt %}{{ instance.alt }}{% endif %}" src="{{ thumbnail.url }}"{% if instance.caption %} title="{{ instance.caption }}"{% endif %} />{% if link %}</a>{% endif %}
+{% endcomment %}
+
+
+{% if instance.image %}
+	{% thumbnail instance.image size crop=opts.crop upscale=opts.upscale subject_location=opts.subject_location as thumbnail %}
+	{% if link %}<a href="{{ link }}">{% endif %}<img{% if instance.alignment %} class="{{ instance.alignment }}"{% endif %} alt="{% if instance.alt %}{{ instance.alt }}{% endif %}" src="{{ thumbnail.url }}"{% if thumbnail.width %} width="{{ thumbnail.width }}"{% endif %}{% if thumbnail.height %} height="{{ thumbnail.height }}"{% endif %}{% if instance.caption %} title="{{ instance.caption }}"{% endif %} />{% if link %}</a>{% endif %}
+{% else %}
+	{# just a plain link to some external image #}
+	{% if link %}<a href="{{ link }}">{% endif %}<img{% if instance.alignment %} class="{{ instance.alignment }}"{% endif %} alt="{% if instance.alt %}{{ instance.alt }}{% endif %}" src="{{ instance.image_url }}"{% if size.0 %} width="{{ size.0 }}"{% endif %}{% if size.1 %} height="{{ size.1 }}"{% endif %}{% if instance.caption %} title="{{ instance.caption }}"{% endif %} />{% if link %}</a>{% endif %}
+{% endif %}
+
+{% endspaceless %}

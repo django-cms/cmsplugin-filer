@@ -1,0 +1,46 @@
+{% load i18n sekizai_tags cmsplugin_filer_js_tmp %}
+
+<div id="flash-plugin-{{ object.id }}">{% trans 'Missing flash plugin. Download <a href="http://adobe.com/flashplayer">here</a>.' %}</div>
+
+{% addtoblock "js" %}
+  <script type="text/javascript" src="{{ STATIC_URL }}cms/js/libs/swfobject.min.js"></script>
+{% endaddtoblock %}
+
+{% addtoblock "js" %}
+  <script type="text/javascript">//<![CDATA[
+    var flashvars = {};
+    flashvars.movie = "{{ object.get_movie }}";
+    {% if object.image %}
+    flashvars.image = "{{ object.image.url }}";
+    {% endif %}
+
+    flashvars.autoplay = "{{ object.auto_play|bool }}";
+    flashvars.loop = "{{ object.loop|bool }}";
+    flashvars.autohide = "{{ object.auto_hide|bool }}";
+    flashvars.fullscreen = "{{ object.fullscreen|bool }}";
+
+    flashvars.color_text = "0x{{ object.textcolor }}";
+    flashvars.color_seekbar = "0x{{ object.seekbarcolor }}";
+    flashvars.color_loadingbar = "0x{{ object.loadingbarcolor }}";
+    flashvars.color_seekbarbg = "0x{{ object.seekbarbgcolor }}";
+
+    flashvars.color_button_out = "0x{{ object.buttonoutcolor }}";
+    flashvars.color_button_over = "0x{{ object.buttonovercolor }}";
+    flashvars.color_button_highlight = "0x{{ object.buttonhighlightcolor }}";
+
+    var params = {};
+    params.allowfullscreen = "true";
+    params.allowscriptaccess = "always";
+    params.bgcolor = "#{{ object.bgcolor }}";
+    params.wmode = "opaque";
+
+    var attributes = {};
+    attributes.align = "middle";
+
+    swfobject.embedSWF("{{ STATIC_URL }}cms/swf/player.swf",
+                       "flash-plugin-{{ object.id }}",
+                       "{{ object.get_width }}", "{{ object.get_height }}",
+                       "9", "{{ STATIC_URL }}cms/swf/expressInstall.swf",
+                       flashvars, params, attributes);
+  //]]></script>
+{% endaddtoblock %}
