@@ -49,13 +49,10 @@ class FilerVideoPlugin(CMSPluginBase):
             }),
         ]
 
-    class PluginMedia:
-        js = ('https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js',)
-
     def render(self, context, instance, placeholder):
         context.update({
             'object': instance,
-            'placeholder':placeholder,
+            'placeholder': placeholder,
         })
         return context
 
