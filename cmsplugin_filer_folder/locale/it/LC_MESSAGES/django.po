@@ -1,0 +1,51 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Iacopo Spalletti <i.spalletti@nephila.it>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: cmsplugin-filer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-13 19:04+0200\n"
+"PO-Revision-Date: 2012-07-13 17:00+0000\n"
+"Last-Translator: yakky <i.spalletti@nephila.it>\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/cmsplugin-filer/language/it/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: cms_plugins.py:15
+msgid "Folder"
+msgstr "Cartella"
+
+#: models.py:9
+msgid "List"
+msgstr "Lista"
+
+#: models.py:9
+msgid "Slideshow"
+msgstr "Slideshow"
+
+#: models.py:17
+msgid "title"
+msgstr "titolo"
+
+#: models.py:18
+msgid "view option"
+msgstr "opzioni di visualizzazione"
+
+#: templates/cmsplugin_filer_folder/folder.html:23
+msgid "Folders"
+msgstr "Cartelle"
+
+#: templates/cmsplugin_filer_folder/folder.html:31
+msgid "Files"
+msgstr "File"
+
+#: templates/cmsplugin_filer_folder/folder.html:39
+msgid "Images"
+msgstr "Immagini"
