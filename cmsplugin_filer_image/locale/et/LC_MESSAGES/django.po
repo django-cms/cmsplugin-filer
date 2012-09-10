@@ -1,0 +1,144 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Rivo Zängov <eraser@eraser.ee>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: cmsplugin-filer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-13 19:04+0200\n"
+"PO-Revision-Date: 2012-07-18 20:08+0000\n"
+"Last-Translator: Rivo Zängov <eraser@eraser.ee>\n"
+"Language-Team: Estonian (http://www.transifex.com/projects/p/cmsplugin-filer/language/et/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: et\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: cms_plugins.py:13
+msgid "Image"
+msgstr "Pilt"
+
+#: cms_plugins.py:22
+msgid "Image resizing options"
+msgstr "Pildi suuruse muutmise valikud"
+
+#: cms_plugins.py:32
+msgid "More"
+msgstr "Veel"
+
+#: models.py:14
+msgid "left"
+msgstr "vasakule"
+
+#: models.py:15
+msgid "right"
+msgstr "paremale"
+
+#: models.py:17
+msgid "caption text"
+msgstr ""
+
+#: models.py:18
+msgid "image"
+msgstr ""
+
+#: models.py:19
+msgid "alternative image url"
+msgstr "alternatiivne pildi url"
+
+#: models.py:20
+msgid "alt text"
+msgstr "alt tekst"
+
+#: models.py:21 models.py:97
+msgid "thumbnail option"
+msgstr "pisipildi valik"
+
+#: models.py:22
+msgid "use automatic scaling"
+msgstr "kasuta automaatset suuruse muutmist"
+
+#: models.py:23
+msgid "tries to auto scale the image based on the placeholder context"
+msgstr ""
+
+#: models.py:24 models.py:90
+msgid "width"
+msgstr "laius"
+
+#: models.py:25 models.py:91
+msgid "height"
+msgstr "kõrgus"
+
+#: models.py:26 models.py:92
+msgid "crop"
+msgstr "lõika"
+
+#: models.py:27 models.py:93
+msgid "upscale"
+msgstr "suurenda"
+
+#: models.py:28
+msgid "image alignment"
+msgstr "pildi joondus"
+
+#: models.py:30
+msgid "link"
+msgstr "link"
+
+#: models.py:31 models.py:33 models.py:35 models.py:36
+msgid "if present image will be clickable"
+msgstr ""
+
+#: models.py:34
+msgid "page link"
+msgstr "lehe link"
+
+#: models.py:35
+msgid "file link"
+msgstr ""
+
+#: models.py:36
+msgid "link original image"
+msgstr ""
+
+#: models.py:37
+msgid "description"
+msgstr "kirjeldus"
+
+#: models.py:40
+msgid "filer image"
+msgstr "pilt"
+
+#: models.py:41
+msgid "filer images"
+msgstr "pildid"
+
+#: models.py:47
+msgid "Either an image or an image url must be selected."
+msgstr ""
+
+#: models.py:54
+#, python-format
+msgid "Image Publication %(caption)s"
+msgstr ""
+
+#: models.py:89
+msgid "name"
+msgstr "nimi"
+
+#: models.py:90
+msgid "width in pixel."
+msgstr ""
+
+#: models.py:91
+msgid "height in pixel."
+msgstr ""
+
+#: models.py:98
+msgid "thumbnail options"
+msgstr ""
