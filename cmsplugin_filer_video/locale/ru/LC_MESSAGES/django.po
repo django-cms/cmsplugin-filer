@@ -1,0 +1,122 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# Translators:
+#   <neoascetic@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: cmsplugin-filer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-09-11 10:28+1100\n"
+"PO-Revision-Date: 2012-09-11 10:34+1100\n"
+"Last-Translator: Pavel Puchkin <neoascetic@gmail.com>\n"
+"Language-Team: Russian (http://www.transifex.com/projects/p/cmsplugin-filer/language/ru/)\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: cms_plugins.py:13
+msgid "Video"
+msgstr "Видео"
+
+#: cms_plugins.py:46
+msgid "Color Settings"
+msgstr "Настройки цветов"
+
+#: models.py:12
+msgid "movie file"
+msgstr "видеофайл"
+
+#: models.py:12
+msgid "use .flv file or h264 encoded video file"
+msgstr "используйте файл с расширением .flv или видео, кодированное h264"
+
+#: models.py:13
+msgid "movie url"
+msgstr "ссылка на видео"
+
+#: models.py:13
+msgid ""
+"vimeo or youtube video url. Example: http://www.youtube.com/watch?v=YFa59lK-"
+"kpo"
+msgstr "ссылка на видео на youtube или vimeo"
+
+#: models.py:14
+msgid "image"
+msgstr "изображение"
+
+#: models.py:14
+msgid "preview image file"
+msgstr "изображение для превью"
+
+#: models.py:16
+msgid "width"
+msgstr "ширина"
+
+#: models.py:17
+msgid "height"
+msgstr "высота"
+
+#: models.py:19
+msgid "auto play"
+msgstr "автозапуск"
+
+#: models.py:20
+msgid "auto hide"
+msgstr "автоскрытие"
+
+#: models.py:21
+msgid "fullscreen"
+msgstr "полный экран"
+
+#: models.py:22
+msgid "loop"
+msgstr "цикл"
+
+#: models.py:25
+msgid "background color"
+msgstr "цвет фона"
+
+#: models.py:25 models.py:26 models.py:27 models.py:28 models.py:29
+#: models.py:30 models.py:31 models.py:32
+msgid "Hexadecimal, eg ff00cc"
+msgstr "Шестнадцатиричное число, например ff00cc"
+
+#: models.py:26
+msgid "text color"
+msgstr "цвет текста"
+
+#: models.py:27
+msgid "seekbar color"
+msgstr "цвет ползунка"
+
+#: models.py:28
+msgid "seekbar bg color"
+msgstr "цвет фона ползунка"
+
+#: models.py:29
+msgid "loadingbar color"
+msgstr "цвет блока загрузки"
+
+#: models.py:30
+msgid "button out color"
+msgstr "цвет кнопки без наведения"
+
+#: models.py:31
+msgid "button over color"
+msgstr "цвет кнопки при наведении"
+
+#: models.py:32
+msgid "button highlight color"
+msgstr "цвет подсвеченной кнопки"
+
+#: templates/cmsplugin_filer_video/video.html:3
+msgid ""
+"Missing flash plugin. Download <a href=\"http://adobe.com/flashplayer"
+"\">here</a>."
+msgstr "Недоступен флеш-плагин. Скачайте <a href=\"http://adobe.com/flashplayer\">здесь</a>."
+
