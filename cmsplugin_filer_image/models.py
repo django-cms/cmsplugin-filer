@@ -107,5 +107,17 @@ class ThumbnailOption(models.Model):
         
     def __unicode__(self):
         return u'%s -- %s x %s' %(self.name, self.width, self.height)
-        
 
+    @property
+    def as_dict(self):
+        """
+        This property returns a dictionary suitable for Thumbnailer.get_thumbnail()
+
+        Sample code:
+            # thumboption_obj is a ThumbnailOption instance
+            # filerimage is a Image instance
+            option_dict = thumboption_obj.as_dict
+            thumbnailer = filerimage.easy_thumbnails_thumbnailer
+            thumb_image = thumbnailer.get_thumbnail(option_dict)
+        """
+        return {"size":(self.width,self.height), "width":self.width,"height":self.height,"crop":self.crop,"upscale":self.upscale}
