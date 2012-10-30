@@ -25,6 +25,10 @@ class FilerImage(CMSPlugin):
                                         help_text=_('tries to auto scale the image based on the placeholder context'))
     width = models.PositiveIntegerField(_("width"), null=True, blank=True)
     height = models.PositiveIntegerField(_("height"), null=True, blank=True)
+    vertical_space = models.PositiveIntegerField(_("vertical space"), null=True, blank=True)
+    horizontal_space = models.PositiveIntegerField(_("horizontal space"), null=True, blank=True)
+    border = models.PositiveIntegerField(_("border"), null=True, blank=True)
+
     crop = models.BooleanField(_("crop"), default=True)
     upscale = models.BooleanField(_("upscale"), default=True)
     alignment = models.CharField(_("image alignment"), max_length=10, blank=True, null=True, choices=FLOAT_CHOICES)
@@ -88,6 +92,19 @@ class FilerImage(CMSPlugin):
                 return self.image_url
         else:
             return ''
+
+    @property
+    def style(self):
+        style = ""
+        style += "float: %s;" % self.alignment if self.alignment else ""
+        if self.vertical_space and self.horizontal_space:
+            style += "margin: %spx %spx;" % (self.vertical_space, self.horizontal_space) 
+        elif self.vertical_space:
+            style += "margin-top: %spx; margin-bottom: %spx;" % (self.vertical_space, self.vertical_space) 
+        elif self.horizontal_space:
+            style += "margin-right: %spx; margin-left: %spx;" % (self.horizontal_space, self.horizontal_space) 
+        style += "border: %spx solid black;" % self.border if self.border else ""
+        return style
         
         
 class ThumbnailOption(models.Model):
@@ -108,4 +125,3 @@ class ThumbnailOption(models.Model):
     def __unicode__(self):
         return u'%s -- %s x %s' %(self.name, self.width, self.height)
         
-

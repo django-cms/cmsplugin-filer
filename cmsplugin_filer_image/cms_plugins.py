@@ -1,9 +1,12 @@
+
 import os
 from cms.plugin_pool import plugin_pool
 from cms.plugin_base import CMSPluginBase
 from django.utils.translation import ugettext_lazy as _
 import models
 from django.conf import settings
+from django.template import Context, Template
+import warnings
 
 from filer.settings import FILER_STATICMEDIA_PREFIX
 
@@ -24,6 +27,7 @@ class FilerImagePlugin(CMSPluginBase):
         }),
         (None, {
             'fields': (('width', 'height',),
+                       ('vertical_space', 'horizontal_space', 'border'),
                        ('crop', 'upscale',),)
         }),
         (None, {
@@ -89,10 +93,29 @@ class FilerImagePlugin(CMSPluginBase):
         if instance.image:
             return instance.image.image.file.get_thumbnail(self._get_thumbnail_options(context, instance))
 
+    def _its_resized_url(self, instance, thumbnail_options=None):
+        out = instance.image_url
+        if not instance.image:
+            str_template = ""
+            if not thumbnail_options:
+                str_template = "%s load its_image_resize %s {{ url|its_image_resize:'%sx%s'}}" % ("{%", "%}", instance.width , instance.height)
+            else:
+                (w, h) = thumbnail_options.get('size',None)
+                str_template = "%s load its_image_resize %s {{ url|its_image_resize:'%sx%s'}}" % ("{%", "%}", w , h)
+
+            t = Template(str_template)
+            c = Context({'url' : instance.image_url})
+            try:
+                out = t.render(c)
+            except:
+                warnings.warn("its_image_resize tag not loaded for url:%s" % instance.image_url) 
+        return out
+
     def render(self, context, instance, placeholder):
         options = self._get_thumbnail_options(context, instance)
         context.update({
             'instance': instance,
+            'its_resized_url' : self._its_resized_url(instance, options),
             'link': instance.link,
             'opts': options,
             'size': options.get('size',None),
@@ -110,5 +133,6 @@ class FilerImagePlugin(CMSPluginBase):
                 thumbnail = self.get_thumbnail({'width':200}, instance)
                 return thumbnail.url
         else:
-            return os.path.normpath(u"%s/icons/missingfile_%sx%s.png" % (FILER_STATICMEDIA_PREFIX, 32, 32,))
+            return self._its_resized_url(instance)
+
 plugin_pool.register_plugin(FilerImagePlugin)
