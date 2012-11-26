@@ -1,6 +1,13 @@
 Changelog for django-filer-cmsplugins
 =====================================
 
+0.9.1 (2012-11-26)
+------------------
+
+* don't verify the url fields (since they might contain relative urls)
+* fixed license file
+* adds support to not resize images at all
+
 0.9.0 (2012-09-05)
 ------------------
 
