@@ -20,11 +20,11 @@ class FilerImagePlugin(CMSPluginBase):
             'fields': ('caption_text', ('image', 'image_url',), 'alt_text',)
         }),
         (_('Image resizing options'), {
-            'fields': ('use_autoscale', 'thumbnail_option',)
-        }),
-        (None, {
-            'fields': (('width', 'height',),
-                       ('crop', 'upscale',),)
+            'fields': (
+                'use_original_image',
+                ('width', 'height'),
+                ('crop', 'upscale'),
+            )
         }),
         (None, {
             'fields': ('alignment',)
