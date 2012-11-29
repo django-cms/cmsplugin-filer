@@ -44,6 +44,7 @@ class FilerImage(CMSPlugin):
     file_link = FilerFileField(null=True, blank=True, default=None, verbose_name=_("file link"), help_text=_("if present image will be clickable"), related_name='+')
     original_link = models.BooleanField(_("link original image"), default=False, help_text=_("if present image will be clickable"))
     description = models.TextField(_("description"), blank=True, null=True)
+    target_blank = models.BooleanField(_('Open link in new window'), default=False)
 
     # we only add the image to select_related. page_link and file_link are FKs
     # as well, but they are not used often enough to warrant the impact of two
