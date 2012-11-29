@@ -21,6 +21,7 @@ class FilerFile(CMSPlugin):
     """
     title = models.CharField(_("title"), max_length=255, null=True, blank=True)
     file = FilerFileField(verbose_name=_('file'))
+    target_blank = models.BooleanField(_('Open link in new window'), default=False)
 
     objects = FilerPluginManager(select_related=('file',))
 
