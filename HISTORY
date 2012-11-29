@@ -1,6 +1,12 @@
 Changelog for django-filer-cmsplugins
 =====================================
 
+
+0.9.2 (2011-11-29)
+------------------
+
+* adds target blank option for links in image and file plugin
+
 0.9.1 (2012-11-26)
 ------------------
 
