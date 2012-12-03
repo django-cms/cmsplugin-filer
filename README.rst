@@ -33,6 +33,9 @@ and then run ``syncdb`` or ``migrate`` if you're using South.
 
 You can also set ``FILER_IMAGE_USE_ICON`` in your ``settings.py`` to configure ``cmsplugin_filer_image`` plugin to use 32x32 icons for representing plugin instances.
 
+The default template in ``cmsplugin_filer_image`` expects the subject location functionality to be enabled.
+Follow: http://django-filer.readthedocs.org/en/0.9.2/installation.html#subject-location-aware-cropping
+
 Upgrading
 ---------
 
