@@ -2,6 +2,13 @@ Changelog for django-filer-cmsplugins
 =====================================
 
 
+0.9.3 (2011-12-11)
+------------------
+
+* adds support for drag'n'drop adding of files in djangocms-text-ckeditor
+* adds .as_dict property for ThumbnailOption
+
+
 0.9.2 (2011-11-29)
 ------------------
 
