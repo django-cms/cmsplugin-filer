@@ -1,26 +1,33 @@
 [main]
 host = https://www.transifex.com
+type = PO
 
 [cmsplugin-filer.cmsplugin_filer_file]
 file_filter = cmsplugin_filer_file/locale/<lang>/LC_MESSAGES/django.po
+source_file = cmsplugin_filer_file/locale/en/LC_MESSAGES/django.po
 source_lang = en
 
 [cmsplugin-filer.cmsplugin_filer_folder]
 file_filter = cmsplugin_filer_folder/locale/<lang>/LC_MESSAGES/django.po
+source_file = cmsplugin_filer_folder/locale/en/LC_MESSAGES/django.po
 source_lang = en
 
 [cmsplugin-filer.cmsplugin_filer_image]
 file_filter = cmsplugin_filer_image/locale/<lang>/LC_MESSAGES/django.po
+source_file = cmsplugin_filer_image/locale/en/LC_MESSAGES/django.po
 source_lang = en
 
 [cmsplugin-filer.cmsplugin_filer_link]
 file_filter = cmsplugin_filer_link/locale/<lang>/LC_MESSAGES/django.po
+source_file = cmsplugin_filer_link/locale/en/LC_MESSAGES/django.po
 source_lang = en
 
 [cmsplugin-filer.cmsplugin_filer_teaser]
 file_filter = cmsplugin_filer_teaser/locale/<lang>/LC_MESSAGES/django.po
+source_file = cmsplugin_filer_teaser/locale/en/LC_MESSAGES/django.po
 source_lang = en
 
 [cmsplugin-filer.cmsplugin_filer_video]
 file_filter = cmsplugin_filer_video/locale/<lang>/LC_MESSAGES/django.po
+source_file = cmsplugin_filer_video/locale/en/LC_MESSAGES/django.po
 source_lang = en
