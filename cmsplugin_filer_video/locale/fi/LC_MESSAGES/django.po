@@ -3,118 +3,118 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-#   <neoascetic@gmail.com>, 2012.
+#   <klaus.dahlen@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: cmsplugin-filer\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-07-13 19:04+0200\n"
-"PO-Revision-Date: 2012-09-11 22:02+0000\n"
-"Last-Translator: Pavel Puchkin <neoascetic@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.com/projects/p/cmsplugin-filer/language/ru/)\n"
+"PO-Revision-Date: 2012-10-24 14:59+0000\n"
+"Last-Translator: nanook <klaus.dahlen@gmail.com>\n"
+"Language-Team: Finnish (http://www.transifex.com/projects/p/cmsplugin-filer/language/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: fi\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: cms_plugins.py:13
 msgid "Video"
-msgstr "Видео"
+msgstr "Video"
 
 #: cms_plugins.py:46
 msgid "Color Settings"
-msgstr "Настройки цветов"
+msgstr "Väriasetukset"
 
 #: models.py:12
 msgid "movie file"
-msgstr "видеофайл"
+msgstr "videotiedosto"
 
 #: models.py:12
 msgid "use .flv file or h264 encoded video file"
-msgstr "используйте файл с расширением .flv или видео, кодированное h264"
+msgstr "käytä .flv-tiedostoa tai h264-enkoodattua videotiedostoa"
 
 #: models.py:13
 msgid "movie url"
-msgstr "ссылка на видео"
+msgstr "videon URL"
 
 #: models.py:13
 msgid ""
 "vimeo or youtube video url. Example: http://www.youtube.com/watch?v=YFa59lK-"
 "kpo"
-msgstr "ссылка на видео на youtube или vimeo"
+msgstr "Vimeo- tai YouTube-videon URL. Esimerkiksi: http://www.youtube.com/watch?v=YFa59lK-kpo"
 
 #: models.py:14
 msgid "image"
-msgstr "изображение"
+msgstr "kuva"
 
 #: models.py:14
 msgid "preview image file"
-msgstr "изображение для превью"
+msgstr "kuvatiedoston esikatselu"
 
 #: models.py:16
 msgid "width"
-msgstr "ширина"
+msgstr "leveys"
 
 #: models.py:17
 msgid "height"
-msgstr "высота"
+msgstr "korkeus"
 
 #: models.py:19
 msgid "auto play"
-msgstr "автозапуск"
+msgstr "automaattitoisto"
 
 #: models.py:20
 msgid "auto hide"
-msgstr "автоскрытие"
+msgstr "automaattinen piilotus"
 
 #: models.py:21
 msgid "fullscreen"
-msgstr "полный экран"
+msgstr "koko ruudun toisto"
 
 #: models.py:22
 msgid "loop"
-msgstr "цикл"
+msgstr "jatkuva toisto"
 
 #: models.py:25
 msgid "background color"
-msgstr "цвет фона"
+msgstr "taustaväri"
 
 #: models.py:25 models.py:26 models.py:27 models.py:28 models.py:29
 #: models.py:30 models.py:31 models.py:32
 msgid "Hexadecimal, eg ff00cc"
-msgstr "Шестнадцатиричное число, например ff00cc"
+msgstr "Heksadesimaali, esim. ff00cc"
 
 #: models.py:26
 msgid "text color"
-msgstr "цвет текста"
+msgstr "tekstin väri"
 
 #: models.py:27
 msgid "seekbar color"
-msgstr "цвет ползунка"
+msgstr "toistopalkin väri"
 
 #: models.py:28
 msgid "seekbar bg color"
-msgstr "цвет фона ползунка"
+msgstr "toistopalkin taustaväri"
 
 #: models.py:29
 msgid "loadingbar color"
-msgstr "цвет блока загрузки"
+msgstr "latauspalkin väri"
 
 #: models.py:30
 msgid "button out color"
-msgstr "цвет кнопки без наведения"
+msgstr "painikkeen väri"
 
 #: models.py:31
 msgid "button over color"
-msgstr "цвет кнопки при наведении"
+msgstr "painikkeen väri kun hiiri päällä"
 
 #: models.py:32
 msgid "button highlight color"
-msgstr "цвет подсвеченной кнопки"
+msgstr "painikkeen korostusväri"
 
 #: templates/cmsplugin_filer_video/video.html:3
 msgid ""
 "Missing flash plugin. Download <a "
 "href=\"http://adobe.com/flashplayer\">here</a>."
-msgstr "Недоступен флеш-плагин. Скачайте <a href=\"http://adobe.com/flashplayer\">здесь</a>."
+msgstr "Flash puuttuu. Lataa se <a href=\"http://adobe.com/flashplayer\">tästä</a>."

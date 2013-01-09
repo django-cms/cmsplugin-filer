@@ -1,0 +1,144 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+#   <klaus.dahlen@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: cmsplugin-filer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-13 19:04+0200\n"
+"PO-Revision-Date: 2012-10-24 14:54+0000\n"
+"Last-Translator: nanook <klaus.dahlen@gmail.com>\n"
+"Language-Team: Finnish (http://www.transifex.com/projects/p/cmsplugin-filer/language/fi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fi\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: cms_plugins.py:13
+msgid "Image"
+msgstr "Kuva"
+
+#: cms_plugins.py:22
+msgid "Image resizing options"
+msgstr "Kuvakoon asetukset"
+
+#: cms_plugins.py:32
+msgid "More"
+msgstr "Lisää"
+
+#: models.py:14
+msgid "left"
+msgstr "vasen"
+
+#: models.py:15
+msgid "right"
+msgstr "oikea"
+
+#: models.py:17
+msgid "caption text"
+msgstr "kuvateksti"
+
+#: models.py:18
+msgid "image"
+msgstr "kuva"
+
+#: models.py:19
+msgid "alternative image url"
+msgstr "vaihtoehtoisen kuvan URL"
+
+#: models.py:20
+msgid "alt text"
+msgstr "alt-teksti"
+
+#: models.py:21 models.py:97
+msgid "thumbnail option"
+msgstr "pikkukuvan asetukset"
+
+#: models.py:22
+msgid "use automatic scaling"
+msgstr "käytä automaattista skaalausta"
+
+#: models.py:23
+msgid "tries to auto scale the image based on the placeholder context"
+msgstr "pyrkii skaalaamaan kuvan automaattisesti sisältöalueen kontekstin perusteella"
+
+#: models.py:24 models.py:90
+msgid "width"
+msgstr "leveys"
+
+#: models.py:25 models.py:91
+msgid "height"
+msgstr "korkeus"
+
+#: models.py:26 models.py:92
+msgid "crop"
+msgstr "rajaus"
+
+#: models.py:27 models.py:93
+msgid "upscale"
+msgstr "suurennus"
+
+#: models.py:28
+msgid "image alignment"
+msgstr "kuvan asemointi"
+
+#: models.py:30
+msgid "link"
+msgstr "linkki"
+
+#: models.py:31 models.py:33 models.py:35 models.py:36
+msgid "if present image will be clickable"
+msgstr "kuva on klikattavissa mikäli tämä on täytetty"
+
+#: models.py:34
+msgid "page link"
+msgstr "sivulinkki"
+
+#: models.py:35
+msgid "file link"
+msgstr "tiedostolinkki"
+
+#: models.py:36
+msgid "link original image"
+msgstr "linkitä alkuperäiseen kuvaan"
+
+#: models.py:37
+msgid "description"
+msgstr "kuvaus"
+
+#: models.py:40
+msgid "filer image"
+msgstr "filer-kuva"
+
+#: models.py:41
+msgid "filer images"
+msgstr "filer-kuvat"
+
+#: models.py:47
+msgid "Either an image or an image url must be selected."
+msgstr "Joko kuva tai kuvan URL on valittava."
+
+#: models.py:54
+#, python-format
+msgid "Image Publication %(caption)s"
+msgstr "Kuvan julkaisu %(caption)s"
+
+#: models.py:89
+msgid "name"
+msgstr "nimi"
+
+#: models.py:90
+msgid "width in pixel."
+msgstr "leveys pikseleinä"
+
+#: models.py:91
+msgid "height in pixel."
+msgstr "korkeus pikseleinä"
+
+#: models.py:98
+msgid "thumbnail options"
+msgstr "pikkukuvan asetukset"
