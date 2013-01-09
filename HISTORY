@@ -1,6 +1,11 @@
 Changelog for django-filer-cmsplugins
 =====================================
 
+0.9.4 (2012-01-09)
+------------------
+
+* restores thumbnail options and use autoscale to image plugin (was accidentally removed)
+* translation updates
 
 0.9.3 (2011-12-11)
 ------------------

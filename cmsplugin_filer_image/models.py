@@ -27,7 +27,8 @@ class FilerImage(CMSPlugin):
     alt_text = models.CharField(_("alt text"), null=True, blank=True, max_length=255)
     use_original_image = models.BooleanField(_("use the original image"), default=False,
         help_text=_('do not resize the image. use the original image instead.'))
-    thumbnail_option = models.ForeignKey('ThumbnailOption', null=True, blank=True, verbose_name=_("thumbnail option"))
+    thumbnail_option = models.ForeignKey('ThumbnailOption', null=True, blank=True, verbose_name=_("thumbnail option"),
+                                        help_text=_('overrides width, height, crop and upscale with values from the selected thumbnail option'))
     use_autoscale = models.BooleanField(_("use automatic scaling"), default=False, 
                                         help_text=_('tries to auto scale the image based on the placeholder context'))
     width = models.PositiveIntegerField(_("width"), null=True, blank=True)

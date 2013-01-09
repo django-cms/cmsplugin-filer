@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Bertrand Bordage <bordage.bertrand@gmail.com>, 2012.
 #   <bordage.bertrand@gmail.com>, 2012.
@@ -9,14 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cmsplugin-filer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-13 19:04+0200\n"
+"POT-Creation-Date: 2013-01-09 18:33+0100\n"
 "PO-Revision-Date: 2012-08-14 08:56+0000\n"
 "Last-Translator: Bertrand Bordage <bordage.bertrand@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/cmsplugin-filer/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/projects/p/cmsplugin-filer/"
+"language/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: cms_plugins.py:13
@@ -27,119 +28,140 @@ msgstr "Image"
 msgid "Image resizing options"
 msgstr "Options de redimensionnement de l'image"
 
-#: cms_plugins.py:32
+#: cms_plugins.py:33
 msgid "More"
 msgstr "Paramètres avancés"
 
-#: models.py:14
+#: models.py:18
 msgid "left"
 msgstr "gauche"
 
-#: models.py:15
+#: models.py:19
 msgid "right"
 msgstr "droite"
 
-#: models.py:17
+#: models.py:21
 msgid "caption text"
 msgstr "légende"
 
-#: models.py:18
+#: models.py:22
 msgid "image"
 msgstr "image"
 
-#: models.py:19
+#: models.py:24 models.py:26
 msgid "alternative image url"
 msgstr "adresse alternative de l'image"
 
-#: models.py:20
+#: models.py:27
 msgid "alt text"
 msgstr "texte alternatif"
 
-#: models.py:21 models.py:97
+#: models.py:28
+#, fuzzy
+msgid "use the original image"
+msgstr "lien vers l'image d'origine"
+
+#: models.py:29
+msgid "do not resize the image. use the original image instead."
+msgstr ""
+
+#: models.py:30 models.py:114
 msgid "thumbnail option"
 msgstr "option de miniature"
 
-#: models.py:22
+#: models.py:31
+msgid ""
+"overrides width, height, crop and upscale with values from the selected "
+"thumbnail option"
+msgstr ""
+
+#: models.py:32
 msgid "use automatic scaling"
 msgstr "redimensionnement automatique"
 
-#: models.py:23
+#: models.py:33
 msgid "tries to auto scale the image based on the placeholder context"
-msgstr "Essaie de redimensionner automatiquement l'image à partir du contexte de la portion de page."
+msgstr ""
+"Essaie de redimensionner automatiquement l'image à partir du contexte de la "
+"portion de page."
 
-#: models.py:24 models.py:90
+#: models.py:34 models.py:107
 msgid "width"
 msgstr "largeur"
 
-#: models.py:25 models.py:91
+#: models.py:35 models.py:108
 msgid "height"
 msgstr "hauteur"
 
-#: models.py:26 models.py:92
+#: models.py:36 models.py:109
 msgid "crop"
 msgstr "rogner"
 
-#: models.py:27 models.py:93
+#: models.py:37 models.py:110
 msgid "upscale"
 msgstr "élargir"
 
-#: models.py:28
+#: models.py:38
 msgid "image alignment"
 msgstr "alignement de l'image"
 
-#: models.py:30
+#: models.py:40
 msgid "link"
 msgstr "lien"
 
-#: models.py:31 models.py:33 models.py:35 models.py:36
+#: models.py:41 models.py:43 models.py:45 models.py:46
 msgid "if present image will be clickable"
 msgstr "Si la présente image sera cliquable."
 
-#: models.py:34
+#: models.py:44
 msgid "page link"
 msgstr "lien vers une page"
 
-#: models.py:35
+#: models.py:45
 msgid "file link"
 msgstr "lien vers un ficher"
 
-#: models.py:36
+#: models.py:46
 msgid "link original image"
 msgstr "lien vers l'image d'origine"
 
-#: models.py:37
+#: models.py:47
 msgid "description"
 msgstr "description"
 
-#: models.py:40
+#: models.py:48
+msgid "Open link in new window"
+msgstr ""
+
+#: models.py:57
 msgid "filer image"
 msgstr "image du gestionnaire de fichiers"
 
-#: models.py:41
+#: models.py:58
 msgid "filer images"
 msgstr "images du gestionnaire de fichiers"
 
-#: models.py:47
+#: models.py:64
 msgid "Either an image or an image url must be selected."
 msgstr "Une image ou bien une adresse d'image doit être sélectionnée."
 
-#: models.py:54
+#: models.py:71
 #, python-format
 msgid "Image Publication %(caption)s"
 msgstr "Publication d'image %(caption)s"
 
-#: models.py:89
+#: models.py:106
 msgid "name"
 msgstr "nom"
 
-#: models.py:90
+#: models.py:107
 msgid "width in pixel."
 msgstr "Largeur en pixels."
 
-#: models.py:91
+#: models.py:108
 msgid "height in pixel."
 msgstr "Hauteur en pixels."
 
-#: models.py:98
+#: models.py:115
 msgid "thumbnail options"
 msgstr "options de miniature"

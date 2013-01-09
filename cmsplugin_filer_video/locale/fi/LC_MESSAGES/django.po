@@ -1,0 +1,124 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+#   <klaus.dahlen@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: cmsplugin-filer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-01-09 18:33+0100\n"
+"PO-Revision-Date: 2012-10-24 14:59+0000\n"
+"Last-Translator: nanook <klaus.dahlen@gmail.com>\n"
+"Language-Team: Finnish (http://www.transifex.com/projects/p/cmsplugin-filer/"
+"language/fi/)\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: cms_plugins.py:13
+msgid "Video"
+msgstr "Video"
+
+#: cms_plugins.py:46
+msgid "Color Settings"
+msgstr "Väriasetukset"
+
+#: models.py:12
+msgid "movie file"
+msgstr "videotiedosto"
+
+#: models.py:12
+msgid "use .flv file or h264 encoded video file"
+msgstr "käytä .flv-tiedostoa tai h264-enkoodattua videotiedostoa"
+
+#: models.py:13
+msgid "movie url"
+msgstr "videon URL"
+
+#: models.py:13
+msgid ""
+"vimeo or youtube video url. Example: http://www.youtube.com/watch?v=YFa59lK-"
+"kpo"
+msgstr ""
+"Vimeo- tai YouTube-videon URL. Esimerkiksi: http://www.youtube.com/watch?"
+"v=YFa59lK-kpo"
+
+#: models.py:14
+msgid "image"
+msgstr "kuva"
+
+#: models.py:14
+msgid "preview image file"
+msgstr "kuvatiedoston esikatselu"
+
+#: models.py:16
+msgid "width"
+msgstr "leveys"
+
+#: models.py:17
+msgid "height"
+msgstr "korkeus"
+
+#: models.py:19
+msgid "auto play"
+msgstr "automaattitoisto"
+
+#: models.py:20
+msgid "auto hide"
+msgstr "automaattinen piilotus"
+
+#: models.py:21
+msgid "fullscreen"
+msgstr "koko ruudun toisto"
+
+#: models.py:22
+msgid "loop"
+msgstr "jatkuva toisto"
+
+#: models.py:25
+msgid "background color"
+msgstr "taustaväri"
+
+#: models.py:25 models.py:26 models.py:27 models.py:28 models.py:29
+#: models.py:30 models.py:31 models.py:32
+msgid "Hexadecimal, eg ff00cc"
+msgstr "Heksadesimaali, esim. ff00cc"
+
+#: models.py:26
+msgid "text color"
+msgstr "tekstin väri"
+
+#: models.py:27
+msgid "seekbar color"
+msgstr "toistopalkin väri"
+
+#: models.py:28
+msgid "seekbar bg color"
+msgstr "toistopalkin taustaväri"
+
+#: models.py:29
+msgid "loadingbar color"
+msgstr "latauspalkin väri"
+
+#: models.py:30
+msgid "button out color"
+msgstr "painikkeen väri"
+
+#: models.py:31
+msgid "button over color"
+msgstr "painikkeen väri kun hiiri päällä"
+
+#: models.py:32
+msgid "button highlight color"
+msgstr "painikkeen korostusväri"
+
+#: templates/cmsplugin_filer_video/video.html:3
+msgid ""
+"Missing flash plugin. Download <a href=\"http://adobe.com/flashplayer"
+"\">here</a>."
+msgstr ""
+"Flash puuttuu. Lataa se <a href=\"http://adobe.com/flashplayer\">tästä</a>."

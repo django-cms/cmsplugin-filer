@@ -22,8 +22,9 @@ class FilerImagePlugin(CMSPluginBase):
         (_('Image resizing options'), {
             'fields': (
                 'use_original_image',
-                ('width', 'height'),
-                ('crop', 'upscale'),
+                ('width', 'height', 'crop', 'upscale'),
+                'thumbnail_option',
+                'use_autoscale',
             )
         }),
         (None, {
