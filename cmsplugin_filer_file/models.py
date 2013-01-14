@@ -30,11 +30,7 @@ class FilerFile(CMSPlugin):
         return self.file.file.storage.exists(self.file.path)
 
     def get_file_name(self):
-        if self.file.name in ('', None):
-            name = u"%s" % (self.file.original_filename,)
-        else:
-            name = u"%s" % (self.file.name,)
-        return name
+        return self.file.name
 
     def get_ext(self):
         return self.file.extension
