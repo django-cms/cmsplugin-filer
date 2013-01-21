@@ -1,13 +1,10 @@
 import django
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
-from cms.models import CMSPlugin, Page
+from cms.models import CMSPlugin
 from cms.models.fields import PageField
-from posixpath import join, basename, splitext, exists
 from filer.fields.image import FilerImageField
 from filer.fields.file import FilerFileField
-from cms import settings as cms_settings
-from django.conf import settings
 from cmsplugin_filer_utils import FilerPluginManager
 from distutils.version import LooseVersion
 
