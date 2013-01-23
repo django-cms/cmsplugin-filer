@@ -18,7 +18,7 @@ class FilerImage(CMSPlugin):
     caption_text = models.CharField(_("caption text"), null=True, blank=True, max_length=255)
     image = FilerImageField(null=True, blank=True, default=None, verbose_name=_("image"))
     if LooseVersion(django.get_version()) < LooseVersion('1.5'):
-        image_url = models.URLField(_("alternative image url"), verify_exists=False, null=True, blank=True, default=None)
+        image_url = models.URLField(_("alternative image url"), null=True, blank=True, default=None)
     else:
         image_url = models.URLField(_("alternative image url"), null=True, blank=True, default=None)
     alt_text = models.CharField(_("alt text"), null=True, blank=True, max_length=255)
