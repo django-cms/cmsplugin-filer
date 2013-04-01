@@ -18,7 +18,7 @@ class FilerTeaser(CMSPlugin):
     title = models.CharField(_("title"), max_length=255, blank=True)
     image = FilerImageField(blank=True, null=True, verbose_name=_("image"))
     if LooseVersion(django.get_version()) < LooseVersion('1.5'):
-        image_url = models.URLField(_("alternative image url"), verify_exists=False, null=True, blank=True, default=None)
+        image_url = models.URLField(_("alternative image url"), null=True, blank=True, default=None)
     else:
         image_url = models.URLField(_("alternative image url"), null=True, blank=True, default=None)
     

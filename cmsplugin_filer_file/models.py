@@ -1,5 +1,3 @@
-from posixpath import exists
-
 from cms.models import CMSPlugin
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -29,10 +27,14 @@ class FilerFile(CMSPlugin):
         return self.file.icons['32']
 
     def file_exists(self):
-        return exists(self.file.path)
+        return self.file.file.storage.exists(self.file.path)
 
     def get_file_name(self):
-        return self.file.name
+        if self.file.name in ('', None):
+            name = u"%s" % (self.file.original_filename,)
+        else:
+            name = u"%s" % (self.file.name,)
+        return name
 
     def get_ext(self):
         return self.file.extension

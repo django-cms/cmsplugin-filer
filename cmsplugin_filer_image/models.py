@@ -1,13 +1,10 @@
 import django
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
-from cms.models import CMSPlugin, Page
+from cms.models import CMSPlugin
 from cms.models.fields import PageField
-from posixpath import join, basename, splitext, exists
 from filer.fields.image import FilerImageField
 from filer.fields.file import FilerFileField
-from cms import settings as cms_settings
-from django.conf import settings
 from cmsplugin_filer_utils import FilerPluginManager
 from distutils.version import LooseVersion
 
@@ -21,7 +18,7 @@ class FilerImage(CMSPlugin):
     caption_text = models.CharField(_("caption text"), null=True, blank=True, max_length=255)
     image = FilerImageField(null=True, blank=True, default=None, verbose_name=_("image"))
     if LooseVersion(django.get_version()) < LooseVersion('1.5'):
-        image_url = models.URLField(_("alternative image url"), verify_exists=False, null=True, blank=True, default=None)
+        image_url = models.URLField(_("alternative image url"), null=True, blank=True, default=None)
     else:
         image_url = models.URLField(_("alternative image url"), null=True, blank=True, default=None)
     alt_text = models.CharField(_("alt text"), null=True, blank=True, max_length=255)
