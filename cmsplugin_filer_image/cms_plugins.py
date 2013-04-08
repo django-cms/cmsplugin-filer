@@ -1,9 +1,12 @@
+
 import os
 from cms.plugin_pool import plugin_pool
 from cms.plugin_base import CMSPluginBase
 from django.utils.translation import ugettext_lazy as _
 import models
 from django.conf import settings
+from django.template import Context, Template
+import warnings
 
 from filer.settings import FILER_STATICMEDIA_PREFIX
 
@@ -26,6 +29,11 @@ class FilerImagePlugin(CMSPluginBase):
                 'thumbnail_option',
                 'use_autoscale',
             )
+        }),
+        (None, {
+            'fields': (('width', 'height',),
+                       ('vertical_space', 'horizontal_space', 'border'),
+                       ('crop', 'upscale',),)
         }),
         (None, {
             'fields': ('alignment',)
