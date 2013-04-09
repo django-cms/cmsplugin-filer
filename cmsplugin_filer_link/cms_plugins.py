@@ -8,7 +8,7 @@ from models import FilerLinkPlugin
 class FilerLinkPlugin(CMSPluginBase):
     module = 'Filer'
     model = FilerLinkPlugin
-    name = _("Linkk")
+    name = _("Link")
     text_enabled = True
     render_template = "cmsplugin_filer_link/link.html"
 
