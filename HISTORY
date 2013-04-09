@@ -1,6 +1,14 @@
 Changelog for django-filer-cmsplugins
 =====================================
 
+
+0.9.5 (2013-04-09)
+------------------
+
+* fixed some dead imports from cms that were failing with django-cms 2.4
+* django 1.5 fixes (not officially supported yet)
+* many bugfixes
+
 0.9.4 (2012-01-09)
 ------------------
 
