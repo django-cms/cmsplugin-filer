@@ -3,11 +3,11 @@ from cms.plugin_pool import plugin_pool
 from django.utils.translation import ugettext as _
 from django.conf import settings
 
-from models import FilerLinkPlugin 
+from models import FilerLinkPlugin
 
 class FilerLinkPlugin(CMSPluginBase):
     module = 'Filer'
-    model = FilerLinkPlugin 
+    model = FilerLinkPlugin
     name = _("Link")
     text_enabled = True
     render_template = "cmsplugin_filer_link/link.html"

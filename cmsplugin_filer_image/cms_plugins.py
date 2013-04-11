@@ -100,8 +100,17 @@ class FilerImagePlugin(CMSPluginBase):
 
     def render(self, context, instance, placeholder):
         options = self._get_thumbnail_options(context, instance)
+        #Styles for images can be set from 2 places:
+        #         1. filer image popup
+        #         2. right click on the img from text plg and select Alignment option
+        # The style set at point 1. can be accessed with instance.style
+        # The style set at point 2. can be accessed with context["inherited_from_parent"]["style"]
+        # As you can see below, the style set at point 1. have priority
+        # The style set at point 2. is taken into account to keep the consistence with all other plugins.
+        style = instance.style or context.get("inherited_from_parent", "").get("style", "")
         context.update({
             'instance': instance,
+            'style': style,
             'link': instance.link,
             'opts': options,
             'size': options.get('size',None),
@@ -120,4 +129,5 @@ class FilerImagePlugin(CMSPluginBase):
                 return thumbnail.url
         else:
             return os.path.normpath(u"%s/icons/missingfile_%sx%s.png" % (FILER_STATICMEDIA_PREFIX, 32, 32,))
+
 plugin_pool.register_plugin(FilerImagePlugin)
