@@ -1,0 +1,18 @@
+name: cmsplugin-filer
+package-name: cmsplugin-filer
+url: https://github.com/stefanfoulis/cmsplugin-filer
+author:
+  name: Stefan Foulis
+  url: https://stefan.foulis.ch/
+installed-apps:
+  - filer
+  - mptt
+  - easy_thumbnails
+  - polymorphic
+  - cmsplugin_filer_file
+  - cmsplugin_filer_image
+version: 0.9.5a1.dev22.cmscloud2
+description: cms plugins using django-filer
+license:
+  name: BSD
+  text: !literal-include LICENSE

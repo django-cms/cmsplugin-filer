@@ -6,7 +6,7 @@ def read(fname):
 
 setup(
     name = "cmsplugin-filer",
-    version = "0.9.5a1.dev1",
+    version = "0.9.5a1.dev22",
     url = 'http://github.com/stefanfoulis/cmsplugin-filer',
     license = 'BSD',
     description = "django-cms plugins for django-filer",
@@ -29,7 +29,12 @@ setup(
         "django-cms >= 2.2",
         "django-sekizai >= 0.4.2",
         "easy_thumbnails >= 1.0",
-        "django-filer >= 0.9"
+        "django-filer >= 0.9.5a1.dev2",
+        # "https://github.com/stefanfoulis/django-filer/archive/feature/cmscloud-compat.tar.gz#egg=django-filer-0.9.5a1.dev2",
+        # "https://divio:stionave@pkg.divio.ch/media/dists/django-filer-0.9.5a1.dev2.tar.gz#md5=3b2785b89af16bebe801e30bcf60151c#egg=django-filer",
+    ],
+    dependency_links = [
+        "https://github.com/stefanfoulis/django-filer/archive/feature/cmscloud-compat/django-filer-0.9.5a1.dev2.tar.gz#egg=django-filer-0.9.5a1.dev2",
     ],
     include_package_data=True,
     zip_safe = False,
