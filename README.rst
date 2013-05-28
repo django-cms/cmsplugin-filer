@@ -17,7 +17,12 @@ Dependencies
 Installation
 ============
 
-add the plugins to ``INSTALLED_APPS``::
+To get started using ``cmsplugin-filer`` simply install it with
+``pip``::
+
+    $ pip install cmsplugin-filer
+
+then add the plugins to ``INSTALLED_APPS``::
 
     INSTALLED_APPS = (
         ...
