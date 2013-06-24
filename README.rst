@@ -17,12 +17,15 @@ Dependencies
 Installation
 ============
 
-To get started using ``cmsplugin-filer`` simply install it with
-``pip``::
+To get started using ``cmsplugin-filer``:
+
+- install it with ``pip``::
 
     $ pip install cmsplugin-filer
 
-then add the plugins to ``INSTALLED_APPS``::
+- configure ``django-filer`` as documented in http://django-filer.readthedocs.org/en/latest/installation.html#configuration
+
+- add the plugins to ``INSTALLED_APPS``::
 
     INSTALLED_APPS = (
         ...
@@ -33,8 +36,8 @@ then add the plugins to ``INSTALLED_APPS``::
         'cmsplugin_filer_video',
         ...
     )
-
-and then run ``syncdb`` or ``migrate`` if you're using South.
+    
+- run ``syncdb`` or ``migrate`` if you're using South.
 
 You can also set ``FILER_IMAGE_USE_ICON`` in your ``settings.py`` to configure ``cmsplugin_filer_image`` plugin to use 32x32 icons for representing plugin instances.
 
