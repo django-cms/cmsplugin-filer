@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: cmsplugin-filer\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-01-09 18:33+0100\n"
-"PO-Revision-Date: 2012-07-13 16:06+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2013-07-10 08:52+0100\n"
+"Last-Translator: Markus <mt@thiguten.de>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/cmsplugin-filer/"
 "language/de/)\n"
 "Language: de\n"
@@ -17,146 +17,149 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.3\n"
 
 #: cms_plugins.py:13
 msgid "Image"
-msgstr ""
+msgstr "Bild"
 
 #: cms_plugins.py:22
 msgid "Image resizing options"
-msgstr ""
+msgstr "Optionen zur Bildskalierung"
 
 #: cms_plugins.py:33
 msgid "More"
-msgstr ""
+msgstr "Mehr"
 
 #: models.py:18
 msgid "left"
-msgstr ""
+msgstr "links"
 
 #: models.py:19
 msgid "right"
-msgstr ""
+msgstr "rechts"
 
 #: models.py:21
 msgid "caption text"
-msgstr ""
+msgstr "Bildunterschrift"
 
 #: models.py:22
 msgid "image"
-msgstr ""
+msgstr "Bild"
 
 #: models.py:24 models.py:26
 msgid "alternative image url"
-msgstr ""
+msgstr "URL für alternatives Bild"
 
 #: models.py:27
 msgid "alt text"
-msgstr ""
+msgstr "ALT-Text"
 
 #: models.py:28
 msgid "use the original image"
-msgstr ""
+msgstr "original-Bild verwenden"
 
 #: models.py:29
 msgid "do not resize the image. use the original image instead."
-msgstr ""
+msgstr "Bild nicht skalieren, sondern das original-Bild verwenden"
 
 #: models.py:30 models.py:114
 msgid "thumbnail option"
-msgstr ""
+msgstr "Thumbnail-Option"
 
 #: models.py:31
 msgid ""
 "overrides width, height, crop and upscale with values from the selected "
 "thumbnail option"
 msgstr ""
+"überschreibt Breite, Höhe, Zuschnitt und Vergrößerung mit den Werten der "
+"markierten Thumbnail-Option"
 
 #: models.py:32
 msgid "use automatic scaling"
-msgstr ""
+msgstr "automatisch skalieren"
 
 #: models.py:33
 msgid "tries to auto scale the image based on the placeholder context"
-msgstr ""
+msgstr "automatische Skalierung an Hand des Platzhalter-Kontexts"
 
 #: models.py:34 models.py:107
 msgid "width"
-msgstr ""
+msgstr "Breite"
 
 #: models.py:35 models.py:108
 msgid "height"
-msgstr ""
+msgstr "Höhe"
 
 #: models.py:36 models.py:109
 msgid "crop"
-msgstr ""
+msgstr "zuschneiden"
 
 #: models.py:37 models.py:110
 msgid "upscale"
-msgstr ""
+msgstr "vergrößern"
 
 #: models.py:38
 msgid "image alignment"
-msgstr ""
+msgstr "Ausrichtung"
 
 #: models.py:40
 msgid "link"
-msgstr ""
+msgstr "Link"
 
 #: models.py:41 models.py:43 models.py:45 models.py:46
 msgid "if present image will be clickable"
-msgstr ""
+msgstr "wenn gesetzt, kann das Bild angeklickt werden"
 
 #: models.py:44
 msgid "page link"
-msgstr ""
+msgstr "Link zu Seite"
 
 #: models.py:45
 msgid "file link"
-msgstr ""
+msgstr "Link zu Datei"
 
 #: models.py:46
 msgid "link original image"
-msgstr ""
+msgstr "Link zu Original-Bild"
 
 #: models.py:47
 msgid "description"
-msgstr ""
+msgstr "Beschreibung"
 
 #: models.py:48
 msgid "Open link in new window"
-msgstr ""
+msgstr "Link in neuem Fenster öffnen"
 
 #: models.py:57
 msgid "filer image"
-msgstr ""
+msgstr "Filer-Bild"
 
 #: models.py:58
 msgid "filer images"
-msgstr ""
+msgstr "Filer-Bilder"
 
 #: models.py:64
 msgid "Either an image or an image url must be selected."
-msgstr ""
+msgstr "Entweder ein Bild oder eine Bild-URL auswählen."
 
 #: models.py:71
 #, python-format
 msgid "Image Publication %(caption)s"
-msgstr ""
+msgstr "Bildveröffentlichung %(caption)s"
 
 #: models.py:106
 msgid "name"
-msgstr ""
+msgstr "Name"
 
 #: models.py:107
 msgid "width in pixel."
-msgstr ""
+msgstr "Breite in Pixel"
 
 #: models.py:108
 msgid "height in pixel."
-msgstr ""
+msgstr "Höhe in Pixel"
 
 #: models.py:115
 msgid "thumbnail options"
-msgstr ""
+msgstr "Thumbnail-Optionen"
