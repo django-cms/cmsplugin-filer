@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: cmsplugin-filer\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-01-09 18:33+0100\n"
-"PO-Revision-Date: 2012-07-13 16:13+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2013-07-10 10:23+0100\n"
+"Last-Translator: Markus <mt@thiguten.de>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/cmsplugin-filer/"
 "language/de/)\n"
 "Language: de\n"
@@ -17,35 +17,36 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.3\n"
 
 #: cms_plugins.py:15
 msgid "Folder"
-msgstr ""
+msgstr "Ordner"
 
 #: models.py:10
 msgid "List"
-msgstr ""
+msgstr "Liste"
 
 #: models.py:10
 msgid "Slideshow"
-msgstr ""
+msgstr "Slideshow"
 
 #: models.py:18
 msgid "title"
-msgstr ""
+msgstr "Titel"
 
 #: models.py:19
 msgid "view option"
-msgstr ""
+msgstr "Ansichts-Optionen"
 
 #: templates/cmsplugin_filer_folder/folder.html:23
 msgid "Folders"
-msgstr ""
+msgstr "Ordner"
 
 #: templates/cmsplugin_filer_folder/folder.html:31
 msgid "Files"
-msgstr ""
+msgstr "Dateien"
 
 #: templates/cmsplugin_filer_folder/folder.html:39
 msgid "Images"
-msgstr ""
+msgstr "Bilder"
