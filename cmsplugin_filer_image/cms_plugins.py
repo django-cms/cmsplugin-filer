@@ -160,8 +160,5 @@ class FilerImagePlugin(CMSPluginBase):
         else:
             return os.path.normpath(u"%s/icons/missingfile_%sx%s.png" % (FILER_STATICMEDIA_PREFIX, 32, 32,))
 
-    def clea_link_options(self):
-        import ipdb; ipdb.set_trace()
-        return True
 
 plugin_pool.register_plugin(FilerImagePlugin)
