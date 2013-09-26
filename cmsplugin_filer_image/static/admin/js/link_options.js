@@ -1,5 +1,7 @@
 (function ($) {
 
+    // show/hide formsets when link_option drop-down is changed
+
     formset_divs_cls = {
         1: 'None',
         2: '.form-row.field-free_link.field-target_blank',

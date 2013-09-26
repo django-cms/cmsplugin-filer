@@ -1,8 +1,14 @@
 (function($) {
 
+    // save the reference to the default showRelatedObjectLookupPopup function
     var super_showRelated = null;
+
+    // save the reference to the default dismissRelatedImageLookupPopup function
     var super_dismissRelated =null;
 
+    /* This function overrides the one in popup_handling.js from django-filer. because
+       it accepts chosenDescriptionTxt, alt, caption, credit, width and height parameters.
+     */
     dismissRelatedImageLookupPopupOverriden = function(win, chosenId, chosenThumbnailUrl, chosenDescriptionTxt, alt, caption, credit, width, height) {
         super_dismissRelated(win, chosenId, chosenThumbnailUrl, chosenDescriptionTxt);
         if (! $('#id_alt_text').val()){
@@ -42,6 +48,11 @@
     if (! super_showRelated){
         super_showRelated = window.showRelatedObjectLookupPopup;
     }
+
+    // override the default function; it is called when the mangifying glass is clicked.
+    // In my implemetation of this function (see showRelatedObjectLookupPopupOverriden
+    // from above), I change the default call to opener.dismissRelatedImageLookupPopup
+    // (see directory_listing.html from django-filer templates.)
     window.showRelatedObjectLookupPopup = showRelatedObjectLookupPopupOverriden;
 
 })(jQuery);

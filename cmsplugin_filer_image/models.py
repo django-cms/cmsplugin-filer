@@ -63,7 +63,8 @@ class ThumbnailOption(models.Model):
                 "width": self.width,
                 "height": self.height,
                 "crop": self.crop,
-                "maintain_aspect_ratio": self.maintain_aspect_ratio}
+                'upscale': self.upscale,
+        }
 
 
 class FilerImage(CMSPlugin):
@@ -75,6 +76,8 @@ class FilerImage(CMSPlugin):
         (LEFT, _("left")),
         (RIGHT, _("right")),
     )
+    DEFAULT_HORIZONTAL_SPACE = 15
+    DEFAULT_VERTICAL_SPACE = 15
 
     ##
     alt_text = models.CharField(
@@ -156,7 +159,7 @@ class FilerImage(CMSPlugin):
         help_text=_("Add a black border around the image; the input is the pixel width of the line; there is no line if left blank.")
     )
 
-    ## Not used anymore but kept for backward compatibility
+    ## Deprecated fields. kept for backward compatibility
     ## to be removed at some point in time
     upscale = models.BooleanField(_("upscale"), default=True)
     description = models.TextField(
@@ -229,6 +232,14 @@ class FilerImage(CMSPlugin):
             return ''
 
     @property
+    def vert_space(self):
+        return self.vertical_space or self.DEFAULT_VERTICAL_SPACE
+
+    @property
+    def horiz_space(self):
+        return self.horizontal_space or self.DEFAULT_HORIZONTAL_SPACE
+
+    @property
     def style(self):
         style = ""
         if self.alignment == self.CENTER:
@@ -236,10 +247,11 @@ class FilerImage(CMSPlugin):
         else:
             style += "float: %s;" % self.alignment if self.alignment else ""
 
-        if self.vertical_space:
-            style += "margin-top: %spx; margin-bottom: %spx;" % (self.vertical_space, self.vertical_space)
-        elif self.horizontal_space and not self.alignment == self.CENTER:
-            style += "margin-right: %spx; margin-left: %spx;" % (self.horizontal_space, self.horizontal_space)
+        style += "margin-top: %spx; margin-bottom: %spx;" % (
+            self.vert_space, self.vert_space)
+        if not self.alignment == self.CENTER:
+            style += "margin-right: %spx; margin-left: %spx;" % (
+                self.horiz_space, self.horiz_space)
 
         style += "border: %spx solid black;" % self.border if self.border else ""
         return style

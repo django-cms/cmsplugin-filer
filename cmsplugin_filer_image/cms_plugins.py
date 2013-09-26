@@ -82,6 +82,7 @@ class FilerImagePlugin(CMSPluginBase):
         subject_location = False
         placeholder_width = context.get('width', None)
         placeholder_height = context.get('height', None)
+
         if instance.width or instance.height:
             # width and height options override everything else
             if instance.width:

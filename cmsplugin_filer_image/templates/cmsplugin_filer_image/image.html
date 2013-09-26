@@ -4,24 +4,14 @@
 
 {% if instance.image %}
 
-    {% if instance.use_original_image %}
-        <img style="{{ style }}" alt="{% if instance.alt %}{{ instance.alt }}{% endif %}" src="{{ instance.image.url }}"{% if instance.width %} width="{{ instance.width }}"{% endif %}{% if instance.height %} height="{{ instance.height }}"{% endif %}{% if instance.caption %} title="{{ instance.caption }}"{% endif %} />
-    {% else %}
-        {% thumbnail instance.image size crop=opts.crop upscale=opts.upscale subject_location=opts.subject_location as thumbnail %}
-            <img style="{{ style }} {% if not instance.maintain_aspect_ratio %} min-width: {{size.0}}px; min-height:{{size.1}}px; {% endif %}"
-                 alt="{% if instance.show_alt %}{{ instance.alt }}{% endif %}"
-                 {% if instance.show_caption %} title="{{ instance.caption }}"{% endif %}
-                 src="{{ thumbnail.url }}"
-                 {% if thumbnail.width %} width="{{ thumbnail.width }}"{% endif %}
-                 {% if thumbnail.height %} height="{{ thumbnail.height }}"{% endif %}
-                 />
-    {% endif %}
-    {% if instance.caption or instance.description %}
-	<span class="info">
-          <!-- {% if instance.caption %}<span class="title">{{ instance.caption }}</span>{% endif %} -->
-	  {% if instance.description %}<span class="desc">{{ instance.description }}</span>{% endif %}
-	</span>
-    {% endif %}
+  {% thumbnail instance.image size crop=opts.crop upscale=opts.upscale subject_location=opts.subject_location as thumbnail %}
+  <img style="{{ style }} {% if not instance.maintain_aspect_ratio %} min-width: {{size.0}}px; min-height:{{size.1}}px; {% endif %}"
+       alt="{% if instance.show_alt %}{{ instance.alt }}{% endif %}"
+       {% if instance.show_caption %} title="{{ instance.caption }}"{% endif %}
+       src="{{ thumbnail.url }}"
+       {% if thumbnail.width %} width="{{ thumbnail.width }}"{% endif %}
+       {% if thumbnail.height %} height="{{ thumbnail.height }}"{% endif %}
+       />
 {% endif %}
 {% if link %}</a>{% endif %}
 
