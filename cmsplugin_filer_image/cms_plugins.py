@@ -33,23 +33,30 @@ class FilerImagePluginForm(forms.ModelForm):
             models.FilerImage.OPT_FILE_LINK: '.form-row.field-file_link',
         }
         if link_options_field:
-            link_options_field.widget.attrs = {'data': json.dumps(formset_divs_cls)}
+            link_options_field.widget.attrs = {
+                'data': json.dumps(formset_divs_cls)
+            }
 
-    def clean_link_options(self):
+    def clean_free_link(self):
         link_options = self.cleaned_data['link_options']
-        if (link_options == self.model.OPT_ADD_LINK and
+        if (link_options == self.instance.OPT_ADD_LINK and
             not self.cleaned_data.get('free_link', '')):
             raise ValidationError('Link filed is required!')
-        elif (link_options == self.model.OPT_PAGE_LINK and
-              not self.cleaned_data.get('page_link', None)):
+        return self.cleaned_data['free_link']
+
+    def clean_page_link(self):
+        link_options = self.cleaned_data['link_options']
+        if (link_options == self.instance.OPT_PAGE_LINK and
+            not self.cleaned_data.get('page_link', None)):
             raise ValidationError('Page link is required!')
-        elif (link_options == self.model.OPT_FILE_LINK and
-              not self.cleaned_data.get('file_link', None)):
+        return self.cleaned_data['page_link']
+
+    def clean_file_link(self):
+        link_options = self.cleaned_data['link_options']
+        if (link_options == self.instance.OPT_FILE_LINK and
+            not self.cleaned_data.get('file_link', None)):
             raise ValidationError('File link is required!')
-        elif (link_options == self.model.OPT_ORIGINAL_IMG_LINK and
-              not self.cleaned_data.get('image', None)):
-            raise ValidationError('Image field is required!')
-        return self.cleaned_data['link_options']
+        return self.cleaned_data['file_link']
 
 
 class FilerImagePlugin(CMSPluginBase):
