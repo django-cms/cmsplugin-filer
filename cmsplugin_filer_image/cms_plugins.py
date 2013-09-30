@@ -12,23 +12,41 @@ from django.core.exceptions import ValidationError
 
 from filer.settings import FILER_STATICMEDIA_PREFIX
 
+try:
+    import json
+except:
+    import simplejson as json
+
 
 class FilerImagePluginForm(forms.ModelForm):
     class Meta:
         model = models.FilerImage
 
+    def __init__(self, *args, **kwargs):
+        super(FilerImagePluginForm, self).__init__(*args, **kwargs)
+
+        link_options_field = self.fields.get('link_options', None)
+        formset_divs_cls = {
+            models.FilerImage.OPT_NO_LINK: 'None',
+            models.FilerImage.OPT_ADD_LINK: '.form-row.field-free_link.field-target_blank',
+            models.FilerImage.OPT_PAGE_LINK: '.form-row.field-page_link',
+            models.FilerImage.OPT_FILE_LINK: '.form-row.field-file_link',
+        }
+        if link_options_field:
+            link_options_field.widget.attrs = {'data': json.dumps(formset_divs_cls)}
+
     def clean_link_options(self):
         link_options = self.cleaned_data['link_options']
-        if (link_options == 2 and
+        if (link_options == self.model.OPT_ADD_LINK and
             not self.cleaned_data.get('free_link', '')):
             raise ValidationError('Link filed is required!')
-        elif (link_options == 3 and
+        elif (link_options == self.model.OPT_PAGE_LINK and
               not self.cleaned_data.get('page_link', None)):
             raise ValidationError('Page link is required!')
-        elif (link_options == 4 and
+        elif (link_options == self.model.OPT_FILE_LINK and
               not self.cleaned_data.get('file_link', None)):
             raise ValidationError('File link is required!')
-        elif (link_options == 5 and
+        elif (link_options == self.model.OPT_ORIGINAL_IMG_LINK and
               not self.cleaned_data.get('image', None)):
             raise ValidationError('Image field is required!')
         return self.cleaned_data['link_options']

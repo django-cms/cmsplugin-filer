@@ -2,12 +2,7 @@
 
     // show/hide formsets when link_option drop-down is changed
 
-    formset_divs_cls = {
-        1: 'None',
-        2: '.form-row.field-free_link.field-target_blank',
-        3: '.form-row.field-page_link',
-        4: '.form-row.field-file_link',
-    };
+    var formset_divs_cls;
 
     function show_selected_link_option(value) {
         for (item in formset_divs_cls) {
@@ -18,6 +13,7 @@
     };
 
     $(document).ready(function () {
+        formset_divs_cls = JSON.parse($('#id_link_options').attr('data'));
         $('#id_link_options').change(function(){
             show_selected_link_option(this.value);
         });

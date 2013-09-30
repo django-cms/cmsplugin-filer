@@ -15,13 +15,13 @@ class ThumbnailOptionManager(models.Manager):
     def get_default_options_ids(self):
         result = []
         defaults = {'height': 0, 'crop': False, 'upscale': False}
-        result.append(ThumbnailOption.objects.get_or_create(
+        result.append(self.get_or_create(
             name='Small', width=180, **defaults)[0].id)
-        result.append(ThumbnailOption.objects.get_or_create(
+        result.append(self.get_or_create(
             name='Medium', width=320, **defaults)[0].id)
-        result.append(ThumbnailOption.objects.get_or_create(
+        result.append(self.get_or_create(
             name='Large', width=640, **defaults)[0].id)
-        result.append(ThumbnailOption.objects.get_or_create(
+        result.append(self.get_or_create(
             name='Original', width=1024, **defaults)[0].id)
 
         return result
@@ -79,19 +79,32 @@ class FilerImage(CMSPlugin):
     DEFAULT_HORIZONTAL_SPACE = 15
     DEFAULT_VERTICAL_SPACE = 15
 
+    OPT_NO_LINK = 1
+    OPT_ADD_LINK = 2
+    OPT_PAGE_LINK = 3
+    OPT_FILE_LINK = 4
+    OPT_ORIGINAL_IMG_LINK = 5
+
     ##
     alt_text = models.CharField(
         _("alt text"), null=True,
         blank=True, max_length=255,
-        help_text=_("Provides alternative information for an image if a user for some reason cannot view it (because of slow connection, an error in the src attribute, or if the user uses a screen reader)"))
+        help_text=_("Describes the essence of the image for users who have images "
+                    "turned off in their browser, are visually impaired and using "
+                    "a screen reader; and it is useful to identify images to search "
+                    "engines"))
     caption_text = models.CharField(
         _("caption text"), null=True,
-        blank=True, max_length=255,
-        help_text=_("Used to create a tooltip for an image "))
+        blank=True, max_length=140,
+        help_text=_("Caption text is displayed directly below an image to add context; "
+                    "there is a 140-character limit, including spaces."))
     credit_text = models.CharField(
         _("credit text"), null=True,
-        blank=True, max_length=255,
-        help_text=_("tbd"))
+        blank=True, max_length=30,
+        help_text=_("Credit text gives credit to the owner or licensor of an image; "
+                    "it is displayed below the image, or below the caption text if "
+                    "that option is selected; there is a 30-character limit, "
+                    "including spaces."))
     show_alt = models.BooleanField(
         _("show alt text"), default=False)
     show_caption = models.BooleanField(
@@ -117,11 +130,11 @@ class FilerImage(CMSPlugin):
     link_options = models.IntegerField(
         _('link image options'),
         default=1, choices=(
-            (1, "No link"),
-            (2, "Add link"),
-            (3, "Link to page"),
-            (4, "Link to document/media"),
-            (5, "Open original image in overlay"),
+            (OPT_NO_LINK, "No link"),
+            (OPT_ADD_LINK, "Add link"),
+            (OPT_PAGE_LINK, "Link to page"),
+            (OPT_FILE_LINK, "Link to document/media"),
+            (OPT_ORIGINAL_IMG_LINK, "Open original image in overlay"),
         )
     )
     free_link = models.CharField(
@@ -220,13 +233,13 @@ class FilerImage(CMSPlugin):
 
     @property
     def link(self):
-        if self.link_options == 2:
+        if self.link_options == self.OPT_ADD_LINK:
             return self.free_link
-        elif self.link_options == 3:
+        elif self.link_options == self.OPT_PAGE_LINK:
             return self.page_link.get_absolute_url()
-        elif self.link_options == 4:
+        elif self.link_options == self.OPT_FILE_LINK:
             return self.file_link.url
-        elif self.link_options == 5:
+        elif self.link_options == self.OPT_ORIGINAL_IMG_LINK:
             return self.image.url
         else:
             return ''
