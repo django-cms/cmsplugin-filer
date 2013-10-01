@@ -26,6 +26,8 @@ class FilerImagePluginForm(forms.ModelForm):
         super(FilerImagePluginForm, self).__init__(*args, **kwargs)
 
         link_options_field = self.fields.get('link_options', None)
+        # the values are css classes of the formsets that are shown/hidden
+        # when link_options is changed
         formset_divs_cls = {
             models.FilerImage.OPT_NO_LINK: 'None',
             models.FilerImage.OPT_ADD_LINK: '.form-row.field-free_link.field-target_blank',
@@ -33,6 +35,7 @@ class FilerImagePluginForm(forms.ModelForm):
             models.FilerImage.OPT_FILE_LINK: '.form-row.field-file_link',
         }
         if link_options_field:
+            # this attr will be used in link_options.js
             link_options_field.widget.attrs = {
                 'data': json.dumps(formset_divs_cls)
             }
