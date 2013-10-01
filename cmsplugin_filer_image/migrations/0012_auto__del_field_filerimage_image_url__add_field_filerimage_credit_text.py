@@ -3,6 +3,7 @@ import datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
+from django.db import models
 from django.db import router
 from cmsplugin_filer_image.models import FilerImage
 
@@ -12,12 +13,13 @@ class Migration(SchemaMigration):
     no_dry_run = True
 
     def forwards(self, orm):
+        pass
         # Deleting field 'FilerImage.image_url'
         db.delete_column('cmsplugin_filerimage', 'image_url')
 
         # Adding field 'FilerImage.credit_text'
         db.add_column('cmsplugin_filerimage', 'credit_text',
-                      self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True),
+                      self.gf('django.db.models.fields.CharField')(max_length=30, null=True, blank=True),
                       keep_default=False)
 
         # Adding field 'FilerImage.show_alt'
@@ -44,6 +46,10 @@ class Migration(SchemaMigration):
         db.add_column('cmsplugin_filerimage', 'maintain_aspect_ratio',
                       self.gf('django.db.models.fields.BooleanField')(default=True),
                       keep_default=False)
+
+
+        # Changing field 'FilerImage.caption_text'
+        db.alter_column('cmsplugin_filerimage', 'caption_text', self.gf('django.db.models.fields.CharField')(max_length=140, null=True))
 
         filer_images = orm.models.get("cmsplugin_filer_image.filerimage").objects\
                         .db_manager(router.db_for_write(FilerImage)).all()
@@ -82,6 +88,8 @@ class Migration(SchemaMigration):
         # Deleting field 'FilerImage.maintain_aspect_ratio'
         db.delete_column('cmsplugin_filerimage', 'maintain_aspect_ratio')
 
+        # Changing field 'FilerImage.caption_text'
+        db.alter_column('cmsplugin_filerimage', 'caption_text', self.gf('django.db.models.fields.CharField')(max_length=255, null=True))
 
     models = {
         'auth.group': {
@@ -116,7 +124,7 @@ class Migration(SchemaMigration):
         'cms.cmsplugin': {
             'Meta': {'object_name': 'CMSPlugin'},
             'changed_date': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
-            'creation_date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2013, 9, 25, 0, 0)'}),
+            'creation_date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2013, 9, 30, 0, 0)'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'language': ('django.db.models.fields.CharField', [], {'max_length': '15', 'db_index': 'True'}),
             'level': ('django.db.models.fields.PositiveIntegerField', [], {'db_index': 'True'}),
@@ -168,9 +176,9 @@ class Migration(SchemaMigration):
             'alignment': ('django.db.models.fields.CharField', [], {'max_length': '10', 'null': 'True', 'blank': 'True'}),
             'alt_text': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
             'border': ('django.db.models.fields.PositiveIntegerField', [], {'null': 'True', 'blank': 'True'}),
-            'caption_text': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
+            'caption_text': ('django.db.models.fields.CharField', [], {'max_length': '140', 'null': 'True', 'blank': 'True'}),
             'cmsplugin_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['cms.CMSPlugin']", 'unique': 'True', 'primary_key': 'True'}),
-            'credit_text': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
+            'credit_text': ('django.db.models.fields.CharField', [], {'max_length': '30', 'null': 'True', 'blank': 'True'}),
             'crop': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'description': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
             'file_link': ('django.db.models.fields.related.ForeignKey', [], {'default': 'None', 'related_name': "'+'", 'null': 'True', 'blank': 'True', 'to': "orm['filer.File']"}),
