@@ -105,8 +105,6 @@ class FilerImage(CMSPlugin):
                     "it is displayed below the image, or below the caption text if "
                     "that option is selected; there is a 30-character limit, "
                     "including spaces."))
-    show_alt = models.BooleanField(
-        _("show alt text"), default=False)
     show_caption = models.BooleanField(
         _("show caption text"), default=False)
     show_credit = models.BooleanField(

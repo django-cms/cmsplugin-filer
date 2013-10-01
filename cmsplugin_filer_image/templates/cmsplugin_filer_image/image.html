@@ -6,7 +6,7 @@
 
   {% thumbnail instance.image size crop=opts.crop upscale=opts.upscale subject_location=opts.subject_location as thumbnail %}
   <img style="{{ style }} {% if not instance.maintain_aspect_ratio %} min-width: {{size.0}}px; min-height:{{size.1}}px; {% endif %}"
-       alt="{% if instance.show_alt %}{{ instance.alt }}{% endif %}"
+       alt="{{ instance.alt }}"
        {% if instance.show_caption %} title="{{ instance.caption }}"{% endif %}
        src="{{ thumbnail.url }}"
        {% if thumbnail.width %} width="{{ thumbnail.width }}"{% endif %}

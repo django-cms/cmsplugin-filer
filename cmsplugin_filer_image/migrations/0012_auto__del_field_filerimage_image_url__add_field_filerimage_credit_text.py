@@ -3,7 +3,6 @@ import datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
-from django.db import models
 from django.db import router
 from cmsplugin_filer_image.models import FilerImage
 
@@ -13,18 +12,12 @@ class Migration(SchemaMigration):
     no_dry_run = True
 
     def forwards(self, orm):
-        pass
         # Deleting field 'FilerImage.image_url'
         db.delete_column('cmsplugin_filerimage', 'image_url')
 
         # Adding field 'FilerImage.credit_text'
         db.add_column('cmsplugin_filerimage', 'credit_text',
                       self.gf('django.db.models.fields.CharField')(max_length=30, null=True, blank=True),
-                      keep_default=False)
-
-        # Adding field 'FilerImage.show_alt'
-        db.add_column('cmsplugin_filerimage', 'show_alt',
-                      self.gf('django.db.models.fields.BooleanField')(default=False),
                       keep_default=False)
 
         # Adding field 'FilerImage.show_caption'
@@ -73,9 +66,6 @@ class Migration(SchemaMigration):
         # Deleting field 'FilerImage.credit_text'
         db.delete_column('cmsplugin_filerimage', 'credit_text')
 
-        # Deleting field 'FilerImage.show_alt'
-        db.delete_column('cmsplugin_filerimage', 'show_alt')
-
         # Deleting field 'FilerImage.show_caption'
         db.delete_column('cmsplugin_filerimage', 'show_caption')
 
@@ -87,6 +77,7 @@ class Migration(SchemaMigration):
 
         # Deleting field 'FilerImage.maintain_aspect_ratio'
         db.delete_column('cmsplugin_filerimage', 'maintain_aspect_ratio')
+
 
         # Changing field 'FilerImage.caption_text'
         db.alter_column('cmsplugin_filerimage', 'caption_text', self.gf('django.db.models.fields.CharField')(max_length=255, null=True))
@@ -124,7 +115,7 @@ class Migration(SchemaMigration):
         'cms.cmsplugin': {
             'Meta': {'object_name': 'CMSPlugin'},
             'changed_date': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
-            'creation_date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2013, 9, 30, 0, 0)'}),
+            'creation_date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2013, 10, 1, 0, 0)'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'language': ('django.db.models.fields.CharField', [], {'max_length': '15', 'db_index': 'True'}),
             'level': ('django.db.models.fields.PositiveIntegerField', [], {'db_index': 'True'}),
@@ -190,7 +181,6 @@ class Migration(SchemaMigration):
             'maintain_aspect_ratio': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'original_link': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'page_link': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['cms.Page']", 'null': 'True', 'blank': 'True'}),
-            'show_alt': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'show_caption': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'show_credit': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'target_blank': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
