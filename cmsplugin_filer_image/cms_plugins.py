@@ -70,7 +70,7 @@ class FilerImagePlugin(CMSPluginBase):
     admin_preview = False
     fieldsets = (
         (None, {
-            'fields': (('alt_text', 'show_alt'),
+            'fields': (('alt_text',),
                        ('caption_text', 'show_caption'),
                        ('credit_text', 'show_credit'),
                        ('image', ), )
