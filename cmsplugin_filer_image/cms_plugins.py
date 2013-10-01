@@ -7,10 +7,63 @@ import models
 from django.conf import settings
 from django.template import Context, Template
 import warnings
+from django import forms
+from django.core.exceptions import ValidationError
 
 from filer.settings import FILER_STATICMEDIA_PREFIX
 
+try:
+    import json
+except:
+    import simplejson as json
+
+
+class FilerImagePluginForm(forms.ModelForm):
+    class Meta:
+        model = models.FilerImage
+
+    def __init__(self, *args, **kwargs):
+        super(FilerImagePluginForm, self).__init__(*args, **kwargs)
+
+        link_options_field = self.fields.get('link_options', None)
+        # the values are css classes of the formsets that are shown/hidden
+        # when link_options is changed
+        formset_divs_cls = {
+            models.FilerImage.OPT_NO_LINK: 'None',
+            models.FilerImage.OPT_ADD_LINK: '.form-row.field-free_link.field-target_blank',
+            models.FilerImage.OPT_PAGE_LINK: '.form-row.field-page_link',
+            models.FilerImage.OPT_FILE_LINK: '.form-row.field-file_link',
+        }
+        if link_options_field:
+            # this attr will be used in link_options.js
+            link_options_field.widget.attrs = {
+                'data': json.dumps(formset_divs_cls)
+            }
+
+    def clean_free_link(self):
+        link_options = self.cleaned_data['link_options']
+        if (link_options == self.instance.OPT_ADD_LINK and
+            not self.cleaned_data.get('free_link', '')):
+            raise ValidationError('Link filed is required!')
+        return self.cleaned_data['free_link']
+
+    def clean_page_link(self):
+        link_options = self.cleaned_data['link_options']
+        if (link_options == self.instance.OPT_PAGE_LINK and
+            not self.cleaned_data.get('page_link', None)):
+            raise ValidationError('Page link is required!')
+        return self.cleaned_data['page_link']
+
+    def clean_file_link(self):
+        link_options = self.cleaned_data['link_options']
+        if (link_options == self.instance.OPT_FILE_LINK and
+            not self.cleaned_data.get('file_link', None)):
+            raise ValidationError('File link is required!')
+        return self.cleaned_data['file_link']
+
+
 class FilerImagePlugin(CMSPluginBase):
+    form = FilerImagePluginForm
     module = 'Filer'
     model = models.FilerImage
     name = _("Image")
@@ -20,30 +73,33 @@ class FilerImagePlugin(CMSPluginBase):
     admin_preview = False
     fieldsets = (
         (None, {
-                'fields': ('caption_text', ('image', ), 'alt_text')
+            'fields': (('alt_text',),
+                       ('caption_text', 'show_caption'),
+                       ('credit_text', 'show_credit'),
+                       ('image', ), )
         }),
-        (_('Image resizing options'), {
+        (_('Image options'), {
+            'fields': ('thumbnail_option',
+                       'alignment',
+                       'link_options',
+                       ('free_link', 'target_blank',),
+                       'page_link',
+                       'file_link',)
+        }),
+        (_('Advanced'), {
+            'classes': ('collapse',),
             'fields': (
-                'use_original_image',
-                ('width', 'height', 'crop', 'upscale'),
-                'thumbnail_option',
-                'use_autoscale',
+                ('width', 'height', 'crop', 'maintain_aspect_ratio'),
+                ('vertical_space', 'horizontal_space',),
+                'border',
             )
         }),
-        (None, {
-            'fields': (('width', 'height',),
-                       ('vertical_space', 'horizontal_space', 'border'),
-                       ('crop', 'upscale',),)
-        }),
-        (None, {
-            'fields': ('alignment',)
-        }),
-        (_('More'), {
-            'classes': ('collapse',),
-            'fields': (('free_link', 'page_link', 'file_link', 'original_link', 'target_blank'), 'description',)
-        }),
-
     )
+
+    class Media:
+        js = ("admin/js/popup_handling_override.js",
+              "admin/js/link_options.js",
+              "admin/js/advanced_panel_text_additions.js")
 
     def _get_thumbnail_options(self, context, instance):
         """
@@ -54,8 +110,16 @@ class FilerImagePlugin(CMSPluginBase):
         subject_location = False
         placeholder_width = context.get('width', None)
         placeholder_height = context.get('height', None)
-        if instance.thumbnail_option:
-            # thumbnail option overrides everything else
+
+        if instance.width or instance.height:
+            # width and height options override everything else
+            if instance.width:
+                width = instance.width
+            if instance.height:
+                height = instance.height
+            crop = instance.crop
+            upscale = instance.upscale
+        elif instance.thumbnail_option:
             if instance.thumbnail_option.width:
                 width = instance.thumbnail_option.width
             if instance.thumbnail_option.height:
@@ -66,14 +130,9 @@ class FilerImagePlugin(CMSPluginBase):
             if instance.use_autoscale and placeholder_width:
                 # use the placeholder width as a hint for sizing
                 width = int(placeholder_width)
-            elif instance.width:
-                width = instance.width
             if instance.use_autoscale and placeholder_height:
                 height = int(placeholder_height)
-            elif instance.height:
-                height = instance.height
-            crop = instance.crop
-            upscale = instance.upscale
+
         if instance.image:
             if instance.image.subject_location:
                 subject_location = instance.image.subject_location
@@ -129,5 +188,6 @@ class FilerImagePlugin(CMSPluginBase):
                 return thumbnail.url
         else:
             return os.path.normpath(u"%s/icons/missingfile_%sx%s.png" % (FILER_STATICMEDIA_PREFIX, 32, 32,))
+
 
 plugin_pool.register_plugin(FilerImagePlugin)
