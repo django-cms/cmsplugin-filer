@@ -2,7 +2,7 @@ from cms.models import CMSPlugin
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from filer.fields.file import FilerFileField
-from filer.settings import FILER_STATICMEDIA_PREFIX
+from django.conf import settings
 
 from cmsplugin_filer_utils import FilerPluginManager
 
@@ -28,7 +28,7 @@ class FilerFile(CMSPlugin):
         return self.file.icons['32']
 
     def get_adjusted_icon_url(self):
-        return self.get_icon_url().replace(FILER_STATICMEDIA_PREFIX, "", 1)
+        return self.get_icon_url().replace(settings.STATIC_URL, "", 1)
 
     def file_exists(self):
         return self.file.file.storage.exists(self.file.file.name)
