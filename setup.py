@@ -6,7 +6,7 @@ def read(fname):
 
 setup(
     name = "cmsplugin-filer",
-    version = "0.9.4pbs3",
+    version = "0.9.4pbs4",
     url = 'http://github.com/stefanfoulis/cmsplugin-filer',
     license = 'BSD',
     description = "django-cms plugins for django-filer",
