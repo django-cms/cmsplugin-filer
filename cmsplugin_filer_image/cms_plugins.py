@@ -104,7 +104,8 @@ class FilerImagePlugin(CMSPluginBase):
     class Media:
         js = ("admin/js/popup_handling_override.js",
               "admin/js/link_options.js",
-              "admin/js/advanced_panel_text_additions.js")
+              "admin/js/advanced_panel_text_additions.js",
+              "admin/js/caption_formatting.js")
 
     def _get_thumbnail_options(self, context, instance):
         """
