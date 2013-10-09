@@ -12,19 +12,45 @@ from django.core.exceptions import ValidationError
 
 class ThumbnailOptionManager(models.Manager):
 
-    def get_default_options_ids(self):
-        result = []
-        defaults = {'height': 0, 'crop': False, 'upscale': False}
-        result.append(self.get_or_create(
-            name='Small', width=180, **defaults)[0].id)
-        result.append(self.get_or_create(
-            name='Medium', width=320, **defaults)[0].id)
-        result.append(self.get_or_create(
-            name='Large', width=640, **defaults)[0].id)
-        result.append(self.get_or_create(
-            name='Original', width=1024, **defaults)[0].id)
+    IMG_MAX_WIDTH = 1024
+    IMG_MAX_HEIGHT = 576
+    DEFAULT_WIDTHS = [{'name': 'Small', 'width': 180},
+                      {'name': 'Medium', 'width': 320},
+                      {'name': 'Large', 'width': 640}]
 
-        return result
+    def get_default_options_queryset(self, filer_image):
+        result = []
+        defaults_others = {'height': 0, 'crop': False, 'upscale': False}
+
+        for defaults in self.DEFAULT_WIDTHS:
+            if not filer_image or filer_image.width > defaults['width']:
+                defaults.update(defaults_others)
+                result.append(self.get_or_create(**defaults)[0].id)
+
+        if filer_image:
+            if filer_image.width < self.IMG_MAX_WIDTH:
+                # A 720x405 image would result in the following options:
+                # Original: 720x405
+                # Large: 640x360
+                # Medium: 320X180
+                # Small: 180x101
+                defaults_others['height'] = filer_image.height
+                original_width = filer_image.width
+            else:
+                # A 1920x1080px image would result in the following options:
+                # Original: 1024x576
+                # Large: 640x360
+                # Medium: 320X180
+                # Small: 180x101
+                defaults_others['height'] = self.IMG_MAX_HEIGHT
+                original_width = self.IMG_MAX_WIDTH
+        else:
+            original_width = self.IMG_MAX_WIDTH
+
+        result.append(self.get_or_create(
+            name='Original', width=original_width, **defaults_others)[0].id)
+
+        return self.filter(id__in=result).all()
 
 
 class ThumbnailOption(models.Model):
@@ -45,7 +71,9 @@ class ThumbnailOption(models.Model):
         verbose_name_plural = _("thumbnail options")
 
     def __unicode__(self):
-        return u'%s -- %s x %s' %(self.name, self.width, self.height or 'XXX')
+        return u'%s -- %s x %s' % (self.name,
+                                   self.width,
+                                   self.height or 'XXX')
 
     @property
     def as_dict(self):
@@ -90,7 +118,7 @@ class FilerImage(CMSPlugin):
         _("alt text"), null=True,
         blank=True, max_length=255,
         help_text=_("Describes the essence of the image for users who have images "
-                    "turned off in their browser, are visually impaired and using "
+                    "turned off in their browser or are visually impaired and using "
                     "a screen reader; and it is useful to identify images to search "
                     "engines"))
     caption_text = models.CharField(
@@ -117,8 +145,7 @@ class FilerImage(CMSPlugin):
     ##Image Options
     thumbnail_option = models.ForeignKey(
         'ThumbnailOption', null=True,
-        blank=True, verbose_name=_("image size"),
-        limit_choices_to={'id__in': ThumbnailOption.objects.get_default_options_ids()})
+        blank=True, verbose_name=_("image size"))
 
     alignment = models.CharField(
         _("image alignment"), max_length=10,

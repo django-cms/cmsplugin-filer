@@ -20,28 +20,11 @@
                     },
                     success : function (data) {
                         if (data){
-                            if (! $('#id_alt_text').val()){
-                                $('#id_alt_text').val(data.alt != 'None' ? data.alt : '');
-                            }
+                            fixMetadata(data.alt, data.caption, data.credit);
 
-                            if (! $('#id_caption_text').val()){
-                                $('#id_caption_text').val(data.caption != 'None' ? data.caption : '');
-                            }
+                            $('#id_thumbnail_option').html(data.options);
+                            fixThumbnailOptionsHeight(data.width, data.height);
 
-                            if (! $('#id_credit_text').val()){
-                                $('#id_credit_text').val(data.credit != 'None' ? data.credit : '');
-                            }
-
-                            var aspectRatio = data.width / data.height;
-                            $('#id_thumbnail_option option').each(function(index){
-                                if (this.value) {
-                                    var m = this.text.match(/(\w+) -- (\d+) x (XXX|\d+)/);
-                                    var optionName = m[1];
-                                    var optionWidth = parseInt(m[2]);
-                                    var optionHeight = m[3];
-                                    this.text = optionName + ' -- ' + optionWidth + ' x ' + Math.floor(optionWidth / aspectRatio);
-                                }
-                            });
                             $('#filerimage_form div.form-row.temp-text-fetch-meta').remove();
                         }
                     },
@@ -52,6 +35,32 @@
         }
         return false;
     };
+
+    function fixMetadata(alt, caption, credit){
+        if (! $('#id_alt_text').val()){
+            $('#id_alt_text').val(alt != 'None' ? alt : '');
+        }
+
+        if (! $('#id_caption_text').val()){
+            $('#id_caption_text').val(caption != 'None' ? caption : '');
+        }
+
+        if (! $('#id_credit_text').val()){
+            $('#id_credit_text').val(credit != 'None' ? credit : '');
+        }
+    }
+
+    function fixThumbnailOptionsHeight(image_width, image_height){
+        var aspectRatio = image_width / image_height;
+        $('#id_thumbnail_option option').each(function(index){
+            if (this.value) {
+                var m = this.text.match(/(\w+) -- (\d+) x (XXX|\d+)/);
+                var optionName = m[1];
+                var optionWidth = parseInt(m[2]);
+                this.text = optionName + ' -- ' + optionWidth + ' x ' + Math.floor(optionWidth / aspectRatio);
+            }
+        });
+    }
 
     function showRelatedObjectLookupPopupOverriden(triggeringLink) {
         super_showRelated(triggeringLink);
@@ -72,4 +81,21 @@
     // (see directory_listing.html from django-filer templates.)
     window.showRelatedObjectLookupPopup = showRelatedObjectLookupPopupOverriden;
 
+    $(document).ready(function () {
+        var width, height;
+        // look for <option ...>Original -- ...</option>
+        // to get the width and height of the original image
+        $('#id_thumbnail_option option').each(function(index){
+            if (this.value) {
+                var m = this.text.match(/Original -- (\d+) x (\d+)/);
+                if (m) {
+                    width = parseInt(m[1]);
+                    height = parseInt(m[2]);
+                }
+            }
+        });
+        if (width && height) {
+            fixThumbnailOptionsHeight(width, height);
+        }
+    });
 })(jQuery);

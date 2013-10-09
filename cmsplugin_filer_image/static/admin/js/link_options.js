@@ -23,5 +23,8 @@
             show_selected_link_option(this.value);
         });
         show_selected_link_option();
+
+        // remove the + sign next to the drop-down box
+        $('div.form-row.field-thumbnail_option a').remove();
     });
 }(jQuery));
