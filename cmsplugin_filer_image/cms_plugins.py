@@ -42,7 +42,7 @@ class FilerImagePluginForm(forms.ModelForm):
                 'data': json.dumps(formset_divs_cls)
             }
 
-        qs = ThumbnailOption.objects.get_default_options_queryset(self.instance.image)
+        qs = ThumbnailOption.objects.get_default_options(self.instance.image)
         self.fields['thumbnail_option'].widget.choices.queryset = qs
 
     def clean_free_link(self):

@@ -23,7 +23,7 @@ def fetch_image_metadata(request):
         file = None
 
     widget = Select()
-    th_options = ThumbnailOption.objects.get_default_options_queryset(file)
+    th_options = ThumbnailOption.objects.get_default_options(file)
     widget.choices = zip([th_opt.id for th_opt in th_options], th_options)
     widget.choices.insert(0, ('', '--------'))
 

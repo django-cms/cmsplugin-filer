@@ -17,7 +17,7 @@ class ThumbnailOptionManager(models.Manager):
                       {'name': 'Medium', 'width': 320},
                       {'name': 'Large', 'width': 640}]
 
-    def get_default_options_queryset(self, filer_image):
+    def get_default_options(self, filer_image):
         result = []
         defaults_others = {'height': 0, 'crop': False, 'upscale': False}
 
