@@ -47,6 +47,9 @@ class ThumbnailOptionManager(models.Manager):
         else:
             original_width = self.IMG_MAX_WIDTH
 
+        # the height is set only for the Original thumbnail option and
+        #  not for the others (Large, Small, Medium), thus minimising
+        #  the number of objects created in the db
         result.append(self.get_or_create(
             name='Original', width=original_width, **defaults_others)[0].id)
 
