@@ -128,7 +128,7 @@ class FilerImage(CMSPlugin):
         _("caption text"), null=True,
         blank=True, max_length=140,
         help_text=_("Caption text is displayed directly below an image to add context; "
-                    "there is a 140-character limit, <br>including spaces."))
+                    "there is a 140-character limit, including spaces."))
     credit_text = models.CharField(
         _("credit text"), null=True,
         blank=True, max_length=30,
