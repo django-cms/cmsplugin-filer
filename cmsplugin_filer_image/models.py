@@ -13,7 +13,6 @@ from django.core.exceptions import ValidationError
 class ThumbnailOptionManager(models.Manager):
 
     IMG_MAX_WIDTH = 1024
-    IMG_MAX_HEIGHT = 576
     DEFAULT_WIDTHS = [{'name': 'Small', 'width': 180},
                       {'name': 'Medium', 'width': 320},
                       {'name': 'Large', 'width': 640}]
@@ -42,7 +41,8 @@ class ThumbnailOptionManager(models.Manager):
                 # Large: 640x360
                 # Medium: 320X180
                 # Small: 180x101
-                defaults_others['height'] = self.IMG_MAX_HEIGHT
+                aspect_ratio = float(filer_image.width) / filer_image.height
+                defaults_others['height'] = int(self.IMG_MAX_WIDTH / aspect_ratio)
                 original_width = self.IMG_MAX_WIDTH
         else:
             original_width = self.IMG_MAX_WIDTH
