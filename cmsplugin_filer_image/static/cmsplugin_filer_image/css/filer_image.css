@@ -1,0 +1,40 @@
+.filer_image_container + div,
+.filer_image_container + span.img-details + div{
+    clear: both;
+}
+
+.img-details{
+    background: #333333;
+    border:0;
+    margin-top: 0 !important;
+    font-size: 11px;
+    line-height: 18px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    display: inline-block;
+}
+.img-details .img-caption{
+    color: #efefef;
+    padding: 15px;
+    display: block;
+}
+.img-details .img-credit{
+    color: #999999;
+    padding: 15px;
+    display: block;
+}
+
+.text-plugin .img-details .img-credit,
+.text-plugin .img-details .img-caption{
+    padding: 10px;
+}
+
+.img-details .img-caption + .img-credit{
+    padding: 0 15px 15px 15px;
+}
+
+.text-plugin .img-details .img-caption + .img-credit,
+.text-plugin .img-details .img-caption + .img-caption{
+    padding: 0 10px 10px 10px;
+}
+
