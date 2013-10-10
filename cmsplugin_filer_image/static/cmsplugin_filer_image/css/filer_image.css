@@ -16,6 +16,7 @@
 .img-details .img-caption{
     color: #efefef;
     padding: 15px;
+    padding-bottom: 5px !important;
     display: block;
 }
 .img-details .img-credit{
