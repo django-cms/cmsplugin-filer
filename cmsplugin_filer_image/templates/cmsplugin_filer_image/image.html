@@ -24,16 +24,16 @@
        <span class="img-details" style=" {% if not instance.maintain_aspect_ratio %} min-width: {{size.0}}px; {% endif %} {% if thumbnail.width %}width:{{ thumbnail.width }}px;{% endif %}">
            {% if instance.show_caption %}
                {% if thumbnail.width > 200 %}
-               <span class="img-caption" >{{ instance.caption|truncatechars:140 }}</span>
+               <span class="img-caption" >{{ instance.caption }}</span>
                {% elif not instance.maintain_aspect_ratio and size.0 > 200 %}
-               <span class="img-caption" >{{ instance.caption|truncatechars:140 }}</span>
+               <span class="img-caption" >{{ instance.caption }}</span>
                {% endif %}
            {% endif %}
            {% if instance.show_credit %}
                 {% if thumbnail.width > 200 %}
-                <span class="img-credit" >{{ instance.credit|truncatechars:30 }}</span>
+                <span class="img-credit" >{{ instance.credit }}</span>
                 {% elif not instance.maintain_aspect_ratio and size.0 > 200 %}
-                <span class="img-credit" >{{ instance.credit|truncatechars:30 }}</span>
+                <span class="img-credit" >{{ instance.credit }}</span>
                 {% endif %}
            {% endif %}
        </span>
