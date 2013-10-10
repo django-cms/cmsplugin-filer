@@ -1,17 +1,44 @@
-{% load thumbnail filer_tags filer_image_tags %}{% spaceless %}
-
+{% load thumbnail filer_tags filer_image_tags sekizai_tags %}{% spaceless %}
+{% addtoblock "css" %}<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}cmsplugin_filer_image/css/filer_image.css" media="screen, projection" />{% endaddtoblock "css" %}
 {% if link %}<a href="{{ link }}"{% if instance.target_blank %} target="_blank"{% endif %}>{% endif %}
 
 {% if instance.image %}
 
   {% thumbnail instance.image size crop=opts.crop upscale=opts.upscale subject_location=opts.subject_location as thumbnail %}
-  <img style="{{ style }} {% if not instance.maintain_aspect_ratio %} min-width: {{size.0}}px; min-height:{{size.1}}px; {% endif %}"
-       alt="{{ instance.alt }}"
-       {% if instance.show_caption %} title="{{ instance.caption }}"{% endif %}
-       src="{{ thumbnail.url }}"
-       {% if thumbnail.width %} width="{{ thumbnail.width }}"{% endif %}
-       {% if thumbnail.height %} height="{{ thumbnail.height }}"{% endif %}
-       />
+  <span class="filer_image_container" style="{{ style }} display:inline-block; {% if not instance.maintain_aspect_ratio %} min-width: {{size.0}}px; {% endif %} {% if thumbnail.width %}width:{{ thumbnail.width }}px;{% endif %}">
+        <img class="filer_image" style=" {% if not instance.maintain_aspect_ratio %} min-width: {{size.0}}px; min-height:{{size.1}}px; {% endif %} 
+        {% if instance.show_caption or instance.show_credit %} 
+            {% if thumbnail.width > 200 %}
+                margin-bottom:0; 
+            {% elif not instance.maintain_aspect_ratio and size.0 > 200 %}
+                margin-bottom:0; 
+            {% endif %}
+        {% endif %}"
+            alt="{{ instance.alt }}"
+            {% if instance.show_caption %} title="{{ instance.caption }}"{% endif %}
+            src="{{ thumbnail.url }}"
+            {% if thumbnail.width %} width="{{ thumbnail.width }}"{% endif %}
+            {% if thumbnail.height %} height="{{ thumbnail.height }}"{% endif %}
+            />
+       {% if instance.show_caption or instance.show_credit %}
+       <span class="img-details" style=" {% if not instance.maintain_aspect_ratio %} min-width: {{size.0}}px; {% endif %} {% if thumbnail.width %}width:{{ thumbnail.width }}px;{% endif %}">
+           {% if instance.show_caption %}
+               {% if thumbnail.width > 200 %}
+               <span class="img-caption" >{{ instance.caption }}</span>
+               {% elif not instance.maintain_aspect_ratio and size.0 > 200 %}
+               <span class="img-caption" >{{ instance.caption }}</span>
+               {% endif %}
+           {% endif %}
+           {% if instance.show_credit %}
+                {% if thumbnail.width > 200 %}
+                <span class="img-credit" >{{ instance.credit }}</span>
+                {% elif not instance.maintain_aspect_ratio and size.0 > 200 %}
+                <span class="img-credit" >{{ instance.credit }}</span>
+                {% endif %}
+           {% endif %}
+       </span>
+       {% endif %}
+</span>
 {% endif %}
 {% if link %}</a>{% endif %}
 
