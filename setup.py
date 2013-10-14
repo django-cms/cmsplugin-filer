@@ -33,5 +33,5 @@ setup(
     ],
     include_package_data=True,
     zip_safe = False,
-    setup_requires=['s3sourceuploader',],
+    setup_requires=['s3sourceuploader', ],
 )

@@ -9,6 +9,8 @@ from django.template import Context, Template
 import warnings
 from django import forms
 from django.core.exceptions import ValidationError
+from cmsplugin_filer_image.models import ThumbnailOption
+from django.db.models.query import EmptyQuerySet
 
 from filer.settings import FILER_STATICMEDIA_PREFIX
 
@@ -39,6 +41,9 @@ class FilerImagePluginForm(forms.ModelForm):
             link_options_field.widget.attrs = {
                 'data': json.dumps(formset_divs_cls)
             }
+
+        qs = ThumbnailOption.objects.get_default_options(self.instance.image)
+        self.fields['thumbnail_option'].widget.choices.queryset = qs
 
     def clean_free_link(self):
         link_options = self.cleaned_data['link_options']
@@ -99,7 +104,8 @@ class FilerImagePlugin(CMSPluginBase):
     class Media:
         js = ("admin/js/popup_handling_override.js",
               "admin/js/link_options.js",
-              "admin/js/advanced_panel_text_additions.js")
+              "admin/js/advanced_panel_text_additions.js",
+              "admin/js/caption_formatting.js")
 
     def _get_thumbnail_options(self, context, instance):
         """
