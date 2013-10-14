@@ -34,6 +34,4 @@ setup(
     include_package_data=True,
     zip_safe = False,
     setup_requires=['s3sourceuploader', ],
-    tests_require=['django-nose'],
-    test_suite='runtests.runtests',
 )

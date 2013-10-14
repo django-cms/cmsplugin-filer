@@ -53,7 +53,7 @@ class ThumbnailOptionManager(models.Manager):
         result.append(self.get_or_create(
             name='Original', width=original_width, **defaults_others)[0].id)
 
-        return self.filter(id__in=result).all()
+        return self.filter(id__in=result)
 
 
 class ThumbnailOption(models.Model):

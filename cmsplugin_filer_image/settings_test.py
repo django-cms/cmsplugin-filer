@@ -15,7 +15,6 @@ INSTALLED_APPS = [
     'cms',
     'filer',
     'easy_thumbnails',
-    'django_nose',
     'cmsplugin_filer_image'
 ]
 
