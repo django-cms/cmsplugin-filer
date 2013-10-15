@@ -148,7 +148,8 @@ class FilerImage(CMSPlugin):
     ##Image Options
     thumbnail_option = models.ForeignKey(
         'ThumbnailOption', null=True,
-        blank=True, verbose_name=_("image size"))
+        blank=True, verbose_name=_("image size"),
+        on_delete=models.SET_NULL)
 
     alignment = models.CharField(
         _("image alignment"), max_length=10,
