@@ -172,7 +172,7 @@ class FilerImagePlugin(CMSPluginBase):
         # The style set at point 2. can be accessed with context["inherited_from_parent"]["style"]
         # As you can see below, the style set at point 1. have priority
         # The style set at point 2. is taken into account to keep the consistence with all other plugins.
-        style = instance.style or context.get("inherited_from_parent", {}).get("style", "")
+        style = instance.style + context.get("inherited_from_parent", {}).get("style", "")
         context.update({
             'instance': instance,
             'style': style,
