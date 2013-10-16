@@ -5,13 +5,13 @@
 {% if instance.image %}
 
   {% thumbnail instance.image size crop=opts.crop upscale=opts.upscale subject_location=opts.subject_location as thumbnail %}
-  <span class="filer_image_container" style="{{ style }} display:block; {% if not instance.maintain_aspect_ratio %} min-width: {{size.0}}px; {% endif %} {% if thumbnail.width %}width:{{ thumbnail.width }}px;{% endif %}">
-        <img class="filer_image" style=" {% if not instance.maintain_aspect_ratio %} min-width: {{size.0}}px; min-height:{{size.1}}px; {% endif %} 
-        {% if instance.show_caption or instance.show_credit %} 
+  <span class="filer_image_container" style="{{ style }} display:block; {% if not instance.maintain_aspect_ratio %} min-width: {{size.0}}px; {% endif %} {% if do_resize %}width:{{ thumbnail.width }}px; {% else %} display:inline-block {% endif %}">
+        <img class="filer_image" style=" {% if not instance.maintain_aspect_ratio %} min-width: {{size.0}}px; min-height:{{size.1}}px; {% endif %}
+        {% if instance.show_caption or instance.show_credit %}
             {% if thumbnail.width > 200 %}
-                margin-bottom:0; 
+                margin-bottom:0;
             {% elif not instance.maintain_aspect_ratio and size.0 > 200 %}
-                margin-bottom:0; 
+                margin-bottom:0;
             {% endif %}
         {% endif %}"
             alt="{{ instance.alt }}"
