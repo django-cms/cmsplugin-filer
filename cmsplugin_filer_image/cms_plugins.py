@@ -117,6 +117,7 @@ class FilerImagePlugin(CMSPluginBase):
         placeholder_width = context.get('width', None)
         placeholder_height = context.get('height', None)
 
+        do_resize = True
         if instance.width or instance.height:
             # width and height options override everything else
             if instance.width:
@@ -133,10 +134,10 @@ class FilerImagePlugin(CMSPluginBase):
             crop = instance.thumbnail_option.crop
             upscale = instance.thumbnail_option.upscale
         else:
-            if instance.use_autoscale and placeholder_width:
+            if placeholder_width:
                 # use the placeholder width as a hint for sizing
                 width = int(placeholder_width)
-            if instance.use_autoscale and placeholder_height:
+            if placeholder_height:
                 height = int(placeholder_height)
 
         if instance.image:
@@ -151,10 +152,13 @@ class FilerImagePlugin(CMSPluginBase):
             if not width:
                 # width is still not defined. fallback the actual image width
                 width = instance.image.width
+                do_resize = False
             if not height:
                 # height is still not defined. fallback the actual image height
                 height = instance.image.height
+                do_resize = False
         return {'size': (width, height),
+                'do_resize': do_resize,
                 'crop': crop,
                 'upscale': upscale,
                 'subject_location': subject_location}
@@ -175,6 +179,7 @@ class FilerImagePlugin(CMSPluginBase):
         style = instance.style + context.get("inherited_from_parent", {}).get("style", "")
         context.update({
             'instance': instance,
+            'do_resize': options['do_resize'],
             'style': style,
             'link': instance.link,
             'opts': options,
