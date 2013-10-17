@@ -209,7 +209,7 @@ class FilerImage(CMSPlugin):
         _("vertical space"), null=True, blank=True)
     horizontal_space = models.PositiveIntegerField(
         _("horizontal space"), null=True, blank=True,
-        help_text=_('Add spacing or padding around the image; calculated in pixels; if left blank, the spacing will default to 15 pixels.'))
+        help_text=_('Add spacing or padding around the image; calculated in pixels; if left blank, the vertical spacing will default to 15 pixels.'))
     border = models.PositiveIntegerField(
         _("border"), null=True, blank=True,
         help_text=_("Add a black border around the image; the input is the pixel width of the line; there is no line if left blank.")
@@ -293,7 +293,7 @@ class FilerImage(CMSPlugin):
 
     @property
     def horiz_space(self):
-        return self.horizontal_space or self.DEFAULT_HORIZONTAL_SPACE
+        return self.horizontal_space
 
     @property
     def style(self):
@@ -305,7 +305,7 @@ class FilerImage(CMSPlugin):
 
         style += "margin-top: %spx; margin-bottom: %spx;" % (
             self.vert_space, self.vert_space)
-        if not self.alignment == self.CENTER:
+        if not self.alignment == self.CENTER and self.horiz_space:
             style += "margin-right: %spx; margin-left: %spx;" % (
                 self.horiz_space, self.horiz_space)
 
