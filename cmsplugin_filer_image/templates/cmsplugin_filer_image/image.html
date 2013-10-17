@@ -4,13 +4,12 @@
 {% if instance.image %}
 
   {% thumbnail instance.image size crop=opts.crop upscale=opts.upscale subject_location=opts.subject_location as thumbnail %}
-  <span class="filer_image_container" style="display:block; max-width:100%;  width:{{ thumbnail.width }}px; {{ style }}">
+  <span class="filer_image_container" style="display:block; max-width:100%;  width:{{ thumbnail.width }}px;  {{ style }} {% if not instance.maintain_aspect_ratio and size.1 and size.0 %}  width:{{ size.0}}px;{% endif %} ">
         {% if link %}<a style="display:block; max-width:100%;  width:{{ thumbnail.width }}px; " href="{{ link }}"{% if instance.target_blank %} target="_blank"{% endif %}>{% endif %}
-
         <img class="filer_image" style=" display:block; max-width:100%;  width:{{ thumbnail.width }}px; 
         {% if instance.show_caption or instance.show_credit %}
             margin-bottom:0;
-        {% endif %}"
+        {% endif %} {% if not instance.maintain_aspect_ratio and size.1 and size.0 %} height: {{ size.1}}px; width:{{ size.0}}px;{% endif %}"
             alt="{{ instance.alt }}"
             {% if instance.show_caption %} title="{{ instance.caption }}"{% endif %}
             src="{{ thumbnail.url }}"
@@ -18,7 +17,7 @@
             {% if thumbnail.height %} height="{{ thumbnail.height }}"{% endif %}
             />
        {% if instance.show_caption or instance.show_credit %}
-       <span class="img-details" style=" display:block; max-width:100%;  width:{{ thumbnail.width }}px; ">
+       <span class="img-details" style=" display:block; max-width:100%;  width:{{ thumbnail.width }}px; {% if not instance.maintain_aspect_ratio and size.1 and size.0 %} width:{{ size.0}}px;{% endif %}">
            {% if instance.show_caption %}
                {% if thumbnail.width > 200 %}
                <span class="img-caption" >{{ instance.caption }}</span>
