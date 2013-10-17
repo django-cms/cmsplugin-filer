@@ -121,14 +121,16 @@ class FilerImage(CMSPlugin):
         _("alt text"), null=True,
         blank=True, max_length=255,
         help_text=_("Describes the essence of the image for users who have images "
-                    "turned off in their browser or are visually impaired and using "
+                    "turned off in their browser, or are visually impaired and using "
                     "a screen reader; and it is useful to identify images to search "
                     "engines"))
     caption_text = models.CharField(
         _("caption text"), null=True,
         blank=True, max_length=140,
         help_text=_("Caption text is displayed directly below an image to add context; "
-                    "there is a 140-character limit, including spaces."))
+                    "there is a 140-character limit, including spaces; for images "
+                    "fewer than 200 pixels wide, the caption text is only displayed "
+                    "on hover"))
     credit_text = models.CharField(
         _("credit text"), null=True,
         blank=True, max_length=30,
@@ -149,12 +151,19 @@ class FilerImage(CMSPlugin):
     thumbnail_option = models.ForeignKey(
         'ThumbnailOption', null=True,
         blank=True, verbose_name=_("image size"),
-        on_delete=models.SET_NULL)
+        on_delete=models.SET_NULL,
+        help_text=_("The most common image options are available via this drop-down"
+                    " menu; to add a custom size, use the advanced options menu "
+                    "below; any advanced option selection will override the "
+                    "settings in this admin."))
 
     alignment = models.CharField(
         _("image alignment"), max_length=10,
         blank=True, null=True,
-        choices=FLOAT_CHOICES)
+        choices=FLOAT_CHOICES,
+        help_text=_("When inside a text plugin, text will wrap around images "
+                    "with a left or right alignment; text will not wrap "
+                    "around an image with a center alignment."))
 
     link_options = models.IntegerField(
         _('link image options'),
@@ -164,7 +173,12 @@ class FilerImage(CMSPlugin):
             (OPT_PAGE_LINK, "Link to page"),
             (OPT_FILE_LINK, "Link to document/media"),
             (OPT_ORIGINAL_IMG_LINK, "Open original image in overlay"),
-        )
+        ),
+        help_text=_("This menu provieds options for linking the image to "
+                    "another file, another page, a document, or to open "
+                    "up the image in its original size; making a "
+                    "selection via the dropdown will generate the "
+                    " required admin fields.")
     )
     free_link = models.CharField(
         _("link"), max_length=255, blank=True,

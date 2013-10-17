@@ -45,6 +45,15 @@ class FilerImagePluginForm(forms.ModelForm):
         qs = ThumbnailOption.objects.get_default_options(self.instance.image)
         self.fields['thumbnail_option'].widget.choices.queryset = qs
 
+        #This html is appended in the document by popup_helper_image.js.
+        # I need to setup it here because STATIC_URL is not available in
+        # popup_helper_image.js
+        popup_html= _("<div class='helper_img'><a href='%sadmin/img/image-caption-credit.jpg'"
+                      "class='' id='' title='' ><img src='%sadmin/img/icon-unknown.gif' "
+                      "width='16' height='16' alt=''>Wait, how are these fields displayed?</a></div>" % (
+                          settings.STATIC_URL, settings.STATIC_URL))
+        self.fields['image'].widget.attrs.update({'helper_popup': popup_html})
+
     def clean_free_link(self):
         link_options = self.cleaned_data['link_options']
         if (link_options == self.instance.OPT_ADD_LINK and
@@ -105,7 +114,8 @@ class FilerImagePlugin(CMSPluginBase):
         js = ("admin/js/popup_handling_override.js",
               "admin/js/link_options.js",
               "admin/js/advanced_panel_text_additions.js",
-              "admin/js/caption_formatting.js")
+              "admin/js/caption_formatting.js",
+              "admin/js/popup_helper_image.js")
 
     def _get_thumbnail_options(self, context, instance):
         """
