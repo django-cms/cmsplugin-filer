@@ -15,7 +15,7 @@ class ThumbnailOptionManager(models.Manager):
     IMG_MAX_WIDTH = 1024
     DEFAULT_WIDTHS = [{'name': 'Small', 'width': 180},
                       {'name': 'Medium', 'width': 320},
-                      {'name': 'Large', 'width': 640}]
+                      {'name': 'Large', 'width': 616}]
 
     def get_default_options(self, filer_image):
         result = []
@@ -30,7 +30,7 @@ class ThumbnailOptionManager(models.Manager):
             if filer_image.width < self.IMG_MAX_WIDTH:
                 # A 720x405 image would result in the following options:
                 # Original: 720x405
-                # Large: 640x360
+                # Large: 6160x360
                 # Medium: 320X180
                 # Small: 180x101
                 defaults_others['height'] = filer_image.height
@@ -38,7 +38,7 @@ class ThumbnailOptionManager(models.Manager):
             else:
                 # A 1920x1080px image would result in the following options:
                 # Original: 1024x576
-                # Large: 640x360
+                # Large: 616x360
                 # Medium: 320X180
                 # Small: 180x101
                 aspect_ratio = float(filer_image.width) / filer_image.height

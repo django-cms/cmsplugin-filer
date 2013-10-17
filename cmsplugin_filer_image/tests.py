@@ -60,7 +60,7 @@ class ThumbnailOptionsTest(TestCase):
 
         qs = ThumbnailOption.objects.get_default_options(self.image)
         self.assertQuerysetEqual(qs,
-                                 ['Original -- 720 x 405', 'Large -- 640 x XXX',
+                                 ['Original -- 720 x 405', 'Large -- 616 x XXX',
                                   'Medium -- 320 x XXX', 'Small -- 180 x XXX'],
                                  lambda o: str(o))
 
@@ -70,6 +70,6 @@ class ThumbnailOptionsTest(TestCase):
 
         qs = ThumbnailOption.objects.get_default_options(self.image)
         self.assertQuerysetEqual(qs,
-                                 ['Original -- 1024 x 576', 'Large -- 640 x XXX',
+                                 ['Original -- 1024 x 576', 'Large -- 616 x XXX',
                                   'Medium -- 320 x XXX', 'Small -- 180 x XXX'],
                                  lambda o: str(o))
