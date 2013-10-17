@@ -127,7 +127,6 @@ class FilerImagePlugin(CMSPluginBase):
         placeholder_width = context.get('width', None)
         placeholder_height = context.get('height', None)
 
-        do_resize = True
         if instance.width or instance.height:
             # width and height options override everything else
             if instance.width:
@@ -162,13 +161,10 @@ class FilerImagePlugin(CMSPluginBase):
             if not width:
                 # width is still not defined. fallback the actual image width
                 width = instance.image.width
-                do_resize = False
             if not height:
                 # height is still not defined. fallback the actual image height
                 height = instance.image.height
-                do_resize = False
         return {'size': (width, height),
-                'do_resize': do_resize,
                 'crop': crop,
                 'upscale': upscale,
                 'subject_location': subject_location}
@@ -177,8 +173,17 @@ class FilerImagePlugin(CMSPluginBase):
         if instance.image:
             return instance.image.image.file.get_thumbnail(self._get_thumbnail_options(context, instance))
 
+    def _get_default_horiz_space(self, instance, context):
+        if ("inherited_from_parent" in context and
+            not instance.horiz_space and
+            not instance.alignment == instance.CENTER):
+            return instance.DEFAULT_HORIZONTAL_SPACE
+        else:
+            return ''
+
     def render(self, context, instance, placeholder):
         options = self._get_thumbnail_options(context, instance)
+
         #Styles for images can be set from 2 places:
         #         1. filer image popup
         #         2. right click on the img from text plg and select Alignment option
@@ -189,12 +194,12 @@ class FilerImagePlugin(CMSPluginBase):
         style = instance.style + context.get("inherited_from_parent", {}).get("style", "")
         context.update({
             'instance': instance,
-            'do_resize': options['do_resize'],
             'style': style,
             'link': instance.link,
             'opts': options,
-            'size': options.get('size',None),
-            'placeholder': placeholder
+            'size': options.get('size', None),
+            'placeholder': placeholder,
+            'default_horiz_space': self._get_default_horiz_space(instance, context)
         })
         return context
 
