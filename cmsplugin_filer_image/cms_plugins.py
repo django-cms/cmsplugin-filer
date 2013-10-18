@@ -48,9 +48,9 @@ class FilerImagePluginForm(forms.ModelForm):
         #This html is appended in the document by popup_helper_image.js.
         # I need to setup it here because STATIC_URL is not available in
         # popup_helper_image.js
-        popup_html= _("<div class='helper_img'><a href='%sadmin/img/image-caption-credit.jpg'"
-                      "class='' id='' title='' ><img src='%sadmin/img/icon-unknown.gif' "
-                      "width='16' height='16' alt=''>Wait, how are these fields displayed?</a></div>" % (
+        popup_html= _("<div class='helper_img'><a href='%sadmin/img/image-caption-credit.jpg'>"
+                      "<img src='%sadmin/img/icon-unknown.gif' width='16' height='16'>"
+                      "Wait, how are these fields displayed?</a></div>" % (
                           settings.STATIC_URL, settings.STATIC_URL))
         self.fields['image'].widget.attrs.update({'helper_popup': popup_html})
 

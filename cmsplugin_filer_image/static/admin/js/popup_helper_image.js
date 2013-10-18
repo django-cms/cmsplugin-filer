@@ -8,7 +8,7 @@
         var popup_html = $("div.form-row.field-image div #id_image").attr('helper_popup');
         $("div.form-row.field-image div").after(popup_html);
         $("div.form-row.field-image div.helper_img a").click(function (e) {
-            var href = e.target.href + '?pop=1';
+            var href = this.href + '?pop=1';
             var win = window.open(href, '', 'height=500,width=800,resizable=yes,scrollbars=yes');
             win.focus();
             return false;
