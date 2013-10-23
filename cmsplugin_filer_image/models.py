@@ -12,8 +12,10 @@ from distutils.version import LooseVersion
 class FilerImage(CMSPlugin):
     LEFT = "left"
     RIGHT = "right"
+    CENTER = "center"
     FLOAT_CHOICES = ((LEFT, _("left")),
                      (RIGHT, _("right")),
+                     (CENTER, _("center"))
                      )
     caption_text = models.CharField(_("caption text"), null=True, blank=True, max_length=255)
     image = FilerImageField(null=True, blank=True, default=None, verbose_name=_("image"))
