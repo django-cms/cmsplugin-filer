@@ -5,11 +5,18 @@
     var formset_divs_cls;
 
     function show_selected_link_option(value) {
+        // for IE compatibility with older jQuery version, we use both item and i (since item is seen as a function object)
+        var i = 1;
         for (item in formset_divs_cls) {
-            $(formset_divs_cls[item]).hide();
+            try {
+                $(formset_divs_cls[i++]).hide()
+            } catch (e) {
+            }
         }
-        var link_option = value ? value : $('#id_link_options option[selected="selected"]').val();
-        $(formset_divs_cls[link_option]).show();
+        var link_option = (value != null && value != undefined) ? value : $('#id_link_options option[selected="selected"]').val();
+        if (link_option != null && link_option != undefined) {
+            $(formset_divs_cls[link_option]).show();
+        }
     };
 
     $(document).ready(function () {
@@ -19,7 +26,7 @@
         // shown/hidden. I've choosen this solution in order to avoid hard-coding
         // link-options values.
         formset_divs_cls = JSON.parse($('#id_link_options').attr('data'));
-        $('#id_link_options').change(function(){
+        $('#id_link_options').change(function () {
             show_selected_link_option(this.value);
         });
         show_selected_link_option();
