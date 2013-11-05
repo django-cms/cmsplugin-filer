@@ -289,7 +289,7 @@ class FilerImage(CMSPlugin):
 
     @property
     def vert_space(self):
-        return self.vertical_space or self.DEFAULT_VERTICAL_SPACE
+        return self.vertical_space
 
     @property
     def horiz_space(self):
@@ -302,10 +302,16 @@ class FilerImage(CMSPlugin):
             style += 'margin: auto; display: block;'
         else:
             style += "float: %s;" % self.alignment if self.alignment else ""
+            if self.alignment == self.LEFT:
+                style += "margin-right: %spx;" % self.DEFAULT_HORIZONTAL_SPACE
+            if self.alignment == self.RIGHT:
+                style += "margin-left: %spx;" % self.DEFAULT_HORIZONTAL_SPACE
 
-        style += "margin-top: %spx; margin-bottom: %spx;" % (
-            self.vert_space, self.vert_space)
-        if not self.alignment == self.CENTER and self.horiz_space:
+        if isinstance(self.vertical_space, (int, long)):
+            style += "margin-top: %spx; margin-bottom: %spx;" % (
+                self.vert_space, self.vert_space)
+
+        if not self.alignment == self.CENTER and isinstance(self.horiz_space, (int, long)):
             style += "margin-right: %spx; margin-left: %spx;" % (
                 self.horiz_space, self.horiz_space)
 
