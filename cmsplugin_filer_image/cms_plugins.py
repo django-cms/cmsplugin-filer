@@ -1,5 +1,5 @@
 
-import os
+import os, re
 from cms.plugin_pool import plugin_pool
 from cms.plugin_base import CMSPluginBase
 from django.utils.translation import ugettext_lazy as _
@@ -191,7 +191,17 @@ class FilerImagePlugin(CMSPluginBase):
         # The style set at point 2. can be accessed with context["inherited_from_parent"]["style"]
         # As you can see below, the style set at point 1. have priority
         # The style set at point 2. is taken into account to keep the consistence with all other plugins.
-        style = instance.style + context.get("inherited_from_parent", {}).get("style", "")
+        text_plg_style = context.get("inherited_from_parent", {}).get("style", "")
+        style = text_plg_style + instance.style
+
+        if (re.search(r"float\s*:\s*left", text_plg_style) and
+           not re.search(r"margin-right", style)):
+            style += "margin-right: %spx;" % instance.DEFAULT_HORIZONTAL_SPACE
+
+        if (re.search(r"float\s*:\s*right", text_plg_style) and
+           not re.search(r"margin-left", style)):
+            style += "margin-left: %spx;" % instance.DEFAULT_HORIZONTAL_SPACE
+
         context.update({
             'instance': instance,
             'style': style,
