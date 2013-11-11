@@ -19,13 +19,14 @@ class FilerFile(CMSPlugin):
     The icon search is currently performed within get_icon_url; this is probably a performance concern.
     """
     title = models.CharField(_("title"), max_length=255, null=True, blank=True)
-    file = FilerFileField(verbose_name=_('file'))
+    file = FilerFileField(default=None, null=True, on_delete=models.SET_NULL,
+                          verbose_name=_('file'))
     target_blank = models.BooleanField(_('Open link in new window'), default=False)
 
     objects = FilerPluginManager(select_related=('file',))
 
     def get_icon_url(self):
-        return self.file.icons['32']
+        return self.file.icons['32'] if self.file else None
 
     def get_adjusted_icon_url(self):
         return self.get_icon_url().replace(settings.STATIC_URL, "", 1)

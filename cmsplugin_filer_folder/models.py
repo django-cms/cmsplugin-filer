@@ -12,23 +12,24 @@ VIEW_OPTIONS = getattr(settings, 'CMSPLUGIN_FILER_FOLDER_VIEW_OPTIONS', (("list"
 class FilerFolder(CMSPlugin):
     """
     Plugin for storing any type of Folder.
-    
+
     Default template displays files store inside this folder.
     """
     title = models.CharField(_("title"), max_length=255, null=True, blank=True)
     view_option = models.CharField(_("view option"),max_length=10,
                             choices=VIEW_OPTIONS, default="list")
-    folder = FilerFolderField()
+    folder = FilerFolderField(default=None, null=True,
+                              on_delete=models.SET_NULL)
 
     objects = FilerPluginManager(select_related=('folder',))
-        
+
     def __unicode__(self):
-        if self.title: 
+        if self.title:
             return self.title
-        elif self.folder.name:
+        elif self.folder and self.folder.name:
             # added if, because it raised attribute error when file wasnt defined
             return self.folder.name
         return "<empty>"
 
     search_fields = ('title',)
-    
+

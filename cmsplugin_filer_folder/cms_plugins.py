@@ -18,6 +18,8 @@ class FilerFolderPlugin(CMSPluginBase):
     admin_preview = False
 
     def get_folder_files(self, folder, user):
+        if not folder:
+            return []
         qs_files = folder.files.filter(image__isnull=True)
         if user.is_staff:
             return qs_files
@@ -25,6 +27,8 @@ class FilerFolderPlugin(CMSPluginBase):
             return qs_files.filter(is_public=True)
 
     def get_folder_images(self, folder, user):
+        if not folder:
+            return []
         qs_files = folder.files.instance_of(Image)
         if user.is_staff:
             return qs_files
@@ -32,6 +36,8 @@ class FilerFolderPlugin(CMSPluginBase):
             return qs_files.filter(is_public=True)
 
     def get_children(self, folder):
+        if not folder:
+            return []
         return folder.get_children()
 
 
