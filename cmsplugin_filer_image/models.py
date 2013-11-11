@@ -144,7 +144,7 @@ class FilerImage(CMSPlugin):
         _("show credit text"), default=False)
 
     image = FilerImageField(
-        null=True, blank=True,
+        null=True, blank=True, on_delete=models.SET_NULL,
         default=None, verbose_name=_("image"))
 
     ##Image Options
@@ -190,7 +190,7 @@ class FilerImage(CMSPlugin):
         help_text=_("if present image will be clickable"),
         verbose_name=_("page link"))
     file_link = FilerFileField(
-        null=True, blank=True,
+        null=True, blank=True, on_delete=models.SET_NULL,
         default=None, verbose_name=_("file link"),
         help_text=_("if present image will be clickable"),
         related_name='+')
@@ -280,9 +280,9 @@ class FilerImage(CMSPlugin):
             return self.free_link
         elif self.link_options == self.OPT_PAGE_LINK:
             return self.page_link.get_absolute_url()
-        elif self.link_options == self.OPT_FILE_LINK:
+        elif self.link_options == self.OPT_FILE_LINK and self.file_link:
             return self.file_link.url
-        elif self.link_options == self.OPT_ORIGINAL_IMG_LINK:
+        elif self.link_options == self.OPT_ORIGINAL_IMG_LINK and self.image:
             return self.image.url
         else:
             return ''
