@@ -302,10 +302,7 @@ class FilerImage(CMSPlugin):
             style += 'margin: auto; display: block;'
         else:
             style += "float: %s;" % self.alignment if self.alignment else ""
-            if self.alignment == self.LEFT:
-                style += "margin-right: %spx;" % self.DEFAULT_HORIZONTAL_SPACE
-            if self.alignment == self.RIGHT:
-                style += "margin-left: %spx;" % self.DEFAULT_HORIZONTAL_SPACE
+            
 
         if isinstance(self.vertical_space, (int, long)):
             style += "margin-top: %spx; margin-bottom: %spx;" % (
