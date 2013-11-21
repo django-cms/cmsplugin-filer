@@ -1,5 +1,4 @@
 from django.test import TestCase
-from filer.tests.helpers import create_superuser, create_image
 import os
 from django.core.files import File as DjangoFile
 from filer.models.imagemodels import Image
@@ -10,6 +9,7 @@ from cmsplugin_filer_image.models import ThumbnailOption
 class ThumbnailOptionsTest(TestCase):
 
     def setUp(self):
+        from filer.tests.helpers import create_superuser, create_image
         self.superuser = create_superuser()
         self.img = create_image()
         self.filename = os.path.join(os.path.dirname(__file__),
