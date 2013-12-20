@@ -7,6 +7,7 @@ from django.conf import settings
 
 from filer.settings import FILER_STATICMEDIA_PREFIX
 
+
 class FilerImagePlugin(CMSPluginBase):
     module = 'Filer'
     model = models.FilerImage
@@ -37,7 +38,8 @@ class FilerImagePlugin(CMSPluginBase):
 
     )
 
-    def _get_thumbnail_options(self, context, instance):
+    @staticmethod
+    def _get_thumbnail_options(context, instance):
         """
         Return the size and options of the thumbnail that should be inserted
         """
@@ -71,10 +73,10 @@ class FilerImagePlugin(CMSPluginBase):
                 subject_location = instance.image.subject_location
             if not height and width:
                 # height was not externally defined: use ratio to scale it by the width
-                height = int( float(width)*float(instance.image.height)/float(instance.image.width) )
+                height = int(float(width)*float(instance.image.height)/float(instance.image.width))
             if not width and height:
                 # width was not externally defined: use ratio to scale it by the height
-                width = int( float(height)*float(instance.image.width)/float(instance.image.height) )
+                width = int(float(height)*float(instance.image.width)/float(instance.image.height))
             if not width:
                 # width is still not defined. fallback the actual image width
                 width = instance.image.width
@@ -96,7 +98,7 @@ class FilerImagePlugin(CMSPluginBase):
             'instance': instance,
             'link': instance.link,
             'opts': options,
-            'size': options.get('size',None),
+            'size': options.get('size', None),
             'placeholder': placeholder
         })
         return context
@@ -108,7 +110,7 @@ class FilerImagePlugin(CMSPluginBase):
             else:
                 # Fake the context with a reasonable width value because it is not
                 # available at this stage
-                thumbnail = self.get_thumbnail({'width':200}, instance)
+                thumbnail = self.get_thumbnail({'width': 200}, instance)
                 return thumbnail.url
         else:
             return os.path.normpath(u"%s/icons/missingfile_%sx%s.png" % (FILER_STATICMEDIA_PREFIX, 32, 32,))
