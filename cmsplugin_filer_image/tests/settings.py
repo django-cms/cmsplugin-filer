@@ -22,10 +22,8 @@ FILER_ENABLE_PERMISSIONS = True
 FILER_ALLOW_REGULAR_USERS_TO_ADD_ROOT_FOLDERS = True
 FILER_IS_PUBLIC_DEFAULT = True
 SECRET_KEY = 'abscd'
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 STATIC_ROOT = '/static/'
 STATIC_URL = '/static/'
-ROOT_URLCONF = 'urls_test'
 TEMPLATE_CONTEXT_PROCESSORS = [
     "django.contrib.auth.context_processors.auth",
     'django.contrib.messages.context_processors.messages',
