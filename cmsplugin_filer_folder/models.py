@@ -6,6 +6,7 @@ from posixpath import join, basename, splitext, exists
 from filer.fields.folder import FilerFolderField
 from django.conf import settings
 from cmsplugin_filer_utils import FilerPluginManager
+import filer
 
 VIEW_OPTIONS = getattr(settings, 'CMSPLUGIN_FILER_FOLDER_VIEW_OPTIONS', (("list", _("List")),("slideshow",_("Slideshow"))))
 
@@ -26,9 +27,11 @@ class FilerFolder(CMSPlugin):
     def __unicode__(self):
         if self.title:
             return self.title
-        elif self.folder and self.folder.name:
-            # added if, because it raised attribute error when file wasnt defined
-            return self.folder.name
+        try:
+            if self.folder and self.folder.name:
+                return self.folder.name
+        except filer.models.Folder.DoesNotExist:
+            pass
         return "<empty>"
 
     search_fields = ('title',)
