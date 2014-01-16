@@ -3,8 +3,8 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from filer.fields.file import FilerFileField
 from django.conf import settings
-
 from cmsplugin_filer_utils import FilerPluginManager
+import filer
 
 
 class FilerFile(CMSPlugin):
@@ -47,9 +47,11 @@ class FilerFile(CMSPlugin):
     def __unicode__(self):
         if self.title:
             return self.title
-        elif self.file:
-            # added if, because it raised attribute error when file wasnt defined
-            return self.get_file_name()
+        try:
+            if self.file:
+                return self.get_file_name()
+        except filer.models.File.DoesNotExist:
+            pass
         return "<empty>"
 
     search_fields = ('title',)

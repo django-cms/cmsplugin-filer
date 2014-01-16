@@ -8,6 +8,7 @@ from filer.fields.file import FilerFileField
 from cmsplugin_filer_utils import FilerPluginManager
 from distutils.version import LooseVersion
 from django.core.exceptions import ValidationError
+import filer
 
 
 class ThumbnailOptionManager(models.Manager):
@@ -247,10 +248,14 @@ class FilerImage(CMSPlugin):
             raise ValidationError(_('An image must be selected.'))
 
     def __unicode__(self):
-        if self.image:
-            return self.image.label
-        else:
-            return unicode( _("Image Publication %(caption)s") % {'caption': self.caption or self.alt} )
+        try:
+            if self.image:
+                return self.image.label
+        except filer.models.Image.DoesNotExist:
+            pass
+        if self.caption or self.alt:
+            return unicode(_("Image Publication %(caption)s") % {
+                'caption': self.caption or self.alt})
         return ''
 
     @property
@@ -302,7 +307,7 @@ class FilerImage(CMSPlugin):
             style += 'margin: auto; display: block;'
         else:
             style += "float: %s;" % self.alignment if self.alignment else ""
-            
+
 
         if isinstance(self.vertical_space, (int, long)):
             style += "margin-top: %spx; margin-bottom: %spx;" % (
