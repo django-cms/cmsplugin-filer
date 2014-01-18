@@ -13,7 +13,7 @@ class FilerImagePlugin(CMSPluginBase):
     name = _("Image")
     render_template = "cmsplugin_filer_image/image.html"
     text_enabled = True
-    raw_id_fields = ('image',)
+    raw_id_fields = ('image', 'page_link')
     admin_preview = False
     fieldsets = (
         (None, {
