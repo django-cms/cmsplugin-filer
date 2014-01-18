@@ -63,7 +63,7 @@ msgstr "lien vers l'image d'origine"
 
 #: models.py:29
 msgid "do not resize the image. use the original image instead."
-msgstr "ne pas redimensionner l'image. Utiliser l'image d'origine"
+msgstr ""
 
 #: models.py:30 models.py:114
 msgid "thumbnail option"
@@ -73,8 +73,7 @@ msgstr "option de miniature"
 msgid ""
 "overrides width, height, crop and upscale with values from the selected "
 "thumbnail option"
-msgstr "écrase les valeurs de largeur, hauteur, rognage et élargissement avec"
-"les valeurs de l'option de miniature sélectionnée"
+msgstr ""
 
 #: models.py:32
 msgid "use automatic scaling"
@@ -132,7 +131,7 @@ msgstr "description"
 
 #: models.py:48
 msgid "Open link in new window"
-msgstr "Ouvre le lien dans une nouvelle fenêtre"
+msgstr ""
 
 #: models.py:57
 msgid "filer image"
