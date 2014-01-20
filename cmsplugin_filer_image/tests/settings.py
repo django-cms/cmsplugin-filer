@@ -24,6 +24,7 @@ FILER_IS_PUBLIC_DEFAULT = True
 SECRET_KEY = 'abscd'
 STATIC_ROOT = '/static/'
 STATIC_URL = '/static/'
+ROOT_URLCONF = 'cmsplugin_filer_image.tests.urls'
 TEMPLATE_CONTEXT_PROCESSORS = [
     "django.contrib.auth.context_processors.auth",
     'django.contrib.messages.context_processors.messages',
