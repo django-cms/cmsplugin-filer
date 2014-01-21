@@ -244,15 +244,12 @@ class FilerImage(CMSPlugin):
 
     def clean(self):
         # Make sure that either image or image_url is set
-        if not self.image:
+        if not self.has_attached_image():
             raise ValidationError(_('An image must be selected.'))
 
     def __unicode__(self):
-        try:
-            if self.image:
-                return self.image.label
-        except filer.models.Image.DoesNotExist:
-            pass
+        if self.has_attached_image():
+            return self.image.label
         if self.caption or self.alt:
             return unicode(_("Image Publication %(caption)s") % {
                 'caption': self.caption or self.alt})
@@ -260,24 +257,36 @@ class FilerImage(CMSPlugin):
 
     @property
     def caption(self):
-        if self.image:
+        if self.has_attached_image():
             return self.caption_text or self.image.default_caption
         else:
             return self.caption_text
 
     @property
     def credit(self):
-        if self.image:
+        if self.has_attached_image():
             return self.credit_text or self.image.default_credit
         else:
             return self.credit_text
 
     @property
     def alt(self):
-        if self.image:
+        if self.has_attached_image():
             return self.alt_text or self.image.default_alt_text or self.image.label
         else:
             return self.alt_text
+
+    def has_attached_image(self):
+        try:
+            return self.image
+        except filer.models.Image.DoesNotExist:
+            return None
+
+    def has_attached_file_link(self):
+        try:
+            return self.file_link
+        except filer.models.File.DoesNotExist:
+            return None
 
     @property
     def link(self):
@@ -285,7 +294,8 @@ class FilerImage(CMSPlugin):
             return self.free_link
         elif self.link_options == self.OPT_PAGE_LINK:
             return self.page_link.get_absolute_url()
-        elif self.link_options == self.OPT_FILE_LINK and self.file_link:
+        elif (self.link_options == self.OPT_FILE_LINK and
+                self.has_attached_file_link()):
             return self.file_link.url
         elif self.link_options == self.OPT_ORIGINAL_IMG_LINK and self.image:
             return self.image.url

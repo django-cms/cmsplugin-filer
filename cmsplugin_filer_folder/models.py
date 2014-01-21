@@ -24,14 +24,17 @@ class FilerFolder(CMSPlugin):
 
     objects = FilerPluginManager(select_related=('folder',))
 
+    def has_attached_folder(self):
+        try:
+            return self.folder
+        except filer.models.Folder.DoesNotExist:
+            return None
+
     def __unicode__(self):
         if self.title:
             return self.title
-        try:
-            if self.folder and self.folder.name:
-                return self.folder.name
-        except filer.models.Folder.DoesNotExist:
-            pass
+        if self.has_attached_folder():
+            return self.folder.name
         return "<empty>"
 
     search_fields = ('title',)
