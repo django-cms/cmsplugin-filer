@@ -1,9 +1,11 @@
-from django.template.loader import select_template
+from __future__ import unicode_literals
+
 import os
 from cms.plugin_pool import plugin_pool
 from cms.plugin_base import CMSPluginBase
+from django.template.loader import select_template
 from django.utils.translation import ugettext_lazy as _
-import models
+from . import models
 from .conf import settings
 from filer.settings import FILER_STATICMEDIA_PREFIX
 
@@ -124,5 +126,5 @@ class FilerImagePlugin(CMSPluginBase):
                 thumbnail = self.get_thumbnail({'width': 200}, instance)
                 return thumbnail.url
         else:
-            return os.path.normpath(u"%s/icons/missingfile_%sx%s.png" % (FILER_STATICMEDIA_PREFIX, 32, 32,))
+            return os.path.normpath("%s/icons/missingfile_%sx%s.png" % (FILER_STATICMEDIA_PREFIX, 32, 32,))
 plugin_pool.register_plugin(FilerImagePlugin)

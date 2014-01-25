@@ -1,13 +1,17 @@
+from __future__ import unicode_literals
+
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from cms.models import CMSPlugin
 from cms.models.fields import PageField
 from filer.fields.image import FilerImageField
 from filer.fields.file import FilerFileField
+from filer.utils.compatibility import python_2_unicode_compatible
 from cmsplugin_filer_utils import FilerPluginManager
 from .conf import settings
 
 
+@python_2_unicode_compatible
 class FilerImage(CMSPlugin):
     LEFT = "left"
     RIGHT = "right"
@@ -61,11 +65,11 @@ class FilerImage(CMSPlugin):
             raise ValidationError(_('Either an image or an image url must be selected.'))
 
 
-    def __unicode__(self):
+    def __str__(self):
         if self.image:
             return self.image.label
         else:
-            return unicode( _("Image Publication %(caption)s") % {'caption': self.caption or self.alt} )
+            return _("Image Publication %(caption)s") % {'caption': self.caption or self.alt}
         return ''
     @property
     def caption(self):
@@ -96,6 +100,7 @@ class FilerImage(CMSPlugin):
             return ''
 
 
+@python_2_unicode_compatible
 class ThumbnailOption(models.Model):
     """
     This class defines the option use to create the thumbnail.
@@ -111,8 +116,8 @@ class ThumbnailOption(models.Model):
         verbose_name = _("thumbnail option")
         verbose_name_plural = _("thumbnail options")
 
-    def __unicode__(self):
-        return u'%s -- %s x %s' %(self.name, self.width, self.height)
+    def __str__(self):
+        return '%s -- %s x %s' % (self.name, self.width, self.height)
 
     @property
     def as_dict(self):
