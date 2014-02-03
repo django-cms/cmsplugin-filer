@@ -5,12 +5,8 @@ from cmsplugin_filer_file.models import *
 
 class Migration:
 
-    depends_on = (
-        ("filer", "0008_polymorphic__del_field_file__file_type_plugin_name"),
-        )
-
     def forwards(self, orm):
-        
+
         # Adding model 'FilerFile'
         db.create_table('cmsplugin_filerfile', (
             ('cmsplugin_ptr', orm['cmsplugin_filer_file.FilerFile:cmsplugin_ptr']),
@@ -18,16 +14,14 @@ class Migration:
             ('title', orm['cmsplugin_filer_file.FilerFile:title']),
         ))
         db.send_create_signal('cmsplugin_filer_file', ['FilerFile'])
-        
-    
-    
+
+
     def backwards(self, orm):
-        
+
         # Deleting model 'FilerFile'
         db.delete_table('cmsplugin_filerfile')
-        
-    
-    
+
+
     models = {
         'auth.group': {
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -146,5 +140,5 @@ class Migration:
             'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
         }
     }
-    
+
     complete_apps = ['cmsplugin_filer_file']
