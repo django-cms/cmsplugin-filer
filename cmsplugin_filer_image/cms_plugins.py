@@ -42,7 +42,8 @@ class FilerImagePluginForm(forms.ModelForm):
                 'data': json.dumps(formset_divs_cls)
             }
 
-        qs = ThumbnailOption.objects.get_default_options(self.instance.image)
+        qs = ThumbnailOption.objects.get_default_options(
+                self.instance.has_attached_image())
         self.fields['thumbnail_option'].widget.choices.queryset = qs
 
         #This html is appended in the document by popup_helper_image.js.
@@ -149,7 +150,7 @@ class FilerImagePlugin(CMSPluginBase):
             if placeholder_height:
                 height = int(placeholder_height)
 
-        if instance.image:
+        if instance.has_attached_image():
             if instance.image.subject_location:
                 subject_location = instance.image.subject_location
             if not height and width:
@@ -170,7 +171,7 @@ class FilerImagePlugin(CMSPluginBase):
                 'subject_location': subject_location}
 
     def get_thumbnail(self, context, instance):
-        if instance.image:
+        if instance.has_attached_image():
             return instance.image.image.file.get_thumbnail(self._get_thumbnail_options(context, instance))
 
     def _get_default_horiz_space(self, instance, context):
@@ -193,7 +194,7 @@ class FilerImagePlugin(CMSPluginBase):
         # The style set at point 2. is taken into account to keep the consistence with all other plugins.
         text_plg_style = context.get("inherited_from_parent", {}).get("style", "")
         style = text_plg_style + instance.style
-        
+
         context.update({
             'instance': instance,
             'style': style,
@@ -206,7 +207,7 @@ class FilerImagePlugin(CMSPluginBase):
         return context
 
     def icon_src(self, instance):
-        if instance.image:
+        if instance.has_attached_image():
             if getattr(settings, 'FILER_IMAGE_USE_ICON', False) and '32' in instance.image.icons:
                 return instance.image.icons['32']
             else:

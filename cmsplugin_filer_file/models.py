@@ -25,16 +25,26 @@ class FilerFile(CMSPlugin):
 
     objects = FilerPluginManager(select_related=('file',))
 
+    def has_attached_file(self):
+        try:
+            return self.file
+        except filer.models.File.DoesNotExist:
+            return None
+
     def get_icon_url(self):
-        return self.file.icons['32'] if self.file else None
+        return self.file.icons['32'] if self.has_attached_file() else None
 
     def get_adjusted_icon_url(self):
         return self.get_icon_url().replace(settings.STATIC_URL, "", 1)
 
     def file_exists(self):
+        if not self.has_attached_file():
+            return False
         return self.file.file.storage.exists(self.file.file.name)
 
     def get_file_name(self):
+        if not self.has_attached_file():
+            return ''
         if self.file.name in ('', None):
             name = u"%s" % (self.file.original_filename,)
         else:
@@ -47,11 +57,8 @@ class FilerFile(CMSPlugin):
     def __unicode__(self):
         if self.title:
             return self.title
-        try:
-            if self.file:
-                return self.get_file_name()
-        except filer.models.File.DoesNotExist:
-            pass
+        if self.has_attached_file():
+            return self.get_file_name()
         return "<empty>"
 
     search_fields = ('title',)

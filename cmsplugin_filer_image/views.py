@@ -19,7 +19,7 @@ def fetch_image_metadata(request):
     file_id = request.GET.get('id')
     try:
         file = Image.objects.get(pk=file_id)
-    except File.DoesNotExist:
+    except Image.DoesNotExist:
         file = None
 
     widget = Select()
