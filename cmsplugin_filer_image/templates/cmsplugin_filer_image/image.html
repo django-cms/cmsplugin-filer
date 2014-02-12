@@ -15,14 +15,14 @@
 {% if link %}<a href="{{ link }}"{% if instance.target_blank %} target="_blank"{% endif %} class="filer_image_link">{% endif %}
 {% if instance.image %}
 	{% if instance.use_original_image %}
-		<img class="filer_image {% if instance.alignment %}{{ instance.alignment }}{% endif %}" alt="{% if instance.alt %}{{ instance.alt }}{% endif %}" src="{{ instance.image.url }}"{% if instance.width %} width="{{ instance.width }}"{% endif %}{% if instance.height %} height="{{ instance.height }}"{% endif %}{% if instance.caption %} title="{{ instance.caption }}"{% endif %} />
+		<img class="filer_image {% if instance.alignment %}{{ instance.alignment }}{% endif %}"{% if instance.style %} style="{{ instance.style }}"{% endif %} alt="{% if instance.alt %}{{ instance.alt }}{% endif %}" src="{{ instance.image.url }}"{% if instance.width %} width="{{ instance.width }}"{% endif %}{% if instance.height %} height="{{ instance.height }}"{% endif %}{% if instance.caption %} title="{{ instance.caption }}"{% endif %} />
 	{% else %}
 		{% thumbnail instance.image size crop=opts.crop upscale=opts.upscale subject_location=opts.subject_location as thumbnail %}
-		<img class="filer_image {% if instance.alignment %}{{ instance.alignment }}{% endif %}" alt="{% if instance.alt %}{{ instance.alt }}{% endif %}" src="{{ thumbnail.url }}"{% if instance.width %} width="{{ instance.width }}"{% endif %}{% if instance.height %} height="{{ instance.height }}"{% endif %}{% if instance.caption %} title="{{ instance.caption }}"{% endif %} />
+		<img class="filer_image {% if instance.alignment %}{{ instance.alignment }}{% endif %}"{% if instance.style %} style="{{ instance.style }}"{% endif %} alt="{% if instance.alt %}{{ instance.alt }}{% endif %}" src="{{ thumbnail.url }}"{% if instance.width %} width="{{ instance.width }}"{% endif %}{% if instance.height %} height="{{ instance.height }}"{% endif %}{% if instance.caption %} title="{{ instance.caption }}"{% endif %} />
 	{% endif %}
 {% else %}
 	{# just a plain link to some external image #}
-	<img class="filer_image {% if instance.alignment %}{{ instance.alignment }}{% endif %}" alt="{% if instance.alt %}{{ instance.alt }}{% endif %}" src="{{ instance.image_url }}"{% if size.0 %} width="{{ size.0 }}"{% endif %}{% if size.1 %} height="{{ size.1 }}"{% endif %}{% if instance.caption %} title="{{ instance.caption }}"{% endif %} />
+	<img class="filer_image {% if instance.alignment %}{{ instance.alignment }}{% endif %}"{% if instance.style %} style="{{ instance.style }}"{% endif %} alt="{% if instance.alt %}{{ instance.alt }}{% endif %}" src="{{ instance.image_url }}"{% if size.0 %} width="{{ size.0 }}"{% endif %}{% if size.1 %} height="{{ size.1 }}"{% endif %}{% if instance.caption %} title="{{ instance.caption }}"{% endif %} />
 {% endif %}
 {% if instance.caption or instance.description %}
 	<span class="filer_image_info">
