@@ -43,9 +43,9 @@
     };
 
     function fixMetadata(alt, caption, credit) {
-    	$('#id_alt_text').val(alt != 'None' ? alt : '');
-    	$('#id_caption_text').val(caption != 'None' ? caption : '');
-    	$('#id_credit_text').val(credit != 'None' ? credit : '');
+    	$('#id_alt_text').val(alt ? alt : '');
+    	$('#id_caption_text').val(caption ? caption : '');
+    	$('#id_credit_text').val(credit ? credit : '');
     }
 
     function fixThumbnailOptionsHeight(image_width, image_height){
