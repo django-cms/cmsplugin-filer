@@ -17,28 +17,24 @@
        (alt, caption, credit, width and height).
      */
     dismissRelatedImageLookupPopupOverriden = function(win, chosenId, chosenThumbnailUrl, chosenDescriptionTxt) {
-    	var name = windowname_to_id(win.name);
-    	var imgChanged = (document.getElementById(name).value != chosenId);
     	super_dismissRelated(win, chosenId, chosenThumbnailUrl, chosenDescriptionTxt);
-    	if (imgChanged) {
-    		$.ajax({url: '/cmsplugin_filer_image/fetch_image_metadata',
-    			data: {id : chosenId},
-    			beforeSend : function (xhr, settings) {
-    				$('#filerimage_form div.form-row.field-image').after('<div class="form-row temp-text-fetch-meta"><p class="help">Fetching metadata ... </p></div>');
-    			},
-    			success : function (data) {
-    				if (data) {
-    					fixMetadata(data.alt, data.caption, data.credit);
-    					$('#id_thumbnail_option').html(data.options);
-    					fixThumbnailOptionsHeight(data.width, data.height);
-    					$('#filerimage_form div.form-row.temp-text-fetch-meta').remove();
-    				}
-    			},
-    			error: function(xhr){
-    				$('#filerimage_form div.form-row.temp-text-fetch-meta').remove();
-    			},
-    		});
-    	}
+   		$.ajax({url: '/cmsplugin_filer_image/fetch_image_metadata',
+   			data: {id : chosenId},
+   			beforeSend : function (xhr, settings) {
+   				$('#filerimage_form div.form-row.field-image').after('<div class="form-row temp-text-fetch-meta"><p class="help">Fetching metadata ... </p></div>');
+   			},
+   			success : function (data) {
+   				if (data) {
+   					fixMetadata(data.alt, data.caption, data.credit);
+   					$('#id_thumbnail_option').html(data.options);
+   					fixThumbnailOptionsHeight(data.width, data.height);
+   					$('#filerimage_form div.form-row.temp-text-fetch-meta').remove();
+   				}
+   			},
+   			error: function(xhr){
+   				$('#filerimage_form div.form-row.temp-text-fetch-meta').remove();
+   			},
+   		});
     	return false;
     };
 
