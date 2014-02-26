@@ -8,6 +8,7 @@ from filer.fields.file import FilerFileField
 from cmsplugin_filer_utils import FilerPluginManager
 from distutils.version import LooseVersion
 from django.core.exceptions import ValidationError
+from django.contrib.sites.models import Site
 import filer
 
 
@@ -293,6 +294,10 @@ class FilerImage(CMSPlugin):
         if self.link_options == self.OPT_ADD_LINK:
             return self.free_link
         elif self.link_options == self.OPT_PAGE_LINK:
+            current_site = Site.objects.get_current()
+            if current_site.pk != self.page_link.site.pk:
+                return 'http://%s%s' % (self.page_link.site.domain,
+                                        self.page_link.get_absolute_url())
             return self.page_link.get_absolute_url()
         elif (self.link_options == self.OPT_FILE_LINK and
                 self.has_attached_file_link()):
