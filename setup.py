@@ -5,8 +5,8 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 dependency_links = [
-    'http://github.com/pbs/django-cms/tarball/support/2.3.x#egg=django-cms-2.3.5pbs',
-    'http://github.com/pbs/django-filer/tarball/master_pbs#egg=django-filer-0.9pbs',
+    'http://github.com/pbs/django-cms/tarball/support/2.3.x#egg=django-cms-2.3.5pbs.dev',
+    'http://github.com/pbs/django-filer/tarball/master_pbs#egg=django-filer-0.9pbs.dev',
 ]
 
 setup(
