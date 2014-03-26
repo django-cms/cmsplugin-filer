@@ -20,3 +20,4 @@ pep8.txt
 .tox
 pytest-results.xml
 full.log
+*.pyo

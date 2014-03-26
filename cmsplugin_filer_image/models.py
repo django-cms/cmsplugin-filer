@@ -3,6 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from cms.models import CMSPlugin
 from cms.models.fields import PageField
+from cms.models.pagemodel import Page
 from filer.fields.image import FilerImageField
 from filer.fields.file import FilerFileField
 from cmsplugin_filer_utils import FilerPluginManager
@@ -186,7 +187,7 @@ class FilerImage(CMSPlugin):
         null=True, help_text=_("if present image will be clickable"))
     target_blank = models.BooleanField(
         _('Open link in new window'), default=False)
-    page_link = PageField(
+    page_link = models.ForeignKey(Page,
         null=True,  blank=True,
         help_text=_("if present image will be clickable"),
         verbose_name=_("page link"))
