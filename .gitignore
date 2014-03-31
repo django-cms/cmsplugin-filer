@@ -19,5 +19,4 @@ pep8.txt
 .idea
 .tox
 pytest-results.xml
-full.log
 *.pyo
