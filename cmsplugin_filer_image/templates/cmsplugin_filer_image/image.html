@@ -1,33 +1,49 @@
 {% load thumbnail filer_tags filer_image_tags sekizai_tags %}{% spaceless %}
 {% addtoblock "css" %}<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}cmsplugin_filer_image/css/filer_image.css" media="screen, projection" />{% endaddtoblock "css" %}
 
-{% if instance.image %}
+{% with d1='0123456789'|make_list|random d2='0123456789'|make_list|random d3='0123456789'|make_list|random d4='0123456789'|make_list|random %}
+  {% with rnd='imagePlugin_'|add:d1|add:d2|add:d3|add:d4 %}
 
-  {% thumbnail instance.image size crop=opts.crop upscale=opts.upscale subject_location=opts.subject_location as thumbnail %}
-  <span class="filer_image_container" style="display:block;max-width:100%;width:{{ thumbnail.width }}px;{{ style }}{% if not instance.maintain_aspect_ratio and size.1 and size.0 %}  width:{{ size.0}}px;{% endif %}">
-        {% if link %}<a style="display:block;max-width:100%;width:{{ thumbnail.width }}px;" href="{{ link }}"{% if instance.target_blank %} target="_blank"{% endif %}>{% endif %}
-        <img class="filer_image" style="display:block;max-width:100%;width:{{ thumbnail.width }}px;{% if instance.show_caption or instance.show_credit %}margin-bottom:0;{% endif %}{% if not instance.maintain_aspect_ratio and size.1 and size.0 %}height:{{ size.1}}px;width:{{ size.0}}px;{% endif %}"
-            alt="{{ instance.alt }}"
-            {% if instance.show_caption %} title="{{ instance.caption }}"{% endif %}
-            src="{{ thumbnail.url }}"
-            {% if thumbnail.width %} width="{{ thumbnail.width }}"{% endif %}
-            {% if thumbnail.height %} height="{{ thumbnail.height }}"{% endif %}
-            />
-       {% if instance.show_caption or instance.show_credit %}
-       <span class="img-details" style="display:block;max-width:100%;width:{{ thumbnail.width }}px;{% if not instance.maintain_aspect_ratio and size.1 and size.0 %}width:{{ size.0}}px;{% endif %}">
-           {% if instance.show_caption %}
-               {% if thumbnail.width > 200 %}
-               <span class="img-caption" >{{ instance.caption }}</span>
-               {% endif %}
-           {% endif %}
-           {% if instance.show_credit %}
-                <span class="img-credit" >{{ instance.credit }}</span>
-           {% endif %}
-       </span>
-       {% endif %}
-      {% if link %}</a>{% endif %}
+    {% if link and instance.enable_event_tracking and instance.event_category and instance.event_action %}
+      {% addtoblock "js" %}
+        <script type="text/javascript">
+            (function($){
+              $(document).ready(function(){
+                $("#{{rnd}} .image-link").off('click').click(function(){_gaq.push(['_trackEvent', '{{instance.event_category}}', '{{instance.event_action}}', '{% if instance.event_label %}{{instance.event_label}}{% endif %}'])})
+              });
+            })(jQuery)
+        </script>
+      {% endaddtoblock %}
+    {% endif %}
 
-</span>
-{% endif %}
+  {% if instance.image %}
+    {% thumbnail instance.image size crop=opts.crop upscale=opts.upscale subject_location=opts.subject_location as thumbnail %}
+    <span id="{{rnd}}" class="filer_image_container" style="display:block;max-width:100%;width:{{ thumbnail.width }}px;{{ style }}{% if not instance.maintain_aspect_ratio and size.1 and size.0 %}  width:{{ size.0}}px;{% endif %}">
 
+          {% if link %}<a class="image-link" style="display:block;max-width:100%;width:{{ thumbnail.width }}px;" href="{{ link }}"{% if instance.target_blank %} target="_blank"{% endif %}>{% endif %}
+          <img class="filer_image" style="display:block;max-width:100%;width:{{ thumbnail.width }}px;{% if instance.show_caption or instance.show_credit %}margin-bottom:0;{% endif %}{% if not instance.maintain_aspect_ratio and size.1 and size.0 %}height:{{ size.1}}px;width:{{ size.0}}px;{% endif %}"
+              alt="{{ instance.alt }}"
+              {% if instance.show_caption %} title="{{ instance.caption }}"{% endif %}
+              src="{{ thumbnail.url }}"
+              {% if thumbnail.width %} width="{{ thumbnail.width }}"{% endif %}
+              {% if thumbnail.height %} height="{{ thumbnail.height }}"{% endif %}
+              />
+         {% if instance.show_caption or instance.show_credit %}
+         <span class="img-details" style="display:block;max-width:100%;width:{{ thumbnail.width }}px;{% if not instance.maintain_aspect_ratio and size.1 and size.0 %}width:{{ size.0}}px;{% endif %}">
+             {% if instance.show_caption %}
+                 {% if thumbnail.width > 200 %}
+                 <span class="img-caption" >{{ instance.caption }}</span>
+                 {% endif %}
+             {% endif %}
+             {% if instance.show_credit %}
+                  <span class="img-credit" >{{ instance.credit }}</span>
+             {% endif %}
+         </span>
+         {% endif %}
+        {% if link %}</a>{% endif %}
+
+  </span>
+  {% endif %}
+  {% endwith %}
+{% endwith %}
 {% endspaceless %}

@@ -76,6 +76,24 @@ class FilerImagePluginForm(forms.ModelForm):
             raise ValidationError('File link is required!')
         return self.cleaned_data['file_link']
 
+    def clean_event_category(self):
+        enable_event_tracking = self.cleaned_data['enable_event_tracking']
+        link_options = self.cleaned_data['link_options']
+        if (enable_event_tracking and
+            link_options != self.instance.OPT_NO_LINK and
+            not self.cleaned_data.get('event_category', None)):
+            raise ValidationError('Event category is required!')
+        return self.cleaned_data['event_category']
+
+    def clean_event_action(self):
+        enable_event_tracking = self.cleaned_data['enable_event_tracking']
+        link_options = self.cleaned_data['link_options']
+        if (enable_event_tracking and
+            link_options != self.instance.OPT_NO_LINK and
+            not self.cleaned_data.get('event_action', None)):
+            raise ValidationError('Event action is required!')
+        return self.cleaned_data['event_action']
+
 
 class FilerImagePlugin(CMSPluginBase):
     form = FilerImagePluginForm
@@ -107,6 +125,10 @@ class FilerImagePlugin(CMSPluginBase):
                 ('width', 'height', 'crop', 'maintain_aspect_ratio'),
                 ('vertical_space', 'horizontal_space',),
                 'border',
+                'enable_event_tracking',
+                'event_category',
+                'event_action',
+                'event_label',
             )
         }),
     )
@@ -116,7 +138,18 @@ class FilerImagePlugin(CMSPluginBase):
               "admin/js/link_options.js",
               "admin/js/advanced_panel_text_additions.js",
               "admin/js/caption_formatting.js",
-              "admin/js/popup_helper_image.js")
+              "admin/js/popup_helper_image.js",
+              # from this point on jQuery (version 1.4.2) is available as
+              # jQuery142 and jQuery will be upgraded to v1.11.0
+              "admin/js/jquery-no-conflict.js",
+              # jQuery must be upgraded for jQuery toggles plugin
+              "admin/js/jquery-1.11.0.min.js",
+              "admin/js/toggles.min.js",
+              "admin/js/event_tracking.js",)
+        css = {
+            'all': ("admin/css/filer_image_form.css",
+                    "admin/css/toggles-modern.css",)
+            }
 
     def _get_thumbnail_options(self, context, instance):
         """

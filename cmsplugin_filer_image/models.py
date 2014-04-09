@@ -217,6 +217,16 @@ class FilerImage(CMSPlugin):
         help_text=_("Add a black border around the image; the input is the pixel width of the line; there is no line if left blank.")
     )
 
+    ## Event tracking
+    enable_event_tracking = models.BooleanField(
+        _("Enable event tracking"), default=False)
+    event_category = models.CharField(
+        _("Event category"), null=True, blank=True, max_length=30)
+    event_action = models.CharField(
+        _("Event action"), null=True, blank=True, max_length=30)
+    event_label = models.CharField(
+        _("Event label"), null=True, blank=True, max_length=30)
+
     ## Deprecated fields. kept for backward compatibility
     ## to be removed at some point in time
     upscale = models.BooleanField(_("upscale"), default=True)

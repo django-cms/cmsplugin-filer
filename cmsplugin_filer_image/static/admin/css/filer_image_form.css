@@ -1,0 +1,29 @@
+form .field-enable_event_tracking p{
+    margin-left: 0.5em;
+    margin-bottom: 15px;
+}
+
+.field-event_category,
+.field-event_action,
+.field-event_label{
+    display: none;
+}
+
+.collapsed .field-event_category,
+.collapsed .field-event_action,
+.collapsed .field-event_label{
+    display: none !important;
+}
+
+.field-enable_event_tracking .toggle{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+label[for="id_enable_event_tracking"],
+label[for="id_event_category"],
+label[for="id_event_action"],
+label[for="id_event_label"]{
+    min-width: 150px;
+    display: inline-block !important;
+}
