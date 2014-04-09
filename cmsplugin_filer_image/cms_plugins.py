@@ -139,10 +139,10 @@ class FilerImagePlugin(CMSPluginBase):
               "admin/js/advanced_panel_text_additions.js",
               "admin/js/caption_formatting.js",
               "admin/js/popup_helper_image.js",
-              # from this point on jQuery (version 1.4.2) is available as
+              # From this point on jQuery (version 1.4.2) is available as
               # jQuery142 and jQuery will be upgraded to v1.11.0
-              "admin/js/jquery-no-conflict.js",
               # jQuery must be upgraded for jQuery toggles plugin
+              "admin/js/jquery-no-conflict.js",
               "admin/js/jquery-1.11.0.min.js",
               "admin/js/toggles.min.js",
               "admin/js/event_tracking.js",)
