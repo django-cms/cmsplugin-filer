@@ -1,6 +1,15 @@
 CHANGELOG
 =========
 
+Revision 5f69b25 (23.04.2014, 07:15 UTC)
+----------------------------------------
+
+No new issues.
+
+* Misc commits
+
+  * Bump version as instructed by bamboo
+
 Revision d1118a8 (17.04.2014, 15:55 UTC)
 ----------------------------------------
 
