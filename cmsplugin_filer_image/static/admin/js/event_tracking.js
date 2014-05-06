@@ -37,7 +37,7 @@
 
         $('#filerimage_form').on('submit', function(){
             //turn off event tracking if the image is not clickable
-            if($('#id_link_options option[selected="selected"]').text() === "No link"){
+            if($('#id_link_options option:selected').text() === "No link"){
                 $('#id_enable_event_tracking').prop('checked', false);
             }
         });
