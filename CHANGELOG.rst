@@ -1,6 +1,19 @@
 CHANGELOG
 =========
 
+Revision fc7fef7 (06.05.2014, 15:15 UTC)
+----------------------------------------
+
+* LUN-1548
+
+  * : fix image event tracking not saving the first time
+
+* LUN-1549
+
+  * : update GA event tracking help text in admin
+
+No other commits.
+
 Revision 5f69b25 (23.04.2014, 07:15 UTC)
 ----------------------------------------
 
