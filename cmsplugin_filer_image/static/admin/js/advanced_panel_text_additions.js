@@ -7,6 +7,6 @@
 
         $('#filerimage_form #id_enable_event_tracking')
         .parent()
-        .before('<h1>Event Tracking Options</h1><p>This section allows you to enable event tracking for this image. You must select labels for event category and event action; event labels are optional. Events are reported into your Google Analytics account. Please visit <a href="https://support.google.com/analytics/answer/1033068?hl=en&ref_topic=1033067">support.google.com/analytics</a> for more information on event tracking.</p>');
+        .before('<h1>Event Tracking Options</h1><p>This section allows you to enable Google Analytics event tracking for images linked to other pages. You must select labels for event category and event action; event labels are optional. These events will be reported to the Google Analytics account you are using to track this site. You must have Google Analytics applied to this site for this feature to work. Please visit <a href="https://support.google.com/analytics/answer/1033068?hl=en&ref_topic=1033067">support.google.com/analytics</a> for more information on event tracking.</p>');
     });
 }(jQuery));
