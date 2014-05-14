@@ -6,12 +6,8 @@ from django.db import models
 
 class Migration(SchemaMigration):
 
-    depends_on = (
-        ("filer", "0008_polymorphic__del_field_file__file_type_plugin_name"),
-        )
-
     def forwards(self, orm):
-        
+
         # Adding model 'FilerLinkPlugin'
         db.create_table('cmsplugin_filerlinkplugin', (
             ('cmsplugin_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['cms.CMSPlugin'], unique=True, primary_key=True)),
@@ -27,7 +23,7 @@ class Migration(SchemaMigration):
 
 
     def backwards(self, orm):
-        
+
         # Deleting model 'FilerLinkPlugin'
         db.delete_table('cmsplugin_filerlinkplugin')
 
