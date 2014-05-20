@@ -308,7 +308,8 @@ class FilerImage(CMSPlugin):
         elif (self.link_options == self.OPT_FILE_LINK and
                 self.has_attached_file_link()):
             return self.file_link.url
-        elif self.link_options == self.OPT_ORIGINAL_IMG_LINK and self.image:
+        elif (self.link_options == self.OPT_ORIGINAL_IMG_LINK and
+                self.has_attached_image()):
             return self.image.url
         else:
             return ''
