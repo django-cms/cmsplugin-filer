@@ -12,8 +12,8 @@ from django.core.exceptions import ValidationError
 from cmsplugin_filer_image.models import ThumbnailOption
 from django.db.models.query import EmptyQuerySet
 
-from filer.settings import FILER_STATICMEDIA_PREFIX
-
+from filer.settings import FILER_STATICMEDIA_PREFIX as static_prefix
+from easy_thumbnails.exceptions import EasyThumbnailsError
 try:
     import json
 except:
@@ -205,7 +205,9 @@ class FilerImagePlugin(CMSPluginBase):
 
     def get_thumbnail(self, context, instance):
         if instance.has_attached_image():
-            return instance.image.image.file.get_thumbnail(self._get_thumbnail_options(context, instance))
+            filer_file_field = instance.image.image.file
+            thumbnail_options = self._get_thumbnail_options(context, instance)
+            return filer_file_field.get_thumbnail(thumbnail_options)
 
     def _get_default_horiz_space(self, instance, context):
         if ("inherited_from_parent" in context and
@@ -240,16 +242,20 @@ class FilerImagePlugin(CMSPluginBase):
         return context
 
     def icon_src(self, instance):
+        missingfile_icon = os.path.normpath(
+            u"%s/icons/missingfile_%sx%s.png" % (static_prefix, 32, 32,))
         if instance.has_attached_image():
-            if getattr(settings, 'FILER_IMAGE_USE_ICON', False) and '32' in instance.image.icons:
-                return instance.image.icons['32']
+            if getattr(settings, 'FILER_IMAGE_USE_ICON', False):
+                return instance.image.icons.get('32', missingfile_icon)
             else:
                 # Fake the context with a reasonable width value because it is not
                 # available at this stage
-                thumbnail = self.get_thumbnail({'width':200}, instance)
-                return thumbnail.url
-        else:
-            return os.path.normpath(u"%s/icons/missingfile_%sx%s.png" % (FILER_STATICMEDIA_PREFIX, 32, 32,))
+                try:
+                    thumbnail = self.get_thumbnail({'width':200}, instance)
+                except EasyThumbnailsError:
+                    thumbnail = None
+                return thumbnail.url if thumbnail else missingfile_icon
+        return missingfile_icon
 
 
 plugin_pool.register_plugin(FilerImagePlugin)
