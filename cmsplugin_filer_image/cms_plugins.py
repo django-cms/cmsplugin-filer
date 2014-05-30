@@ -247,7 +247,7 @@ class FilerImagePlugin(CMSPluginBase):
         if instance.has_attached_image():
             if getattr(settings, 'FILER_IMAGE_USE_ICON', False):
                 return instance.image.icons.get('32', missingfile_icon)
-            else:
+            elif instance.image.width and instance.image.height:
                 # Fake the context with a reasonable width value because it is not
                 # available at this stage
                 try:
