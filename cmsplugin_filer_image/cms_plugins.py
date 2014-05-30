@@ -3,21 +3,27 @@ from cms.plugin_pool import plugin_pool
 from cms.plugin_base import CMSPluginBase
 from django.utils.translation import ugettext_lazy as _
 import models
-from django.conf import settings
-
+from .conf import settings
 from filer.settings import FILER_STATICMEDIA_PREFIX
+
 
 class FilerImagePlugin(CMSPluginBase):
     module = 'Filer'
     model = models.FilerImage
     name = _("Image")
-    render_template = "cmsplugin_filer_image/image.html"
+    TEMPLATE_NAME = 'cmsplugin_filer_image/plugins/image/%s.html'
+    render_template = TEMPLATE_NAME % models.FilerImage.STYLE_CHOICES[0][0]
     text_enabled = True
     raw_id_fields = ('image', 'page_link')
     admin_preview = False
     fieldsets = (
         (None, {
-            'fields': ('caption_text', ('image', 'image_url',), 'alt_text',)
+            'fields': (
+                'caption_text',
+                ('image', 'image_url',),
+                'alt_text',
+                'style',
+            )
         }),
         (_('Image resizing options'), {
             'fields': (
@@ -91,12 +97,14 @@ class FilerImagePlugin(CMSPluginBase):
             return instance.image.image.file.get_thumbnail(self._get_thumbnail_options(context, instance))
 
     def render(self, context, instance, placeholder):
+        if instance.style:
+            self.render_template = self.TEMPLATE_NAME % instance.style
         options = self._get_thumbnail_options(context, instance)
         context.update({
             'instance': instance,
             'link': instance.link,
             'opts': options,
-            'size': options.get('size',None),
+            'size': options.get('size', None),
             'placeholder': placeholder
         })
         return context
