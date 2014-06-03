@@ -67,3 +67,23 @@ Add this setting to enable it::
 
 This allows dragging images into the text editor in Firefox and newer versions of IE.
 
+
+Customisation
+-------------
+
+Most plugins (file, folder, image and teaser) support configuring custom "styles" (templates).
+
+e.g add the following settings for the image plugin::
+
+    CMSPLUGIN_FILER_IMAGE_STYLE_CHOICES = (
+        ('default', 'Default'),
+        ('boxed', 'Boxed'),
+    )
+    CMSPLUGIN_FILER_IMAGE_DEFAUL_STYLE = 'boxed'
+
+Now, if a template exists at ``cmsplugin_filer_image/plugins/image/boxed.html`` it will be used. If not, it will fall
+back to ``cmsplugin_filer_image/plugins/image/default.html``. If a css class in the default template is enough, it can
+be used in the template as ``{{ instance.style }}``.
+
+For backwards compatibility the plugin will always use ``cmsplugin_filer_image/image.html`` if it exists. Remove that
+template after migrating to the new structure.
