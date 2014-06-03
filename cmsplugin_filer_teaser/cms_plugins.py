@@ -1,8 +1,9 @@
 from cms.plugin_pool import plugin_pool
 from cms.plugin_base import CMSPluginBase
 from django.utils.translation import ugettext_lazy as _
-import models
-from django.conf import settings
+from django.template.loader import select_template
+from . import models
+from .conf import settings
 
 
 class FilerTeaserPlugin(CMSPluginBase):
@@ -13,7 +14,28 @@ class FilerTeaserPlugin(CMSPluginBase):
     module = 'Filer'
     model = models.FilerTeaser
     name = _("Teaser")
-    render_template = "cmsplugin_filer_teaser/teaser.html"
+    TEMPLATE_NAME = 'cmsplugin_filer_teaser/plugins/teaser/%s.html'
+    render_template = TEMPLATE_NAME % 'default'
+
+    fieldsets = (
+        (None, {'fields': [
+            'title',
+            'image',
+            'image_url',
+        ]}),
+        (_('More'), {
+            'classes': ('collapse',),
+            'fields': [
+                'use_autoscale',
+                ('width', 'height'),
+                'free_link',
+                'page_link',
+                'target_blank'
+            ]
+        })
+    )
+    if settings.CMSPLUGIN_FILER_TEASER_STYLE_CHOICES:
+        fieldsets[0][1]['fields'].append('style')
 
     def _get_thumbnail_options(self, context, instance):
         """
@@ -55,12 +77,17 @@ class FilerTeaserPlugin(CMSPluginBase):
             return instance.image.image.file.get_thumbnail(self._get_thumbnail_options(context, instance))
 
     def render(self, context, instance, placeholder):
+        self.render_template = select_template((
+            'cmsplugin_filer_teaser/plugins/teaser.html',  # backwards compatibility. deprecated!
+            self.TEMPLATE_NAME % instance.style,
+            self.TEMPLATE_NAME % 'default')
+        )
         options = self._get_thumbnail_options(context, instance)
         context.update({
             'instance': instance,
             'link': instance.link,
             'opts': options,
-            'size': options.get('size',None),
+            'size': options.get('size', None),
             'placeholder': placeholder
         })
         return context

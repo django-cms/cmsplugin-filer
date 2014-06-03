@@ -7,6 +7,7 @@ from filer.fields.image import FilerImageField
 from filer.fields.file import FilerFileField
 from cmsplugin_filer_utils import FilerPluginManager
 from distutils.version import LooseVersion
+from .conf import settings
 
 
 class FilerImage(CMSPlugin):
@@ -15,6 +16,10 @@ class FilerImage(CMSPlugin):
     FLOAT_CHOICES = ((LEFT, _("left")),
                      (RIGHT, _("right")),
                      )
+    STYLE_CHOICES = settings.CMSPLUGIN_FILER_IMAGE_STYLE_CHOICES
+    DEFAULT_STYLE = settings.CMSPLUGIN_FILER_IMAGE_DEFAULT_STYLE
+    style = models.CharField(
+        _('Style'), choices=STYLE_CHOICES, default=DEFAULT_STYLE, max_length=50, blank=True)
     caption_text = models.CharField(_("caption text"), null=True, blank=True, max_length=255)
     image = FilerImageField(null=True, blank=True, default=None, verbose_name=_("image"))
     if LooseVersion(django.get_version()) < LooseVersion('1.5'):

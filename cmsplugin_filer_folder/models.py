@@ -1,13 +1,11 @@
-from django.utils.translation import ugettext_lazy as _
+import warnings
 from django.db import models
-from cms.models import CMSPlugin, Page
+from cms.models import CMSPlugin
 from django.utils.translation import ugettext_lazy as _
-from posixpath import join, basename, splitext, exists
 from filer.fields.folder import FilerFolderField
-from django.conf import settings
+from .conf import settings
 from cmsplugin_filer_utils import FilerPluginManager
 
-VIEW_OPTIONS = getattr(settings, 'CMSPLUGIN_FILER_FOLDER_VIEW_OPTIONS', (("list", _("List")),("slideshow",_("Slideshow"))))
 
 class FilerFolder(CMSPlugin):
     """
@@ -15,12 +13,20 @@ class FilerFolder(CMSPlugin):
     
     Default template displays files store inside this folder.
     """
+    STYLE_CHOICES = settings.CMSPLUGIN_FILER_FOLDER_STYLE_CHOICES
+    DEFAULT_STYLE = settings.CMSPLUGIN_FILER_FOLDER_DEFAULT_STYLE
     title = models.CharField(_("title"), max_length=255, null=True, blank=True)
-    view_option = models.CharField(_("view option"),max_length=10,
-                            choices=VIEW_OPTIONS, default="list")
     folder = FilerFolderField()
+    style = models.CharField(
+        _('Style'), choices=STYLE_CHOICES, default=DEFAULT_STYLE, max_length=50)
 
     objects = FilerPluginManager(select_related=('folder',))
+
+    @property
+    def view_option(self):
+        warnings.warn("view_option on cmsplugin_filer_folder.FilderFolder is deprecated. Use .style instead.",
+                      DeprecationWarning)
+        return self.style
         
     def __unicode__(self):
         if self.title: 

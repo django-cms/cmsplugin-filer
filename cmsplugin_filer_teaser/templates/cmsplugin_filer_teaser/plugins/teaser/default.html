@@ -1,0 +1,18 @@
+{% load i18n thumbnail %}
+<div{% if instance.style %} class="{{ instance.style }}"{% endif %}>
+<h2>{{ instance.title }}</h2>
+{% if instance.image or instance.image_url %}
+	{% if link %}<a href="{{ link }}"{% if obj.target_blank %} target="_blank"{% endif %}>{% endif %}
+		{% if instance.image_url %}
+			<img alt="{% if instance.alt %}{{ instance.alt }}{% endif %}" src="{{ instance.image_url }}"{% if instance.width or instance.height %} style="{% if instance.width %}width:{{ instance.width }}px;{% endif %}{% if instance.height %}height:{{ instance.height }}px;{% endif %}"{% endif %} />
+		{% else %}
+			{% thumbnail instance.image size crop upscale subject_location=opts.subject_location as thumbnail %}
+			<img alt="{% if instance.alt %}{{ instance.alt }}{% endif %}" src="{{ thumbnail.url }}" />
+		{% endif %}
+	{% if link %}</a>{% endif %}
+{% endif %}
+{% if instance.description %}
+<p>{{ instance.description }}</p>
+{% endif %}
+{% if link %}<a href="{{ link }}"{% if obj.target_blank %} target="_blank"{% endif %}>{% trans "more" %} &#187;</a>{% endif %}
+</div>

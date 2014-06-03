@@ -4,17 +4,17 @@ from django.db import models
 from cms.models import CMSPlugin
 from cms.models.fields import PageField
 from filer.fields.image import FilerImageField
-from django.conf import settings
+from .conf import settings
 from distutils.version import LooseVersion
-
 from cmsplugin_filer_utils import FilerPluginManager
 
-CMSPLUGIN_FILER_TEASER_STYLE_CHOICES = getattr( settings, 'CMSPLUGIN_FILER_TEASER_STYLE_CHOICES',() )
 
 class FilerTeaser(CMSPlugin):
     """
     A Teaser
     """
+    STYLE_CHOICES = settings.CMSPLUGIN_FILER_TEASER_STYLE_CHOICES
+    DEFAULT_STYLE = settings.CMSPLUGIN_FILER_TEASER_DEFAULT_STYLE
     title = models.CharField(_("title"), max_length=255, blank=True)
     image = FilerImageField(blank=True, null=True, verbose_name=_("image"))
     if LooseVersion(django.get_version()) < LooseVersion('1.5'):
@@ -22,7 +22,8 @@ class FilerTeaser(CMSPlugin):
     else:
         image_url = models.URLField(_("alternative image url"), null=True, blank=True, default=None)
     
-    style = models.CharField(_("teaser style"), max_length=255, null=True, blank=True, choices=CMSPLUGIN_FILER_TEASER_STYLE_CHOICES)
+    style = models.CharField(
+        _('Style'), choices=STYLE_CHOICES, default=DEFAULT_STYLE, max_length=255, blank=True)
     
     use_autoscale = models.BooleanField(_("use automatic scaling"), default=True, 
                                         help_text=_('tries to auto scale the image based on the placeholder context'))

@@ -2,8 +2,8 @@ from cms.models import CMSPlugin
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from filer.fields.file import FilerFileField
-
 from cmsplugin_filer_utils import FilerPluginManager
+from .conf import settings
 
 
 class FilerFile(CMSPlugin):
@@ -17,9 +17,13 @@ class FilerFile(CMSPlugin):
 
     The icon search is currently performed within get_icon_url; this is probably a performance concern.
     """
+    STYLE_CHOICES = settings.CMSPLUGIN_FILER_FILE_STYLE_CHOICES
+    DEFAULT_STYLE = settings.CMSPLUGIN_FILER_FILE_DEFAULT_STYLE
     title = models.CharField(_("title"), max_length=255, null=True, blank=True)
     file = FilerFileField(verbose_name=_('file'))
     target_blank = models.BooleanField(_('Open link in new window'), default=False)
+    style = models.CharField(
+        _('Style'), choices=STYLE_CHOICES, default=DEFAULT_STYLE, max_length=255, blank=True)
 
     objects = FilerPluginManager(select_related=('file',))
 
