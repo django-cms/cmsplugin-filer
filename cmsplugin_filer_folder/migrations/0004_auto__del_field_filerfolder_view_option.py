@@ -9,12 +9,12 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         # Deleting field 'FilerFolder.view_option'
-        db.delete_column(u'cmsplugin_filer_folder_filerfolder', 'view_option')
+        db.delete_column(u'cmsplugin_filerfolder', 'view_option')
 
 
     def backwards(self, orm):
         # Adding field 'FilerFolder.view_option'
-        db.add_column(u'cmsplugin_filer_folder_filerfolder', 'view_option',
+        db.add_column(u'cmsplugin_filerfolder', 'view_option',
                       self.gf('django.db.models.fields.CharField')(default='x', max_length=10),
                       keep_default=False)
 

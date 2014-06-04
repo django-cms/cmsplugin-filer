@@ -9,14 +9,14 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         # Adding field 'FilerFile.style'
-        db.add_column(u'cmsplugin_filer_file_filerfile', 'style',
+        db.add_column(u'cmsplugin_filerfile', 'style',
                       self.gf('django.db.models.fields.CharField')(default='', max_length=255, blank=True),
                       keep_default=False)
 
 
     def backwards(self, orm):
         # Deleting field 'FilerFile.style'
-        db.delete_column(u'cmsplugin_filer_file_filerfile', 'style')
+        db.delete_column(u'cmsplugin_filerfile', 'style')
 
 
     models = {
