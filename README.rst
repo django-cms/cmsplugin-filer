@@ -13,6 +13,7 @@ Dependencies
 * django-cms >= 2.2
 * django-sekizai >= 0.4.2
 * easy_thumbnails >= 1.0
+* django-appconf
 
 Installation
 ============

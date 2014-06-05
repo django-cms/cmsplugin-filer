@@ -29,7 +29,8 @@ setup(
         "django-cms >= 2.2",
         "django-sekizai >= 0.4.2",
         "easy_thumbnails >= 1.0",
-        "django-filer >= 0.9"
+        "django-filer >= 0.9",
+        "django-appconf",
     ],
     include_package_data=True,
     zip_safe = False,
