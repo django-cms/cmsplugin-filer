@@ -3,16 +3,23 @@ import datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
+from cmsplugin_filer_utils.migration import rename_tables_new_to_old
 
 
 class Migration(SchemaMigration):
+    cms_plugin_table_mapping = (
+        # (old_name, new_name),
+        ('cmsplugin_filerfolder', 'cmsplugin_filer_folder_filerfolder'),
+    )
 
     def forwards(self, orm):
+        rename_tables_new_to_old(db, self.cms_plugin_table_mapping)
         # Deleting field 'FilerFolder.view_option'
         db.delete_column(u'cmsplugin_filerfolder', 'view_option')
 
 
     def backwards(self, orm):
+        rename_tables_new_to_old(db, self.cms_plugin_table_mapping)
         # Adding field 'FilerFolder.view_option'
         db.add_column(u'cmsplugin_filerfolder', 'view_option',
                       self.gf('django.db.models.fields.CharField')(default='x', max_length=10),
@@ -71,7 +78,7 @@ class Migration(SchemaMigration):
             'slot': ('django.db.models.fields.CharField', [], {'max_length': '50', 'db_index': 'True'})
         },
         u'cmsplugin_filer_folder.filerfolder': {
-            'Meta': {'object_name': 'FilerFolder', '_ormbases': ['cms.CMSPlugin']},
+            'Meta': {'object_name': 'FilerFolder', 'db_table': "'cmsplugin_filerfolder'", '_ormbases': ['cms.CMSPlugin']},
             u'cmsplugin_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['cms.CMSPlugin']", 'unique': 'True', 'primary_key': 'True'}),
             'folder': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['filer.Folder']"}),
             'style': ('django.db.models.fields.CharField', [], {'default': "'list'", 'max_length': '50'}),
