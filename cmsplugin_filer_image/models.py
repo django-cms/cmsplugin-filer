@@ -1,4 +1,3 @@
-import django
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 from cms.models import CMSPlugin
@@ -6,7 +5,7 @@ from cms.models.fields import PageField
 from filer.fields.image import FilerImageField
 from filer.fields.file import FilerFileField
 from cmsplugin_filer_utils import FilerPluginManager
-from distutils.version import LooseVersion
+from .conf import settings
 
 
 class FilerImage(CMSPlugin):
@@ -15,28 +14,29 @@ class FilerImage(CMSPlugin):
     FLOAT_CHOICES = ((LEFT, _("left")),
                      (RIGHT, _("right")),
                      )
+    STYLE_CHOICES = settings.CMSPLUGIN_FILER_IMAGE_STYLE_CHOICES
+    DEFAULT_STYLE = settings.CMSPLUGIN_FILER_IMAGE_DEFAULT_STYLE
+    style = models.CharField(
+        _('Style'), choices=STYLE_CHOICES, default=DEFAULT_STYLE, max_length=50, blank=True)
     caption_text = models.CharField(_("caption text"), null=True, blank=True, max_length=255)
     image = FilerImageField(null=True, blank=True, default=None, verbose_name=_("image"))
-    if LooseVersion(django.get_version()) < LooseVersion('1.5'):
-        image_url = models.URLField(_("alternative image url"), null=True, blank=True, default=None)
-    else:
-        image_url = models.URLField(_("alternative image url"), null=True, blank=True, default=None)
+    image_url = models.URLField(_("alternative image url"), null=True, blank=True, default=None)
     alt_text = models.CharField(_("alt text"), null=True, blank=True, max_length=255)
     use_original_image = models.BooleanField(_("use the original image"), default=False,
         help_text=_('do not resize the image. use the original image instead.'))
     thumbnail_option = models.ForeignKey('ThumbnailOption', null=True, blank=True, verbose_name=_("thumbnail option"),
                                         help_text=_('overrides width, height, crop and upscale with values from the selected thumbnail option'))
-    use_autoscale = models.BooleanField(_("use automatic scaling"), default=False, 
+    use_autoscale = models.BooleanField(_("use automatic scaling"), default=False,
                                         help_text=_('tries to auto scale the image based on the placeholder context'))
     width = models.PositiveIntegerField(_("width"), null=True, blank=True)
     height = models.PositiveIntegerField(_("height"), null=True, blank=True)
     crop = models.BooleanField(_("crop"), default=True)
     upscale = models.BooleanField(_("upscale"), default=True)
     alignment = models.CharField(_("image alignment"), max_length=10, blank=True, null=True, choices=FLOAT_CHOICES)
-    
-    free_link = models.CharField(_("link"), max_length=255, blank=True, null=True, 
+
+    free_link = models.CharField(_("link"), max_length=255, blank=True, null=True,
                                  help_text=_("if present image will be clickable"))
-    page_link = PageField(null=True, blank=True, 
+    page_link = PageField(null=True, blank=True,
                           help_text=_("if present image will be clickable"),
                           verbose_name=_("page link"))
     file_link = FilerFileField(null=True, blank=True, default=None, verbose_name=_("file link"), help_text=_("if present image will be clickable"), related_name='+')
@@ -53,14 +53,14 @@ class FilerImage(CMSPlugin):
     class Meta:
         verbose_name = _("filer image")
         verbose_name_plural = _("filer images")
-    
+
     def clean(self):
         from django.core.exceptions import ValidationError
         # Make sure that either image or image_url is set
         if (not self.image and not self.image_url) or (self.image and self.image_url):
             raise ValidationError(_('Either an image or an image url must be selected.'))
 
-    
+
     def __unicode__(self):
         if self.image:
             return self.image.label
@@ -94,8 +94,8 @@ class FilerImage(CMSPlugin):
                 return self.image_url
         else:
             return ''
-        
-        
+
+
 class ThumbnailOption(models.Model):
     """
     This class defines the option use to create the thumbnail.
@@ -105,12 +105,12 @@ class ThumbnailOption(models.Model):
     height = models.IntegerField(_("height"), help_text=_('height in pixel.'))
     crop = models.BooleanField(_("crop"), default=True)
     upscale = models.BooleanField(_("upscale"), default=True)
-    
+
     class Meta:
         ordering = ('width', 'height')
         verbose_name = _("thumbnail option")
         verbose_name_plural = _("thumbnail options")
-        
+
     def __unicode__(self):
         return u'%s -- %s x %s' %(self.name, self.width, self.height)
 

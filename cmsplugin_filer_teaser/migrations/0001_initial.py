@@ -7,6 +7,7 @@ class Migration:
 
     depends_on = (
         ("filer", "0008_polymorphic__del_field_file__file_type_plugin_name"),
+        ("cms", "0039_auto__del_field_page_moderator_state"),
         )
 
     def forwards(self, orm):

@@ -3,11 +3,17 @@ import datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
+from cmsplugin_filer_utils.migration import rename_tables_new_to_old
 
 
 class Migration(SchemaMigration):
+    cms_plugin_table_mapping = (
+        # (old_name, new_name),
+        ('cmsplugin_filerimage', 'cmsplugin_filer_image_filerimage'),
+    )
 
     def forwards(self, orm):
+        rename_tables_new_to_old(db, self.cms_plugin_table_mapping)
         # Adding field 'FilerImage.use_original_image'
         db.add_column('cmsplugin_filerimage', 'use_original_image',
                       self.gf('django.db.models.fields.BooleanField')(default=False),
@@ -15,6 +21,7 @@ class Migration(SchemaMigration):
 
 
     def backwards(self, orm):
+        rename_tables_new_to_old(db, self.cms_plugin_table_mapping)
         # Deleting field 'FilerImage.use_original_image'
         db.delete_column('cmsplugin_filerimage', 'use_original_image')
 

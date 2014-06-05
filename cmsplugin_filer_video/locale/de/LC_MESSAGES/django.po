@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: cmsplugin-filer\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-01-09 18:33+0100\n"
-"PO-Revision-Date: 2012-07-13 16:08+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2013-07-10 10:36+0100\n"
+"Last-Translator: Markus <mt@thiguten.de>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/cmsplugin-filer/"
 "language/de/)\n"
 "Language: de\n"
@@ -17,104 +17,108 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.3\n"
 
 #: cms_plugins.py:13
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: cms_plugins.py:46
 msgid "Color Settings"
-msgstr ""
+msgstr "Farbeinstellungen"
 
 #: models.py:12
 msgid "movie file"
-msgstr ""
+msgstr "Videodatei"
 
 #: models.py:12
 msgid "use .flv file or h264 encoded video file"
-msgstr ""
+msgstr ".flv-Datei oder h264-Video verwenden"
 
 #: models.py:13
 msgid "movie url"
-msgstr ""
+msgstr "Video URL"
 
 #: models.py:13
 msgid ""
 "vimeo or youtube video url. Example: http://www.youtube.com/watch?v=YFa59lK-"
 "kpo"
 msgstr ""
+"Vimeo oder YouTube URL; Beispiel: http://www.youtube.com/watch?v=YFa59lK-kpo"
 
 #: models.py:14
 msgid "image"
-msgstr ""
+msgstr "Bild"
 
 #: models.py:14
 msgid "preview image file"
-msgstr ""
+msgstr "Vorschaubilddatei"
 
 #: models.py:16
 msgid "width"
-msgstr ""
+msgstr "Breite"
 
 #: models.py:17
 msgid "height"
-msgstr ""
+msgstr "Höhe"
 
 #: models.py:19
 msgid "auto play"
-msgstr ""
+msgstr "automatisch abspielen"
 
 #: models.py:20
 msgid "auto hide"
-msgstr ""
+msgstr "automatisch verbergen"
 
 #: models.py:21
 msgid "fullscreen"
-msgstr ""
+msgstr "Vollbild"
 
 #: models.py:22
 msgid "loop"
-msgstr ""
+msgstr "Schleife"
 
 #: models.py:25
 msgid "background color"
-msgstr ""
+msgstr "Hintergrundfarbe"
 
 #: models.py:25 models.py:26 models.py:27 models.py:28 models.py:29
 #: models.py:30 models.py:31 models.py:32
 msgid "Hexadecimal, eg ff00cc"
-msgstr ""
+msgstr "hexadezimal, z.B. ff00cc"
 
 #: models.py:26
 msgid "text color"
-msgstr ""
+msgstr "Textfarbe"
 
 #: models.py:27
 msgid "seekbar color"
-msgstr ""
+msgstr "Farbe der Suchleiste"
 
 #: models.py:28
 msgid "seekbar bg color"
-msgstr ""
+msgstr "Hintergrund der Suchleiste"
 
 #: models.py:29
 msgid "loadingbar color"
-msgstr ""
+msgstr "Farbe des Ladebalkens"
 
 #: models.py:30
 msgid "button out color"
-msgstr ""
+msgstr "button out Farbe"
 
 #: models.py:31
 msgid "button over color"
-msgstr ""
+msgstr "button over Farbe"
 
 #: models.py:32
 msgid "button highlight color"
-msgstr ""
+msgstr "button highlight Farbe"
 
 #: templates/cmsplugin_filer_video/video.html:3
 msgid ""
 "Missing flash plugin. Download <a href=\"http://adobe.com/flashplayer"
 "\">here</a>."
 msgstr ""
+"Das Flash-Plugin wurde nicht gefunden. Bitte <a href=\"http://adobe.com/"
+"flashplayer\">hier</a> laden."

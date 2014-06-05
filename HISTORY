@@ -1,6 +1,22 @@
 Changelog for django-filer-cmsplugins
 =====================================
 
+0.9.9 (2014-06-05)
+------------------
+
+* fixes bug in migrations
+
+0.9.8 (2014-06-04) BROKEN!
+--------------------------
+
+* fixes bug that prevents using the new template structure
+
+0.9.7 (2014-06-03) BROKEN!
+--------------------------
+
+* bugfixes
+* support for configurable styles (templates) on image, file, folder and teaser plugin
+* many bugfixes
 
 0.9.5 (2013-04-09)
 ------------------

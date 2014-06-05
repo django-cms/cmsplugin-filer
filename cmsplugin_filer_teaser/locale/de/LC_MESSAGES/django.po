@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: cmsplugin-filer\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-01-09 18:33+0100\n"
-"PO-Revision-Date: 2012-07-13 16:06+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2013-07-10 10:31+0100\n"
+"Last-Translator: Markus <mt@thiguten.de>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/cmsplugin-filer/"
 "language/de/)\n"
 "Language: de\n"
@@ -17,67 +17,68 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.3\n"
 
 #: cms_plugins.py:15
 msgid "Teaser"
-msgstr ""
+msgstr "Teaser"
 
 #: models.py:18
 msgid "title"
-msgstr ""
+msgstr "Titel"
 
 #: models.py:19
 msgid "image"
-msgstr ""
+msgstr "Bil"
 
 #: models.py:21 models.py:23
 msgid "alternative image url"
-msgstr ""
+msgstr "URL alternativ-Bild"
 
 #: models.py:25
 msgid "teaser style"
-msgstr ""
+msgstr "Teaser-Stil"
 
 #: models.py:27
 msgid "use automatic scaling"
-msgstr ""
+msgstr "automatisch skalieren"
 
 #: models.py:28
 msgid "tries to auto scale the image based on the placeholder context"
-msgstr ""
+msgstr "skaliert das Bild automatisch an Hand des Kontexts"
 
 #: models.py:29
 msgid "width"
-msgstr ""
+msgstr "Breite"
 
 #: models.py:30
 msgid "height"
-msgstr ""
+msgstr "Höhe"
 
 #: models.py:32
 msgid "link"
-msgstr ""
+msgstr "Link"
 
 #: models.py:32 models.py:33
 msgid "if present image will be clickable"
-msgstr ""
+msgstr "wenn gesetzt, kann das Bild angeklickt werden"
 
 #: models.py:33
 msgid "page link"
-msgstr ""
+msgstr "Link auf Seite"
 
 #: models.py:34
 msgid "description"
-msgstr ""
+msgstr "Beschreibung"
 
 #: models.py:36
 msgid "open link in new window"
-msgstr ""
+msgstr "Link in neuem Fenster öffnen"
 
 #: models.py:44
 msgid "Either an image or an image url must be selected."
-msgstr ""
+msgstr "Bitte entweder ein Bild oder eine Bild-URL auswählen."
 
 #: templates/cmsplugin_filer_teaser/teaser.html:17
 msgid "more"
-msgstr ""
+msgstr "mehr"

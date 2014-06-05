@@ -5,7 +5,7 @@
 <script type="text/javascript">
 //<![CDATA[
 jQuery(document).ready(function ($) {
-    $('.cmsplugin_filer_folder_slidshow').cycle({
+    $('.cmsplugin_filer_folder_slideshow').cycle({
         fx: 'fade'
     });
 });
@@ -46,7 +46,7 @@ jQuery(document).ready(function ($) {
     </div>
 {% else %}
     <!-- start: slideshow -->
-    <div class="cmsplugin_filer_folder_slidshow" id="folder_{{ object.id }}">
+    <div class="cmsplugin_filer_folder_slideshow" id="folder_{{ object.id }}">
         {% for image in folder_images %}
             <img src="{% thumbnail image.file 200x200 crop="True" upscale="True" %}">
         {% endfor %}
