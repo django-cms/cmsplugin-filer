@@ -3,19 +3,25 @@ import datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
+from cmsplugin_filer_utils.migration import rename_tables_new_to_old
 
 
 class Migration(SchemaMigration):
 
-    def forwards(self, orm):
+    cms_plugin_table_mapping = (
+        # (old_name, new_name),
+        ('cmsplugin_filerteaser', 'cmsplugin_filer_teaser_filerteaser'),
+    )
 
+    def forwards(self, orm):
+        rename_tables_new_to_old(db, self.cms_plugin_table_mapping)
         # Changing field 'FilerTeaser.style'
-        db.alter_column(u'cmsplugin_filer_teaser_filerteaser', 'style', self.gf('django.db.models.fields.CharField')(max_length=255))
+        db.alter_column(u'cmsplugin_filerteaser', 'style', self.gf('django.db.models.fields.CharField')(max_length=255))
 
     def backwards(self, orm):
-
+        rename_tables_new_to_old(db, self.cms_plugin_table_mapping)
         # Changing field 'FilerTeaser.style'
-        db.alter_column(u'cmsplugin_filer_teaser_filerteaser', 'style', self.gf('django.db.models.fields.CharField')(max_length=255, null=True))
+        db.alter_column(u'cmsplugin_filerteaser', 'style', self.gf('django.db.models.fields.CharField')(max_length=255, null=True))
 
     models = {
         u'auth.group': {
@@ -101,7 +107,7 @@ class Migration(SchemaMigration):
             'slot': ('django.db.models.fields.CharField', [], {'max_length': '50', 'db_index': 'True'})
         },
         u'cmsplugin_filer_teaser.filerteaser': {
-            'Meta': {'object_name': 'FilerTeaser', '_ormbases': ['cms.CMSPlugin']},
+            'Meta': {'object_name': 'FilerTeaser', 'db_table': "'cmsplugin_filerteaser'", '_ormbases': ['cms.CMSPlugin']},
             u'cmsplugin_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['cms.CMSPlugin']", 'unique': 'True', 'primary_key': 'True'}),
             'description': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
             'free_link': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),

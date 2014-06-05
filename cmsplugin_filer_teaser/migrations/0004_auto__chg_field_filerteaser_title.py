@@ -3,17 +3,24 @@ import datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
+from cmsplugin_filer_utils.migration import rename_tables_new_to_old
+
 
 class Migration(SchemaMigration):
+
+    cms_plugin_table_mapping = (
+        # (old_name, new_name),
+        ('cmsplugin_filerteaser', 'cmsplugin_filer_teaser_filerteaser'),
+    )
     
     def forwards(self, orm):
-        
+        rename_tables_new_to_old(db, self.cms_plugin_table_mapping)
         # Changing field 'FilerTeaser.title'
         db.alter_column('cmsplugin_filerteaser', 'title', self.gf('django.db.models.fields.CharField')(max_length=255, blank=True))
     
     
     def backwards(self, orm):
-        
+        rename_tables_new_to_old(db, self.cms_plugin_table_mapping)
         # Changing field 'FilerTeaser.title'
         db.alter_column('cmsplugin_filerteaser', 'title', self.gf('django.db.models.fields.CharField')(max_length=255))
     

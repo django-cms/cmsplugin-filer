@@ -2,18 +2,25 @@
 from south.db import db
 from django.db import models
 from cmsplugin_filer_teaser.models import *
+from cmsplugin_filer_utils.migration import rename_tables_new_to_old
+
 
 class Migration:
+
+    cms_plugin_table_mapping = (
+        # (old_name, new_name),
+        ('cmsplugin_filerteaser', 'cmsplugin_filer_teaser_filerteaser'),
+    )
     
     def forwards(self, orm):
-        
+        rename_tables_new_to_old(db, self.cms_plugin_table_mapping)
         # Adding field 'FilerTeaser.style'
         db.add_column('cmsplugin_filerteaser', 'style', orm['cmsplugin_filer_teaser.filerteaser:style'])
         
     
     
     def backwards(self, orm):
-        
+        rename_tables_new_to_old(db, self.cms_plugin_table_mapping)
         # Deleting field 'FilerTeaser.style'
         db.delete_column('cmsplugin_filerteaser', 'style')
         
