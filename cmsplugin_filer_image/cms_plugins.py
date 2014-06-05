@@ -96,7 +96,7 @@ class FilerImagePlugin(CMSPluginBase):
 
     def get_thumbnail(self, context, instance):
         if instance.image:
-            return instance.image.image.file.get_thumbnail(self._get_thumbnail_options(context, instance))
+            return instance.image.file.get_thumbnail(self._get_thumbnail_options(context, instance))
 
     def render(self, context, instance, placeholder):
         self.render_template = select_template((
