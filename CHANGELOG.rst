@@ -1,6 +1,22 @@
 CHANGELOG
 =========
 
+Revision 8e3088d (13.06.2014, 12:16 UTC)
+----------------------------------------
+
+* LUN-1206
+
+  * should not generate icon in plugin for images with no with or height.
+
+* LUN-1446
+
+  * add default icon for plugin just in case easy_thumbnails decides to throw InvalidImageFormatError. This is required for the blog migration since we're moving plugins around. Even if the image is not valid plugin data should be migrated.
+
+* Misc commits
+
+  * SHould not throw 500 if filer image was trashed.
+  * Provided default image icon for image plugin even if thumbnails cannot get generated.
+
 Revision fc7fef7 (06.05.2014, 15:15 UTC)
 ----------------------------------------
 
