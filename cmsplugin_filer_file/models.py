@@ -1,11 +1,16 @@
+from __future__ import unicode_literals
+
 from cms.models import CMSPlugin
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from filer.fields.file import FilerFileField
+from filer.utils.compatibility import python_2_unicode_compatible
+
 from cmsplugin_filer_utils import FilerPluginManager
 from .conf import settings
 
 
+@python_2_unicode_compatible
 class FilerFile(CMSPlugin):
     """
     Plugin for storing any type of file.
@@ -35,15 +40,15 @@ class FilerFile(CMSPlugin):
 
     def get_file_name(self):
         if self.file.name in ('', None):
-            name = u"%s" % (self.file.original_filename,)
+            name = "%s" % (self.file.original_filename,)
         else:
-            name = u"%s" % (self.file.name,)
+            name = "%s" % (self.file.name,)
         return name
 
     def get_ext(self):
         return self.file.extension
 
-    def __unicode__(self):
+    def __str__(self):
         if self.title:
             return self.title
         elif self.file:

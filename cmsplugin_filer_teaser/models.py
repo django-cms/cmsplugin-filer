@@ -4,10 +4,12 @@ from django.db import models
 from cms.models import CMSPlugin
 from cms.models.fields import PageField
 from filer.fields.image import FilerImageField
+from filer.utils.compatibility import python_2_unicode_compatible
 from .conf import settings
 from cmsplugin_filer_utils import FilerPluginManager
 
 
+@python_2_unicode_compatible
 class FilerTeaser(CMSPlugin):
     """
     A Teaser
@@ -38,7 +40,7 @@ class FilerTeaser(CMSPlugin):
         if self.image and self.image_url:
             raise ValidationError(_('Either an image or an image url must be selected.'))
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     @property
@@ -50,5 +52,5 @@ class FilerTeaser(CMSPlugin):
                 return self.page_link.get_absolute_url()
             else:
                 return ''
-        except Exception, e:
-            print e
+        except Exception as e:
+            print(e)
