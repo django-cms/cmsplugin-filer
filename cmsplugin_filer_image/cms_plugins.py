@@ -232,6 +232,14 @@ class FilerImagePlugin(CMSPluginBase):
 
         context.update({
             'instance': instance,
+            'show_valid_caption':
+                instance.show_caption and
+                instance.caption and
+                instance.caption.strip(),
+            'show_valid_credit':
+                instance.show_credit and
+                instance.credit and
+                instance.credit.strip(),
             'style': style,
             'link': instance.link,
             'opts': options,
