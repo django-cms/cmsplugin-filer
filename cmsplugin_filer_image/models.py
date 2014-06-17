@@ -301,14 +301,6 @@ class FilerImage(CMSPlugin):
         else:
             return self.alt_text
 
-    @property
-    def show_valid_caption(self):
-        return self.show_caption and self.caption and self.caption.strip()
-
-    @property
-    def show_valid_credit(self):
-        return self.show_credit and self.credit and self.credit.strip()
-
     def has_attached_image(self):
         try:
             return self.image
