@@ -44,7 +44,8 @@ class ThumbnailOptionManager(models.Manager):
                 # Medium: 320X180
                 # Small: 180x101
                 aspect_ratio = float(filer_image.width) / filer_image.height
-                defaults_others['height'] = int(self.IMG_MAX_WIDTH / aspect_ratio)
+                defaults_others['height'] = int(
+                    self.IMG_MAX_WIDTH / aspect_ratio)
                 original_width = self.IMG_MAX_WIDTH
         else:
             original_width = self.IMG_MAX_WIDTH
@@ -83,7 +84,8 @@ class ThumbnailOption(models.Model):
     @property
     def as_dict(self):
         """
-        This property returns a dictionary suitable for Thumbnailer.get_thumbnail()
+        This property returns a dictionary suitable
+        for Thumbnailer.get_thumbnail()
 
         Sample code:
             # thumboption_obj is a ThumbnailOption instance
@@ -122,24 +124,27 @@ class FilerImage(CMSPlugin):
     alt_text = models.CharField(
         _("alt text"), null=True,
         blank=True, max_length=255,
-        help_text=_("Describes the essence of the image for users who have images "
-                    "turned off in their browser, or are visually impaired and using "
-                    "a screen reader; and it is useful to identify images to search "
-                    "engines"))
+        help_text=_(
+            "Describes the essence of the image for users who have images "
+            "turned off in their browser, or are visually impaired and using "
+            "a screen reader; and it is useful to identify images to search "
+            "engines"))
     caption_text = models.CharField(
         _("caption text"), null=True,
         blank=True, max_length=140,
-        help_text=_("Caption text is displayed directly below an image to add context; "
-                    "there is a 140-character limit, including spaces; for images "
-                    "fewer than 200 pixels wide, the caption text is only displayed "
-                    "on hover"))
+        help_text=_(
+            "Caption text is displayed directly below an image to add context;"
+            " there is a 140-character limit, including spaces; for images "
+            "fewer than 200 pixels wide, the caption text is only displayed "
+            "on hover"))
     credit_text = models.CharField(
         _("credit text"), null=True,
         blank=True, max_length=30,
-        help_text=_("Credit text gives credit to the owner or licensor of an image; "
-                    "it is displayed below the image,<br>or below the caption text if "
-                    "that option is selected; there is a 30-character limit, "
-                    "including spaces."))
+        help_text=_(
+            "Credit text gives credit to the owner or licensor of an image; "
+            "it is displayed below the image,<br>or below the caption text if "
+            "that option is selected; there is a 30-character limit, "
+            "including spaces."))
     show_caption = models.BooleanField(
         _("show caption text"), default=False)
     show_credit = models.BooleanField(
@@ -154,10 +159,11 @@ class FilerImage(CMSPlugin):
         'ThumbnailOption', null=True,
         blank=True, verbose_name=_("image size"),
         on_delete=models.SET_NULL,
-        help_text=_("The most common image options are available via this drop-down"
-                    " menu; to add a custom size, use the advanced options menu "
-                    "below; any advanced option selection will override the "
-                    "settings in this admin."))
+        help_text=_(
+            "The most common image options are available via this drop-down"
+            " menu; to add a custom size, use the advanced options menu "
+            "below; any advanced option selection will override the "
+            "settings in this admin."))
 
     alignment = models.CharField(
         _("image alignment"), max_length=10,
@@ -211,10 +217,14 @@ class FilerImage(CMSPlugin):
         _("vertical space"), null=True, blank=True)
     horizontal_space = models.PositiveIntegerField(
         _("horizontal space"), null=True, blank=True,
-        help_text=_('Add spacing or padding around the image; calculated in pixels; if left blank, the vertical spacing will default to 15 pixels.'))
+        help_text=_(
+            'Add spacing or padding around the image; calculated in pixels; '
+            'if left blank, the vertical spacing will default to 15 pixels.'))
     border = models.PositiveIntegerField(
         _("border"), null=True, blank=True,
-        help_text=_("Add a black border around the image; the input is the pixel width of the line; there is no line if left blank.")
+        help_text=_(
+            "Add a black border around the image; the input is the pixel "
+            "width of the line; there is no line if left blank.")
     )
 
     ## Event tracking
@@ -235,14 +245,16 @@ class FilerImage(CMSPlugin):
 
     use_original_image = models.BooleanField(
         _("use the original image"), default=False,
-        help_text=_('do not resize the image. use the original image instead.'))
+        help_text=_(
+            'do not resize the image. use the original image instead.'))
 
     original_link = models.BooleanField(
         _("link original image"), default=False,
         help_text=_("if present image will be clickable"))
     use_autoscale = models.BooleanField(
         _("use automatic scaling"), default=False,
-        help_text=_('tries to auto scale the image based on the placeholder context'))
+        help_text=_(
+            'tries to auto scale the image based on the placeholder context'))
 
     # we only add the image to select_related. page_link and file_link are FKs
     # as well, but they are not used often enough to warrant the impact of two
@@ -283,7 +295,9 @@ class FilerImage(CMSPlugin):
     @property
     def alt(self):
         if self.has_attached_image():
-            return self.alt_text or self.image.default_alt_text or self.image.label
+            return (self.alt_text or
+                    self.image.default_alt_text or
+                    self.image.label)
         else:
             return self.alt_text
 
@@ -330,12 +344,12 @@ class FilerImage(CMSPlugin):
         else:
             style += "float: %s;" % self.alignment if self.alignment else ""
 
-
         if isinstance(self.vertical_space, (int, long)):
             style += "margin-top: %spx; margin-bottom: %spx;" % (
                 self.vert_space, self.vert_space)
 
-        if not self.alignment == self.CENTER and isinstance(self.horiz_space, (int, long)):
+        if (not self.alignment == self.CENTER
+            and isinstance(self.horiz_space, (int, long))):
             style += "margin-right: %spx; margin-left: %spx;" % (
                 self.horiz_space, self.horiz_space)
 
