@@ -11,7 +11,7 @@ dependency_links = [
 
 setup(
     name = "cmsplugin-filer",
-    version = "0.9.4pbs13",
+    version = "0.9.4pbs14",
     url = 'http://github.com/stefanfoulis/cmsplugin-filer',
     license = 'BSD',
     description = "django-cms plugins for django-filer",
