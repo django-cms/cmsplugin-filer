@@ -1,6 +1,19 @@
 CHANGELOG
 =========
 
+Revision f76aaf5 (03.07.2014, 07:31 UTC)
+----------------------------------------
+
+No new issues.
+
+* Misc commits
+
+  * bumb version as instructed by bamboo
+  * refactor by sending context variables
+  * Strip caption/credit when checking for content.
+  * remove properties and compute everything in template
+  * Don't display caption or credit section if empty.
+
 Revision 8e3088d (13.06.2014, 12:16 UTC)
 ----------------------------------------
 
