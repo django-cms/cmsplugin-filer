@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
+from django.utils.html import escape
 from django.utils.translation import ugettext as _
 from django.conf import settings
 
@@ -29,7 +30,7 @@ class FilerLinkPlugin(CMSPluginBase):
         context.update({
             'link': link,
             'style': instance.link_style,
-            'name': instance.name,
+            'name': escape(instance.name),
             'new_window': instance.new_window,
         })
         return context
