@@ -12,7 +12,6 @@ class FilerLinkPlugin(CMSPluginBase):
     model = FilerLinkPlugin
     name = _("Link")
     text_enabled = True
-    raw_id_fields = ('page_link', )
     render_template = "cmsplugin_filer_link/link.html"
 
     def render(self, context, instance, placeholder):
