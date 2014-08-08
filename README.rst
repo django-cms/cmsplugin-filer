@@ -80,7 +80,7 @@ e.g add the following settings for the image plugin::
         ('default', 'Default'),
         ('boxed', 'Boxed'),
     )
-    CMSPLUGIN_FILER_IMAGE_DEFAUL_STYLE = 'boxed'
+    CMSPLUGIN_FILER_IMAGE_DEFAULT_STYLE = 'boxed'
 
 Now, if a template exists at ``cmsplugin_filer_image/plugins/image/boxed.html`` it will be used. If not, it will fall
 back to ``cmsplugin_filer_image/plugins/image/default.html``. If a css class in the default template is enough, it can
