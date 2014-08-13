@@ -19,6 +19,8 @@ class FilerLinkPlugin(CMSPluginBase):
             link = instance.file.url
         elif instance.mailto:
             link = "mailto:%s" % _(instance.mailto)
+        elif instance.tel:
+            link = "tel:%s" % _(instance.tel)
         elif instance.url:
             link = _(instance.url)
         elif instance.page_link:
