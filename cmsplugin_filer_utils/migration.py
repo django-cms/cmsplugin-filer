@@ -12,9 +12,9 @@ def rename_tables(db, table_mapping, reverse=False):
     table_names = connection.introspection.table_names()
     for source, destination in table_mapping:
         if source in table_names and destination in table_names:
-            print u"    WARNING: not renaming {0} to {1}, because both tables already exist.".format(source, destination)
+            print("    WARNING: not renaming {0} to {1}, because both tables already exist.".format(source, destination))
         elif source in table_names and destination not in table_names:
-            print u"     - renaming {0} to {1}".format(source, destination)
+            print("     - renaming {0} to {1}".format(source, destination))
             db.rename_table(source, destination)
 
 
