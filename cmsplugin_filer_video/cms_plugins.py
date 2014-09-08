@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 import os
 from cms.plugin_pool import plugin_pool
 from cms.plugin_base import CMSPluginBase
@@ -57,5 +59,5 @@ class FilerVideoPlugin(CMSPluginBase):
         return context
 
     def icon_src(self, instance):
-        return os.path.normpath(u"%s/icons/video_%sx%s.png" % (FILER_STATICMEDIA_PREFIX, 32, 32,))
+        return os.path.normpath("%s/icons/video_%sx%s.png" % (FILER_STATICMEDIA_PREFIX, 32, 32,))
 plugin_pool.register_plugin(FilerVideoPlugin)

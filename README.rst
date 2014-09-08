@@ -5,12 +5,15 @@ cmsplugin-filer
 A set of cms plugins that replace the plugins shipped with django-cms with
 versions that use file fields from django-filer.
 
+Warning: starting with version 0.10 support for django-cms 2.x was dropped (table renaming magic removal).
+Pin you dependencies to ``cmsplugin-filer<0.10`` for django-cms 2.x projects.
+
 Dependencies
 ============
 
 * django-filer >= 0.9
 * Django >= 1.4
-* django-cms >= 2.2
+* django-cms >= 3.0
 * django-sekizai >= 0.4.2
 * easy_thumbnails >= 1.0
 * django-appconf

@@ -4,6 +4,7 @@ from django.conf import settings
 from cms.models import CMSPlugin, Page
 from cms.models.fields import PageField
 from filer.fields.file import FilerFileField
+from filer.utils.compatibility import python_2_unicode_compatible
 
 DEFULT_LINK_STYLES = (
     (" ", "Default"),
@@ -11,6 +12,8 @@ DEFULT_LINK_STYLES = (
 
 LINK_STYLES = getattr(settings, "FILER_LINK_STYLES", DEFULT_LINK_STYLES)
 
+
+@python_2_unicode_compatible
 class FilerLinkPlugin(CMSPlugin):
     name = models.CharField(_('name'), max_length=255)
     url = models.CharField(_("url"), blank=True, null=True, max_length=255)
@@ -25,6 +28,5 @@ class FilerLinkPlugin(CMSPlugin):
     file = FilerFileField(blank=True, null=True)
 
 
-    def __unicode__(self):
-        return u'%s' % self.name
-
+    def __str__(self):
+        return self.name
