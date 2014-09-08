@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="cmsplugin-filer",
-    version="0.9.9",
+    version="0.10",
     url='http://github.com/stefanfoulis/cmsplugin-filer',
     license='BSD',
     description="django-cms plugins for django-filer",
