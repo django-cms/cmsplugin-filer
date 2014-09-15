@@ -17,7 +17,7 @@
 	{% if instance.use_hidpi_pair %}
 		{% thumbnail instance.image size crop=opts.crop upscale=opts.upscale subject_location=opts.subject_location as losrc %}
 		{% thumbnail instance.image double_size crop=opts.crop upscale=opts.upscale subject_location=opts.subject_location as hisrc %}
-		<img class="filer_image filer_image_hidpi {% if instance.alignment %}{{ instance.alignment }}{% endif %}" alt="{% if instance.alt %}{{ instance.alt }}{% endif %}" src="{% static "cmsplugin_filer_image/t.gif" %}" data-src="{{ losrc.url }}" data-src2x="{{ hisrc }}" {% if instance.width %} width="{{ instance.width }}"{% endif %}{% if instance.height %} height="{{ instance.height }}"{% endif %}{% if instance.caption %} title="{{ instance.caption }}"{% endif %} />
+		<img class="filer_image filer_image_hidpi {% if instance.alignment %}{{ instance.alignment }}{% endif %}" alt="{% if instance.alt %}{{ instance.alt }}{% endif %}" src="{% static "cmsplugin_filer_image/t.gif" %}" data-src="{{ losrc.url }}" data-src2x="{{ hisrc.url }}" {% if instance.width %} width="{{ instance.width }}"{% endif %}{% if instance.height %} height="{{ instance.height }}"{% endif %}{% if instance.caption %} title="{{ instance.caption }}"{% endif %} />
 	{% elif instance.use_original_image %}
 		<img class="filer_image {% if instance.alignment %}{{ instance.alignment }}{% endif %}" alt="{% if instance.alt %}{{ instance.alt }}{% endif %}" src="{{ instance.image.url }}"{% if instance.width %} width="{{ instance.width }}"{% endif %}{% if instance.height %} height="{{ instance.height }}"{% endif %}{% if instance.caption %} title="{{ instance.caption }}"{% endif %} />
 	{% else %}
