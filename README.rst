@@ -41,7 +41,12 @@ To get started using ``cmsplugin-filer``:
         ...
     )
     
-- run ``syncdb`` or ``migrate`` if you're using South.
+- run ``migrate``.
+
+If you are using South, you will need to upgrade to South v1.0.
+NOTE: There is currently a bug in South 1.0 that is incompatible with Python 3.x.
+If you are running Python 3.x, you will need to install South from version
+control: ``pip install https://bitbucket.org/andrewgodwin/south/get/e2c9102ee033.zip#egg=South``
 
 You can also set ``FILER_IMAGE_USE_ICON`` in your ``settings.py`` to configure ``cmsplugin_filer_image`` plugin to use 32x32 icons for representing plugin instances.
 

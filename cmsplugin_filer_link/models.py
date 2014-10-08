@@ -22,7 +22,7 @@ class FilerLinkPlugin(CMSPlugin):
     mailto = models.EmailField(_("mailto"), blank=True, null=True,
              help_text=_("An email address has priority over both pages and urls"))
     link_style = models.CharField(_("link style"), max_length=255,
-                choices=LINK_STYLES, default=" ")
+                choices=LINK_STYLES, default=LINK_STYLES[0][0])
     new_window = models.BooleanField(_("new window?"), default=False,
                 help_text=_("Do you want this link to open a new window?"))
     file = FilerFileField(blank=True, null=True)
