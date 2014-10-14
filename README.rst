@@ -40,13 +40,19 @@ To get started using ``cmsplugin-filer``:
         'cmsplugin_filer_video',
         ...
     )
+
+- for Django 1.7 users, you need to add the following to your MIGRATIONS_MODULES settings::
+
+    MIGRATIONS_MODULES = {
+        ...
+        'cmsplugin_filer_file': 'cmsplugin_filer_file.migrations_django',
+        'cmsplugin_filer_folder': 'cmsplugin_filer_folder.migrations_django',
+        'cmsplugin_filer_image': 'cmsplugin_filer_image.migrations_django',
+        'cmsplugin_filer_teaser': 'cmsplugin_filer_teaser.migrations_django',
+        'cmsplugin_filer_video': 'cmsplugin_filer_video.migrations_django',
+    }
     
 - run ``migrate``.
-
-If you are using South, you will need to upgrade to South v1.0.
-NOTE: There is currently a bug in South 1.0 that is incompatible with Python 3.x.
-If you are running Python 3.x, you will need to install South from version
-control: ``pip install https://bitbucket.org/andrewgodwin/south/get/e2c9102ee033.zip#egg=South``
 
 You can also set ``FILER_IMAGE_USE_ICON`` in your ``settings.py`` to configure ``cmsplugin_filer_image`` plugin to use 32x32 icons for representing plugin instances.
 
