@@ -8,6 +8,12 @@ versions that use file fields from django-filer.
 Warning: starting with version 0.10 support for django-cms 2.x was dropped (table renaming magic removal).
 Pin your dependencies to ``cmsplugin-filer<0.10`` for django-cms 2.x projects.
 
+NOTICE TO DJANGO 1.7 USERS:
+
+    To use cmsplugin-filer, you **must** use the latest commits from the 3.0.x
+    branch of django CMS.
+
+
 Dependencies
 ============
 
