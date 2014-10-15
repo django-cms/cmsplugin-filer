@@ -8,6 +8,12 @@ versions that use file fields from django-filer.
 Warning: starting with version 0.10 support for django-cms 2.x was dropped (table renaming magic removal).
 Pin your dependencies to ``cmsplugin-filer<0.10`` for django-cms 2.x projects.
 
+NOTICE TO DJANGO 1.7 USERS:
+
+    To use cmsplugin-filer, you **must** use the latest commits from the 3.0.x
+    branch of django CMS.
+
+
 Dependencies
 ============
 
@@ -40,8 +46,22 @@ To get started using ``cmsplugin-filer``:
         'cmsplugin_filer_video',
         ...
     )
+
+- for Django 1.7 users, you need to add the following to your MIGRATION_MODULES settings::
+
+    MIGRATION_MODULES = {
+        ...
+        'cmsplugin_filer_file': 'cmsplugin_filer_file.migrations_django',
+        'cmsplugin_filer_folder': 'cmsplugin_filer_folder.migrations_django',
+        'cmsplugin_filer_image': 'cmsplugin_filer_image.migrations_django',
+        'cmsplugin_filer_teaser': 'cmsplugin_filer_teaser.migrations_django',
+        'cmsplugin_filer_video': 'cmsplugin_filer_video.migrations_django',
+        ...
+    }
+
+    NOTE: For Django 1.7, you **must** also be using the latest commits to the CMS Support 3.0.x branch and the latest develop branch of django-filer.
     
-- run ``syncdb`` or ``migrate`` if you're using South.
+- run ``migrate``.
 
 You can also set ``FILER_IMAGE_USE_ICON`` in your ``settings.py`` to configure ``cmsplugin_filer_image`` plugin to use 32x32 icons for representing plugin instances.
 
