@@ -41,16 +41,19 @@ To get started using ``cmsplugin-filer``:
         ...
     )
 
-- for Django 1.7 users, you need to add the following to your MIGRATIONS_MODULES settings::
+- for Django 1.7 users, you need to add the following to your MIGRATION_MODULES settings::
 
-    MIGRATIONS_MODULES = {
+    MIGRATION_MODULES = {
         ...
         'cmsplugin_filer_file': 'cmsplugin_filer_file.migrations_django',
         'cmsplugin_filer_folder': 'cmsplugin_filer_folder.migrations_django',
         'cmsplugin_filer_image': 'cmsplugin_filer_image.migrations_django',
         'cmsplugin_filer_teaser': 'cmsplugin_filer_teaser.migrations_django',
         'cmsplugin_filer_video': 'cmsplugin_filer_video.migrations_django',
+        ...
     }
+
+    NOTE: For Django 1.7, you **must** also be using the latest commits to the CMS Support 3.0.x branch and the latest develop branch of django-filer.
     
 - run ``migrate``.
 
