@@ -22,6 +22,7 @@ class FilerTeaserPlugin(CMSPluginBase):
             'title',
             'image',
             'image_url',
+            'description',
         ]}),
         (_('More'), {
             'classes': ('collapse',),
