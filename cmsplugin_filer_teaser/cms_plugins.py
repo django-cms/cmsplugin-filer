@@ -13,6 +13,7 @@ class FilerTeaserPlugin(CMSPluginBase):
     """
     module = 'Filer'
     model = models.FilerTeaser
+    raw_id_fields = ('page_link',)
     name = _("Teaser")
     TEMPLATE_NAME = 'cmsplugin_filer_teaser/plugins/teaser/%s.html'
     render_template = TEMPLATE_NAME % 'default'
