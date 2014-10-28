@@ -10,7 +10,7 @@ from cmsplugin_filer_link.models import LINK_STYLES
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('cms', '0004_auto_20141015_0046'),
+        ('cms', '0004_auto_20140924_1038'),
         ('filer', '0001_initial'),
     ]
 
