@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
+from django.conf import settings
 import filer.fields.file
 import filer.fields.image
 import cms.models.fields
@@ -10,7 +11,7 @@ import cms.models.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('cms', '0004_auto_20141015_0046'),
+        ('cms', '0003_auto_20140926_2347'),
         ('filer', '0001_initial'),
     ]
 
@@ -19,7 +20,7 @@ class Migration(migrations.Migration):
             name='FilerImage',
             fields=[
                 ('cmsplugin_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='cms.CMSPlugin')),
-                ('style', models.CharField(default=b'', max_length=50, verbose_name='Style', blank=True)),
+                ('style', models.CharField(max_length=50, verbose_name='Style', default=settings.CMSPLUGIN_FILER_IMAGE_DEFAULT_STYLE, blank=True, choices=settings.CMSPLUGIN_FILER_IMAGE_STYLE_CHOICES)),
                 ('caption_text', models.CharField(max_length=255, null=True, verbose_name='caption text', blank=True)),
                 ('image_url', models.URLField(default=None, null=True, verbose_name='alternative image url', blank=True)),
                 ('alt_text', models.CharField(max_length=255, null=True, verbose_name='alt text', blank=True)),
