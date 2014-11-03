@@ -6,7 +6,13 @@ A set of cms plugins that replace the plugins shipped with django-cms with
 versions that use file fields from django-filer.
 
 Warning: starting with version 0.10 support for django-cms 2.x was dropped (table renaming magic removal).
-Pin you dependencies to ``cmsplugin-filer<0.10`` for django-cms 2.x projects.
+Pin your dependencies to ``cmsplugin-filer<0.10`` for django-cms 2.x projects.
+
+NOTICE TO DJANGO 1.7 USERS:
+
+    To use cmsplugin-filer, you **must** use the latest commits from the 3.0.x
+    branch of django CMS.
+
 
 Dependencies
 ============
@@ -35,13 +41,28 @@ To get started using ``cmsplugin-filer``:
         ...
         'cmsplugin_filer_file',
         'cmsplugin_filer_folder',
+        'cmsplugin_filer_link',
         'cmsplugin_filer_image',
         'cmsplugin_filer_teaser',
         'cmsplugin_filer_video',
         ...
     )
+
+- for Django 1.7 users, you need to add the following to your MIGRATION_MODULES settings::
+
+    MIGRATION_MODULES = {
+        ...
+        'cmsplugin_filer_file': 'cmsplugin_filer_file.migrations_django',
+        'cmsplugin_filer_folder': 'cmsplugin_filer_folder.migrations_django',
+        'cmsplugin_filer_image': 'cmsplugin_filer_image.migrations_django',
+        'cmsplugin_filer_teaser': 'cmsplugin_filer_teaser.migrations_django',
+        'cmsplugin_filer_video': 'cmsplugin_filer_video.migrations_django',
+        ...
+    }
+
+    NOTE: For Django 1.7, you **must** also be using the latest commits to the CMS Support 3.0.x branch and the latest develop branch of django-filer.
     
-- run ``syncdb`` or ``migrate`` if you're using South.
+- run ``migrate``.
 
 You can also set ``FILER_IMAGE_USE_ICON`` in your ``settings.py`` to configure ``cmsplugin_filer_image`` plugin to use 32x32 icons for representing plugin instances.
 
@@ -83,7 +104,7 @@ e.g add the following settings for the image plugin::
         ('default', 'Default'),
         ('boxed', 'Boxed'),
     )
-    CMSPLUGIN_FILER_IMAGE_DEFAUL_STYLE = 'boxed'
+    CMSPLUGIN_FILER_IMAGE_DEFAULT_STYLE = 'boxed'
 
 Now, if a template exists at ``cmsplugin_filer_image/plugins/image/boxed.html`` it will be used. If not, it will fall
 back to ``cmsplugin_filer_image/plugins/image/default.html``. If a css class in the default template is enough, it can

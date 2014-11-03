@@ -1,23 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# Iacopo Spalletti <i.spalletti@nephila.it>, 2012.
-#   <i.spalletti@nephila.it>, 2012.
+# yakky <i.spalletti@nephila.it>, 2012
+# yakky <i.spalletti@nephila.it>, 2013
+# yakky <i.spalletti@nephila.it>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: cmsplugin-filer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-09 18:33+0100\n"
-"PO-Revision-Date: 2012-07-18 18:13+0000\n"
+"POT-Creation-Date: 2013-01-09 18:07+0100\n"
+"PO-Revision-Date: 2013-11-20 13:30+0000\n"
 "Last-Translator: yakky <i.spalletti@nephila.it>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/cmsplugin-filer/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/cmsplugin-filer/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: cms_plugins.py:13
@@ -57,23 +57,22 @@ msgid "alt text"
 msgstr "testo alternativo"
 
 #: models.py:28
-#, fuzzy
 msgid "use the original image"
-msgstr "collegamento all'immagine originale"
+msgstr "usa l'immagine originale"
 
 #: models.py:29
 msgid "do not resize the image. use the original image instead."
-msgstr ""
+msgstr "non ridimensionare l'immagine. Usa l'immagine originale."
 
 #: models.py:30 models.py:114
 msgid "thumbnail option"
-msgstr "opzioni miniature"
+msgstr "opzione anteprima immagine"
 
 #: models.py:31
 msgid ""
 "overrides width, height, crop and upscale with values from the selected "
 "thumbnail option"
-msgstr ""
+msgstr "ignora le impostazioni di larghezza, altezza, taglio e riscalatura e usa l'opzione anteprima immagine selezionata"
 
 #: models.py:32
 msgid "use automatic scaling"
@@ -129,7 +128,7 @@ msgstr "descrizione"
 
 #: models.py:48
 msgid "Open link in new window"
-msgstr ""
+msgstr "Apri collegamento in una nuova finestra"
 
 #: models.py:57
 msgid "filer image"
@@ -141,7 +140,7 @@ msgstr "immagini"
 
 #: models.py:64
 msgid "Either an image or an image url must be selected."
-msgstr "Deve essere selezionata un'immagine o un indirizzo di immagine"
+msgstr "Devi selezionare un'immagine o un indirizzo di immagine"
 
 #: models.py:71
 #, python-format
@@ -162,4 +161,4 @@ msgstr "altezza in pixel."
 
 #: models.py:115
 msgid "thumbnail options"
-msgstr "opzioni miniature"
+msgstr "opzioni anteprima immagine"
