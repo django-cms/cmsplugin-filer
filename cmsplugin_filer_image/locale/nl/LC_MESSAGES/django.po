@@ -1,0 +1,163 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Maarten Draijer <maarten@madra.nl>, 2013
+# Maikel Wever, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: cmsplugin-filer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-01-09 18:07+0100\n"
+"PO-Revision-Date: 2013-11-20 13:30+0000\n"
+"Last-Translator: Maarten Draijer <maarten@madra.nl>\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/cmsplugin-filer/language/nl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: cms_plugins.py:13
+msgid "Image"
+msgstr "Afbeelding"
+
+#: cms_plugins.py:22
+msgid "Image resizing options"
+msgstr "Opties voor het schalen van de afbeelding"
+
+#: cms_plugins.py:33
+msgid "More"
+msgstr "Meer"
+
+#: models.py:18
+msgid "left"
+msgstr "links"
+
+#: models.py:19
+msgid "right"
+msgstr "rechts"
+
+#: models.py:21
+msgid "caption text"
+msgstr "bijschrift tekst"
+
+#: models.py:22
+msgid "image"
+msgstr "afbeelding"
+
+#: models.py:24 models.py:26
+msgid "alternative image url"
+msgstr "alternatieve afbeeldingslocatie"
+
+#: models.py:27
+msgid "alt text"
+msgstr "alt tekst"
+
+#: models.py:28
+msgid "use the original image"
+msgstr "gebruik de originele afbeelding"
+
+#: models.py:29
+msgid "do not resize the image. use the original image instead."
+msgstr "afbeelding niet schalen, gebruik in plaats daarvan de originele afbeelding."
+
+#: models.py:30 models.py:114
+msgid "thumbnail option"
+msgstr "thumbnailoptie"
+
+#: models.py:31
+msgid ""
+"overrides width, height, crop and upscale with values from the selected "
+"thumbnail option"
+msgstr "overschrijft breedte, hoogte, uitsnijding en opschaling met waardes van de geselecteerde thumnbailoptie"
+
+#: models.py:32
+msgid "use automatic scaling"
+msgstr "gebruik automatische schaling"
+
+#: models.py:33
+msgid "tries to auto scale the image based on the placeholder context"
+msgstr "probeert de afbeelding automatisch te schalen gebaseerd op de placeholder context"
+
+#: models.py:34 models.py:107
+msgid "width"
+msgstr "breedte"
+
+#: models.py:35 models.py:108
+msgid "height"
+msgstr "hoogte"
+
+#: models.py:36 models.py:109
+msgid "crop"
+msgstr "uitsnijden"
+
+#: models.py:37 models.py:110
+msgid "upscale"
+msgstr "opschalen"
+
+#: models.py:38
+msgid "image alignment"
+msgstr "afbeeldingsuitlijning"
+
+#: models.py:40
+msgid "link"
+msgstr "link"
+
+#: models.py:41 models.py:43 models.py:45 models.py:46
+msgid "if present image will be clickable"
+msgstr "indien present zal de afbeelding klikbaar zijn"
+
+#: models.py:44
+msgid "page link"
+msgstr "paginalink"
+
+#: models.py:45
+msgid "file link"
+msgstr "bestandslink"
+
+#: models.py:46
+msgid "link original image"
+msgstr "link originele afbeelding"
+
+#: models.py:47
+msgid "description"
+msgstr "omschrijving"
+
+#: models.py:48
+msgid "Open link in new window"
+msgstr "Open link in een nieuw venster"
+
+#: models.py:57
+msgid "filer image"
+msgstr "filer afbeelding"
+
+#: models.py:58
+msgid "filer images"
+msgstr "filer afbeeldingen"
+
+#: models.py:64
+msgid "Either an image or an image url must be selected."
+msgstr "Er moet of een afbeelding, of een afbeeldingslocatie worden geselecteerd."
+
+#: models.py:71
+#, python-format
+msgid "Image Publication %(caption)s"
+msgstr "Afbeelding Publicatie %(caption)s"
+
+#: models.py:106
+msgid "name"
+msgstr "naam"
+
+#: models.py:107
+msgid "width in pixel."
+msgstr "breedte in pixels."
+
+#: models.py:108
+msgid "height in pixel."
+msgstr "hoogte in pixels."
+
+#: models.py:115
+msgid "thumbnail options"
+msgstr "thumbnailopties"

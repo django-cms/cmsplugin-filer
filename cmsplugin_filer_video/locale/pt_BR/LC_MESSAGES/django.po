@@ -1,0 +1,120 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Rodrigo <rprior@infranology.com.br>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: cmsplugin-filer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-01-09 18:08+0100\n"
+"PO-Revision-Date: 2013-02-12 22:09+0000\n"
+"Last-Translator: Rodrigo <rprior@infranology.com.br>\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/cmsplugin-filer/language/pt_BR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: cms_plugins.py:13
+msgid "Video"
+msgstr "Vídeo"
+
+#: cms_plugins.py:46
+msgid "Color Settings"
+msgstr "Ajustes de cor"
+
+#: models.py:12
+msgid "movie file"
+msgstr "arquivo de vídeo"
+
+#: models.py:12
+msgid "use .flv file or h264 encoded video file"
+msgstr "utilizar arquivos de vídeo encodados como .flv ou h264"
+
+#: models.py:13
+msgid "movie url"
+msgstr "url do vídeo"
+
+#: models.py:13
+msgid ""
+"vimeo or youtube video url. Example: http://www.youtube.com/watch?v=YFa59lK-"
+"kpo"
+msgstr "url de vídeo do vimeo ou do youtube. Exemplo: http://www.youtube.com/watch?v=YFa59lK-kpo"
+
+#: models.py:14
+msgid "image"
+msgstr "imagem"
+
+#: models.py:14
+msgid "preview image file"
+msgstr "arquivo de preview de imagem"
+
+#: models.py:16
+msgid "width"
+msgstr "largura"
+
+#: models.py:17
+msgid "height"
+msgstr "altura"
+
+#: models.py:19
+msgid "auto play"
+msgstr "auto play"
+
+#: models.py:20
+msgid "auto hide"
+msgstr "auto hide"
+
+#: models.py:21
+msgid "fullscreen"
+msgstr "tela cheia"
+
+#: models.py:22
+msgid "loop"
+msgstr "loop"
+
+#: models.py:25
+msgid "background color"
+msgstr "cor de fundo"
+
+#: models.py:25 models.py:26 models.py:27 models.py:28 models.py:29
+#: models.py:30 models.py:31 models.py:32
+msgid "Hexadecimal, eg ff00cc"
+msgstr "Hexadecimal, ex.: ff00cc"
+
+#: models.py:26
+msgid "text color"
+msgstr "cor do texto"
+
+#: models.py:27
+msgid "seekbar color"
+msgstr "Cor da barra de progresso"
+
+#: models.py:28
+msgid "seekbar bg color"
+msgstr "Cor de fundo da barra de progresso"
+
+#: models.py:29
+msgid "loadingbar color"
+msgstr "Cor da barra de carregamento"
+
+#: models.py:30
+msgid "button out color"
+msgstr "Cor externa do botão"
+
+#: models.py:31
+msgid "button over color"
+msgstr "Cor de over do botão"
+
+#: models.py:32
+msgid "button highlight color"
+msgstr "Cor de seleção do botão"
+
+#: templates/cmsplugin_filer_video/video.html:3
+msgid ""
+"Missing flash plugin. Download <a "
+"href=\"http://adobe.com/flashplayer\">here</a>."
+msgstr "Plugin do Flash não encontrado. Baixe <a href=\"http://adobe.com/flashplayer\">aqui</a>."

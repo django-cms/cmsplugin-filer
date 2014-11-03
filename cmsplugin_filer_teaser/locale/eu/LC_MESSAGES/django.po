@@ -1,0 +1,83 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Ales Zabala Alava <shagi@gisa-elkartea.org>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: cmsplugin-filer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-01-09 18:08+0100\n"
+"PO-Revision-Date: 2013-05-29 13:36+0000\n"
+"Last-Translator: Ales Zabala Alava <shagi@gisa-elkartea.org>\n"
+"Language-Team: Basque (http://www.transifex.com/projects/p/cmsplugin-filer/language/eu/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: eu\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: cms_plugins.py:15
+msgid "Teaser"
+msgstr "Iragarkia"
+
+#: models.py:18
+msgid "title"
+msgstr "izenburua"
+
+#: models.py:19
+msgid "image"
+msgstr "irudia"
+
+#: models.py:21 models.py:23
+msgid "alternative image url"
+msgstr "ordezko irudiaren helbidea"
+
+#: models.py:25
+msgid "teaser style"
+msgstr "iragarki estiloa"
+
+#: models.py:27
+msgid "use automatic scaling"
+msgstr "eskalatze automatikoa erabili"
+
+#: models.py:28
+msgid "tries to auto scale the image based on the placeholder context"
+msgstr "leku-markaren testuinguruan oinarrituta irudia automatikoki eskalatzen saiatu"
+
+#: models.py:29
+msgid "width"
+msgstr "zabalera"
+
+#: models.py:30
+msgid "height"
+msgstr "altuera"
+
+#: models.py:32
+msgid "link"
+msgstr "esteka"
+
+#: models.py:32 models.py:33
+msgid "if present image will be clickable"
+msgstr "zehazten bada irudia klikagarria izango da"
+
+#: models.py:33
+msgid "page link"
+msgstr "orri esteka"
+
+#: models.py:34
+msgid "description"
+msgstr "deskribapena"
+
+#: models.py:36
+msgid "open link in new window"
+msgstr "ireki esteka leiho berrian"
+
+#: models.py:44
+msgid "Either an image or an image url must be selected."
+msgstr "Irudi edo helbidea, bietako bat hautatu behar da."
+
+#: templates/cmsplugin_filer_teaser/teaser.html:17
+msgid "more"
+msgstr "gehiago"

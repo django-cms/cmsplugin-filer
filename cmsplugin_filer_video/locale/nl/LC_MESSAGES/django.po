@@ -1,0 +1,121 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Maarten Draijer <maarten@madra.nl>, 2013
+# Maikel Wever, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: cmsplugin-filer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-01-09 18:08+0100\n"
+"PO-Revision-Date: 2013-07-18 22:13+0000\n"
+"Last-Translator: Maarten Draijer <maarten@madra.nl>\n"
+"Language-Team: Dutch (http://www.transifex.com/projects/p/cmsplugin-filer/language/nl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: cms_plugins.py:13
+msgid "Video"
+msgstr "Video"
+
+#: cms_plugins.py:46
+msgid "Color Settings"
+msgstr "Kleurinstellingen"
+
+#: models.py:12
+msgid "movie file"
+msgstr "filmbestand"
+
+#: models.py:12
+msgid "use .flv file or h264 encoded video file"
+msgstr "gebruik een .flv of h264 gecodeerd videobestand"
+
+#: models.py:13
+msgid "movie url"
+msgstr "film url"
+
+#: models.py:13
+msgid ""
+"vimeo or youtube video url. Example: http://www.youtube.com/watch?v=YFa59lK-"
+"kpo"
+msgstr "vimeo of youtube video url. Bijvoorbeeld: http://www.youtube.com/watch?v=YFa59lK-kpo"
+
+#: models.py:14
+msgid "image"
+msgstr "afbeelding"
+
+#: models.py:14
+msgid "preview image file"
+msgstr "bekijk voorbeeld van afbeeldingsbestand"
+
+#: models.py:16
+msgid "width"
+msgstr "breedte"
+
+#: models.py:17
+msgid "height"
+msgstr "hoogte"
+
+#: models.py:19
+msgid "auto play"
+msgstr "automatisch afspelen"
+
+#: models.py:20
+msgid "auto hide"
+msgstr "automatisch verbergen"
+
+#: models.py:21
+msgid "fullscreen"
+msgstr "volledig scherm"
+
+#: models.py:22
+msgid "loop"
+msgstr "lus"
+
+#: models.py:25
+msgid "background color"
+msgstr "achtergrondkleur"
+
+#: models.py:25 models.py:26 models.py:27 models.py:28 models.py:29
+#: models.py:30 models.py:31 models.py:32
+msgid "Hexadecimal, eg ff00cc"
+msgstr "Hexadecimaal, bijv. ff00cc"
+
+#: models.py:26
+msgid "text color"
+msgstr "tekstkleur"
+
+#: models.py:27
+msgid "seekbar color"
+msgstr "zoekbalk kleur"
+
+#: models.py:28
+msgid "seekbar bg color"
+msgstr "zoekbalk achtergrondkleur"
+
+#: models.py:29
+msgid "loadingbar color"
+msgstr "laadbalk kleur"
+
+#: models.py:30
+msgid "button out color"
+msgstr "uitgaande button kleur"
+
+#: models.py:31
+msgid "button over color"
+msgstr "button over kleur"
+
+#: models.py:32
+msgid "button highlight color"
+msgstr "button markeer kleur"
+
+#: templates/cmsplugin_filer_video/video.html:3
+msgid ""
+"Missing flash plugin. Download <a "
+"href=\"http://adobe.com/flashplayer\">here</a>."
+msgstr "Flash plugin ontbreekt. Download <a href=\"http://adobe.com/flashplayer\">hier</a>."
