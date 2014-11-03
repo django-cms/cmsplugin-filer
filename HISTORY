@@ -1,6 +1,13 @@
 Changelog for django-filer-cmsplugins
 =====================================
 
+0.10.1 (2014-11-03)
+------------------
+
+* bugfixes
+* python 3.3 compatibility fixes
+* experimental Django 1.7 support (requires django-cms 3.0.7 or the support/3.0.x branch)
+
 0.10 (2014-09-08)
 ------------------
 
