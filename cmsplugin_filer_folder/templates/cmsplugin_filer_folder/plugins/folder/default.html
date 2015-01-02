@@ -19,10 +19,10 @@ jQuery(document).ready(function ($) {
 {% if object.view_option == "list" %}
     <div class="cmsplugin_filer_folder_list" id="folder_{{ instance.id }}">
         <!--The files should go there    -->
-        {% if folder_children %}
+        {% if folder_folders %}
         <p>{% trans "Folders" %}</p>
         <ul>
-            {% for folder in folder_children %}
+            {% for folder in folder_folders %}
                 <li>{{ folder }}</li>
             {% endfor %}
         </ul>
