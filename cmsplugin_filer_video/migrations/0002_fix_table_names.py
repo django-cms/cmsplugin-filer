@@ -12,6 +12,10 @@ class Migration(SchemaMigration):
         # (old_name, new_name),
         ('cmsplugin_filervideo', 'cmsplugin_filer_video_filervideo'),
     )
+    
+    needed_by = (
+        ("cms", "0069_static_placeholder_permissions"),
+    )
 
     def forwards(self, orm):
         rename_tables_old_to_new(db, self.cms_plugin_table_mapping)
