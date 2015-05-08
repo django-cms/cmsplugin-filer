@@ -25,7 +25,7 @@ class FilerLinkPlugin(CMSPlugin):
                 choices=LINK_STYLES, default=LINK_STYLES[0][0])
     new_window = models.BooleanField(_("new window?"), default=False,
                 help_text=_("Do you want this link to open a new window?"))
-    title = models.CharField(_('name'), max_length=255, blank=True, null=True,
+    title = models.CharField(_('title'), max_length=255, blank=True, null=True,
              help_text=_("May be set to add information about the nature of a link."))
     file = FilerFileField(blank=True, null=True)
 
