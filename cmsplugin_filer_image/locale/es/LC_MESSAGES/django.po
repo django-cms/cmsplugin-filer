@@ -1,0 +1,162 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Creame <javier@crea.me>, 2015
+msgid ""
+msgstr ""
+"Project-Id-Version: cmsplugin-filer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-01-09 18:07+0100\n"
+"PO-Revision-Date: 2015-05-20 08:50+0000\n"
+"Last-Translator: David Díaz <d.diazp@gmail.com>\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/cmsplugin-filer/language/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: cms_plugins.py:13
+msgid "Image"
+msgstr "Imagen"
+
+#: cms_plugins.py:22
+msgid "Image resizing options"
+msgstr "Opciones de redimensionado de imagen"
+
+#: cms_plugins.py:33
+msgid "More"
+msgstr "Más"
+
+#: models.py:18
+msgid "left"
+msgstr "izquierda"
+
+#: models.py:19
+msgid "right"
+msgstr "derecha"
+
+#: models.py:21
+msgid "caption text"
+msgstr "pie de foto"
+
+#: models.py:22
+msgid "image"
+msgstr "imagen"
+
+#: models.py:24 models.py:26
+msgid "alternative image url"
+msgstr "url de la imagen alternativa"
+
+#: models.py:27
+msgid "alt text"
+msgstr "texto alternativo"
+
+#: models.py:28
+msgid "use the original image"
+msgstr "usar la imagen original"
+
+#: models.py:29
+msgid "do not resize the image. use the original image instead."
+msgstr "no redimensionar la imagen. usar la imagen original."
+
+#: models.py:30 models.py:114
+msgid "thumbnail option"
+msgstr "opción de miniatura"
+
+#: models.py:31
+msgid ""
+"overrides width, height, crop and upscale with values from the selected "
+"thumbnail option"
+msgstr "sobreescribe ancho, alto, recorta y escala con los valores de la opción de miniatura seleccionada"
+
+#: models.py:32
+msgid "use automatic scaling"
+msgstr "usar el escalado automático"
+
+#: models.py:33
+msgid "tries to auto scale the image based on the placeholder context"
+msgstr "intenta autoescalar la imagen basado en el contexto del placeholder"
+
+#: models.py:34 models.py:107
+msgid "width"
+msgstr "ancho"
+
+#: models.py:35 models.py:108
+msgid "height"
+msgstr "alto"
+
+#: models.py:36 models.py:109
+msgid "crop"
+msgstr "recortar"
+
+#: models.py:37 models.py:110
+msgid "upscale"
+msgstr "autoescalar"
+
+#: models.py:38
+msgid "image alignment"
+msgstr "alineación de la imagen"
+
+#: models.py:40
+msgid "link"
+msgstr "enlace"
+
+#: models.py:41 models.py:43 models.py:45 models.py:46
+msgid "if present image will be clickable"
+msgstr "podrá hacerse click en la imagen actual"
+
+#: models.py:44
+msgid "page link"
+msgstr "enlace de página"
+
+#: models.py:45
+msgid "file link"
+msgstr "enlace de archivo"
+
+#: models.py:46
+msgid "link original image"
+msgstr "enlace a la imagen original "
+
+#: models.py:47
+msgid "description"
+msgstr "descripción"
+
+#: models.py:48
+msgid "Open link in new window"
+msgstr "Abrir el enlace en una nueva ventana"
+
+#: models.py:57
+msgid "filer image"
+msgstr "imagen filer"
+
+#: models.py:58
+msgid "filer images"
+msgstr "imágenes filer"
+
+#: models.py:64
+msgid "Either an image or an image url must be selected."
+msgstr "Al menos una imagen o una url de imagen debe ser seleccionada."
+
+#: models.py:71
+#, python-format
+msgid "Image Publication %(caption)s"
+msgstr "Publicación de Imagen %(caption)s"
+
+#: models.py:106
+msgid "name"
+msgstr "nombre"
+
+#: models.py:107
+msgid "width in pixel."
+msgstr "ancho en píxeles."
+
+#: models.py:108
+msgid "height in pixel."
+msgstr "alto en píxeles."
+
+#: models.py:115
+msgid "thumbnail options"
+msgstr "opciones de miniatura"
