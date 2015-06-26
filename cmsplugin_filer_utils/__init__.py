@@ -8,7 +8,7 @@ class FilerPluginManager(models.Manager):
         super(FilerPluginManager, self).__init__()
 
     def get_query_set(self):
-        qs = super(FilerPluginManager, self).get_query_set()
+        qs = super(FilerPluginManager, self).get_queryset()
         if self._select_related:
             qs = qs.prefetch_related(*self._select_related)
         return qs
