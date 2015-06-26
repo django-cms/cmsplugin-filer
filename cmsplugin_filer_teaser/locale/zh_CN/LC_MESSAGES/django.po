@@ -1,0 +1,87 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-03-25 13:13+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: .\cms_plugins.py:17
+msgid "Teaser"
+msgstr "Teaser"
+
+#: .\cms_plugins.py:28
+msgid "More"
+msgstr "更多"
+
+#: .\models.py:19
+msgid "title"
+msgstr "标题"
+
+#: .\models.py:20
+msgid "image"
+msgstr "图片"
+
+#: .\models.py:21
+msgid "alternative image url"
+msgstr "可选的图片url"
+
+#: .\models.py:23
+msgid "Style"
+msgstr "样式"
+
+#: .\models.py:24
+msgid "use automatic scaling"
+msgstr "自动缩放"
+
+#: .\models.py:25
+msgid "tries to auto scale the image based on the placeholder context"
+msgstr "基于placeholder上下文来自动缩放图片"
+
+#: .\models.py:26
+msgid "width"
+msgstr "宽度"
+
+#: .\models.py:27
+msgid "height"
+msgstr "高度"
+
+#: .\models.py:29
+msgid "link"
+msgstr "链接"
+
+#: .\models.py:29 .\models.py:30
+msgid "if present image will be clickable"
+msgstr "图片是否可以点击"
+
+#: .\models.py:30
+msgid "page link"
+msgstr "页面链接"
+
+#: .\models.py:31
+msgid "description"
+msgstr "描述"
+
+#: .\models.py:33
+msgid "open link in new window"
+msgstr "在新窗口中打开链接"
+
+#: .\models.py:41
+msgid "Either an image or an image url must be selected."
+msgstr "图片或图片的url必须选择其一"
+
+#: .\templates\cmsplugin_filer_teaser\plugins\teaser\default.html:17
+msgid "more"
+msgstr "更多"

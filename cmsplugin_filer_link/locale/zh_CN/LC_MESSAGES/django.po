@@ -1,0 +1,59 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-03-25 13:13+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: .\cms_plugins.py:13
+msgid "Link"
+msgstr "链接"
+
+#: .\models.py:18
+msgid "name"
+msgstr "名称"
+
+#: .\models.py:19
+msgid "url"
+msgstr "url"
+
+#: .\models.py:20
+msgid "page"
+msgstr "页面"
+
+#: .\models.py:21
+msgid "A link to a page has priority over urls."
+msgstr "到页面的链接优先于所有的urls"
+
+#: .\models.py:22
+msgid "mailto"
+msgstr "mailto"
+
+#: .\models.py:23
+msgid "An email address has priority over both pages and urls"
+msgstr "邮件地址优先于所有的页面和urls"
+
+#: .\models.py:24
+msgid "link style"
+msgstr "链接样式"
+
+#: .\models.py:26
+msgid "new window?"
+msgstr "新窗口？"
+
+#: .\models.py:27
+msgid "Do you want this link to open a new window?"
+msgstr "是否在新窗口中打开这个链接?"
