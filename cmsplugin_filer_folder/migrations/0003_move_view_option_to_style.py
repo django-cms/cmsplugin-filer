@@ -18,14 +18,13 @@ class Migration(DataMigration):
 
     def forwards(self, orm):
         rename_tables_new_to_old(db, self.cms_plugin_table_mapping)
-        # rename_tables_new_to_old(db, self.cms_plugin_table_mapping)
-        for obj in orm['cmsplugin_filer_folder.filerfolder'].objects.all():
+        for obj in orm.Filerfolder.objects.all():
             obj.style = obj.view_option
             obj.save()
 
     def backwards(self, orm):
         rename_tables_new_to_old(db, self.cms_plugin_table_mapping)
-        for obj in orm['cmsplugin_filer_folder.filerfolder'].objects.all():
+        for obj in orm.Filerfolder.objects.all():
             obj.view_option = obj.style
             obj.save()
 
