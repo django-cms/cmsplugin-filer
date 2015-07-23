@@ -5,6 +5,7 @@ from django.db import models, migrations
 from django.conf import settings
 import filer.fields.file
 import filer.fields.image
+from filer.settings import FILER_IMAGE_MODEL
 import cms.models.fields
 
 
@@ -13,6 +14,7 @@ class Migration(migrations.Migration):
     dependencies = [
         ('cms', '0003_auto_20140926_2347'),
         ('filer', '0001_initial'),
+        migrations.swappable_dependency(FILER_IMAGE_MODEL),
     ]
 
     operations = [
