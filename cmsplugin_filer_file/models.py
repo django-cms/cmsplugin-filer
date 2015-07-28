@@ -36,7 +36,7 @@ class FilerFile(CMSPlugin):
         return self.file.icons['32']
 
     def file_exists(self):
-        return self.file.file.storage.exists(self.file.path)
+        return self.file.file.storage.exists(self.file.file.name)
 
     def get_file_name(self):
         if self.file.name in ('', None):

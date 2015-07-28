@@ -1,6 +1,15 @@
 Changelog for django-filer-cmsplugins
 =====================================
 
+
+0.10.2 (2015-07-28)
+------------------
+
+* bugfixes
+* better Django 1.7 and 1.8 support
+* migration fixes
+
+
 0.10.1 (2014-11-03)
 ------------------
 

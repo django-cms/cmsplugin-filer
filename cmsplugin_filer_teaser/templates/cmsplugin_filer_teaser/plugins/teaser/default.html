@@ -14,5 +14,5 @@
 {% if instance.description %}
 <p>{{ instance.description }}</p>
 {% endif %}
-{% if link %}<a href="{{ link }}"{% if obj.target_blank %} target="_blank"{% endif %}>{% trans "more" %} &#187;</a>{% endif %}
+{% if link %}<a href="{{ link }}"{% if instance.target_blank %} target="_blank"{% endif %}>{% trans "more" %} &#187;</a>{% endif %}
 </div>
