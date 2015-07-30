@@ -4,8 +4,10 @@ from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import ugettext as _
 from django.conf import settings
+from django.template.loader import select_template
 
 from .models import FilerLinkPlugin
+
 
 class FilerLinkPlugin(CMSPluginBase):
     module = 'Filer'
@@ -13,9 +15,15 @@ class FilerLinkPlugin(CMSPluginBase):
     name = _("Link")
     text_enabled = True
     raw_id_fields = ('page_link', )
-    render_template = "cmsplugin_filer_link/link.html"
+    TEMPLATE_NAME = 'cmsplugin_filer_link/plugins/link/%s.html'
+    render_template = 'cmsplugin_filer_link/link.html'
 
     def render(self, context, instance, placeholder):
+        self.render_template = select_template((
+            self.TEMPLATE_NAME % instance.link_style,
+            'cmsplugin_filer_link/link.html',)
+        )
+
         if instance.file:
             link = instance.file.url
         elif instance.mailto:
