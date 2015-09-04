@@ -1,0 +1,18 @@
+[run]
+source =
+    cmsplugin_filer_file
+    cmsplugin_filer_folder
+    cmsplugin_filer_image
+    cmsplugin_filer_link
+    cmsplugin_filer_teaser
+    cmsplugin_filer_utils
+    cmsplugin_filer_video
+omit = *migrations*
+
+[report]
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    raise AssertionError
+    raise NotImplementedError
+    if __name__ == .__main__.:

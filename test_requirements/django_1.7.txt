@@ -1,0 +1,4 @@
+django>=1.7.4,<1.8
+django-reversion>=1.8.7,<1.9
+
+-r base.txt
