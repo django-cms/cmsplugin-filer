@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from cmsplugin_filer_file import __version__
+
 from django.db import models
 
 
