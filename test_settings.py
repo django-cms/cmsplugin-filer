@@ -68,7 +68,6 @@ if os.environ.get('CUSTOM_IMAGE', False):
 def run(module_name='cmsplugin_filer_file'):
     from djangocms_helper import runner
     runner.cms(module_name)
-    # runner.cms('cmsplugin_filer_link')
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
