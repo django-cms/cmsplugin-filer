@@ -17,3 +17,5 @@ build
 coverage.xml
 pep8.txt
 .idea
+.tox/*
+.coverage
