@@ -57,8 +57,6 @@ class BasePluginTestMixin(object):
 
     def test_plugin_does_not_breakes_page(self):
         with override('en'):
-            import ipdb
-            ipdb.set_trace()
             page_url = self.page.get_absolute_url()
 
         response = self.client.get(page_url)

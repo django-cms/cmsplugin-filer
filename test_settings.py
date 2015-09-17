@@ -11,10 +11,6 @@ from tempfile import mkdtemp
 gettext = lambda s: s
 
 HELPER_SETTINGS = {
-    'NOSE_ARGS': [
-        '-s',
-    ],
-    'ROOT_URLCONF': 'filer.test_utils.urls',
     'INSTALLED_APPS': [
         # filer configuration
         'easy_thumbnails',
