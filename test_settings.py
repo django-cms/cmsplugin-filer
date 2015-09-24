@@ -17,7 +17,6 @@ HELPER_SETTINGS = {
         'mptt',
         'filer',
         # cmsplugin_filer configuration
-        'cmsplugin_filer_file',
         'cmsplugin_filer_folder',
         'cmsplugin_filer_link',
         'cmsplugin_filer_image',
@@ -73,16 +72,9 @@ if os.environ.get('CUSTOM_IMAGE', False):
     HELPER_SETTINGS['INSTALLED_APPS'].append('filer.test_utils.custom_image')
 
 
-def run(module_name='cmsplugin_filer_file'):
+def run():
     from djangocms_helper import runner
-    runner.cms(module_name)
-    # runner.cms('cmsplugin_filer_link')
+    runner.cms('cmsplugin_filer_file')
 
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        run()
-    option = (sys.argv[1] if isinstance(sys.argv[1], six.text_type)
-              else six.u(sys.argv[1]))
-    if option == '--plugin':
-        sys.argv.pop(1)
-        run(sys.argv.pop(1))
+    run()

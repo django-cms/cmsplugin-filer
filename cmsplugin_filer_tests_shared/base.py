@@ -56,6 +56,7 @@ class BasePluginTestMixin(object):
                       self.page.placeholders.all()[0].get_plugins())
 
     def test_plugin_does_not_breakes_page(self):
+        self.create_plugin()
         with override('en'):
             page_url = self.page.get_absolute_url()
 
@@ -106,8 +107,15 @@ class CmsPluginsFilerBaseTestCase(TransactionTestCase):
         file_obj = DjangoFile(open(self.filename, 'rb'), name=name)
         return file_obj
 
-    def get_filer_file_object(self):
-        filer_file_instance = File(file=self.get_django_file_object())
+    def get_filer_object(self, filer_class=None, file_obj=None):
+        if filer_class is None:
+            filer_class = getattr(self, 'filer_class', File)
+        if file_obj is None:
+            file_obj = self.get_django_file_object()
+        file_name = file_obj.name.split('/')[-1]
+        filer_file_instance = filer_class(file=file_obj)
+        # preserve filename
+        filer_file_instance.original_filename = file_name
         filer_file_instance.save()
         return filer_file_instance
 
@@ -118,3 +126,9 @@ class CmsPluginsFilerBaseTestCase(TransactionTestCase):
         root_page.publish('en')
         root_page.publish('de')
         return root_page.reload()
+
+    def refresh(self, instance):
+        """
+        Refresh instance from db using _meta.model
+        """
+        return instance._meta.model.objects.get(pk=instance.pk)
