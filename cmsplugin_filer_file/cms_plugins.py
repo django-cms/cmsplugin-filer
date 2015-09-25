@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from cms.plugin_pool import plugin_pool
 from cms.plugin_base import CMSPluginBase
 from django.template.loader import select_template
+from django.templatetags.static import static
 from django.utils.translation import ugettext_lazy as _
 from . import models
 from .conf import settings
@@ -40,7 +41,8 @@ class FilerFilePlugin(CMSPluginBase):
 
     def icon_src(self, instance):
         file_icon = instance.get_icon_url()
-        if file_icon: return file_icon
-        return settings.CMS_MEDIA_URL + "images/plugins/file.png"
+        if file_icon:
+            return file_icon
+        return static("filer/icons/file_%sx%s.png" % (32, 32,))
 
 plugin_pool.register_plugin(FilerFilePlugin)
