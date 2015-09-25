@@ -7,7 +7,9 @@ source =
     cmsplugin_filer_teaser
     cmsplugin_filer_utils
     cmsplugin_filer_video
-omit = *migrations*
+omit =
+    *migrations*,
+    cmsplugin_filer_utils/migration.py
 
 [report]
 exclude_lines =

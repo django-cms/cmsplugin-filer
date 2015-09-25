@@ -19,3 +19,4 @@ pep8.txt
 .idea
 .tox/*
 .coverage
+htmlcov/*

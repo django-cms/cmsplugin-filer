@@ -16,6 +16,7 @@ HELPER_SETTINGS = {
         'easy_thumbnails',
         'mptt',
         'filer',
+        'djangocms_text_ckeditor',
         # cmsplugin_filer configuration
         'cmsplugin_filer_folder',
         'cmsplugin_filer_link',

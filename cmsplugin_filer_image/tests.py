@@ -1,7 +1,15 @@
 #-*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from django.core.exceptions import ValidationError
+
 from django.utils.translation import override
+
+from cms import api
 from filer.models import Image
+
+from cmsplugin_filer_image.models import FilerImage, ThumbnailOption
+from cmsplugin_filer_image.integrations.ckeditor import create_image_plugin
+
 from cmsplugin_filer_tests_shared.base import (
     BasePluginTestMixin, CmsPluginsFilerBaseTestCase,
 )
@@ -15,9 +23,35 @@ class CmsPluginFilerImageTestCase(BasePluginTestMixin,
     def get_plugin_params(self):
         return {'image': self.get_filer_object()}
 
-    def test_cms_plugin_icon_src(self):
+    def tearDown(self):
+        super(CmsPluginFilerImageTestCase, self).tearDown()
+        ThumbnailOption.objects.all().delete()
+
+    def test_cms_plugin_icon_src_no_options(self):
         # plugin model
         image_plugin = self.create_plugin()
+        plugin_instance = image_plugin.get_plugin_instance()[1]
+        thumbnail = plugin_instance.icon_src(image_plugin)
+        # assert that thumbnail url length is greater then '/media/'
+        self.assertGreater(len(thumbnail), 7)
+
+    def test_cms_plugin_icon_src_with_options(self):
+        image_plugin = self.create_plugin()
+        # prepare options
+        option_kwargs = {
+            'name': 'Default thumbnail 175x175 crop upscale',
+            'width': 175,
+            'height': 175,
+            'crop': True,
+            'upscale': True,
+        }
+        thumbnail_option = ThumbnailOption(**option_kwargs)
+        thumbnail_option.save()
+
+        image_plugin.thumbnail_option = thumbnail_option
+        image_plugin.save()
+        image_plugin = self.refresh(image_plugin)
+        # actual test
         plugin_instance = image_plugin.get_plugin_instance()[1]
         thumbnail = plugin_instance.icon_src(image_plugin)
         # assert that thumbnail url length is greater then '/media/'
@@ -54,3 +88,29 @@ class CmsPluginFilerImageTestCase(BasePluginTestMixin,
         image_plugin.save()
         image_plugin = self.refresh(image_plugin)
         self.assertEqual(image_plugin.link, cms_github_link)
+
+    def test_create_image_plugin(self):
+        placeholder = self.page.placeholders.all()[0]
+        text_plugin = api.add_plugin(
+            placeholder, 'TextPlugin', 'en')
+        self.page.publish('en')
+
+        # create filer image,
+        filename = 'test_integration.jpg'
+        image = self.get_django_file_object(filename)
+        # invoke create_image_plugin
+        image_plugin = create_image_plugin(
+            filename, image, text_plugin)
+        # assert returned plugin is not none, class image plugin =)
+        self.assertTrue(image_plugin, FilerImage)
+        self.assertEqual(image_plugin.get_parent(), text_plugin.cmsplugin_ptr)
+
+    def test_clean(self):
+        image_plugin = FilerImage()
+        with self.assertRaises(ValidationError):
+            image_plugin.clean()
+        filer_image = self.get_filer_object()
+        image_plugin.image = filer_image
+        image_plugin.image_url = 'https://github.com/divio/django-cms'
+        with self.assertRaises(ValidationError):
+            image_plugin.clean()
