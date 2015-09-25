@@ -98,12 +98,21 @@ class CmsPluginFilerImageTestCase(BasePluginTestMixin,
         # create filer image,
         filename = 'test_integration.jpg'
         image = self.get_django_file_object(filename)
+
         # invoke create_image_plugin
         image_plugin = create_image_plugin(
             filename, image, text_plugin)
+
         # assert returned plugin is not none, class image plugin =)
         self.assertTrue(image_plugin, FilerImage)
-        self.assertEqual(image_plugin.get_parent(), text_plugin.cmsplugin_ptr)
+
+        # cms 3.1 has get_parrent method, use it if we testing against 3.1
+        if hasattr(image_plugin, 'get_parent'):
+            parent = image_plugin.get_parent()
+        else:
+            # fall back for cms 3.0
+            parent = image_plugin.parent
+        self.assertEqual(parent, text_plugin.cmsplugin_ptr)
 
     def test_clean(self):
         image_plugin = FilerImage()
