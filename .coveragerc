@@ -9,7 +9,7 @@ source =
     cmsplugin_filer_video
 omit =
     *migrations*,
-    cmsplugin_filer_utils/migration.py
+    cmsplugin_filer_utils/*
 
 [report]
 exclude_lines =

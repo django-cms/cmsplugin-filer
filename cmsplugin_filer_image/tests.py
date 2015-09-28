@@ -106,7 +106,7 @@ class CmsPluginFilerImageTestCase(BasePluginTestMixin,
         # assert returned plugin is not none, class image plugin =)
         self.assertTrue(image_plugin, FilerImage)
 
-        # cms 3.1 has get_parrent method, use it if we testing against 3.1
+        # cms 3.1 has get_parent method, use it if we testing against 3.1
         if hasattr(image_plugin, 'get_parent'):
             parent = image_plugin.get_parent()
         else:

@@ -10,7 +10,7 @@ from cmsplugin_filer_tests_shared.base import (
 
 
 class CmsPluginFilerTeaserTestCase(BasePluginTestMixin,
-                                 CmsPluginsFilerBaseTestCase):
+                                   CmsPluginsFilerBaseTestCase):
     plugin_to_test = 'FilerTeaserPlugin'
     filer_class = Image
 
