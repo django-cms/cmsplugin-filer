@@ -19,7 +19,7 @@ class FilerLinkPlugin(CMSPlugin):
     url = models.CharField(_("url"), blank=True, null=True, max_length=255)
     page_link = PageField(verbose_name=_("page"), blank=True, null=True,
              help_text=_("A link to a page has priority over urls."))
-    mailto = models.EmailField(_("mailto"), blank=True, null=True,
+    mailto = models.EmailField(_("mailto"), blank=True, null=True, max_length=75,
              help_text=_("An email address has priority over both pages and urls"))
     link_style = models.CharField(_("link style"), max_length=255,
                 choices=LINK_STYLES, default=LINK_STYLES[0][0])
