@@ -5,7 +5,7 @@ from cmsplugin_filer_file import __version__
 setup(
     name="cmsplugin-filer",
     version=__version__,
-    url='http://github.com/stefanfoulis/cmsplugin-filer',
+    url='http://github.com/divio/cmsplugin-filer',
     license='BSD',
     description="django-cms plugins for django-filer",
     long_description=open('README.rst').read(),

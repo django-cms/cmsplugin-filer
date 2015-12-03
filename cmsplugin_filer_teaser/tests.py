@@ -18,7 +18,7 @@ class CmsPluginFilerTeaserTestCase(BasePluginTestMixin,
         return {
             'title': 'test teaser!',
             'image': self.get_filer_object(),
-            'free_link': 'https://github.com/stefanfoulis/cmsplugin-filer'}
+            'free_link': 'https://github.com/divio/cmsplugin-filer'}
 
     def test_get_thumbnail(self):
         teaser_plugin = self.create_plugin()
