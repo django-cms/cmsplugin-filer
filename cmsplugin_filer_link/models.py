@@ -16,7 +16,7 @@ LINK_STYLES = getattr(settings, "FILER_LINK_STYLES", DEFULT_LINK_STYLES)
 @python_2_unicode_compatible
 class FilerLinkPlugin(CMSPlugin):
     name = models.CharField(_('name'), max_length=255)
-    url = models.CharField(_("url"), blank=True, null=True, max_length=255)
+    url = models.CharField(_("url"), blank=True, null=True, max_length=2000)
     page_link = PageField(verbose_name=_("page"), blank=True, null=True,
              help_text=_("A link to a page has priority over urls."))
     mailto = models.EmailField(_("mailto"), blank=True, null=True,
