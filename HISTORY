@@ -1,6 +1,26 @@
 Changelog for django-filer-cmsplugins
 =====================================
 
+1.0.0 (2015-11-03)
+------------------
+
+* Pin requirements for Django-Filer to >= 1.0.0
+* Improve test coverage
+* Fix icon_src / remove references of FILER_STATICMEDIA_PREFIX
+* XSS fix
+* Fix path names for storage backends
+* Fix migrations
+* Update README
+
+
+0.10.2 (2015-07-28)
+------------------
+
+* bugfixes
+* better Django 1.7 and 1.8 support
+* migration fixes
+
+
 0.10.1 (2014-11-03)
 ------------------
 

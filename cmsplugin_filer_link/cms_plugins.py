@@ -2,10 +2,11 @@ from __future__ import unicode_literals
 
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
+from django.templatetags.static import static
 from django.utils.translation import ugettext as _
-from django.conf import settings
 
 from .models import FilerLinkPlugin
+
 
 class FilerLinkPlugin(CMSPluginBase):
     module = 'Filer'
@@ -36,7 +37,7 @@ class FilerLinkPlugin(CMSPluginBase):
         return context
 
     def icon_src(self, instance):
-        return settings.STATIC_URL + "cms/images/plugins/link.png"
+        return static("cms/img/icons/plugins/link.png")
 
 
 plugin_pool.register_plugin(FilerLinkPlugin)
