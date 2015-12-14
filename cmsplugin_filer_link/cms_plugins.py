@@ -32,6 +32,7 @@ class FilerLinkPlugin(CMSPluginBase):
             'style': instance.link_style,
             'name': instance.name,
             'new_window': instance.new_window,
+            'title': instance.title,
         })
         return context
 
