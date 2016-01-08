@@ -6,6 +6,7 @@ from cms.models import CMSPlugin
 from cms.models.fields import PageField
 from filer.fields.image import FilerImageField
 from filer.fields.file import FilerFileField
+#from filer.models import ThumbnailOption
 from filer.utils.compatibility import python_2_unicode_compatible
 from cmsplugin_filer_utils import FilerPluginManager
 from .conf import settings
@@ -28,7 +29,7 @@ class FilerImage(CMSPlugin):
     alt_text = models.CharField(_("alt text"), null=True, blank=True, max_length=255)
     use_original_image = models.BooleanField(_("use the original image"), default=False,
         help_text=_('do not resize the image. use the original image instead.'))
-    thumbnail_option = models.ForeignKey('ThumbnailOption', null=True, blank=True, verbose_name=_("thumbnail option"),
+    thumbnail_option = models.ForeignKey('filer.ThumbnailOption', null=True, blank=True, verbose_name=_("thumbnail option"),
                                         help_text=_('overrides width, height, crop and upscale with values from the selected thumbnail option'))
     use_autoscale = models.BooleanField(_("use automatic scaling"), default=False,
                                         help_text=_('tries to auto scale the image based on the placeholder context'))
@@ -98,38 +99,3 @@ class FilerImage(CMSPlugin):
                 return self.image_url
         else:
             return ''
-
-
-@python_2_unicode_compatible
-class ThumbnailOption(models.Model):
-    """
-    This class defines the option use to create the thumbnail.
-    """
-    name = models.CharField(_("name"), max_length=100)
-    width = models.IntegerField(_("width"), help_text=_('width in pixel.'))
-    height = models.IntegerField(_("height"), help_text=_('height in pixel.'))
-    crop = models.BooleanField(_("crop"), default=True)
-    upscale = models.BooleanField(_("upscale"), default=True)
-
-    class Meta:
-        ordering = ('width', 'height')
-        verbose_name = _("thumbnail option")
-        verbose_name_plural = _("thumbnail options")
-
-    def __str__(self):
-        return '%s -- %s x %s' % (self.name, self.width, self.height)
-
-    @property
-    def as_dict(self):
-        """
-        This property returns a dictionary suitable for Thumbnailer.get_thumbnail()
-
-        Sample code:
-            # thumboption_obj is a ThumbnailOption instance
-            # filerimage is a Image instance
-            option_dict = thumboption_obj.as_dict
-            thumbnailer = filerimage.easy_thumbnails_thumbnailer
-            thumb_image = thumbnailer.get_thumbnail(option_dict)
-        """
-        return {"size":(self.width,self.height), "width":self.width,
-                "height":self.height,"crop":self.crop,"upscale":self.upscale}
