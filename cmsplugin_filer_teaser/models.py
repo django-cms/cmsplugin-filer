@@ -17,7 +17,12 @@ class FilerTeaser(CMSPlugin):
     STYLE_CHOICES = settings.CMSPLUGIN_FILER_TEASER_STYLE_CHOICES
     DEFAULT_STYLE = settings.CMSPLUGIN_FILER_TEASER_DEFAULT_STYLE
     title = models.CharField(_("title"), max_length=255, blank=True)
-    image = FilerImageField(blank=True, null=True, verbose_name=_("image"))
+    image = FilerImageField(
+        blank=True,
+        null=True,
+        verbose_name=_("image"),
+        on_delete=models.SET_NULL,
+    )
     image_url = models.URLField(_("alternative image url"), null=True, blank=True, default=None)
     style = models.CharField(
         _('Style'), choices=STYLE_CHOICES, default=DEFAULT_STYLE, max_length=255, blank=True)
@@ -27,7 +32,13 @@ class FilerTeaser(CMSPlugin):
     height = models.PositiveIntegerField(_("height"), null=True, blank=True)
 
     free_link = models.CharField(_("link"), max_length=255, blank=True, null=True, help_text=_("if present image will be clickable"))
-    page_link = PageField(null=True, blank=True, help_text=_("if present image will be clickable"), verbose_name=_("page link"))
+    page_link = PageField(
+        null=True,
+        blank=True,
+        help_text=_("if present image will be clickable"),
+        verbose_name=_("page link"),
+        on_delete=models.SET_NULL,
+    )
     description = models.TextField(_("description"), blank=True, null=True)
 
     target_blank = models.BooleanField(_("open link in new window"), default=False)
