@@ -23,7 +23,13 @@ class FilerImage(CMSPlugin):
     style = models.CharField(
         _('Style'), choices=STYLE_CHOICES, default=DEFAULT_STYLE, max_length=50, blank=True)
     caption_text = models.CharField(_("caption text"), null=True, blank=True, max_length=255)
-    image = FilerImageField(null=True, blank=True, default=None, verbose_name=_("image"))
+    image = FilerImageField(
+        null=True,
+        blank=True,
+        default=None,
+        verbose_name=_("image"),
+        on_delete=models.SET_NULL,
+    )
     image_url = models.URLField(_("alternative image url"), null=True, blank=True, default=None)
     alt_text = models.CharField(_("alt text"), null=True, blank=True, max_length=255)
     use_original_image = models.BooleanField(_("use the original image"), default=False,
@@ -43,7 +49,15 @@ class FilerImage(CMSPlugin):
     page_link = PageField(null=True, blank=True,
                           help_text=_("if present image will be clickable"),
                           verbose_name=_("page link"))
-    file_link = FilerFileField(null=True, blank=True, default=None, verbose_name=_("file link"), help_text=_("if present image will be clickable"), related_name='+')
+    file_link = FilerFileField(
+        null=True,
+        blank=True,
+        default=None,
+        verbose_name=_("file link"),
+        help_text=_("if present image will be clickable"),
+        related_name='+',
+        on_delete=models.SET_NULL,
+    )
     original_link = models.BooleanField(_("link original image"), default=False, help_text=_("if present image will be clickable"))
     description = models.TextField(_("description"), blank=True, null=True)
     target_blank = models.BooleanField(_('Open link in new window'), default=False)
