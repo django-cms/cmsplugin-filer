@@ -25,7 +25,11 @@ class FilerFile(CMSPlugin):
     STYLE_CHOICES = settings.CMSPLUGIN_FILER_FILE_STYLE_CHOICES
     DEFAULT_STYLE = settings.CMSPLUGIN_FILER_FILE_DEFAULT_STYLE
     title = models.CharField(_("title"), max_length=255, null=True, blank=True)
-    file = FilerFileField(verbose_name=_('file'))
+    file = FilerFileField(
+        verbose_name=_('file'),
+        null=True,
+        on_delete=models.SET_NULL,
+    )
     target_blank = models.BooleanField(_('Open link in new window'), default=False)
     style = models.CharField(
         _('Style'), choices=STYLE_CHOICES, default=DEFAULT_STYLE, max_length=255, blank=True)
@@ -33,12 +37,19 @@ class FilerFile(CMSPlugin):
     objects = FilerPluginManager(select_related=('file',))
 
     def get_icon_url(self):
-        return self.file.icons['32']
+        if self.file_id:
+            return self.file.icons['32']
+        return ''
 
     def file_exists(self):
-        return self.file.file.storage.exists(self.file.file.name)
+        if self.file_id:
+            return self.file.file.storage.exists(self.file.file.name)
+        return False
 
     def get_file_name(self):
+        if not self.file_id:
+            return ''
+
         if self.file.name in ('', None):
             name = "%s" % (self.file.original_filename,)
         else:
@@ -51,7 +62,7 @@ class FilerFile(CMSPlugin):
     def __str__(self):
         if self.title:
             return self.title
-        elif self.file:
+        elif self.file_id:
             # added if, because it raised attribute error when file wasnt defined
             return self.get_file_name()
         return "<empty>"
