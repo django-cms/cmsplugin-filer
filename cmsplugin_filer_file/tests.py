@@ -15,6 +15,12 @@ class CmsPluginFilerFileTestCase(BasePluginTestMixin,
     def get_plugin_params(self):
         return {'file': self.get_filer_object()}
 
+    def test_no_file(self):
+        filer_file_plugin = self._create_plugin(file=None)
+        self.assertEqual(filer_file_plugin.get_file_name(), '')
+        self.assertEqual(filer_file_plugin.get_icon_url(), '')
+        self.assertEqual(force_text(filer_file_plugin), '<empty>')
+
     def test_get_file_name(self):
         filer_file_plugin = self.create_plugin()
         # check with original file name
