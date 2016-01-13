@@ -20,7 +20,7 @@ class FilerFolder(CMSPlugin):
     STYLE_CHOICES = settings.CMSPLUGIN_FILER_FOLDER_STYLE_CHOICES
     DEFAULT_STYLE = settings.CMSPLUGIN_FILER_FOLDER_DEFAULT_STYLE
     title = models.CharField(_("title"), max_length=255, null=True, blank=True)
-    folder = FilerFolderField()
+    folder = FilerFolderField(null=True, on_delete=models.SET_NULL)
     style = models.CharField(
         _('Style'), choices=STYLE_CHOICES, default=DEFAULT_STYLE, max_length=50)
 
@@ -33,11 +33,14 @@ class FilerFolder(CMSPlugin):
         return self.style
 
     def __str__(self):
+        return self.get_display_name()
+
+    def get_display_name(self):
         if self.title:
             return self.title
-        elif self.folder.name:
-            # added if, because it raised attribute error when file wasnt defined
+        elif self.folder_id and self.folder.name:
             return self.folder.name
         return "<empty>"
+
 
     search_fields = ('title',)
