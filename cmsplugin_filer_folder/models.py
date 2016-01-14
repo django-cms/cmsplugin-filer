@@ -42,5 +42,4 @@ class FilerFolder(CMSPlugin):
             return self.folder.name
         return "<empty>"
 
-
     search_fields = ('title',)
