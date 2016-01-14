@@ -1,6 +1,16 @@
 Changelog for django-filer-cmsplugins
 =====================================
 
+1.0.1 (2016-01-14)
+------------------
+
+* Fixes flake8 warnings
+* Changed internal project links to point to new repo url
+* Set on_delete to all plugins with relationships to filer models
+* Set file field as nullable in file plugin
+* Set folder field as nullable in folder plugin
+
+
 1.0.0 (2015-11-03)
 ------------------
 
