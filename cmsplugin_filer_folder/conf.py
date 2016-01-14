@@ -1,5 +1,5 @@
-#-*- coding: utf-8 -*-
-from django.conf import settings
+# -*- coding: utf-8 -*-
+from django.conf import settings  # NOQA
 from django.utils.translation import ugettext_lazy as _
 from appconf import AppConf
 
