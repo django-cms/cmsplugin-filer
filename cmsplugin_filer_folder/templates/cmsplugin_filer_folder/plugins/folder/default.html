@@ -14,12 +14,7 @@ jQuery(document).ready(function ($) {
 {% endaddtoblock %}
 
 
-{# Does not use `firstof` as pre Django1.8, `firstof` does not escape its output. #}
-{% if object.title %}
-    {{ object.title }}
-{% else %}
-    {{ object.folder.name  }}
-{% endif %}
+{{ object.get_display_name  }}
 
 {% if object.view_option == "list" %}
     <div class="cmsplugin_filer_folder_list" id="folder_{{ instance.id }}">
