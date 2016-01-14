@@ -6,7 +6,7 @@ import os
 from tempfile import mkdtemp
 
 
-gettext = lambda s: s
+gettext = lambda s: s  # NOQA
 
 HELPER_SETTINGS = {
     'INSTALLED_APPS': [
