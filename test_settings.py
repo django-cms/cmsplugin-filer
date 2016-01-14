@@ -6,8 +6,6 @@ import os
 from tempfile import mkdtemp
 
 
-gettext = lambda s: s  # NOQA
-
 HELPER_SETTINGS = {
     'INSTALLED_APPS': [
         # filer configuration
@@ -24,19 +22,19 @@ HELPER_SETTINGS = {
     ],
     'LANGUAGE_CODE': 'en',
     'LANGUAGES': (
-        ('en', gettext('English')),
-        ('de', gettext('German')),
+        ('en', 'English'),
+        ('de', 'German'),
     ),
     'CMS_LANGUAGES': {
         1: [
             {
                 'code': 'en',
-                'name': gettext('English'),
+                'name': 'English',
                 'public': True,
             },
             {
                 'code': 'de',
-                'name': gettext('German'),
+                'name': 'German',
                 'public': True,
             },
         ],
