@@ -8,7 +8,6 @@ from filer.fields.file import FilerFileField
 from filer.fields.image import FilerImageField
 from filer.utils.compatibility import python_2_unicode_compatible
 from os.path import basename
-import re
 
 
 @python_2_unicode_compatible
@@ -48,7 +47,6 @@ class FilerVideo(CMSPlugin):
     buttonoutcolor = models.CharField(_('button out color'), max_length=6, default=settings.VIDEO_BUTTON_OUT_COLOR, help_text=_('Hexadecimal, eg ff00cc'))
     buttonovercolor = models.CharField(_('button over color'), max_length=6, default=settings.VIDEO_BUTTON_OVER_COLOR, help_text=_('Hexadecimal, eg ff00cc'))
     buttonhighlightcolor = models.CharField(_('button highlight color'), max_length=6, default=settings.VIDEO_BUTTON_HIGHLIGHT_COLOR, help_text=_('Hexadecimal, eg ff00cc'))
-
 
     def __str__(self):
         if self.movie:

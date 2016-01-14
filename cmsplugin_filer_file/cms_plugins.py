@@ -34,8 +34,8 @@ class FilerFilePlugin(CMSPluginBase):
             self.TEMPLATE_NAME % 'default')
         )
         context.update({
-            'object':instance,
-            'placeholder':placeholder
+            'object': instance,
+            'placeholder': placeholder
         })
         return context
 
