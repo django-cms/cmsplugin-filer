@@ -61,10 +61,10 @@ class FilerTeaserPlugin(CMSPluginBase):
                 subject_location = instance.image.subject_location
             if not height and width:
                 # height was not externally defined: use ratio to scale it by the width
-                height = int( float(width)*float(instance.image.height)/float(instance.image.width) )
+                height = int(float(width) * float(instance.image.height) / float(instance.image.width))
             if not width and height:
                 # width was not externally defined: use ratio to scale it by the height
-                width = int( float(height)*float(instance.image.width)/float(instance.image.height) )
+                width = int(float(height) * float(instance.image.width) / float(instance.image.height))
             if not width:
                 # width is still not defined. fallback the actual image width
                 width = instance.image.width

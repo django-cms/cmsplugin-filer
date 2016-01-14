@@ -1,6 +1,5 @@
 from cms.plugin_pool import plugin_pool
 from cms.plugin_base import CMSPluginBase
-from django.template import loader
 from django.template.loader import select_template
 from django.utils.translation import ugettext_lazy as _
 from . import models
@@ -61,7 +60,6 @@ class FilerFolderPlugin(CMSPluginBase):
             'placeholder': placeholder
         })
         return context
-
 
 
 plugin_pool.register_plugin(FilerFolderPlugin)

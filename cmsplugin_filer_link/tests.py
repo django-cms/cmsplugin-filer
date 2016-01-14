@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from cms.models import Page
-
 from cmsplugin_filer_tests_shared.base import (
     BasePluginTestMixin, CmsPluginsFilerBaseTestCase,
 )

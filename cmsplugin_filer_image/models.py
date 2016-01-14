@@ -67,7 +67,6 @@ class FilerImage(CMSPlugin):
     # additional LEFT OUTER JOINs.
     objects = FilerPluginManager(select_related=('image',))
 
-
     class Meta:
         verbose_name = _("filer image")
         verbose_name_plural = _("filer images")
@@ -78,25 +77,27 @@ class FilerImage(CMSPlugin):
         if (not self.image and not self.image_url) or (self.image and self.image_url):
             raise ValidationError(_('Either an image or an image url must be selected.'))
 
-
     def __str__(self):
         if self.image:
             return self.image.label
         else:
             return _("Image Publication %(caption)s") % {'caption': self.caption or self.alt}
         return ''
+
     @property
     def caption(self):
         if self.image:
             return self.caption_text or self.image.default_caption
         else:
             return self.caption_text
+
     @property
     def alt(self):
         if self.image:
             return self.alt_text or self.image.default_alt_text or self.image.label
         else:
             return self.alt_text
+
     @property
     def link(self):
         if self.free_link:
@@ -145,5 +146,5 @@ class ThumbnailOption(models.Model):
             thumbnailer = filerimage.easy_thumbnails_thumbnailer
             thumb_image = thumbnailer.get_thumbnail(option_dict)
         """
-        return {"size":(self.width,self.height), "width":self.width,
-                "height":self.height,"crop":self.crop,"upscale":self.upscale}
+        return {"size": (self.width, self.height), "width": self.width,
+                "height": self.height, "crop": self.crop, "upscale": self.upscale}
