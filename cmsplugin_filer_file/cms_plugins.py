@@ -41,6 +41,7 @@ class FilerFilePlugin(CMSPluginBase):
 
     def icon_src(self, instance):
         file_icon = instance.get_icon_url()
+
         if file_icon:
             return file_icon
         return static("filer/icons/file_%sx%s.png" % (32, 32,))
