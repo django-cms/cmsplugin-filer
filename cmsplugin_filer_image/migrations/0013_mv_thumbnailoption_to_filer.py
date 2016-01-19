@@ -45,7 +45,7 @@ class Migration(DataMigration):
                 crop=obj.crop,
                 upscale=obj.upscale
             )
-            if len(to) == 0:
+            if not to.exists():
                 orm['cmsplugin_filer_image.thumbnailoption'].objects.create(
                     name=obj.name,
                     width=obj.width,
