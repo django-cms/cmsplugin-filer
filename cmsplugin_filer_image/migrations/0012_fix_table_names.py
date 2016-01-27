@@ -128,6 +128,15 @@ class Migration(SchemaMigration):
             'use_original_image': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'width': ('django.db.models.fields.PositiveIntegerField', [], {'null': 'True', 'blank': 'True'})
         },
+        u'filer.thumbnailoption': {
+            'Meta': {'ordering': "(u'width', u'height')", 'object_name': 'ThumbnailOption'},
+            'crop': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
+            'height': ('django.db.models.fields.IntegerField', [], {}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
+            'upscale': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
+            'width': ('django.db.models.fields.IntegerField', [], {})
+        },
         u'cmsplugin_filer_image.thumbnailoption': {
             'Meta': {'ordering': "(u'width', u'height')", 'object_name': 'ThumbnailOption'},
             'crop': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),

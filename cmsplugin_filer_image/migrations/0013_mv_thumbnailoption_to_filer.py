@@ -7,26 +7,21 @@ from cmsplugin_filer_utils.migration import rename_tables_new_to_old
 
 class Migration(DataMigration):
     
-    dependencies = [("filer", "0003_thumbnailoption")]
-    
-    cms_plugin_table_mapping = (
-        ('cmsplugin_filerfolder', 'cmsplugin_filer_folder_filerfolder'),
-    )
+    dependencies = [("filer", "0015_auto__add_thumbnailoption")]
 
     def forwards(self, orm):
-        from filer.models import ThumbnailOption
-        rename_tables_new_to_old(db, self.cms_plugin_table_mapping)
-        for obj in orm.ThumbnailOption.objects.all():
-            try:
-                ThumbnailOption.objects.get(
+        FilerThumbnailOption = orm['filer.thumbnailoption']
+        PluginThumbnailOption = orm['cmsplugin_filer_image.thumbnailoption']
+        for obj in PluginThumbnailOption.objects.all():
+            to = FilerThumbnailOption.objects.filter(
                     name=obj.name,
                     width=obj.width,
                     height=obj.height,
                     crop=obj.crop,
                     upscale=obj.upscale
                 )
-            except ThumbnailOption.DoesNotExist:
-                ThumbnailOption.objects.create(
+            if not to.exists():
+                FilerThumbnailOption.objects.create(
                     name=obj.name,
                     width=obj.width,
                     height=obj.height,
@@ -35,10 +30,10 @@ class Migration(DataMigration):
                 )
 
     def backwards(self, orm):
-        from filer.models import ThumbnailOption
-        rename_tables_new_to_old(db, self.cms_plugin_table_mapping)
-        for obj in ThumbnailOption.objects.all():
-            to  = orm['cmsplugin_filer_image.thumbnailoption'].objects.filter(
+        FilerThumbnailOption = orm['filer.thumbnailoption']
+        PluginThumbnailOption = orm['cmsplugin_filer_image.thumbnailoption']
+        for obj in FilerThumbnailOption.objects.all():
+            to = PluginThumbnailOption.objects.filter(
                 name=obj.name,
                 width=obj.width,
                 height=obj.height,
@@ -46,7 +41,7 @@ class Migration(DataMigration):
                 upscale=obj.upscale
             )
             if not to.exists():
-                orm['cmsplugin_filer_image.thumbnailoption'].objects.create(
+                PluginThumbnailOption.objects.create(
                     name=obj.name,
                     width=obj.width,
                     height=obj.height,
@@ -137,7 +132,7 @@ class Migration(DataMigration):
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'slot': ('django.db.models.fields.CharField', [], {'max_length': '255', 'db_index': 'True'})
         },
-         u'filer.thumbnailoption': {
+        u'filer.thumbnailoption': {
             'Meta': {'ordering': "(u'width', u'height')", 'object_name': 'ThumbnailOption'},
             'crop': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'height': ('django.db.models.fields.IntegerField', [], {}),
@@ -146,7 +141,7 @@ class Migration(DataMigration):
             'upscale': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'width': ('django.db.models.fields.IntegerField', [], {})
         },
-         u'cmsplugin_filer_image.thumbnailoption': {
+        u'cmsplugin_filer_image.thumbnailoption': {
             'Meta': {'ordering': "(u'width', u'height')", 'object_name': 'ThumbnailOption'},
             'crop': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'height': ('django.db.models.fields.IntegerField', [], {}),
