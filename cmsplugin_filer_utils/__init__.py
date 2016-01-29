@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from cmsplugin_filer_file import __version__
+from cmsplugin_filer_file import __version__  # NOQA
 
 from django.db import models
 
