@@ -1,10 +1,12 @@
 from cms.plugin_pool import plugin_pool
 from cms.plugin_base import CMSPluginBase
-from django.template import loader
 from django.template.loader import select_template
 from django.utils.translation import ugettext_lazy as _
 from . import models
 from .conf import settings
+
+from filer.models.filemodels import File
+from filer.models.foldermodels import Folder
 from filer.models.imagemodels import Image
 
 
@@ -47,11 +49,16 @@ class FilerFolderPlugin(CMSPluginBase):
             self.TEMPLATE_NAME % 'default')
         )
 
-        folder_files = self.get_folder_files(instance.folder,
-                                             context['request'].user)
-        folder_images = self.get_folder_images(instance.folder,
-                                               context['request'].user)
-        folder_folders = self.get_children(instance.folder)
+        user = context['request'].user
+
+        if instance.folder_id:
+            folder_files = self.get_folder_files(instance.folder, user)
+            folder_images = self.get_folder_images(instance.folder, user)
+            folder_folders = self.get_children(instance.folder)
+        else:
+            folder_files = File.objects.none()
+            folder_images = Image.objects.none()
+            folder_folders = Folder.objects.none()
 
         context.update({
             'object': instance,
@@ -61,7 +68,6 @@ class FilerFolderPlugin(CMSPluginBase):
             'placeholder': placeholder
         })
         return context
-
 
 
 plugin_pool.register_plugin(FilerFolderPlugin)

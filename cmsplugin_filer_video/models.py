@@ -8,15 +8,27 @@ from filer.fields.file import FilerFileField
 from filer.fields.image import FilerImageField
 from filer.utils.compatibility import python_2_unicode_compatible
 from os.path import basename
-import re
 
 
 @python_2_unicode_compatible
 class FilerVideo(CMSPlugin):
     # player settings
-    movie = FilerFileField(verbose_name=_('movie file'), help_text=_('use .flv file or h264 encoded video file'), blank=True, null=True)
+    movie = FilerFileField(
+        verbose_name=_('movie file'),
+        help_text=_('use .flv file or h264 encoded video file'),
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
+    )
     movie_url = models.CharField(_('movie url'), max_length=255, help_text=_('vimeo or youtube video url. Example: http://www.youtube.com/watch?v=YFa59lK-kpo'), blank=True, null=True)
-    image = FilerImageField(verbose_name=_('image'), help_text=_('preview image file'), null=True, blank=True, related_name='filer_video_image')
+    image = FilerImageField(
+        verbose_name=_('image'),
+        help_text=_('preview image file'),
+        null=True,
+        blank=True,
+        related_name='filer_video_image',
+        on_delete=models.SET_NULL,
+    )
 
     width = models.PositiveSmallIntegerField(_('width'), default=settings.VIDEO_WIDTH)
     height = models.PositiveSmallIntegerField(_('height'), default=settings.VIDEO_HEIGHT)
@@ -35,7 +47,6 @@ class FilerVideo(CMSPlugin):
     buttonoutcolor = models.CharField(_('button out color'), max_length=6, default=settings.VIDEO_BUTTON_OUT_COLOR, help_text=_('Hexadecimal, eg ff00cc'))
     buttonovercolor = models.CharField(_('button over color'), max_length=6, default=settings.VIDEO_BUTTON_OVER_COLOR, help_text=_('Hexadecimal, eg ff00cc'))
     buttonhighlightcolor = models.CharField(_('button highlight color'), max_length=6, default=settings.VIDEO_BUTTON_HIGHLIGHT_COLOR, help_text=_('Hexadecimal, eg ff00cc'))
-
 
     def __str__(self):
         if self.movie:

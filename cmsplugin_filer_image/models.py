@@ -23,7 +23,13 @@ class FilerImage(CMSPlugin):
     style = models.CharField(
         _('Style'), choices=STYLE_CHOICES, default=DEFAULT_STYLE, max_length=50, blank=True)
     caption_text = models.CharField(_("caption text"), null=True, blank=True, max_length=255)
-    image = FilerImageField(null=True, blank=True, default=None, verbose_name=_("image"))
+    image = FilerImageField(
+        null=True,
+        blank=True,
+        default=None,
+        verbose_name=_("image"),
+        on_delete=models.SET_NULL,
+    )
     image_url = models.URLField(_("alternative image url"), null=True, blank=True, default=None)
     alt_text = models.CharField(_("alt text"), null=True, blank=True, max_length=255)
     use_original_image = models.BooleanField(_("use the original image"), default=False,
@@ -43,7 +49,15 @@ class FilerImage(CMSPlugin):
     page_link = PageField(null=True, blank=True,
                           help_text=_("if present image will be clickable"),
                           verbose_name=_("page link"))
-    file_link = FilerFileField(null=True, blank=True, default=None, verbose_name=_("file link"), help_text=_("if present image will be clickable"), related_name='+')
+    file_link = FilerFileField(
+        null=True,
+        blank=True,
+        default=None,
+        verbose_name=_("file link"),
+        help_text=_("if present image will be clickable"),
+        related_name='+',
+        on_delete=models.SET_NULL,
+    )
     original_link = models.BooleanField(_("link original image"), default=False, help_text=_("if present image will be clickable"))
     description = models.TextField(_("description"), blank=True, null=True)
     target_blank = models.BooleanField(_('Open link in new window'), default=False)
@@ -52,7 +66,6 @@ class FilerImage(CMSPlugin):
     # as well, but they are not used often enough to warrant the impact of two
     # additional LEFT OUTER JOINs.
     objects = FilerPluginManager(select_related=('image',))
-
 
     class Meta:
         verbose_name = _("filer image")
@@ -64,25 +77,27 @@ class FilerImage(CMSPlugin):
         if (not self.image and not self.image_url) or (self.image and self.image_url):
             raise ValidationError(_('Either an image or an image url must be selected.'))
 
-
     def __str__(self):
         if self.image:
             return self.image.label
         else:
             return _("Image Publication %(caption)s") % {'caption': self.caption or self.alt}
         return ''
+
     @property
     def caption(self):
         if self.image:
             return self.caption_text or self.image.default_caption
         else:
             return self.caption_text
+
     @property
     def alt(self):
         if self.image:
             return self.alt_text or self.image.default_alt_text or self.image.label
         else:
             return self.alt_text
+
     @property
     def link(self):
         if self.free_link:
@@ -131,5 +146,5 @@ class ThumbnailOption(models.Model):
             thumbnailer = filerimage.easy_thumbnails_thumbnailer
             thumb_image = thumbnailer.get_thumbnail(option_dict)
         """
-        return {"size":(self.width,self.height), "width":self.width,
-                "height":self.height,"crop":self.crop,"upscale":self.upscale}
+        return {"size": (self.width, self.height), "width": self.width,
+                "height": self.height, "crop": self.crop, "upscale": self.upscale}
