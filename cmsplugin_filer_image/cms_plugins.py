@@ -32,6 +32,7 @@ class FilerImagePlugin(CMSPluginBase):
                 ('width', 'height', 'crop', 'upscale'),
                 'thumbnail_option',
                 'use_autoscale',
+                'use_hidpi_pair',
             )
         }),
         (None, {
@@ -106,11 +107,13 @@ class FilerImagePlugin(CMSPluginBase):
             self.TEMPLATE_NAME % 'default')
         )
         options = self._get_thumbnail_options(context, instance)
+        size = options.get('size', None)
         context.update({
             'instance': instance,
             'link': instance.link,
             'opts': options,
-            'size': options.get('size', None),
+            'size': size,
+            'double_size': tuple(map(lambda x: x * 2, size )),
             'placeholder': placeholder
         })
         return context
