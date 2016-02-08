@@ -6,7 +6,7 @@ from cms.models import CMSPlugin
 from cms.models.fields import PageField
 from filer.fields.image import FilerImageField
 from filer.fields.file import FilerFileField
-from filer.models import ThumbnailOption
+from filer.models import ThumbnailOption  # NOQA
 from filer.utils.compatibility import python_2_unicode_compatible
 from cmsplugin_filer_utils import FilerPluginManager
 from .conf import settings

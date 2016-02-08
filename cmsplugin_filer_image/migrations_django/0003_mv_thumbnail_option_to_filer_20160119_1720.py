@@ -49,7 +49,7 @@ def move_thumbnail_opt_to_cms(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('cmsplugin_filer_image', '0001_initial'),
+        ('cmsplugin_filer_image', '0002_auto_20160108_1708'),
         ('filer', '0003_thumbnailoption'),
     ]
 

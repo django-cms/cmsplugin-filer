@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('cmsplugin_filer_image', '0002_mv_thumbnail_option_to_filer_20160119_1720'),
+        ('cmsplugin_filer_image', '0003_mv_thumbnail_option_to_filer_20160119_1720'),
     ]
 
     operations = [
