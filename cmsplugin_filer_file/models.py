@@ -37,17 +37,17 @@ class FilerFile(CMSPlugin):
     objects = FilerPluginManager(select_related=('source',))
 
     def get_icon_url(self):
-        if self.file_id:
+        if self.source_id:
             return self.source.icons['32']
         return ''
 
     def file_exists(self):
-        if self.file_id:
+        if self.source_id:
             return self.source.file.storage.exists(self.source.file.name)
         return False
 
     def get_file_name(self):
-        if not self.file_id:
+        if not self.source_id:
             return ''
 
         if self.file.name in ('', None):
@@ -62,7 +62,7 @@ class FilerFile(CMSPlugin):
     def __str__(self):
         if self.title:
             return self.title
-        elif self.file_id:
+        elif self.source_id:
             # added if, because it raised attribute error when file wasnt defined
             return self.get_file_name()
         return "<empty>"
