@@ -50,7 +50,7 @@ class FilerFile(CMSPlugin):
         if not self.source_id:
             return ''
 
-        if self.file.name in ('', None):
+        if self.source.name in ('', None):
             name = "%s" % (self.source.original_filename,)
         else:
             name = "%s" % (self.source.name,)
