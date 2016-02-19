@@ -25,8 +25,8 @@ class FilerFile(CMSPlugin):
     STYLE_CHOICES = settings.CMSPLUGIN_FILER_FILE_STYLE_CHOICES
     DEFAULT_STYLE = settings.CMSPLUGIN_FILER_FILE_DEFAULT_STYLE
     title = models.CharField(_("title"), max_length=255, null=True, blank=True)
-    file = FilerFileField(
-        verbose_name=_('file'),
+    source = FilerFileField(
+        verbose_name=_('source'),
         null=True,
         on_delete=models.SET_NULL,
     )
@@ -34,16 +34,16 @@ class FilerFile(CMSPlugin):
     style = models.CharField(
         _('Style'), choices=STYLE_CHOICES, default=DEFAULT_STYLE, max_length=255, blank=True)
 
-    objects = FilerPluginManager(select_related=('file',))
+    objects = FilerPluginManager(select_related=('source',))
 
     def get_icon_url(self):
         if self.file_id:
-            return self.file.icons['32']
+            return self.source.icons['32']
         return ''
 
     def file_exists(self):
         if self.file_id:
-            return self.file.file.storage.exists(self.file.file.name)
+            return self.source.file.storage.exists(self.source.file.name)
         return False
 
     def get_file_name(self):
@@ -51,13 +51,13 @@ class FilerFile(CMSPlugin):
             return ''
 
         if self.file.name in ('', None):
-            name = "%s" % (self.file.original_filename,)
+            name = "%s" % (self.source.original_filename,)
         else:
-            name = "%s" % (self.file.name,)
+            name = "%s" % (self.source.name,)
         return name
 
     def get_ext(self):
-        return self.file.extension
+        return self.source.extension
 
     def __str__(self):
         if self.title:
