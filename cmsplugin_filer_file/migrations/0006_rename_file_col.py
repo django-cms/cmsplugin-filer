@@ -8,10 +8,10 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        db.rename_column(u'cmsplugin_filer_file_filerfile', 'file', 'source')
+        db.rename_column(u'cmsplugin_filer_file_filerfile', 'file_id', 'source_id')
 
     def backwards(self, orm):
-        db.rename_column(u'cmsplugin_filer_file_filerfile', 'source', 'file')
+        db.rename_column(u'cmsplugin_filer_file_filerfile', 'source_id', 'file_id')
 
     models = {
         u'auth.group': {
@@ -67,7 +67,7 @@ class Migration(SchemaMigration):
         u'cmsplugin_filer_file.filerfile': {
             'Meta': {'object_name': 'FilerFile', '_ormbases': ['cms.CMSPlugin']},
             u'cmsplugin_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['cms.CMSPlugin']", 'unique': 'True', 'primary_key': 'True'}),
-            'file': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['filer.File']", 'null': 'True', 'on_delete': 'models.SET_NULL'}),
+            'source': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['filer.File']", 'null': 'True', 'on_delete': 'models.SET_NULL'}),
             'style': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '255', 'blank': 'True'}),
             'target_blank': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'})

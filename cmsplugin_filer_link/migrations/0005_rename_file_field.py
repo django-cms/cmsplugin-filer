@@ -8,10 +8,10 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        db.rename_column(u'cmsplugin_filer_link_filerlinkplugin', 'file', 'source')
+        db.rename_column(u'cmsplugin_filer_link_filerlinkplugin', 'file_id', 'source_id')
 
     def backwards(self, orm):
-        db.rename_column(u'cmsplugin_filer_link_filerlinkplugin', 'source', 'file')
+        db.rename_column(u'cmsplugin_filer_link_filerlinkplugin', 'source_id', 'file_id')
 
     models = {
         u'auth.group': {
@@ -99,7 +99,7 @@ class Migration(SchemaMigration):
         u'cmsplugin_filer_link.filerlinkplugin': {
             'Meta': {'object_name': 'FilerLinkPlugin', '_ormbases': ['cms.CMSPlugin']},
             u'cmsplugin_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['cms.CMSPlugin']", 'unique': 'True', 'primary_key': 'True'}),
-            'file': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['filer.File']", 'null': 'True', 'on_delete': 'models.SET_NULL', 'blank': 'True'}),
+            'source': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['filer.File']", 'null': 'True', 'on_delete': 'models.SET_NULL', 'blank': 'True'}),
             'link_style': ('django.db.models.fields.CharField', [], {'default': "' '", 'max_length': '255'}),
             'mailto': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'null': 'True', 'blank': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
