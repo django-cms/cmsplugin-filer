@@ -30,7 +30,7 @@ class FilerLinkPlugin(CMSPlugin):
                 choices=LINK_STYLES, default=LINK_STYLES[0][0])
     new_window = models.BooleanField(_("new window?"), default=False,
                 help_text=_("Do you want this link to open a new window?"))
-    file = FilerFileField(blank=True, null=True, on_delete=models.SET_NULL)
+    source = FilerFileField(blank=True, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.name
