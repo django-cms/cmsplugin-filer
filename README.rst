@@ -17,7 +17,7 @@ NOTICE TO DJANGO 1.7 USERS:
 Dependencies
 ============
 
-* django-filer >= 0.9
+* django-filer >= 1.2
 * Django >= 1.4
 * django-cms >= 3.0
 * django-sekizai >= 0.4.2
@@ -48,34 +48,67 @@ To get started using ``cmsplugin-filer``:
         ...
     )
 
-- for Django 1.7 users, you need to add the following to your MIGRATION_MODULES settings::
-
-    MIGRATION_MODULES = {
-        ...
-        'cmsplugin_filer_file': 'cmsplugin_filer_file.migrations_django',
-        'cmsplugin_filer_folder': 'cmsplugin_filer_folder.migrations_django',
-        'cmsplugin_filer_link': 'cmsplugin_filer_link.migrations_django',
-        'cmsplugin_filer_image': 'cmsplugin_filer_image.migrations_django',
-        'cmsplugin_filer_teaser': 'cmsplugin_filer_teaser.migrations_django',
-        'cmsplugin_filer_video': 'cmsplugin_filer_video.migrations_django',
-        ...
-    }
-
-    NOTE: For Django 1.7, you **must** also be using the latest commits to the CMS Support 3.0.x branch and the latest develop branch of django-filer.
-    
 - run ``migrate``.
 
 You can also set ``FILER_IMAGE_USE_ICON`` in your ``settings.py`` to configure ``cmsplugin_filer_image`` plugin to use 32x32 icons for representing plugin instances.
 
 The default template in ``cmsplugin_filer_image`` expects the subject location functionality to be enabled.
-Follow: http://django-filer.readthedocs.org/en/0.9.2/installation.html#subject-location-aware-cropping
+Follow: http://django-filer.readthedocs.org/en/latest/installation.html#subject-location-aware-cropping
 
-Upgrading
-=========
+Upgrading to version 1.1
+========================
 
-Please note that current develop version moved plugin packages from `src` directory to project root.
-This may break your installation if upgrading.
-Uninstall any previous `cmsplugin_filer` installation (either from Pypi or from github repository) and reinstall it.
+In version 1.1 there are two backward incompatible changes:
+
+Migrations layout
+-----------------
+
+Migrations have been moved back to the standard location. cmsplugin_filer related
+``MIGRATION_MODULE`` setting items **must** be removed for cmsplugin_filer 1.1 to work
+
+Removal of ``ThumbnailOption`` model
+------------------------------------
+``ThumbnailOption`` has been moved to ``filer`` (since filer 1.2).
+You **must** update your models and migrations referencing ``ThumbnailOption`` for this to work.
+
+Upgrade process involves updating your models and migrations.
+
+model.py
+^^^^^^^^
+
+Add:
+    try:
+        from filer.models import ThumbnailOption
+        thumbnail_model = 'filer.ThumbnailOption'
+    except ImportError:
+        from cmsplugin_filer_image.models import ThumbnailOption
+        thumbnail_model = 'cmsplugin_filer_image.ThumbnailOption'
+
+If you use the string syntax (e.g.: ``thumb_field = models.ForeignKey('cmsplugin_filer_image.ThumbnailOption')``)
+use ``thumbnail_model`` string as defined above (e.g.: ``thumb_field = models.ForeignKey(thumbnail_model)``
+If using the model directly you don't have to change the fields definition
+
+Django 1.7+ migrations
+^^^^^^^^^^^^^^^^^^^^^^
+
+For every migration file that references ``ThumbnailOption`` add the following import:
+
+    from myapp.models import thumbnail_model
+
+and change all ``'cmsplugin_filer_image.ThumbnailOption'`` to ``thumbnail_model``
+
+South migrations
+^^^^^^^^^^^^^^^^
+
+In every migration file add the following import:
+
+    from myapp.models import thumbnail_model
+
+and change all ``'cmsplugin_filer_image.ThumbnailOption'`` to ``thumbnail_model`` and
+``u"orm['cmsplugin_filer_image.ThumbnailOption']"`` to ``u"orm['%s']" % thumbnail_model``.
+
+
+
 
 
 Integrations
