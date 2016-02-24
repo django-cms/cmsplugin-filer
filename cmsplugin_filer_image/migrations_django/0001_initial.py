@@ -8,13 +8,15 @@ import filer.fields.image
 from filer.settings import FILER_IMAGE_MODEL
 import cms.models.fields
 
+FILER_MODEL = FILER_IMAGE_MODEL or 'filer.Image'
+
 
 class Migration(migrations.Migration):
 
     dependencies = [
         ('cms', '0003_auto_20140926_2347'),
         ('filer', '0001_initial'),
-        migrations.swappable_dependency(FILER_IMAGE_MODEL),
+        migrations.swappable_dependency(FILER_MODEL),
     ]
 
     operations = [
