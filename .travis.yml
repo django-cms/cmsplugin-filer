@@ -4,6 +4,7 @@ sudo: false
 
 env:
     - TOXENV=flake8
+    - TOXENV=py27-dj19-cms32
     - TOXENV=py27-dj18-cms31
     - TOXENV=py27-dj17-cms31
     - TOXENV=py27-dj17-cms30

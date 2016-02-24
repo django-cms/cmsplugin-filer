@@ -14,7 +14,7 @@ class CmsPluginFilerLinkTestCase(BasePluginTestMixin,
         params = {
             'name': 'test link',
             'url': 'https://github.com/divio/cmsplugin-filer',
-            'file': self.get_filer_object(),
+            'source': self.get_filer_object(),
             'page_link': self.root_page,
         }
         return params

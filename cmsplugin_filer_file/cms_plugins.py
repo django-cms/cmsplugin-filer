@@ -20,7 +20,7 @@ class FilerFilePlugin(CMSPluginBase):
     fieldsets = (
         (None, {'fields': [
             'title',
-            'file',
+            'source',
             'target_blank'
         ]}),
     )

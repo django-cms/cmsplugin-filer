@@ -17,8 +17,8 @@ class FilerLinkPlugin(CMSPluginBase):
     render_template = "cmsplugin_filer_link/link.html"
 
     def render(self, context, instance, placeholder):
-        if instance.file:
-            link = instance.file.url
+        if instance.source:
+            link = instance.source.url
         elif instance.mailto:
             link = "mailto:%s" % _(instance.mailto)
         elif instance.url:

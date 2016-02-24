@@ -13,10 +13,10 @@ class CmsPluginFilerFileTestCase(BasePluginTestMixin,
     plugin_to_test = 'FilerFilePlugin'
 
     def get_plugin_params(self):
-        return {'file': self.get_filer_object()}
+        return {'source': self.get_filer_object()}
 
     def test_no_file(self):
-        filer_file_plugin = self._create_plugin(file=None)
+        filer_file_plugin = self._create_plugin(source=None)
         self.assertEqual(filer_file_plugin.get_file_name(), '')
         self.assertEqual(filer_file_plugin.get_icon_url(), '')
         self.assertEqual(force_text(filer_file_plugin), '<empty>')
@@ -26,8 +26,8 @@ class CmsPluginFilerFileTestCase(BasePluginTestMixin,
         # check with original file name
         self.assertEqual(filer_file_plugin.get_file_name(), 'test_file.jpg')
         # test with file name
-        filer_file_plugin.file.name = 'new_test_file_name.jpg'
-        filer_file_plugin.file.save()
+        filer_file_plugin.source.name = 'new_test_file_name.jpg'
+        filer_file_plugin.source.save()
         filer_file_plugin = filer_file_plugin._meta.model.objects.get(
             pk=filer_file_plugin.pk)
         self.assertEqual(filer_file_plugin.get_file_name(), 'new_test_file_name.jpg')
@@ -35,7 +35,7 @@ class CmsPluginFilerFileTestCase(BasePluginTestMixin,
     def test_file_exists(self):
         filer_file_plugin = self.create_plugin()
         self.assertTrue(filer_file_plugin.file_exists())
-        filer_file_plugin.file.file.delete()
+        filer_file_plugin.source.file.delete()
         self.assertFalse(filer_file_plugin.file_exists())
 
     def test_get_ext(self):
