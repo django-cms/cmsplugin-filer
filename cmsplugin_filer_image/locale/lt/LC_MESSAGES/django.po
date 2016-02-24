@@ -1,0 +1,162 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Matas Dailyda, 2015
+msgid ""
+msgstr ""
+"Project-Id-Version: cmsplugin-filer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-01-09 18:07+0100\n"
+"PO-Revision-Date: 2015-02-25 15:43+0000\n"
+"Last-Translator: Matas Dailyda <matas@dailyda.com>\n"
+"Language-Team: Lithuanian (http://www.transifex.com/divio/cmsplugin-filer/language/lt/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: lt\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: cms_plugins.py:13
+msgid "Image"
+msgstr "Paveikslėlis"
+
+#: cms_plugins.py:22
+msgid "Image resizing options"
+msgstr "Paveikslėlio dydžio keitimo nustatymai"
+
+#: cms_plugins.py:33
+msgid "More"
+msgstr "Daugiau"
+
+#: models.py:18
+msgid "left"
+msgstr "kairė"
+
+#: models.py:19
+msgid "right"
+msgstr "dešinė"
+
+#: models.py:21
+msgid "caption text"
+msgstr "antraštės tekstas"
+
+#: models.py:22
+msgid "image"
+msgstr "paveikslėlis"
+
+#: models.py:24 models.py:26
+msgid "alternative image url"
+msgstr "alternatyvus paveikslėlio URL"
+
+#: models.py:27
+msgid "alt text"
+msgstr "papildomas tekstas"
+
+#: models.py:28
+msgid "use the original image"
+msgstr "naudoti originalų paveikslėlį"
+
+#: models.py:29
+msgid "do not resize the image. use the original image instead."
+msgstr "nekeisti paveikslėlio dydžio. Naudoti originalų paveikslėlį."
+
+#: models.py:30 models.py:114
+msgid "thumbnail option"
+msgstr "miniatiūros nustatymas"
+
+#: models.py:31
+msgid ""
+"overrides width, height, crop and upscale with values from the selected "
+"thumbnail option"
+msgstr "perrašo plotį, aukštį, apkirpimą ir mastelį su reikšmemis iš  pasirinkto miniatiūros nustatymo"
+
+#: models.py:32
+msgid "use automatic scaling"
+msgstr "naudoti automatinį mastelį"
+
+#: models.py:33
+msgid "tries to auto scale the image based on the placeholder context"
+msgstr "bando automatiškai nustatyti paveikslėlio mastelį remiantis rezervuotos vietos kontekstu"
+
+#: models.py:34 models.py:107
+msgid "width"
+msgstr "plotis"
+
+#: models.py:35 models.py:108
+msgid "height"
+msgstr "aukštis"
+
+#: models.py:36 models.py:109
+msgid "crop"
+msgstr "apkirpti"
+
+#: models.py:37 models.py:110
+msgid "upscale"
+msgstr "išdidinti"
+
+#: models.py:38
+msgid "image alignment"
+msgstr "paveikslėlio lygiavimas"
+
+#: models.py:40
+msgid "link"
+msgstr "nuoroda"
+
+#: models.py:41 models.py:43 models.py:45 models.py:46
+msgid "if present image will be clickable"
+msgstr "esant, ant paveikslėlio bus galima paspausti"
+
+#: models.py:44
+msgid "page link"
+msgstr "puslapio nuoroda"
+
+#: models.py:45
+msgid "file link"
+msgstr "bylos nuoroda"
+
+#: models.py:46
+msgid "link original image"
+msgstr "nurodyti į originalų paveikslėlį"
+
+#: models.py:47
+msgid "description"
+msgstr "aprašymas"
+
+#: models.py:48
+msgid "Open link in new window"
+msgstr "Atverti nuorodą naujame lange"
+
+#: models.py:57
+msgid "filer image"
+msgstr "filer paveikslėlis"
+
+#: models.py:58
+msgid "filer images"
+msgstr "filer paveikslėliai"
+
+#: models.py:64
+msgid "Either an image or an image url must be selected."
+msgstr "Turi būti pasirinktas paveikslėlis, arba įvestas paveikslėlio URL"
+
+#: models.py:71
+#, python-format
+msgid "Image Publication %(caption)s"
+msgstr "Paveikslėlio publikavimas %(caption)s"
+
+#: models.py:106
+msgid "name"
+msgstr "pavadinimas"
+
+#: models.py:107
+msgid "width in pixel."
+msgstr "plotis pikseliais."
+
+#: models.py:108
+msgid "height in pixel."
+msgstr "aukštis pikseliais."
+
+#: models.py:115
+msgid "thumbnail options"
+msgstr "miniatiūros nustatymai"

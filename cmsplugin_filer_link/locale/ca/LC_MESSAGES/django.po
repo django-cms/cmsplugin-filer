@@ -1,0 +1,59 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Roger Pons <rogerpons@gmail.com>, 2015
+msgid ""
+msgstr ""
+"Project-Id-Version: cmsplugin-filer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-01-09 18:08+0100\n"
+"PO-Revision-Date: 2015-02-18 19:14+0000\n"
+"Last-Translator: Roger Pons <rogerpons@gmail.com>\n"
+"Language-Team: Catalan (http://www.transifex.com/divio/cmsplugin-filer/language/ca/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ca\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: cms_plugins.py:11
+msgid "Link"
+msgstr "Enllaç"
+
+#: models.py:15
+msgid "name"
+msgstr "nom"
+
+#: models.py:16
+msgid "url"
+msgstr "url"
+
+#: models.py:17
+msgid "page"
+msgstr "pàgina"
+
+#: models.py:18
+msgid "A link to a page has priority over urls."
+msgstr "Un enllaç a pàgina té prioritat sobre urls"
+
+#: models.py:19
+msgid "mailto"
+msgstr "mailto"
+
+#: models.py:20
+msgid "An email address has priority over both pages and urls"
+msgstr "Una adreça d'email té prioritat sobre pàgines i urls"
+
+#: models.py:21
+msgid "link style"
+msgstr "estil d'enllaç"
+
+#: models.py:23
+msgid "new window?"
+msgstr "nova finestra?"
+
+#: models.py:24
+msgid "Do you want this link to open a new window?"
+msgstr "Voleu que aquest enllaç obrir una nova finestra?"
