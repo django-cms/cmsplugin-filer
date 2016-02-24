@@ -3,24 +3,33 @@ from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
-from cmsplugin_filer_utils.migration import rename_tables_new_to_old, rename_tables_old_to_new
 
 
 class Migration(SchemaMigration):
-    cms_plugin_table_mapping = (
-        # (old_name, new_name),
-        ('cmsplugin_filerimage', 'cmsplugin_filer_image_filerimage'),
-    )
-    
-    needed_by = (
-        ("cms", "0069_static_placeholder_permissions"),
-    )
 
     def forwards(self, orm):
-        rename_tables_old_to_new(db, self.cms_plugin_table_mapping)
+        # Deleting model 'ThumbnailOption'
+        db.delete_table(u'cmsplugin_filer_image_thumbnailoption')
+
+
+        # Changing field 'FilerImage.thumbnail_option'
+        db.alter_column(u'cmsplugin_filer_image_filerimage', 'thumbnail_option_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['filer.ThumbnailOption'], null=True))
 
     def backwards(self, orm):
-        rename_tables_new_to_old(db, self.cms_plugin_table_mapping)
+        # Adding model 'ThumbnailOption'
+        db.create_table(u'cmsplugin_filer_image_thumbnailoption', (
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=100)),
+            ('crop', self.gf('django.db.models.fields.BooleanField')(default=True)),
+            ('height', self.gf('django.db.models.fields.IntegerField')()),
+            ('width', self.gf('django.db.models.fields.IntegerField')()),
+            ('upscale', self.gf('django.db.models.fields.BooleanField')(default=True)),
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+        ))
+        db.send_create_signal(u'cmsplugin_filer_image', ['ThumbnailOption'])
+
+
+        # Changing field 'FilerImage.thumbnail_option'
+        db.alter_column(u'cmsplugin_filer_image_filerimage', 'thumbnail_option_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['cmsplugin_filer_image.ThumbnailOption'], null=True))
 
     models = {
         u'auth.group': {
@@ -103,7 +112,7 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Placeholder'},
             'default_width': ('django.db.models.fields.PositiveSmallIntegerField', [], {'null': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'slot': ('django.db.models.fields.CharField', [], {'max_length': '50', 'db_index': 'True'})
+            'slot': ('django.db.models.fields.CharField', [], {'max_length': '255', 'db_index': 'True'})
         },
         u'cmsplugin_filer_image.filerimage': {
             'Meta': {'object_name': 'FilerImage', '_ormbases': ['cms.CMSPlugin']},
@@ -122,29 +131,11 @@ class Migration(SchemaMigration):
             'page_link': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['cms.Page']", 'null': 'True', 'blank': 'True'}),
             'style': ('django.db.models.fields.CharField', [], {'default': "''", 'max_length': '50', 'blank': 'True'}),
             'target_blank': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'thumbnail_option': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['cmsplugin_filer_image.ThumbnailOption']", 'null': 'True', 'blank': 'True'}),
+            'thumbnail_option': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['filer.ThumbnailOption']", 'null': 'True', 'blank': 'True'}),
             'upscale': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'use_autoscale': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'use_original_image': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'width': ('django.db.models.fields.PositiveIntegerField', [], {'null': 'True', 'blank': 'True'})
-        },
-        u'filer.thumbnailoption': {
-            'Meta': {'ordering': "(u'width', u'height')", 'object_name': 'ThumbnailOption'},
-            'crop': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'height': ('django.db.models.fields.IntegerField', [], {}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'upscale': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'width': ('django.db.models.fields.IntegerField', [], {})
-        },
-        u'cmsplugin_filer_image.thumbnailoption': {
-            'Meta': {'ordering': "(u'width', u'height')", 'object_name': 'ThumbnailOption'},
-            'crop': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'height': ('django.db.models.fields.IntegerField', [], {}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'upscale': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'width': ('django.db.models.fields.IntegerField', [], {})
         },
         u'contenttypes.contenttype': {
             'Meta': {'ordering': "('name',)", 'unique_together': "(('app_label', 'model'),)", 'object_name': 'ContentType', 'db_table': "'django_content_type'"},
@@ -166,7 +157,7 @@ class Migration(SchemaMigration):
             'name': ('django.db.models.fields.CharField', [], {'default': "u''", 'max_length': '255', 'blank': 'True'}),
             'original_filename': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
             'owner': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "u'owned_files'", 'null': 'True', 'to': u"orm['auth.User']"}),
-            'polymorphic_ctype': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "u'polymorphic_filer.file_set'", 'null': 'True', 'to': u"orm['contenttypes.ContentType']"}),
+            'polymorphic_ctype': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "u'polymorphic_filer.file_set+'", 'null': 'True', 'to': u"orm['contenttypes.ContentType']"}),
             'sha1': ('django.db.models.fields.CharField', [], {'default': "u''", 'max_length': '40', 'blank': 'True'}),
             'uploaded_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'})
         },
@@ -185,7 +176,7 @@ class Migration(SchemaMigration):
             'uploaded_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'})
         },
         'filer.image': {
-            'Meta': {'object_name': 'Image', '_ormbases': [u'filer.File']},
+            'Meta': {'object_name': 'Image'},
             '_height': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
             '_width': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
             'author': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
@@ -196,6 +187,15 @@ class Migration(SchemaMigration):
             'must_always_publish_author_credit': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'must_always_publish_copyright': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'subject_location': ('django.db.models.fields.CharField', [], {'default': 'None', 'max_length': '64', 'null': 'True', 'blank': 'True'})
+        },
+        u'filer.thumbnailoption': {
+            'Meta': {'ordering': "(u'width', u'height')", 'object_name': 'ThumbnailOption'},
+            'crop': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
+            'height': ('django.db.models.fields.IntegerField', [], {}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
+            'upscale': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
+            'width': ('django.db.models.fields.IntegerField', [], {})
         },
         u'sites.site': {
             'Meta': {'ordering': "(u'domain',)", 'object_name': 'Site', 'db_table': "u'django_site'"},

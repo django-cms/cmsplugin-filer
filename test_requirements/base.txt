@@ -2,6 +2,7 @@ aldryn-apphook-reload>=0.2.2
 coverage>=3.7.1
 django-appconf
 djangocms-helper>=0.9.1
-django-filer
+https://github.com/divio/django-filer/archive/develop.zip
 djangocms-text-ckeditor
 flake8
+django-polymorphic<0.8
