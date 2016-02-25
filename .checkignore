@@ -1,0 +1,12 @@
+cmsplugin_filer_file/south_migrations/*
+cmsplugin_filer_file/migrations/*
+cmsplugin_filer_folder/south_migrations/*
+cmsplugin_filer_folder/migrations/*
+cmsplugin_filer_image/south_migrations/*
+cmsplugin_filer_image/migrations/*
+cmsplugin_filer_link/south_migrations/*
+cmsplugin_filer_link/migrations/*
+cmsplugin_filer_teaser/south_migrations/*
+cmsplugin_filer_teaser/migrations/*
+cmsplugin_filer_video/south_migrations/*
+cmsplugin_filer_video/migrations/*
