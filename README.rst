@@ -10,8 +10,7 @@ Pin your dependencies to ``cmsplugin-filer<0.10`` for django-cms 2.x projects.
 
 NOTICE TO DJANGO 1.7 USERS:
 
-    To use cmsplugin-filer, you **must** use the latest commits from the 3.0.x
-    branch of django CMS.
+To use cmsplugin-filer, you **must** use the latest 3.0.x or any 3.1/3.2 version of django CMS.
 
 
 Dependencies
@@ -76,7 +75,8 @@ Upgrade process involves updating your models and migrations.
 model.py
 ^^^^^^^^
 
-Add:
+Add::
+
     try:
         from filer.models import ThumbnailOption
         thumbnail_model = 'filer.ThumbnailOption'
@@ -91,7 +91,7 @@ If using the model directly you don't have to change the fields definition
 Django 1.7+ migrations
 ^^^^^^^^^^^^^^^^^^^^^^
 
-For every migration file that references ``ThumbnailOption`` add the following import:
+For every migration file that references ``ThumbnailOption`` add the following import::
 
     from myapp.models import thumbnail_model
 
@@ -100,7 +100,7 @@ and change all ``'cmsplugin_filer_image.ThumbnailOption'`` to ``thumbnail_model`
 South migrations
 ^^^^^^^^^^^^^^^^
 
-In every migration file add the following import:
+In every migration file add the following import::
 
     from myapp.models import thumbnail_model
 
