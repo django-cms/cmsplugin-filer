@@ -22,14 +22,16 @@ class FilerImagePlugin(CMSPluginBase):
         (None, {
             'fields': [
                 'caption_text',
-                ('image', 'image_url',),
+                'image',
+                'image_url',
                 'alt_text',
             ]
         }),
         (_('Image resizing options'), {
             'fields': (
                 'use_original_image',
-                ('width', 'height', 'crop', 'upscale'),
+                ('width', 'height',),
+                ('crop', 'upscale'),
                 'thumbnail_option',
                 'use_autoscale',
             )
@@ -39,7 +41,13 @@ class FilerImagePlugin(CMSPluginBase):
         }),
         (_('More'), {
             'classes': ('collapse',),
-            'fields': (('free_link', 'page_link', 'file_link', 'original_link', 'target_blank'), 'description',)
+            'fields': (
+                'free_link',
+                'page_link',
+                'file_link',
+                ('original_link', 'target_blank'),
+                'description',
+            )
         }),
 
     )
