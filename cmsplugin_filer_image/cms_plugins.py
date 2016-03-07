@@ -31,7 +31,7 @@ class FilerImagePlugin(CMSPluginBase):
             'fields': (
                 'use_original_image',
                 ('width', 'height',),
-                ('crop', 'upscale'),
+                ('crop', 'upscale',),
                 'thumbnail_option',
                 'use_autoscale',
             )
@@ -45,7 +45,7 @@ class FilerImagePlugin(CMSPluginBase):
                 'free_link',
                 'page_link',
                 'file_link',
-                ('original_link', 'target_blank'),
+                ('original_link', 'target_blank',),
                 'description',
             )
         }),
