@@ -1,6 +1,6 @@
-{% load i18n thumbnail sekizai_tags %}
-{% addtoblock "css" %}<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}cmsplugin_filer_folder/css/slideshow.css" media="screen, projection" />{% endaddtoblock "css" %}
-{% addtoblock "js" %}<script type="text/javascript" src="{{ STATIC_URL }}cmsplugin_filer_folder/js/jquery.cycle.lite-1.0.js"></script>{% endaddtoblock "js" %}
+{% load i18n thumbnail sekizai_tags staticfiles %}
+{% addtoblock "css" %}<link rel="stylesheet" type="text/css" href="{% static 'cmsplugin_filer_folder/css/slideshow.css' %}" media="screen, projection" />{% endaddtoblock "css" %}
+{% addtoblock "js" %}<script type="text/javascript" src="{% static 'cmsplugin_filer_folder/js/jquery.cycle.lite-1.7.js' %}"></script>{% endaddtoblock "js" %}
 {% addtoblock "js" %}
 <script type="text/javascript">
 //<![CDATA[
