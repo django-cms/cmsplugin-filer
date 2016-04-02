@@ -19,7 +19,8 @@ class FilerVideoPlugin(CMSPluginBase):
     text_enabled = True
 
     general_fields = [
-        ('movie', 'movie_url'),
+        'movie',
+        'movie_url',
         'image',
         ('width', 'height'),
         'auto_play',
