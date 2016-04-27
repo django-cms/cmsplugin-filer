@@ -7,6 +7,8 @@ Changelog for django-filer-cmsplugins
 * Move migrations to proper layout
 * Put django's AppConfig for nice name in django admin
 * Add swappable dependency to initial migration
+* Add img-responsive class if automatic scaling
+* Add center image alignment
 
 1.0.1 (2016-01-14)
 ------------------
