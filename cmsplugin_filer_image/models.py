@@ -16,8 +16,10 @@ from .conf import settings
 class FilerImage(CMSPlugin):
     LEFT = "left"
     RIGHT = "right"
+    CENTER = "center"
     FLOAT_CHOICES = ((LEFT, _("left")),
                      (RIGHT, _("right")),
+                     (CENTER, _("center")),
                      )
     STYLE_CHOICES = settings.CMSPLUGIN_FILER_IMAGE_STYLE_CHOICES
     DEFAULT_STYLE = settings.CMSPLUGIN_FILER_IMAGE_DEFAULT_STYLE
