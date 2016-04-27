@@ -151,4 +151,4 @@ template after migrating to the new structure.
 Classes
 -------
 
-Classes like left, center, right and img-responsive are given by the plugin to use in your own projects.
+Classes like ``left``, ``center``, ``right`` and ``img-responsive`` are given by the plugin to use in your own projects.
