@@ -146,3 +146,9 @@ be used in the template as ``{{ instance.style }}``.
 
 For backwards compatibility the plugin will always use ``cmsplugin_filer_image/image.html`` if it exists. Remove that
 template after migrating to the new structure.
+
+
+Classes
+-------
+
+Classes like ``left``, ``center``, ``right`` and ``img-responsive`` are given by the plugin to use in your own projects.
