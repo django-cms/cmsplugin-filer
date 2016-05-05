@@ -26,6 +26,8 @@ class FilerLinkPlugin(CMSPlugin):
     )
     mailto = models.EmailField(_("mailto"), blank=True, null=True, max_length=254,
              help_text=_("An email address has priority over both pages and urls"))
+    tel = models.TextField(_("tel"), blank=True, null=True,
+             help_text=_("A telephone number has priority over both pages, urls, and mailto"))
     link_style = models.CharField(_("link style"), max_length=255,
                 choices=LINK_STYLES, default=LINK_STYLES[0][0])
     new_window = models.BooleanField(_("new window?"), default=False,
