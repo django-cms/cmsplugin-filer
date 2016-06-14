@@ -32,7 +32,7 @@ To get started using ``cmsplugin-filer``:
 
     $ pip install cmsplugin-filer
 
-- configure ``django-filer`` as documented in http://django-filer.readthedocs.org/en/latest/installation.html#configuration
+- configure ``django-filer`` as documented in https://django-filer.readthedocs.io/en/latest/installation.html#configuration
 
 - add the plugins to ``INSTALLED_APPS``::
 
@@ -52,7 +52,7 @@ To get started using ``cmsplugin-filer``:
 You can also set ``FILER_IMAGE_USE_ICON`` in your ``settings.py`` to configure ``cmsplugin_filer_image`` plugin to use 32x32 icons for representing plugin instances.
 
 The default template in ``cmsplugin_filer_image`` expects the subject location functionality to be enabled.
-Follow: http://django-filer.readthedocs.org/en/latest/installation.html#subject-location-aware-cropping
+Follow: https://django-filer.readthedocs.io/en/latest/installation.html#subject-location-aware-cropping
 
 Upgrading to version 1.1
 ========================
