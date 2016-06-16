@@ -1,16 +1,26 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
+
 from cms.models import CMSPlugin
 from cms.models.fields import PageField
+
 from filer.fields.file import FilerFileField
 from filer.utils.compatibility import python_2_unicode_compatible
+
+from djangocms_attributes_field.fields import AttributesField
+
 
 DEFULT_LINK_STYLES = (
     (" ", "Default"),
 )
 
 LINK_STYLES = getattr(settings, "FILER_LINK_STYLES", DEFULT_LINK_STYLES)
+
+EXCLUDED_KEYS = ['class', 'href', 'target', ]
 
 
 @python_2_unicode_compatible
@@ -31,6 +41,12 @@ class FilerLinkPlugin(CMSPlugin):
     new_window = models.BooleanField(_("new window?"), default=False,
                 help_text=_("Do you want this link to open a new window?"))
     file = FilerFileField(blank=True, null=True, on_delete=models.SET_NULL)
+    link_attributes = AttributesField(excluded_keys=EXCLUDED_KEYS,
+                                      help_text=_('Optional. Adds HTML attributes to the rendered link.'))
 
     def __str__(self):
         return self.name
+
+    @property
+    def attributes_str(self):
+        return AttributesField.to_str(self, 'link_attributes')
