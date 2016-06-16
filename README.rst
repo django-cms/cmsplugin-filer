@@ -5,24 +5,21 @@ cmsplugin-filer
 A set of cms plugins that replace the plugins shipped with django-cms with
 versions that use file fields from django-filer.
 
-Warning: starting with version 0.10 support for django-cms 2.x was dropped (table renaming magic removal).
-Pin your dependencies to ``cmsplugin-filer<0.10`` for django-cms 2.x projects.
-
-NOTICE TO DJANGO 1.7 USERS:
-
-    To use cmsplugin-filer, you **must** use the latest commits from the 3.0.x
-    branch of django CMS.
+Warning: starting with version 0.10 support for django-cms 2.x was dropped
+(table renaming magic removal). Pin your dependencies to ``cmsplugin-filer<0.10``
+for django-cms 2.x projects.
 
 
 Dependencies
 ============
 
+* Django >= 1.8
 * django-filer >= 0.9
-* Django >= 1.4
-* django-cms >= 3.0
+* django-cms >= 3.1
 * django-sekizai >= 0.4.2
 * easy_thumbnails >= 1.0
 * django-appconf
+* djangocms-attributes-field
 
 Installation
 ============
@@ -48,34 +45,24 @@ To get started using ``cmsplugin-filer``:
         ...
     )
 
-- for Django 1.7 users, you need to add the following to your MIGRATION_MODULES settings::
 
-    MIGRATION_MODULES = {
-        ...
-        'cmsplugin_filer_file': 'cmsplugin_filer_file.migrations_django',
-        'cmsplugin_filer_folder': 'cmsplugin_filer_folder.migrations_django',
-        'cmsplugin_filer_link': 'cmsplugin_filer_link.migrations_django',
-        'cmsplugin_filer_image': 'cmsplugin_filer_image.migrations_django',
-        'cmsplugin_filer_teaser': 'cmsplugin_filer_teaser.migrations_django',
-        'cmsplugin_filer_video': 'cmsplugin_filer_video.migrations_django',
-        ...
-    }
-
-    NOTE: For Django 1.7, you **must** also be using the latest commits to the CMS Support 3.0.x branch and the latest develop branch of django-filer.
-    
 - run ``migrate``.
 
-You can also set ``FILER_IMAGE_USE_ICON`` in your ``settings.py`` to configure ``cmsplugin_filer_image`` plugin to use 32x32 icons for representing plugin instances.
+You can also set ``FILER_IMAGE_USE_ICON`` in your ``settings.py`` to configure
+``cmsplugin_filer_image`` plugin to use 32x32 icons for representing
+plugin instances.
 
-The default template in ``cmsplugin_filer_image`` expects the subject location functionality to be enabled.
+The default template in ``cmsplugin_filer_image`` expects the subject location
+functionality to be enabled.
 Follow: http://django-filer.readthedocs.org/en/0.9.2/installation.html#subject-location-aware-cropping
 
 Upgrading
 =========
 
-Please note that current develop version moved plugin packages from `src` directory to project root.
-This may break your installation if upgrading.
-Uninstall any previous `cmsplugin_filer` installation (either from Pypi or from github repository) and reinstall it.
+Please note that current develop version moved plugin packages from `src`
+directory to project root. This may break your installation if upgrading.
+Uninstall any previous `cmsplugin_filer` installation (either from PyPI or
+from github repository) and reinstall it.
 
 
 Integrations
@@ -89,15 +76,17 @@ Integrations
 `djangocms-text-ckeditor <http://pypi.python.org/pypi/djangocms-text-ckeditor/>`__.
 Add this setting to enable it::
 
-   TEXT_SAVE_IMAGE_FUNCTION='cmsplugin_filer_image.integrations.ckeditor.create_image_plugin'
+    TEXT_SAVE_IMAGE_FUNCTION='cmsplugin_filer_image.integrations.ckeditor.create_image_plugin'
 
-This allows dragging images into the text editor in Firefox and newer versions of IE.
+This allows dragging images into the text editor in Firefox and newer versions
+of IE.
 
 
 Customisation
 -------------
 
-Most plugins (file, folder, image and teaser) support configuring custom "styles" (templates).
+Most plugins (file, folder, image and teaser) support configuring custom
+"styles" (templates).
 
 e.g add the following settings for the image plugin::
 
@@ -107,9 +96,10 @@ e.g add the following settings for the image plugin::
     )
     CMSPLUGIN_FILER_IMAGE_DEFAULT_STYLE = 'boxed'
 
-Now, if a template exists at ``cmsplugin_filer_image/plugins/image/boxed.html`` it will be used. If not, it will fall
-back to ``cmsplugin_filer_image/plugins/image/default.html``. If a css class in the default template is enough, it can
-be used in the template as ``{{ instance.style }}``.
+Now, if a template exists at ``cmsplugin_filer_image/plugins/image/boxed.html``
+it will be used. If not, it will fall back to ``cmsplugin_filer_image/plugins/image/default.html``.
+If a css class in the default template is enough, it can be used in the
+template as ``{{ instance.style }}``.
 
-For backwards compatibility the plugin will always use ``cmsplugin_filer_image/image.html`` if it exists. Remove that
-template after migrating to the new structure.
+For backwards compatibility the plugin will always use ``cmsplugin_filer_image/image.html``
+if it exists. Remove that template after migrating to the new structure.
