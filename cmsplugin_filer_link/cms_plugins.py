@@ -20,6 +20,26 @@ class FilerLinkPlugin(CMSPluginBase):
     render_template = "cmsplugin_filer_link/link.html"
     text_enabled = True
 
+    fieldsets = (
+        (None, {
+            'fields': [
+                'name',
+                'url',
+                'page_link',
+                'mailto',
+                'file',
+                'link_style',
+                'new_window',
+            ]
+        }),
+        (_('Advanced'), {
+            'classes': ['collapse', ],
+            'fields': [
+                'link_attributes',
+            ]
+        })
+    )
+
     def render(self, context, instance, placeholder):
         context = super(FilerLinkPlugin, self).render(context, instance, placeholder)
         if instance.file:

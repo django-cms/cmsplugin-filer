@@ -35,6 +35,7 @@ class FilerFilePlugin(CMSPluginBase):
             ]
         })
     )
+
     if settings.CMSPLUGIN_FILER_FILE_STYLE_CHOICES:
         fieldsets[0][1]['fields'].append('style')
 
