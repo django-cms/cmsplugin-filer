@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-09 18:33+0100\n"
+"POT-Creation-Date: 2016-06-16 17:58-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,145 +17,153 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: cms_plugins.py:13
+#: cms_plugins.py:21
 msgid "Image"
 msgstr ""
 
-#: cms_plugins.py:22
+#: cms_plugins.py:36
 msgid "Image resizing options"
 msgstr ""
 
-#: cms_plugins.py:33
+#: cms_plugins.py:47
 msgid "More"
 msgstr ""
 
-#: models.py:18
+#: models.py:23
 msgid "left"
 msgstr ""
 
-#: models.py:19
+#: models.py:24
 msgid "right"
 msgstr ""
 
-#: models.py:21
+#: models.py:31
+msgid "Style"
+msgstr ""
+
+#: models.py:32
 msgid "caption text"
 msgstr ""
 
-#: models.py:22
+#: models.py:37
 msgid "image"
 msgstr ""
 
-#: models.py:24 models.py:26
+#: models.py:40
 msgid "alternative image url"
 msgstr ""
 
-#: models.py:27
+#: models.py:41
 msgid "alt text"
 msgstr ""
 
-#: models.py:28
+#: models.py:43
 msgid "use the original image"
 msgstr ""
 
-#: models.py:29
+#: models.py:44
 msgid "do not resize the image. use the original image instead."
 msgstr ""
 
-#: models.py:30 models.py:114
+#: models.py:46 models.py:147
 msgid "thumbnail option"
 msgstr ""
 
-#: models.py:31
+#: models.py:47
 msgid ""
 "overrides width, height, crop and upscale with values from the selected "
 "thumbnail option"
 msgstr ""
 
-#: models.py:32
+#: models.py:48
 msgid "use automatic scaling"
 msgstr ""
 
-#: models.py:33
+#: models.py:49
 msgid "tries to auto scale the image based on the placeholder context"
 msgstr ""
 
-#: models.py:34 models.py:107
+#: models.py:50 models.py:140
 msgid "width"
 msgstr ""
 
-#: models.py:35 models.py:108
+#: models.py:51 models.py:141
 msgid "height"
 msgstr ""
 
-#: models.py:36 models.py:109
+#: models.py:52 models.py:142
 msgid "crop"
 msgstr ""
 
-#: models.py:37 models.py:110
+#: models.py:53 models.py:143
 msgid "upscale"
 msgstr ""
 
-#: models.py:38
+#: models.py:54
 msgid "image alignment"
 msgstr ""
 
-#: models.py:40
+#: models.py:56
 msgid "link"
 msgstr ""
 
-#: models.py:41 models.py:43 models.py:45 models.py:46
+#: models.py:57 models.py:59 models.py:66 models.py:71
 msgid "if present image will be clickable"
 msgstr ""
 
-#: models.py:44
+#: models.py:60
 msgid "page link"
 msgstr ""
 
-#: models.py:45
+#: models.py:65
 msgid "file link"
 msgstr ""
 
-#: models.py:46
+#: models.py:70
 msgid "link original image"
 msgstr ""
 
-#: models.py:47
+#: models.py:72
 msgid "description"
 msgstr ""
 
-#: models.py:48
+#: models.py:73
 msgid "Open link in new window"
 msgstr ""
 
-#: models.py:57
+#: models.py:75
+msgid "Optional. Adds HTML attributes to the rendered link."
+msgstr ""
+
+#: models.py:83
 msgid "filer image"
 msgstr ""
 
-#: models.py:58
+#: models.py:84
 msgid "filer images"
 msgstr ""
 
-#: models.py:64
+#: models.py:94
 msgid "Either an image or an image url must be selected."
 msgstr ""
 
-#: models.py:71
+#: models.py:100
 #, python-format
 msgid "Image Publication %(caption)s"
 msgstr ""
 
-#: models.py:106
+#: models.py:139
 msgid "name"
 msgstr ""
 
-#: models.py:107
+#: models.py:140
 msgid "width in pixel."
 msgstr ""
 
-#: models.py:108
+#: models.py:141
 msgid "height in pixel."
 msgstr ""
 
-#: models.py:115
+#: models.py:148
 msgid "thumbnail options"
 msgstr ""

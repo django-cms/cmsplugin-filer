@@ -1,23 +1,30 @@
+# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.templatetags.static import static
 
-from cms.plugin_pool import plugin_pool
-from cms.plugin_base import CMSPluginBase
 from django.template.loader import select_template
+from django.templatetags.static import static
 from django.utils.translation import ugettext_lazy as _
-from . import models
+
+from cms.plugin_base import CMSPluginBase
+from cms.plugin_pool import plugin_pool
+
+from .forms import FilerImageForm
+from .models import FilerImage
 from .conf import settings
 
 
 class FilerImagePlugin(CMSPluginBase):
+    admin_preview = False
+    form = FilerImageForm
+    model = FilerImage
     module = 'Filer'
-    model = models.FilerImage
     name = _("Image")
+    raw_id_fields = ('image', 'page_link')
+    text_enabled = True
+
     TEMPLATE_NAME = 'cmsplugin_filer_image/plugins/image/%s.html'
     render_template = TEMPLATE_NAME % 'default'
-    text_enabled = True
-    raw_id_fields = ('image', 'page_link')
-    admin_preview = False
+
     fieldsets = (
         (None, {
             'fields': [
@@ -39,9 +46,12 @@ class FilerImagePlugin(CMSPluginBase):
         }),
         (_('More'), {
             'classes': ('collapse',),
-            'fields': (('free_link', 'page_link', 'file_link', 'original_link', 'target_blank'), 'description',)
+            'fields': (
+                ('free_link', 'page_link', 'file_link', 'original_link', 'target_blank'),
+                'link_attributes',
+                'description',
+            ),
         }),
-
     )
     if settings.CMSPLUGIN_FILER_IMAGE_STYLE_CHOICES:
         fieldsets[0][1]['fields'].append('style')

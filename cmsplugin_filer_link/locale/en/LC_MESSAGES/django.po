@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-09 18:33+0100\n"
+"POT-Creation-Date: 2016-06-16 17:58-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,42 +17,46 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: cms_plugins.py:11
+#: cms_plugins.py:18
 msgid "Link"
 msgstr ""
 
-#: models.py:15
+#: models.py:28
 msgid "name"
 msgstr ""
 
-#: models.py:16
+#: models.py:29
 msgid "url"
 msgstr ""
 
-#: models.py:17
+#: models.py:31
 msgid "page"
 msgstr ""
 
-#: models.py:18
+#: models.py:34
 msgid "A link to a page has priority over urls."
 msgstr ""
 
-#: models.py:19
+#: models.py:37
 msgid "mailto"
 msgstr ""
 
-#: models.py:20
+#: models.py:38
 msgid "An email address has priority over both pages and urls"
 msgstr ""
 
-#: models.py:21
+#: models.py:39
 msgid "link style"
 msgstr ""
 
-#: models.py:23
+#: models.py:41
 msgid "new window?"
 msgstr ""
 
-#: models.py:24
+#: models.py:42
 msgid "Do you want this link to open a new window?"
+msgstr ""
+
+#: models.py:45
+msgid "Optional. Adds HTML attributes to the rendered link."
 msgstr ""
