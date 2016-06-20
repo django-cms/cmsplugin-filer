@@ -1,1 +1,1 @@
-<a href="{{ link }}" class="{{style}}"{% if new_window %} target="_blank"{% endif %}{% with attr=instance.attributes_str %}{% if attr %} {{ attr }}{% endif %}{% endwith %}>{{ name }}</a>
+<a href="{{ link }}" class="{{style}}"{% if new_window %} target="_blank"{% endif %} {{ instance.attributes_str }}>{{ name }}</a>
