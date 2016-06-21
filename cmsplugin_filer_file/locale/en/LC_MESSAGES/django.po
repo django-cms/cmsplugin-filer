@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-09 18:33+0100\n"
+"POT-Creation-Date: 2016-06-17 17:12-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,18 +17,30 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: cms_plugins.py:10
+#: cms_plugins.py:20
 msgid "File"
 msgstr ""
 
-#: models.py:22
+#: cms_plugins.py:31
+msgid "Advanced"
+msgstr ""
+
+#: models.py:34
 msgid "title"
 msgstr ""
 
-#: models.py:23
+#: models.py:36
 msgid "file"
 msgstr ""
 
-#: models.py:24
+#: models.py:40
 msgid "Open link in new window"
+msgstr ""
+
+#: models.py:42
+msgid "Style"
+msgstr ""
+
+#: models.py:44
+msgid "Optional. Adds HTML attributes to the rendered link."
 msgstr ""

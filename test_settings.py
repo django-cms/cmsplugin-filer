@@ -50,7 +50,6 @@ HELPER_SETTINGS = {
     ),
     'FILE_UPLOAD_TEMP_DIR': mkdtemp(),
     'FILER_IMAGE_MODEL': False,
-
 }
 if os.environ.get('CUSTOM_IMAGE', False):
     HELPER_SETTINGS['FILER_IMAGE_MODEL'] = os.environ.get('CUSTOM_IMAGE', False)

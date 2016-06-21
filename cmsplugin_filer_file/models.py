@@ -1,12 +1,17 @@
+# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from cms.models import CMSPlugin
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+
+from cms.models import CMSPlugin
+
 from filer.fields.file import FilerFileField
 from filer.utils.compatibility import python_2_unicode_compatible
 
 from cmsplugin_filer_utils import FilerPluginManager
+from djangocms_attributes_field.fields import AttributesField
+
 from .conf import settings
 
 
@@ -24,6 +29,8 @@ class FilerFile(CMSPlugin):
     """
     STYLE_CHOICES = settings.CMSPLUGIN_FILER_FILE_STYLE_CHOICES
     DEFAULT_STYLE = settings.CMSPLUGIN_FILER_FILE_DEFAULT_STYLE
+    EXCLUDED_KEYS = ['href', 'target', ]
+
     title = models.CharField(_("title"), max_length=255, null=True, blank=True)
     file = FilerFileField(
         verbose_name=_('file'),
@@ -33,6 +40,8 @@ class FilerFile(CMSPlugin):
     target_blank = models.BooleanField(_('Open link in new window'), default=False)
     style = models.CharField(
         _('Style'), choices=STYLE_CHOICES, default=DEFAULT_STYLE, max_length=255, blank=True)
+    link_attributes = AttributesField(excluded_keys=EXCLUDED_KEYS,
+                                      help_text=_('Optional. Adds HTML attributes to the rendered link.'))
 
     objects = FilerPluginManager(select_related=('file',))
 
