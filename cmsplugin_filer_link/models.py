@@ -46,7 +46,3 @@ class FilerLinkPlugin(CMSPlugin):
 
     def __str__(self):
         return self.name
-
-    @property
-    def attributes_str(self):
-        return AttributesField.to_str(self, 'link_attributes')

@@ -28,7 +28,7 @@ setup(
         "easy_thumbnails >= 1.0",
         "django-filer >= 1.0.0",
         "django-appconf",
-        "djangocms-attributes-field",
+        "djangocms-attributes-field>=0.0.2",
     ],
     include_package_data=True,
     zip_safe=False,

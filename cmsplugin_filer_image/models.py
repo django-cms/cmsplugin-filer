@@ -86,10 +86,6 @@ class FilerImage(CMSPlugin):
         verbose_name = _("filer image")
         verbose_name_plural = _("filer images")
 
-    @property
-    def attributes_str(self):
-        return AttributesField.to_str(self, 'link_attributes')
-
     def clean(self):
         from django.core.exceptions import ValidationError
         # Make sure that either image or image_url is set

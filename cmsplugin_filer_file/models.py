@@ -45,10 +45,6 @@ class FilerFile(CMSPlugin):
 
     objects = FilerPluginManager(select_related=('file',))
 
-    @property
-    def attributes_str(self):
-        return AttributesField.to_str(self, 'link_attributes')
-
     def get_icon_url(self):
         if self.file_id:
             return self.file.icons['32']
