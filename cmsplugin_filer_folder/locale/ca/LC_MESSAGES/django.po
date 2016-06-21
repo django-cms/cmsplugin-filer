@@ -1,51 +1,55 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Roger Pons <rogerpons@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: cmsplugin-filer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-09 18:08+0100\n"
+"POT-Creation-Date: 2016-06-20 22:32-0400\n"
 "PO-Revision-Date: 2015-02-18 18:59+0000\n"
 "Last-Translator: Roger Pons <rogerpons@gmail.com>\n"
-"Language-Team: Catalan (http://www.transifex.com/divio/cmsplugin-filer/language/ca/)\n"
+"Language-Team: Catalan (http://www.transifex.com/divio/cmsplugin-filer/"
+"language/ca/)\n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: cms_plugins.py:15
+#: cms_plugins.py:16
 msgid "Folder"
 msgstr "Carpeta"
 
-#: models.py:10
+#: conf.py:9
 msgid "List"
 msgstr "Llista"
 
-#: models.py:10
+#: conf.py:10
 msgid "Slideshow"
 msgstr "Projecció de diapositives"
 
-#: models.py:18
+#: models.py:22
 msgid "title"
 msgstr "títol"
 
-#: models.py:19
-msgid "view option"
-msgstr "veure opció"
+#: models.py:25
+msgid "Style"
+msgstr ""
 
-#: templates/cmsplugin_filer_folder/folder.html:23
+#: templates/cmsplugin_filer_folder/plugins/folder/default.html:23
 msgid "Folders"
 msgstr "Carpetes"
 
-#: templates/cmsplugin_filer_folder/folder.html:31
+#: templates/cmsplugin_filer_folder/plugins/folder/default.html:31
 msgid "Files"
 msgstr "Fitxers"
 
-#: templates/cmsplugin_filer_folder/folder.html:39
+#: templates/cmsplugin_filer_folder/plugins/folder/default.html:39
 msgid "Images"
 msgstr "Imatges"
+
+#~ msgid "view option"
+#~ msgstr "veure opció"
