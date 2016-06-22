@@ -16,13 +16,15 @@ def move_thumbnail_opt_to_filer(apps, schema_editor):
                 upscale=obj.upscale
             )
         except ThumbnailOptionNew.DoesNotExist:
-            ThumbnailOptionNew.objects.create(
+            th = ThumbnailOptionNew(
+                id=obj.id,
                 name=obj.name,
                 width=obj.width,
                 height=obj.height,
                 crop=obj.crop,
                 upscale=obj.upscale
-            ) 
+            )
+            th.save()
 
 def move_thumbnail_opt_to_cms(apps, schema_editor):
     ThumbnailOption = apps.get_model('filer', 'ThumbnailOption')
@@ -37,13 +39,15 @@ def move_thumbnail_opt_to_cms(apps, schema_editor):
                 upscale=obj.upscale
             )
         except ThumbnailOptionOld.DoesNotExist:
-            ThumbnailOptionOld.objects.create(
+            th = ThumbnailOptionNew(
+                id=obj.id,
                 name=obj.name,
                 width=obj.width,
                 height=obj.height,
                 crop=obj.crop,
                 upscale=obj.upscale
             )
+            th.save()
  
 
 class Migration(migrations.Migration):
