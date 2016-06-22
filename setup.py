@@ -23,10 +23,11 @@ setup(
     ],
     install_requires=[
         "Django >= 1.8",
+        "django-filer >= 1.2.0",
+
         "django-cms >= 3.1",
         "django-sekizai >= 0.4.2",
         "easy_thumbnails >= 1.0",
-        "django-filer >= 1.0.0",
         "django-appconf",
         "djangocms-attributes-field>=0.0.2",
     ],

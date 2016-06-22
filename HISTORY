@@ -1,7 +1,15 @@
-Changelog for django-filer-cmsplugins
-=====================================
+CHANGELOG
+=========
 
-1.1 (unreleased)
+1.1.1 (2016-06-22)
+------------------
+
+* Updated requirements for Django Filer to >= 1.2.0
+* Fixed an issue with thumbnail options migrations
+
+
+1.1.0 (2016-06-21)
+------------------
 
 * Move ThumbnailOption to filer
 * Move migrations to proper layout
@@ -9,6 +17,7 @@ Changelog for django-filer-cmsplugins
 * Add swappable dependency to initial migration
 * Add img-responsive class if automatic scaling
 * Add center image alignment
+* Implements AttributesField
 
 1.0.1 (2016-01-14)
 ------------------
