@@ -22,8 +22,6 @@ setup(
         'Topic :: Internet :: WWW/HTTP',
     ],
     install_requires=[
-        # IMPORTANT: If the minimum version of Django or django Filer changes,
-        # please also update cmsplugin_filer_utils.requirements_check()
         "Django >= 1.8",
         "django-filer >= 1.2.0",
 
