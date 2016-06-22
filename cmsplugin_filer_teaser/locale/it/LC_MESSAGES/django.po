@@ -1,24 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # yakky <i.spalletti@nephila.it>, 2012
 # yakky <i.spalletti@nephila.it>, 2013
 # yakky <i.spalletti@nephila.it>, 2012
 msgid ""
 msgstr ""
-"Project-Id-Version: cmsplugin-filer\n"
+"Project-Id-Version: django Filer Plugins\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-20 22:32-0400\n"
-"PO-Revision-Date: 2013-07-18 17:58+0000\n"
-"Last-Translator: yakky <i.spalletti@nephila.it>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/cmsplugin-filer/"
-"language/it/)\n"
-"Language: it\n"
+"POT-Creation-Date: 2016-06-22 13:48-0400\n"
+"PO-Revision-Date: 2016-06-22 17:49+0000\n"
+"Last-Translator: Martin Koistinen <mkoistinen@gmail.com>\n"
+"Language-Team: Italian (http://www.transifex.com/divio/cmsplugin-filer/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: cms_plugins.py:17
@@ -88,6 +87,3 @@ msgstr "Devi selezionare un'immagine o un indirizzo di immagine"
 #: templates/cmsplugin_filer_teaser/plugins/teaser/default.html:17
 msgid "more"
 msgstr "vedi"
-
-#~ msgid "teaser style"
-#~ msgstr "stile richiamo"

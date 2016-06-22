@@ -1,31 +1,29 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Bertrand Bordage <bordage.bertrand@gmail.com>, 2012
 # Bertrand Bordage <bordage.bertrand@gmail.com>, 2012
+# Frigory33 <chironsylvain@orange.fr>, 2016
 # Dylann CORDEL <cordel.d@free.fr>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: cmsplugin-filer\n"
+"Project-Id-Version: django Filer Plugins\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-20 22:32-0400\n"
-"PO-Revision-Date: 2014-01-29 07:10+0000\n"
-"Last-Translator: Dylann CORDEL <cordel.d@free.fr>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/cmsplugin-filer/"
-"language/fr/)\n"
-"Language: fr\n"
+"POT-Creation-Date: 2016-06-22 13:48-0400\n"
+"PO-Revision-Date: 2016-06-22 17:49+0000\n"
+"Last-Translator: Martin Koistinen <mkoistinen@gmail.com>\n"
+"Language-Team: French (http://www.transifex.com/divio/cmsplugin-filer/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:7
-#, fuzzy
-#| msgid "filer image"
 msgid "django filer image"
-msgstr "image du gestionnaire de fichiers"
+msgstr ""
 
 #: cms_plugins.py:21
 msgid "Image"
@@ -77,7 +75,7 @@ msgstr "utiliser l'image d'origine"
 
 #: models.py:47
 msgid "do not resize the image. use the original image instead."
-msgstr "ne pas redimensionner l'image. Utiliser l'image d'origine"
+msgstr "ne pas redimensionner l'image ; utiliser l'image d'origine"
 
 #: models.py:49
 msgid "thumbnail option"
@@ -87,9 +85,7 @@ msgstr "option de miniature"
 msgid ""
 "overrides width, height, crop and upscale with values from the selected "
 "thumbnail option"
-msgstr ""
-"écrase les valeurs de largeur, hauteur, rognage et élargissement avec les "
-"valeurs de l'option de miniature sélectionnée"
+msgstr "écrase les valeurs de largeur, hauteur, rognage et agrandissement avec les valeurs de l'option de miniature sélectionnée"
 
 #: models.py:51
 msgid "use automatic scaling"
@@ -97,9 +93,7 @@ msgstr "redimensionnement automatique"
 
 #: models.py:52
 msgid "tries to auto scale the image based on the placeholder context"
-msgstr ""
-"Essaie de redimensionner automatiquement l'image à partir du contexte de la "
-"portion de page."
+msgstr "essaie de redimensionner automatiquement l'image à partir du contexte de la portion de page"
 
 #: models.py:53
 msgid "width"
@@ -127,7 +121,7 @@ msgstr "lien"
 
 #: models.py:60 models.py:62 models.py:69 models.py:74
 msgid "if present image will be clickable"
-msgstr "Si la présente image sera cliquable."
+msgstr "si la présente image sera cliquable"
 
 #: models.py:63
 msgid "page link"
@@ -135,7 +129,7 @@ msgstr "lien vers une page"
 
 #: models.py:68
 msgid "file link"
-msgstr "lien vers un ficher"
+msgstr "lien vers un fichier"
 
 #: models.py:73
 msgid "link original image"
@@ -169,15 +163,3 @@ msgstr "Une image ou bien une adresse d'image doit être sélectionnée."
 #, python-format
 msgid "Image Publication %(caption)s"
 msgstr "Publication d'image %(caption)s"
-
-#~ msgid "name"
-#~ msgstr "nom"
-
-#~ msgid "width in pixel."
-#~ msgstr "Largeur en pixels."
-
-#~ msgid "height in pixel."
-#~ msgstr "Hauteur en pixels."
-
-#~ msgid "thumbnail options"
-#~ msgstr "options de miniature"

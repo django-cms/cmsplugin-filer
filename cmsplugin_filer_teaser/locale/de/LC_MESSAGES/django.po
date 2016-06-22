@@ -1,26 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Jannik V. <me@exploide.net>, 2016
 msgid ""
 msgstr ""
-"Project-Id-Version: cmsplugin-filer\n"
+"Project-Id-Version: django Filer Plugins\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-20 22:32-0400\n"
-"PO-Revision-Date: 2012-07-13 16:06+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/cmsplugin-filer/"
-"language/de/)\n"
-"Language: de\n"
+"POT-Creation-Date: 2016-06-22 13:48-0400\n"
+"PO-Revision-Date: 2016-06-22 17:49+0000\n"
+"Last-Translator: Martin Koistinen <mkoistinen@gmail.com>\n"
+"Language-Team: German (http://www.transifex.com/divio/cmsplugin-filer/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: cms_plugins.py:17
 msgid "Teaser"
-msgstr ""
+msgstr "Aufmacher"
 
 #: cms_plugins.py:28
 msgid "More"
@@ -28,15 +28,15 @@ msgstr ""
 
 #: models.py:18
 msgid "title"
-msgstr ""
+msgstr "Titel"
 
 #: models.py:22
 msgid "image"
-msgstr ""
+msgstr "Bild"
 
 #: models.py:25
 msgid "alternative image url"
-msgstr ""
+msgstr "alternative Bild-URL"
 
 #: models.py:27
 msgid "Style"
@@ -52,15 +52,15 @@ msgstr ""
 
 #: models.py:30
 msgid "width"
-msgstr ""
+msgstr "Breite"
 
 #: models.py:31
 msgid "height"
-msgstr ""
+msgstr "Höhe"
 
 #: models.py:33
 msgid "link"
-msgstr ""
+msgstr "Link"
 
 #: models.py:33 models.py:37
 msgid "if present image will be clickable"
@@ -72,16 +72,16 @@ msgstr ""
 
 #: models.py:41
 msgid "description"
-msgstr ""
+msgstr "Beschreibung"
 
 #: models.py:43
 msgid "open link in new window"
-msgstr ""
+msgstr "Link in neuem Fenster öffnen"
 
 #: models.py:51
 msgid "Either an image or an image url must be selected."
-msgstr ""
+msgstr "Entweder muss ein Bild oder eine Bild-Url ausgewählt sein."
 
 #: templates/cmsplugin_filer_teaser/plugins/teaser/default.html:17
 msgid "more"
-msgstr ""
+msgstr "mehr"

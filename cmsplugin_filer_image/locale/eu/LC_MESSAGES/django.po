@@ -1,28 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: cmsplugin-filer\n"
+"Project-Id-Version: django Filer Plugins\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-20 22:32-0400\n"
-"PO-Revision-Date: 2013-11-20 13:30+0000\n"
-"Last-Translator: Ales Zabala Alava <shagi@gisa-elkartea.org>\n"
-"Language-Team: Basque (http://www.transifex.com/projects/p/cmsplugin-filer/"
-"language/eu/)\n"
-"Language: eu\n"
+"POT-Creation-Date: 2016-06-22 13:48-0400\n"
+"PO-Revision-Date: 2016-06-22 17:49+0000\n"
+"Last-Translator: Martin Koistinen <mkoistinen@gmail.com>\n"
+"Language-Team: Basque (http://www.transifex.com/divio/cmsplugin-filer/language/eu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: eu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:7
-#, fuzzy
-#| msgid "filer image"
 msgid "django filer image"
-msgstr "filer irudia"
+msgstr ""
 
 #: cms_plugins.py:21
 msgid "Image"
@@ -84,9 +81,7 @@ msgstr "argazkitxoaren aukerak"
 msgid ""
 "overrides width, height, crop and upscale with values from the selected "
 "thumbnail option"
-msgstr ""
-"zabalera, altuera, mozketa eta handitzea hautatutako argazkitxoen aukeratik "
-"hartu"
+msgstr "zabalera, altuera, mozketa eta handitzea hautatutako argazkitxoen aukeratik hartu"
 
 #: models.py:51
 msgid "use automatic scaling"
@@ -94,8 +89,7 @@ msgstr "eskalatze automatikoa erabili"
 
 #: models.py:52
 msgid "tries to auto scale the image based on the placeholder context"
-msgstr ""
-"leku-markaren testuinguruan oinarrituta irudia automatikoki eskalatzen saiatu"
+msgstr "leku-markaren testuinguruan oinarrituta irudia automatikoki eskalatzen saiatu"
 
 #: models.py:53
 msgid "width"
@@ -165,15 +159,3 @@ msgstr "Irudi edo helbidea, bietako bat hautatu behar da."
 #, python-format
 msgid "Image Publication %(caption)s"
 msgstr "Irudi Argitalpena %(caption)s"
-
-#~ msgid "name"
-#~ msgstr "izena"
-
-#~ msgid "width in pixel."
-#~ msgstr "zabalera pixeletan."
-
-#~ msgid "height in pixel."
-#~ msgstr "altuera pixeletan."
-
-#~ msgid "thumbnail options"
-#~ msgstr "argazkitxoaren aukerak"

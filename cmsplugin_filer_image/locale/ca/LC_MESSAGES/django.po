@@ -1,29 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Roger Pons <rogerpons@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: cmsplugin-filer\n"
+"Project-Id-Version: django Filer Plugins\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-20 22:32-0400\n"
-"PO-Revision-Date: 2015-02-18 19:13+0000\n"
-"Last-Translator: Roger Pons <rogerpons@gmail.com>\n"
-"Language-Team: Catalan (http://www.transifex.com/divio/cmsplugin-filer/"
-"language/ca/)\n"
-"Language: ca\n"
+"POT-Creation-Date: 2016-06-22 13:48-0400\n"
+"PO-Revision-Date: 2016-06-22 17:49+0000\n"
+"Last-Translator: Martin Koistinen <mkoistinen@gmail.com>\n"
+"Language-Team: Catalan (http://www.transifex.com/divio/cmsplugin-filer/language/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:7
-#, fuzzy
-#| msgid "filer image"
 msgid "django filer image"
-msgstr "imatge del filer"
+msgstr ""
 
 #: cms_plugins.py:21
 msgid "Image"
@@ -85,9 +82,7 @@ msgstr "opció de miniatura"
 msgid ""
 "overrides width, height, crop and upscale with values from the selected "
 "thumbnail option"
-msgstr ""
-"sobreescriu l'amplada, l'alçada, el retall i l'augment d'escala amb els "
-"valors de l'opció de miniatura seleccionat"
+msgstr "sobreescriu l'amplada, l'alçada, el retall i l'augment d'escala amb els valors de l'opció de miniatura seleccionat"
 
 #: models.py:51
 msgid "use automatic scaling"
@@ -95,9 +90,7 @@ msgstr "utilitzar escalat automàtic"
 
 #: models.py:52
 msgid "tries to auto scale the image based on the placeholder context"
-msgstr ""
-"intenta escalar automàticament la imatge segons el context del marcado de "
-"posició"
+msgstr "intenta escalar automàticament la imatge segons el context del marcado de posició"
 
 #: models.py:53
 msgid "width"
@@ -167,15 +160,3 @@ msgstr "Cal seleccionar una imatge o l'url d'una imatge"
 #, python-format
 msgid "Image Publication %(caption)s"
 msgstr "Publicació d'Imatge %(caption)s"
-
-#~ msgid "name"
-#~ msgstr "nom"
-
-#~ msgid "width in pixel."
-#~ msgstr "amplada en píxels."
-
-#~ msgid "height in pixel."
-#~ msgstr "alçada en píxels"
-
-#~ msgid "thumbnail options"
-#~ msgstr "opcions de miniatura"

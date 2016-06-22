@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Rivo Zängov <eraser@eraser.ee>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: cmsplugin-filer\n"
+"Project-Id-Version: django Filer Plugins\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-20 22:32-0400\n"
-"PO-Revision-Date: 2013-10-04 21:01+0000\n"
-"Last-Translator: Rivo Zängov <eraser@eraser.ee>\n"
-"Language-Team: Estonian (http://www.transifex.com/projects/p/cmsplugin-filer/"
-"language/et/)\n"
-"Language: et\n"
+"POT-Creation-Date: 2016-06-22 13:48-0400\n"
+"PO-Revision-Date: 2016-04-26 12:16+0000\n"
+"Last-Translator: Stefan Foulis <stefan.foulis@gmail.com>\n"
+"Language-Team: Estonian (http://www.transifex.com/divio/cmsplugin-filer/language/et/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: et\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: cms_plugins.py:15
@@ -43,9 +42,7 @@ msgstr "video url"
 msgid ""
 "vimeo or youtube video url. Example: http://www.youtube.com/watch?v=YFa59lK-"
 "kpo"
-msgstr ""
-"vimeo või youtube video url. Näiteks: http://www.youtube.com/watch?v=YFa59lK-"
-"kpo"
+msgstr "vimeo või youtube video url. Näiteks: http://www.youtube.com/watch?v=YFa59lK-kpo"
 
 #: models.py:25
 msgid "image"
@@ -118,8 +115,6 @@ msgstr "esiletõstetud nupu värv"
 
 #: templates/cmsplugin_filer_video/video.html:3
 msgid ""
-"Missing flash plugin. Download <a href=\"http://adobe.com/flashplayer"
-"\">here</a>."
-msgstr ""
-"Flashi plugin puudub. Lae alla <a href=\"http://adobe.com/flashplayer"
-"\">siit</a>."
+"Missing flash plugin. Download <a "
+"href=\"http://adobe.com/flashplayer\">here</a>."
+msgstr "Flashi plugin puudub. Lae alla <a href=\"http://adobe.com/flashplayer\">siit</a>."

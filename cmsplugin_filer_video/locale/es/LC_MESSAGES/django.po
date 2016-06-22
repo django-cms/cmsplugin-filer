@@ -1,23 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Javier Sánchez <javier@crea.me>, 2015
 # David Díaz <d.diazp@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: cmsplugin-filer\n"
+"Project-Id-Version: django Filer Plugins\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-20 22:32-0400\n"
-"PO-Revision-Date: 2015-05-20 08:54+0000\n"
-"Last-Translator: David Díaz <d.diazp@gmail.com>\n"
-"Language-Team: Spanish (http://www.transifex.com/divio/cmsplugin-filer/"
-"language/es/)\n"
-"Language: es\n"
+"POT-Creation-Date: 2016-06-22 13:48-0400\n"
+"PO-Revision-Date: 2016-04-26 12:16+0000\n"
+"Last-Translator: Stefan Foulis <stefan.foulis@gmail.com>\n"
+"Language-Team: Spanish (http://www.transifex.com/divio/cmsplugin-filer/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: cms_plugins.py:15
@@ -44,8 +43,7 @@ msgstr "url de película"
 msgid ""
 "vimeo or youtube video url. Example: http://www.youtube.com/watch?v=YFa59lK-"
 "kpo"
-msgstr ""
-"url vimeo o youtube. Ejemplo: http://www.youtube.com/watch?v=YFa59lK-kpo"
+msgstr "url vimeo o youtube. Ejemplo: http://www.youtube.com/watch?v=YFa59lK-kpo"
 
 #: models.py:25
 msgid "image"
@@ -118,8 +116,6 @@ msgstr "color del botón activo"
 
 #: templates/cmsplugin_filer_video/video.html:3
 msgid ""
-"Missing flash plugin. Download <a href=\"http://adobe.com/flashplayer"
-"\">here</a>."
-msgstr ""
-"Plugin de flash no encontrado. Descargar <a href=\"http://adobe.com/"
-"flashplayer\">aquí</a>."
+"Missing flash plugin. Download <a "
+"href=\"http://adobe.com/flashplayer\">here</a>."
+msgstr "Plugin de flash no encontrado. Descargar <a href=\"http://adobe.com/flashplayer\">aquí</a>."
