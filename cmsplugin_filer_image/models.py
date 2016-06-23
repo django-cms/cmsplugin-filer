@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import json
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
