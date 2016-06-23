@@ -92,6 +92,9 @@ class FilerImage(CMSPlugin):
         if (not self.image and not self.image_url) or (self.image and self.image_url):
             raise ValidationError(_('Either an image or an image url must be selected.'))
 
+        # convert our link attributes to json
+        self.link_attributes = json.dumps(self.link_attributes)
+
     def __str__(self):
         if self.image:
             return self.image.label
