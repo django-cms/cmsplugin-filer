@@ -7,7 +7,7 @@ from .conf import settings
 
 from filer.models.filemodels import File
 from filer.models.foldermodels import Folder
-from filer.models.imagemodels import Image
+from filer.models.abstract import BaseImage
 
 
 class FilerFolderPlugin(CMSPluginBase):
@@ -26,14 +26,14 @@ class FilerFolderPlugin(CMSPluginBase):
         fieldsets[0][1]['fields'].append('style')
 
     def get_folder_files(self, folder, user):
-        qs_files = folder.files.filter(image__isnull=True)
+        qs_files = folder.files.not_instance_of(BaseImage)
         if user.is_staff:
             return qs_files
         else:
             return qs_files.filter(is_public=True)
 
     def get_folder_images(self, folder, user):
-        qs_files = folder.files.instance_of(Image)
+        qs_files = folder.files.instance_of(BaseImage)
         if user.is_staff:
             return qs_files
         else:
@@ -57,7 +57,7 @@ class FilerFolderPlugin(CMSPluginBase):
             folder_folders = self.get_children(instance.folder)
         else:
             folder_files = File.objects.none()
-            folder_images = Image.objects.none()
+            folder_images = BaseImage.objects.none()
             folder_folders = Folder.objects.none()
 
         context.update({
