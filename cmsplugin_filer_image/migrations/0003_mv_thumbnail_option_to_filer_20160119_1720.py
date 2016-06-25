@@ -39,7 +39,7 @@ def move_thumbnail_opt_to_cms(apps, schema_editor):
                 upscale=obj.upscale
             )
         except ThumbnailOptionOld.DoesNotExist:
-            th = ThumbnailOptionNew(
+            th = ThumbnailOptionOld(
                 id=obj.id,
                 name=obj.name,
                 width=obj.width,
