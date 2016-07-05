@@ -9,10 +9,10 @@
 	{% else %}
 		{% thumbnail instance.image opts.size crop=opts.crop upscale=opts.upscale as thumbnail %}
 	{% endif %}
-	{% if link %}<a href="{{ link }}"{% if instance.target_blank %} target="_blank"{% endif %} {{ instance.attributes_str }}>{% endif %}<img{% if instance.alignment %} class="{{ instance.alignment }}"{% endif %} alt="{% if instance.alt %}{{ instance.alt }}{% endif %}" src="{{ thumbnail.url }}"{% if instance.caption %} title="{{ instance.caption }}"{% endif %} />{% if link %}</a>{% endif %}
+	{% if link %}<a href="{{ link }}"{% if instance.target_blank %} target="_blank"{% endif %} {{ instance.link_attributes_str }}>{% endif %}<img{% if instance.alignment %} class="{{ instance.alignment }}"{% endif %} alt="{% if instance.alt %}{{ instance.alt }}{% endif %}" src="{{ thumbnail.url }}"{% if instance.caption %} title="{{ instance.caption }}"{% endif %} />{% if link %}</a>{% endif %}
 {% endcomment %}
 
-{% if link %}<a href="{{ link }}"{% if instance.target_blank %} target="_blank"{% endif %} class="filer_image_link" {{ instance.attributes_str }}>{% endif %}
+{% if link %}<a href="{{ link }}"{% if instance.target_blank %} target="_blank"{% endif %} class="filer_image_link" {{ instance.link_attributes_str }}>{% endif %}
 {% if instance.image %}
 	{% if instance.use_original_image %}
 		<img class="filer_image{% if instance.alignment %} {{ instance.alignment }}{% endif %}{% if instance.use_autoscale %} img-responsive{% endif %}" alt="{% if instance.alt %}{{ instance.alt }}{% endif %}" src="{{ instance.image.url }}"{% if instance.width %} width="{{ instance.width }}"{% endif %}{% if instance.height %} height="{{ instance.height }}"{% endif %}{% if instance.caption %} title="{{ instance.caption }}"{% endif %} />

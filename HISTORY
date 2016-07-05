@@ -8,6 +8,7 @@ CHANGELOG
 * Fixed model name used in migration
 * Fixed an issue with folder plugin in Django 1.9
 * Allowed link attributes to be optional
+* Updated templates for `link_attributes_str`
 
 
 1.1.1 (2016-06-22)
