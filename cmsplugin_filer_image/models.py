@@ -74,7 +74,7 @@ class FilerImage(CMSPlugin):
                                         help_text=_("if present image will be clickable"))
     description = models.TextField(_("description"), blank=True, null=True)
     target_blank = models.BooleanField(_('Open link in new window'), default=False)
-    link_attributes = AttributesField(excluded_keys=EXCLUDED_KEYS, blank=True,
+    link_attributes = AttributesField(excluded_keys=EXCLUDED_KEYS,
                                       help_text=_('Optional. Adds HTML attributes to the rendered link.'))
 
     # we only add the image to select_related. page_link and file_link are FKs

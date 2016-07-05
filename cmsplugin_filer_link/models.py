@@ -41,7 +41,7 @@ class FilerLinkPlugin(CMSPlugin):
     new_window = models.BooleanField(_("new window?"), default=False,
                 help_text=_("Do you want this link to open a new window?"))
     file = FilerFileField(blank=True, null=True, on_delete=models.SET_NULL)
-    link_attributes = AttributesField(excluded_keys=EXCLUDED_KEYS, blank=True,
+    link_attributes = AttributesField(excluded_keys=EXCLUDED_KEYS,
                                       help_text=_('Optional. Adds HTML attributes to the rendered link.'))
 
     def __str__(self):

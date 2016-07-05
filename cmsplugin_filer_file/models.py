@@ -40,7 +40,7 @@ class FilerFile(CMSPlugin):
     target_blank = models.BooleanField(_('Open link in new window'), default=False)
     style = models.CharField(
         _('Style'), choices=STYLE_CHOICES, default=DEFAULT_STYLE, max_length=255, blank=True)
-    link_attributes = AttributesField(excluded_keys=EXCLUDED_KEYS, blank=True,
+    link_attributes = AttributesField(excluded_keys=EXCLUDED_KEYS,
                                       help_text=_('Optional. Adds HTML attributes to the rendered link.'))
 
     objects = FilerPluginManager(select_related=('file',))
