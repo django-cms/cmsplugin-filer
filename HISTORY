@@ -7,6 +7,7 @@ CHANGELOG
 * Pinned to djangocms-attributes-field v0.1.0
 * Fixed model name used in migration
 * Fixed an issue with folder plugin in Django 1.9
+* Allowed link attributes to be optional
 
 
 1.1.1 (2016-06-22)
