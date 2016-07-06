@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Maikel Wever, 2013
+# kurdyma <transifex.com@kurdyenviolien.nl>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: django Filer Plugins\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-22 13:48-0400\n"
-"PO-Revision-Date: 2016-06-22 17:49+0000\n"
-"Last-Translator: Martin Koistinen <mkoistinen@gmail.com>\n"
+"POT-Creation-Date: 2016-07-05 21:39-0400\n"
+"PO-Revision-Date: 2016-06-27 20:24+0000\n"
+"Last-Translator: kurdyma <transifex.com@kurdyenviolien.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/divio/cmsplugin-filer/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,7 +37,7 @@ msgstr "titel"
 
 #: models.py:25
 msgid "Style"
-msgstr ""
+msgstr "Stijl"
 
 #: templates/cmsplugin_filer_folder/plugins/folder/default.html:23
 msgid "Folders"
