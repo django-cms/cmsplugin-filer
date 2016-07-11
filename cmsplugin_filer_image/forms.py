@@ -17,4 +17,4 @@ class FilerImageForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(FilerImageForm, self).__init__(*args, **kwargs)
-        self.fields['link_attributes'].widget = AttributesWidget(val_attrs={'style': 'width: 500px!important'})
+        self.fields['link_attributes'].widget = AttributesWidget()
