@@ -29,7 +29,7 @@ setup(
         "django-sekizai >= 0.4.2",
         "easy_thumbnails >= 1.0",
         "django-appconf",
-        "djangocms-attributes-field>=0.1.0",
+        "djangocms-attributes-field>=0.1.1",
     ],
     include_package_data=True,
     zip_safe=False,
