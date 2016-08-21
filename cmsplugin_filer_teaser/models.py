@@ -42,6 +42,12 @@ class FilerTeaser(CMSPlugin):
 
     target_blank = models.BooleanField(_("open link in new window"), default=False)
 
+    cmsplugin_ptr = models.OneToOneField(
+        to=CMSPlugin,
+        related_name='%(app_label)s_%(class)s',
+        parent_link=True,
+    )
+
     objects = FilerPluginManager(select_related=('image', 'page_link'))
 
     def clean(self):

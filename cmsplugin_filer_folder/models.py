@@ -23,6 +23,11 @@ class FilerFolder(CMSPlugin):
     folder = FilerFolderField(null=True, on_delete=models.SET_NULL)
     style = models.CharField(
         _('Style'), choices=STYLE_CHOICES, default=DEFAULT_STYLE, max_length=50)
+    cmsplugin_ptr = models.OneToOneField(
+        to=CMSPlugin,
+        related_name='%(app_label)s_%(class)s',
+        parent_link=True,
+    )
 
     objects = FilerPluginManager(select_related=('folder',))
 

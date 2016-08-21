@@ -47,6 +47,11 @@ class FilerVideo(CMSPlugin):
     buttonoutcolor = models.CharField(_('button out color'), max_length=6, default=settings.VIDEO_BUTTON_OUT_COLOR, help_text=_('Hexadecimal, eg ff00cc'))
     buttonovercolor = models.CharField(_('button over color'), max_length=6, default=settings.VIDEO_BUTTON_OVER_COLOR, help_text=_('Hexadecimal, eg ff00cc'))
     buttonhighlightcolor = models.CharField(_('button highlight color'), max_length=6, default=settings.VIDEO_BUTTON_HIGHLIGHT_COLOR, help_text=_('Hexadecimal, eg ff00cc'))
+    cmsplugin_ptr = models.OneToOneField(
+        to=CMSPlugin,
+        related_name='%(app_label)s_%(class)s',
+        parent_link=True,
+    )
 
     def __str__(self):
         if self.movie:
