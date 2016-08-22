@@ -76,6 +76,11 @@ class FilerImage(CMSPlugin):
     target_blank = models.BooleanField(_('Open link in new window'), default=False)
     link_attributes = AttributesField(excluded_keys=EXCLUDED_KEYS, blank=True,
                                       help_text=_('Optional. Adds HTML attributes to the rendered link.'))
+    cmsplugin_ptr = models.OneToOneField(
+        to=CMSPlugin,
+        related_name='%(app_label)s_%(class)s',
+        parent_link=True,
+    )
 
     # we only add the image to select_related. page_link and file_link are FKs
     # as well, but they are not used often enough to warrant the impact of two
