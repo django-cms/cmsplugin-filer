@@ -6,6 +6,8 @@ CHANGELOG
 
 * Fixed styling issues with attributes field
 * Pinned djangocms-attributes-field to v0.1.1+
+* Updated migrations to be compatible with djangoCMS 3.3.0 and 3.3.1
+* Introduced support for djangoCMS 3.3.4
 
 
 1.1.2 (2016-07-05)
