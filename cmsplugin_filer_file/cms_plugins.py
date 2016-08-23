@@ -40,16 +40,16 @@ class FilerFilePlugin(CMSPluginBase):
         fieldsets[0][1]['fields'].append('style')
 
     def render(self, context, instance, placeholder):
-        self.render_template = select_template((
+        context['object'] = instance
+        return super(FilerFilePlugin, self).render(context, instance, placeholder)
+
+    def get_render_template(self, context, instance, placeholder):
+        template = select_template((
             'cmsplugin_filer_file/plugins/file.html',  # backwards compatibility. deprecated!
             self.TEMPLATE_NAME % instance.style,
-            self.TEMPLATE_NAME % 'default')
-        )
-        context.update({
-            'object': instance,
-            'placeholder': placeholder
-        })
-        return context
+            self.TEMPLATE_NAME % 'default',
+        ))
+        return template
 
     def icon_src(self, instance):
         file_icon = instance.get_icon_url()
