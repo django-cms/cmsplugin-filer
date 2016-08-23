@@ -115,11 +115,6 @@ class FilerImagePlugin(CMSPluginBase):
             return instance.image.file.get_thumbnail(self._get_thumbnail_options(context, instance))
 
     def render(self, context, instance, placeholder):
-        self.render_template = select_template((
-            'cmsplugin_filer_image/plugins/image.html',  # backwards compatibility. deprecated!
-            self.TEMPLATE_NAME % instance.style,
-            self.TEMPLATE_NAME % 'default')
-        )
         options = self._get_thumbnail_options(context, instance)
         context.update({
             'instance': instance,
@@ -129,6 +124,14 @@ class FilerImagePlugin(CMSPluginBase):
             'placeholder': placeholder
         })
         return context
+
+    def get_render_template(self, context, instance, placeholder):
+        template = select_template((
+            'cmsplugin_filer_image/plugins/image.html',  # backwards compatibility. deprecated!
+            self.TEMPLATE_NAME % instance.style,
+            self.TEMPLATE_NAME % 'default',
+        ))
+        return template
 
     def icon_src(self, instance):
         if instance.image:

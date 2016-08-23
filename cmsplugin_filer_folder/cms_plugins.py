@@ -43,12 +43,6 @@ class FilerFolderPlugin(CMSPluginBase):
         return folder.get_children()
 
     def render(self, context, instance, placeholder):
-        self.render_template = select_template((
-            'cmsplugin_filer_folder/folder.html',  # backwards compatibility. deprecated!
-            self.TEMPLATE_NAME % instance.style,
-            self.TEMPLATE_NAME % 'default')
-        )
-
         user = context['request'].user
 
         if instance.folder_id:
@@ -68,6 +62,14 @@ class FilerFolderPlugin(CMSPluginBase):
             'placeholder': placeholder
         })
         return context
+
+    def get_render_template(self, context, instance, placeholder):
+        template = select_template((
+            'cmsplugin_filer_folder/folder.html',  # backwards compatibility. deprecated!
+            self.TEMPLATE_NAME % instance.style,
+            self.TEMPLATE_NAME % 'default',
+        ))
+        return template
 
 
 plugin_pool.register_plugin(FilerFolderPlugin)
