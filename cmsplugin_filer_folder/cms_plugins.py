@@ -11,7 +11,7 @@ from filer.models.abstract import BaseImage
 
 
 class FilerFolderPlugin(CMSPluginBase):
-    module = 'Filer'
+    module = _('Filer')
     model = models.FilerFolder
     name = _("Folder")
     TEMPLATE_NAME = 'cmsplugin_filer_folder/plugins/folder/%s.html'

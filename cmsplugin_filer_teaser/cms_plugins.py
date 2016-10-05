@@ -11,7 +11,7 @@ class FilerTeaserPlugin(CMSPluginBase):
     TODO: this plugin is becoming very similar to the image plugin... code
           should be re-used somehow.
     """
-    module = 'Filer'
+    module = _('Filer')
     model = models.FilerTeaser
     raw_id_fields = ('page_link',)
     name = _("Teaser")

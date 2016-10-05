@@ -17,7 +17,7 @@ class FilerImagePlugin(CMSPluginBase):
     admin_preview = False
     form = FilerImageForm
     model = FilerImage
-    module = 'Filer'
+    module = _('Filer')
     name = _("Image")
     raw_id_fields = ('image', 'page_link')
     text_enabled = True
