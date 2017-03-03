@@ -1,18 +1,19 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.core.urlresolvers import NoReverseMatch
 from django.templatetags.static import static
 from django.utils.translation import ugettext as _
 
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
-from .forms import FilerLinkForm
-from .models import FilerLinkPlugin as FilerLinkPluginModel
+from .forms import FilerLink2Form
+from .models import FilerLink2Plugin as FilerLinkPluginModel
 
 
-class FilerLinkPlugin(CMSPluginBase):
-    form = FilerLinkForm
+class FilerLink2Plugin(CMSPluginBase):
+    form = FilerLink2Form
     model = FilerLinkPluginModel
     module = 'Filer'
     name = _("Link")
@@ -41,7 +42,7 @@ class FilerLinkPlugin(CMSPluginBase):
     )
 
     def render(self, context, instance, placeholder):
-        context = super(FilerLinkPlugin, self).render(context, instance, placeholder)
+        context = super(FilerLink2Plugin, self).render(context, instance, placeholder)
         if instance.file:
             link = instance.file.url
         elif instance.mailto:
@@ -49,7 +50,10 @@ class FilerLinkPlugin(CMSPluginBase):
         elif instance.url:
             link = _(instance.url)
         elif instance.page_link:
-            link = instance.page_link.get_absolute_url()
+            try:
+                link = instance.page_link.get_absolute_url()
+            except NoReverseMatch:
+                link = '/'
         else:
             link = ""
         context.update({
@@ -64,4 +68,4 @@ class FilerLinkPlugin(CMSPluginBase):
         return static("cms/img/icons/plugins/link.png")
 
 
-plugin_pool.register_plugin(FilerLinkPlugin)
+plugin_pool.register_plugin(FilerLink2Plugin)

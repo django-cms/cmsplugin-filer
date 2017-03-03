@@ -6,15 +6,15 @@ from django import forms
 
 from djangocms_attributes_field.widgets import AttributesWidget
 
-from .models import FilerLinkPlugin
+from .models import FilerLink2Plugin
 
 
-class FilerLinkForm(forms.ModelForm):
+class FilerLink2Form(forms.ModelForm):
 
     class Meta:
-        model = FilerLinkPlugin
+        model = FilerLink2Plugin
         exclude = []
 
     def __init__(self, *args, **kwargs):
-        super(FilerLinkForm, self).__init__(*args, **kwargs)
+        super(FilerLink2Form, self).__init__(*args, **kwargs)
         self.fields['link_attributes'].widget = AttributesWidget()

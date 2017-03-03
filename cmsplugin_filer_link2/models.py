@@ -24,7 +24,7 @@ EXCLUDED_KEYS = ['class', 'href', 'target', ]
 
 
 @python_2_unicode_compatible
-class FilerLinkPlugin(CMSPlugin):
+class FilerLink2Plugin(CMSPlugin):
     name = models.CharField(_('name'), max_length=255)
     url = models.CharField(_("url"), blank=True, null=True, max_length=2000)
     page_link = PageField(
@@ -51,3 +51,4 @@ class FilerLinkPlugin(CMSPlugin):
 
     def __str__(self):
         return self.name
+
