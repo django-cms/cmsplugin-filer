@@ -43,25 +43,22 @@ class FilerLink2Plugin(CMSPluginBase):
 
     def render(self, context, instance, placeholder):
         context = super(FilerLink2Plugin, self).render(context, instance, placeholder)
-        if instance.file:
-            link = instance.file.url
-        elif instance.mailto:
-            link = "mailto:%s" % _(instance.mailto)
-        elif instance.url:
-            link = _(instance.url)
-        elif instance.page_link:
-            try:
-                link = instance.page_link.get_absolute_url()
-            except NoReverseMatch:
-                link = '/'
-        else:
-            link = ""
+        link = instance.get_link()
         context.update({
             'link': link,
             'style': instance.link_style,
             'name': instance.name,
             'new_window': instance.new_window,
         })
+        try:
+            if context['request'].toolbar.edit_mode:
+                state = instance.get_linkstate()
+                if state:
+                    context.update({
+                        'link_state': state,
+                    })
+        except (KeyError, AttributeError):
+            pass
         return context
 
     def icon_src(self, instance):
