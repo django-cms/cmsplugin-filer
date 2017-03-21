@@ -81,6 +81,10 @@ class FilerLink2Plugin(CMSPlugin):
                 if link != self.persistent_page_link:
                     self.persistent_page_link = link
                     self.save()
+        elif self.persistent_page_link:
+            # happens when this link instance pointed to a removed page
+            self.set_linkstate(LinkHealthState.NOT_REACHABLE)
+            link = self.persistent_page_link
         else:
             link = ''
         return link or ''
