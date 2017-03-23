@@ -1,6 +1,25 @@
+djangocms-link2
 ===============
-cmsplugin-filer
-===============
+
+A link/-structure management plugin that replaces the plugin shipped with django-cms with a robust version that employs file fields from django-filer.
+It can be used as a drop-in replacement for **cmsplugin_filer_link**. The package contains a management command to migrate
+all existing Link-instances from cmsplugin_filer_link to **link2**.
+
+
+********
+Features
+********
+
+cmsplugin_filer_link is already a great plugin and link2 builds on it. The following advantages are available in this package:
+
+* robust django-cms link plugin which doesn't fail loudly
+* persists the internal url as well
+* can be copied safely between languages (even if the target page is not yet available in this language)
+* internal and external links are monitored (through a management command)
+* faulty links are visually highlighted for the content editor
+* an admin page lists all faulty links
+* enabled for the cktext-editor
+* easy migration from **cmsplugin_filer_link** (through a management command)
 
 Dependencies
 ============
@@ -8,9 +27,7 @@ Dependencies
 * django-filer >= 1.2
 * Django >= 1.8
 * django-cms >= 3.1
-* django-sekizai >= 0.4.2
-* easy_thumbnails >= 1.0
-* django-appconf
 * djangocms-attributes-field
+* requests
 
 

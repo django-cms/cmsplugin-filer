@@ -1,22 +1,21 @@
 from setuptools import setup, find_packages
 
-from cmsplugin_filer_file import __version__
+from cmsplugin_filer_link2 import __version__
 
 setup(
-    name="cmsplugin-filer",
+    name="djangocms-link2",
     version=__version__,
-    url='http://github.com/divio/cmsplugin-filer',
-    license='BSD',
-    description="django-cms plugins for django-filer",
+    url='https://github.com/Blueshoe/djangocms-link2',
+    license='MIT',
+    description="django-cms link/-structure management plugin with filer file support",
     long_description=open('README.rst').read(),
-    author='Stefan Foulis',
-    author_email='stefan.foulis@gmail.com',
+    author='Michael Schilonka',
+    author_email='michael@blueshoe.de',
     packages=find_packages(),
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Framework :: Django',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: BSD License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Topic :: Internet :: WWW/HTTP',
@@ -24,12 +23,9 @@ setup(
     install_requires=[
         "Django >= 1.8",
         "django-filer >= 1.2.0",
-
         "django-cms >= 3.1",
-        "django-sekizai >= 0.4.2",
-        "easy_thumbnails >= 1.0",
-        "django-appconf",
-        "djangocms-attributes-field>=0.1.1",
+        "djangocms-attributes-field",
+        "requests"
     ],
     include_package_data=True,
     zip_safe=False,
