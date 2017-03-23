@@ -3,16 +3,15 @@ from cmsplugin_filer_link.models import FilerLinkPlugin
 from django.core.management.base import BaseCommand
 from django.db import transaction
 
-from link2.cmsplugin_filer_link2.models import FilerLink2Plugin
+from cmsplugin_filer_link2.models import FilerLink2Plugin
 
 
 class Command(BaseCommand):
     help = 'Migrate all FilerLinkPlugin to FilerLink2Plugins'
 
-
     def handle(self, *args, **options):
         old_links = FilerLinkPlugin.objects.all()
-        self.stdout.write('Migrating {num} FilerLinkPlugin objects to FilerLink2Plugins'.format(num=len(old_links)))
+        self.stdout.write('Migrating {num} FilerLinkPlugin objects to FilerLink2Plugins'.format(num=old_links.count()))
 
         with transaction.atomic():
             for old_link in old_links:

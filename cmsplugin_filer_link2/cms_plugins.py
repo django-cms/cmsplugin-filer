@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.core.urlresolvers import NoReverseMatch
 from django.templatetags.static import static
 from django.utils.translation import ugettext as _
 
@@ -16,7 +15,7 @@ class FilerLink2Plugin(CMSPluginBase):
     form = FilerLink2Form
     model = FilerLinkPluginModel
     module = 'Filer'
-    name = _("Link")
+    name = _('Link')
     raw_id_fields = ('page_link', )
     render_template = "cmsplugin_filer_link/link.html"
     text_enabled = True
@@ -51,6 +50,7 @@ class FilerLink2Plugin(CMSPluginBase):
             'new_window': instance.new_window,
         })
         try:
+            # check if we are in edit mode, so we show link health
             if context['request'].toolbar.edit_mode:
                 state = instance.get_linkstate()
                 if state:

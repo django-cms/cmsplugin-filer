@@ -3,12 +3,10 @@
 from __future__ import unicode_literals
 
 from django import forms
-from django.core.urlresolvers import NoReverseMatch
-from django.utils.translation import ugettext_lazy as _
 
 from djangocms_attributes_field.widgets import AttributesWidget
 
-from .models import FilerLink2Plugin, LinkHealthState
+from .models import FilerLink2Plugin
 
 
 class FilerLink2Form(forms.ModelForm):

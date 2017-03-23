@@ -101,6 +101,7 @@ class FilerLink2Plugin(CMSPlugin):
         except ObjectDoesNotExist:
             return None
 
+
 @python_2_unicode_compatible
 class LinkHealthState(models.Model):
 
@@ -116,9 +117,15 @@ class LinkHealthState(models.Model):
         (BAD_CONFIGURED, _('Bad configured')),
     )
 
-    link = models.OneToOneField(FilerLink2Plugin, unique=True, related_name='linkhealth')
-    state = models.CharField(max_length=3, choices=LINK_STATES)
-    detected = models.DateTimeField(auto_now=True)
+    link = models.OneToOneField(FilerLink2Plugin, unique=True, related_name='linkhealth',
+                                verbose_name=_('Link name'))
+    state = models.CharField(max_length=3, choices=LINK_STATES, verbose_name=_('State'))
+    detected = models.DateTimeField(auto_now=True, verbose_name=_('Detected on'),
+                                    help_text=_('Date and time when the faulty link state was detected.'))
 
     def __str__(self):
-        return u'LinkHealthState for: {}'.format(self.link.name)
+        return _(u'Link state for: {}').format(self.link.name)
+
+    class Meta:
+        verbose_name = _('Link Health State')
+        verbose_name_plural = _('Link Health States')

@@ -1,18 +1,16 @@
 import requests
 
-from django.utils.translation import ugettext as _
 from django.core.management.base import BaseCommand
 from django.core.urlresolvers import NoReverseMatch
 
 from django.utils.translation import activate
 from requests.exceptions import ConnectionError, MissingSchema
 
-from link2.cmsplugin_filer_link2.models import FilerLink2Plugin, LinkHealthState
+from cmsplugin_filer_link2.models import FilerLink2Plugin, LinkHealthState
 
 
 class Command(BaseCommand):
     help = 'Check all links for the availability of their destination'
-
 
     def check_with_request(self, url):
         try:
@@ -31,7 +29,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         all_links = FilerLink2Plugin.objects.all()
-        self.stdout.write('Checking {num} links'.format(num=len(all_links)))
+        self.stdout.write('Checking {num} link-instances'.format(num=all_links.count()))
 
         for link in all_links:
             status = None
