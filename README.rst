@@ -1,3 +1,4 @@
+===============
 djangocms-link2
 ===============
 
@@ -18,7 +19,6 @@ cmsplugin_filer_link is already a great plugin and link2 builds on it. The follo
 * internal and external links are monitored (through a management command)
 * faulty links are visually highlighted for the content editor
 * an admin page lists all faulty links
-* enabled for the cktext-editor
 * easy migration from **cmsplugin_filer_link** (through a management command)
 
 Dependencies
