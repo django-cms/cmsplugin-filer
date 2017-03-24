@@ -6,7 +6,7 @@ setup(
     name="djangocms-link2",
     version=__version__,
     url='https://github.com/Blueshoe/djangocms-link2',
-    license='MIT',
+    license='BSD',
     description="django-cms link/-structure management plugin with filer file support",
     long_description=open('README.rst').read(),
     author='Michael Schilonka',
