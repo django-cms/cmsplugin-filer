@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import json
+
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -96,6 +98,9 @@ class FilerImage(CMSPlugin):
         # Make sure that either image or image_url is set
         if (not self.image and not self.image_url) or (self.image and self.image_url):
             raise ValidationError(_('Either an image or an image url must be selected.'))
+
+        # convert our link attributes to json
+        self.link_attributes = json.dumps(self.link_attributes)
 
     def __str__(self):
         if self.image:
