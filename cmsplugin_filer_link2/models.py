@@ -29,7 +29,7 @@ EXCLUDED_KEYS = ['class', 'href', 'target', ]
 class FilerLink2Plugin(CMSPlugin):
     name = models.CharField(_('name'), max_length=255)
     url = models.CharField(_('url'), blank=True, null=True, max_length=2000,
-                           help_text=_('The url must specify the protocol, e.g. https://DOMAIN'))
+                           help_text=_('The url must specify the protocol, e.g. https://DOMAIN.tld'))
     page_link = PageField(
         verbose_name=_('page'),
         blank=True,
