@@ -6,6 +6,9 @@ A link/-structure management plugin that replaces the plugin shipped with django
 It can be used as a drop-in replacement for **cmsplugin_filer_link**. The package contains a management command to migrate
 all existing Link-instances from cmsplugin_filer_link to **link2**.
 
+.. image:: https://travis-ci.org/Blueshoe/djangocms-link2.svg?branch=master
+    :target: https://travis-ci.org/Blueshoe/djangocms-link2
+    :alt: Code Analysis
 
 ********
 Features
