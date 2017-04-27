@@ -30,4 +30,25 @@ Dependencies
 * djangocms-attributes-field
 * requests
 
+Installation
+============
 
+
+To get started using ``djangocms-link2``:
+
+- install it with ``pip``::
+
+    $ pip install djangocms-link2
+
+
+- add the plugins to ``INSTALLED_APPS``::
+
+    INSTALLED_APPS = (
+        ...
+        'cmsplugin_filer_link2',
+        ...
+    )
+
+
+- run ``migrate cmsplugin_filer_link2``.
+- remove the default ``djangocms-link`` or ``cmsplugin_filer_link`` from your ``INSTALLED_APPS``
