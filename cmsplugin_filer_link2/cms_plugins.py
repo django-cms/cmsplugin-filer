@@ -18,18 +18,27 @@ class FilerLink2Plugin(CMSPluginBase):
     name = _('Link')
     raw_id_fields = ('page_link', )
     render_template = "cmsplugin_filer_link/link.html"
+    change_form_template = 'cmsplugin_filer_link/change_form.html'
     text_enabled = True
-
     fieldsets = (
         (None, {
             'fields': [
                 'name',
+            ]
+        }),
+        (None, {
+            'classes': ['link2-destination', ],
+            'fields': [
                 'url',
                 'page_link',
                 'mailto',
                 'file',
-                'link_style',
+            ],
+        }),
+        (None, {
+            'fields': [
                 'new_window',
+                'link_style',
             ]
         }),
         (_('Advanced'), {
