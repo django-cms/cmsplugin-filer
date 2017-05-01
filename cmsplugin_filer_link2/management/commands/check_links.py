@@ -45,10 +45,3 @@ class Command(BaseCommand):
                 except NoReverseMatch:
                     status = LinkHealthState.NOT_REACHABLE
             link.set_linkstate(status)
-
-
-
-
-
-
-

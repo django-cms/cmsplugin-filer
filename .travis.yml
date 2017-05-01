@@ -1,46 +1,12 @@
 language: python
-
 sudo: false
 
-python: 3.5
+branches: master  # This way push builds will only run on master branch. Does not affect PR builds.
 
-env:
-    - TOXENV=flake8
-    - TOXENV=py35-dj19-cms34
-    - TOXENV=py35-dj19-cms33
-    - TOXENV=py35-dj19-cms32
-    - TOXENV=py34-dj19-cms34
-    - TOXENV=py34-dj19-cms33
-    - TOXENV=py34-dj19-cms32
-    - TOXENV=py27-dj19-cms34
-    - TOXENV=py27-dj19-cms33
-    - TOXENV=py27-dj19-cms32
-    - TOXENV=py35-dj18-cms34
-    - TOXENV=py35-dj18-cms33
-    - TOXENV=py35-dj18-cms32
-    - TOXENV=py35-dj18-cms31
-    - TOXENV=py34-dj18-cms34
-    - TOXENV=py34-dj18-cms33
-    - TOXENV=py34-dj18-cms32
-    - TOXENV=py34-dj18-cms31
-    - TOXENV=py33-dj18-cms34
-    - TOXENV=py33-dj18-cms33
-    - TOXENV=py33-dj18-cms32
-    - TOXENV=py33-dj18-cms31
-    - TOXENV=py27-dj18-cms34
-    - TOXENV=py27-dj18-cms33
-    - TOXENV=py27-dj18-cms32
-    - TOXENV=py27-dj18-cms31
-
-cache:
-  directories:
-    - $HOME/.wheelhouse
+cache: pip
 
 install:
-  - pip install tox
-  - pip install coveralls
+  pip install flake8
 
 script:
-  - tox -e $TOXENV
-
-after_success: coveralls
+  flake8 .
