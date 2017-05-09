@@ -35,4 +35,5 @@ class LinkStateAdmin(admin.ModelAdmin):
     link_to.allow_tags = True
     link_to.short_description = _('Links to')
 
+
 admin.site.register(LinkHealthState, LinkStateAdmin)

@@ -24,5 +24,3 @@ class Command(BaseCommand):
                 link.save()
                 link.parent.numchild += 1
                 link.parent.save()
-
-

@@ -39,11 +39,11 @@ class FilerLink2Plugin(CMSPlugin):
     )
     persistent_page_link = models.CharField(_('internal url'), blank=True, null=True, max_length=2000)
     mailto = models.EmailField(_('mailto'), blank=True, null=True, max_length=254,
-             help_text=_('An email address has priority over both pages and urls'))
+                               help_text=_('An email address has priority over both pages and urls'))
     link_style = models.CharField(_('link style'), max_length=255,
-                choices=LINK_STYLES, default=LINK_STYLES[0][0])
+                                  choices=LINK_STYLES, default=LINK_STYLES[0][0])
     new_window = models.BooleanField(_('new window?'), default=False,
-                help_text=_('Do you want this link to open a new window?'))
+                                     help_text=_('Do you want this link to open a new window?'))
     file = FilerFileField(blank=True, null=True, on_delete=models.SET_NULL)
     link_attributes = AttributesField(excluded_keys=EXCLUDED_KEYS, blank=True,
                                       help_text=_('Optional. Adds HTML attributes to the rendered link.'))
