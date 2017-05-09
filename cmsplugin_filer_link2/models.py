@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from django.core.urlresolvers import NoReverseMatch
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -55,6 +55,15 @@ class FilerLink2Plugin(CMSPlugin):
 
     def __str__(self):
         return self.name
+
+    def clean(self):
+        super(FilerLink2Plugin, self).clean()
+        configured_destinations = [d for d in (self.url, self.page_link, self.persistent_page_link, self.mailto)
+                                   if d is not None and d != '']
+        if len(configured_destinations) == 0:
+            raise ValidationError(_('Please choose a destination'))
+        elif len(configured_destinations) > 1:
+            raise ValidationError(_('Please only choose one destination! You chose multiple ones.'))
 
     def save(self, *args, **kwargs):
         super(FilerLink2Plugin, self).save(*args, **kwargs)
