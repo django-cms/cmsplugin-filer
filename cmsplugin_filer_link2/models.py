@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from django.core.urlresolvers import NoReverseMatch
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -29,17 +29,15 @@ EXCLUDED_KEYS = ['class', 'href', 'target', ]
 class FilerLink2Plugin(CMSPlugin):
     name = models.CharField(_('name'), max_length=255)
     url = models.CharField(_('url'), blank=True, null=True, max_length=2000,
-                           help_text=_('The url must specify the protocol, e.g. https://DOMAIN'))
+                           help_text=_('The url must specify the protocol, e.g. https://DOMAIN.tld'))
     page_link = PageField(
         verbose_name=_('page'),
         blank=True,
         null=True,
-        help_text=_('A link to a page has priority over urls.'),
         on_delete=models.SET_NULL,
     )
     persistent_page_link = models.CharField(_('internal url'), blank=True, null=True, max_length=2000)
-    mailto = models.EmailField(_('mailto'), blank=True, null=True, max_length=254,
-                               help_text=_('An email address has priority over both pages and urls'))
+    mailto = models.EmailField(_('mailto'), blank=True, null=True, max_length=254)
     link_style = models.CharField(_('link style'), max_length=255,
                                   choices=LINK_STYLES, default=LINK_STYLES[0][0])
     new_window = models.BooleanField(_('new window?'), default=False,
@@ -55,6 +53,17 @@ class FilerLink2Plugin(CMSPlugin):
 
     def __str__(self):
         return self.name
+
+    def clean(self):
+        super(FilerLink2Plugin, self).clean()
+        configured_destinations = [d for d in
+                                   ('url', 'page_link', 'mailto', 'file')
+                                   if getattr(self, d) is not None and getattr(self, d) != '']
+        if len(configured_destinations) == 0:
+            raise ValidationError(_('Please choose a destination'))
+        elif len(configured_destinations) > 1:
+            raise ValidationError(
+                _('Please only choose one destination! You set: {}'.format(', '.join(configured_destinations))))
 
     def save(self, *args, **kwargs):
         super(FilerLink2Plugin, self).save(*args, **kwargs)
@@ -100,6 +109,19 @@ class FilerLink2Plugin(CMSPlugin):
             return self.linkhealth.state
         except ObjectDoesNotExist:
             return None
+
+    @property
+    def active_destination(self):
+        """ The active destination determines which destination tab should be set to active. If the field is not set
+        yet, we return None
+        :return: field_name: str
+        """
+        configured_destinations = [d for d in
+                                   ('url', 'page_link', 'mailto', 'file')
+                                   if getattr(self, d) is not None and getattr(self, d) != '']
+        if len(configured_destinations) == 0:
+            return None
+        return configured_destinations[0]
 
 
 @python_2_unicode_compatible

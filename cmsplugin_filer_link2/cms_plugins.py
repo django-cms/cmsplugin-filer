@@ -18,18 +18,27 @@ class FilerLink2Plugin(CMSPluginBase):
     name = _('Link')
     raw_id_fields = ('page_link', )
     render_template = "cmsplugin_filer_link/link.html"
+    change_form_template = 'cmsplugin_filer_link/change_form.html'
     text_enabled = True
-
     fieldsets = (
         (None, {
             'fields': [
                 'name',
+            ]
+        }),
+        (None, {
+            'classes': ['link2-destination', ],
+            'fields': [
                 'url',
                 'page_link',
                 'mailto',
                 'file',
-                'link_style',
+            ],
+        }),
+        (None, {
+            'fields': [
                 'new_window',
+                'link_style',
             ]
         }),
         (_('Advanced'), {
@@ -60,6 +69,14 @@ class FilerLink2Plugin(CMSPluginBase):
         except (KeyError, AttributeError):
             pass
         return context
+
+    def render_change_form(self, request, context, add=False, change=False, form_url='', obj=None):
+        # The active destination determines which destination tab should be set to active. If the field is not set
+        # yet, we make the first tab (url) active
+        context.update({
+            'active_destination': 'url' if add is True or obj.active_destination is None else obj.active_destination
+        })
+        return super(FilerLink2Plugin, self).render_change_form(request, context, add, change, form_url, obj)
 
     def icon_src(self, instance):
         return static("cms/img/icons/plugins/link.png")
