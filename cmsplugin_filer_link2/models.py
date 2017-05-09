@@ -34,12 +34,10 @@ class FilerLink2Plugin(CMSPlugin):
         verbose_name=_('page'),
         blank=True,
         null=True,
-        help_text=_('A link to a page has priority over urls.'),
         on_delete=models.SET_NULL,
     )
     persistent_page_link = models.CharField(_('internal url'), blank=True, null=True, max_length=2000)
-    mailto = models.EmailField(_('mailto'), blank=True, null=True, max_length=254,
-                               help_text=_('An email address has priority over both pages and urls'))
+    mailto = models.EmailField(_('mailto'), blank=True, null=True, max_length=254)
     link_style = models.CharField(_('link style'), max_length=255,
                                   choices=LINK_STYLES, default=LINK_STYLES[0][0])
     new_window = models.BooleanField(_('new window?'), default=False,
@@ -58,7 +56,8 @@ class FilerLink2Plugin(CMSPlugin):
 
     def clean(self):
         super(FilerLink2Plugin, self).clean()
-        configured_destinations = [d for d in (self.url, self.page_link, self.persistent_page_link, self.mailto)
+        configured_destinations = [d for d in
+                                   (self.url, self.page_link, self.persistent_page_link, self.mailto, self.file)
                                    if d is not None and d != '']
         if len(configured_destinations) == 0:
             raise ValidationError(_('Please choose a destination'))
