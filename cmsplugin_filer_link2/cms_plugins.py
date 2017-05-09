@@ -70,6 +70,14 @@ class FilerLink2Plugin(CMSPluginBase):
             pass
         return context
 
+    def render_change_form(self, request, context, add=False, change=False, form_url='', obj=None):
+        # The active destination determines which destination tab should be set to active. If the field is not set
+        # yet, we make the first tab (url) active
+        context.update({
+            'active_destination': 'url' if add is True or obj.active_destination is None else obj.active_destination
+        })
+        return super(FilerLink2Plugin, self).render_change_form(request, context, add, change, form_url, obj)
+
     def icon_src(self, instance):
         return static("cms/img/icons/plugins/link.png")
 

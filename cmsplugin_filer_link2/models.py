@@ -57,12 +57,13 @@ class FilerLink2Plugin(CMSPlugin):
     def clean(self):
         super(FilerLink2Plugin, self).clean()
         configured_destinations = [d for d in
-                                   (self.url, self.page_link, self.persistent_page_link, self.mailto, self.file)
-                                   if d is not None and d != '']
+                                   ('url', 'page_link', 'mailto', 'file')
+                                   if getattr(self, d) is not None and getattr(self, d) != '']
         if len(configured_destinations) == 0:
             raise ValidationError(_('Please choose a destination'))
         elif len(configured_destinations) > 1:
-            raise ValidationError(_('Please only choose one destination! You chose multiple ones.'))
+            raise ValidationError(
+                _('Please only choose one destination! You set: {}'.format(', '.join(configured_destinations))))
 
     def save(self, *args, **kwargs):
         super(FilerLink2Plugin, self).save(*args, **kwargs)
@@ -108,6 +109,19 @@ class FilerLink2Plugin(CMSPlugin):
             return self.linkhealth.state
         except ObjectDoesNotExist:
             return None
+
+    @property
+    def active_destination(self):
+        """ The active destination determines which destination tab should be set to active. If the field is not set
+        yet, we return None
+        :return: field_name: str
+        """
+        configured_destinations = [d for d in
+                                   ('url', 'page_link', 'mailto', 'file')
+                                   if getattr(self, d) is not None and getattr(self, d) != '']
+        if len(configured_destinations) == 0:
+            return None
+        return configured_destinations[0]
 
 
 @python_2_unicode_compatible

@@ -9,7 +9,7 @@
     <ul class="nav nav-tabs">
         {% for line in fieldset %}
             {% for field in line %}
-                <li {% if forloop.parentloop.first %}class="active"{% endif %}>
+                <li {% if active_destination == field.field.name %}class="active"{% endif %}>
                     <a data-toggle="tab" href="#destination-{{ field.field.name }}">
                         {{ field.field.name|upper }}
                     </a>
@@ -23,7 +23,7 @@
         {% for line in fieldset %}
             {% for field in line %}
                 <div id="destination-{{ field.field.name }}"
-                     class="tab-pane fade {% if forloop.parentloop.first %}in active{% endif %}
+                     class="tab-pane fade {% if active_destination == field.field.name %}in active{% endif %}
                      form-row{% if line.fields|length_is:'1' and line.errors %} errors{% endif %}{% if not line.has_visible_field %} hidden{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% endfor %}">
                         <div{% if not line.fields|length_is:'1' %} class="field-box{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% if not field.is_readonly and field.errors %} errors{% endif %}{% if field.field.is_hidden %} hidden{% endif %}"{% elif field.is_checkbox %} class="checkbox-row"{% endif %}>
                         {% if not line.fields|length_is:'1' and not field.is_readonly %}{{ field.errors }}{% endif %}
