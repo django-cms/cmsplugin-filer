@@ -1,9 +1,0 @@
-aldryn-apphook-reload>=0.2.2
-coverage>=3.7.1
-django-appconf
-djangocms-helper>=0.9.1
-https://github.com/divio/django-filer/archive/develop.zip
-djangocms-text-ckeditor
-html5lib<0.99999999
-flake8
-django-polymorphic<0.8

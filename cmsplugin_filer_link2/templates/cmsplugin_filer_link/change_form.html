@@ -1,0 +1,25 @@
+{% extends 'admin/cms/extensions/change_form.html' %}
+{% load staticfiles %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'cmsplugin_filer_link/css/link2.css' %}">
+{% endblock %}
+{% block field_sets %}
+{% for fieldset in adminform %}
+{#    {% include "admin/includes/fieldset.html" %}#}
+    {% if 'link2-destination' in fieldset.classes %}
+        {% include "cmsplugin_filer_link/link_destination_fieldset.html" %}
+    {% else %}
+        {% include "admin/includes/fieldset.html" %}
+    {% endif %}
+{% endfor %}
+{% endblock %}
+{% block admin_change_form_document_ready %}
+    {{ block.super }}
+    <script>
+        var jQuery = django.jQuery; {# bootstrap's js expects the jQuery variable #}
+    </script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+{% endblock %}

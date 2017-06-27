@@ -1,0 +1,5 @@
+{% if link_state %}
+    <span style="border-style: solid; border-color: red;">
+        <a href="{{ link }}" class="{{ style }}"{% if new_window %} target="_blank"{% endif %} {{ instance.link_attributes_str }}><span style="font-family:'Arial';font-size:15px;color:black">{{ link_state }}:</span>{{ name }}</a>
+    </span>
+{% else %}<a href="{{ link }}" class="{{ style }}"{% if new_window %} target="_blank"{% endif %} {{ instance.link_attributes_str }}>{{ name }}</a>{% endif %}

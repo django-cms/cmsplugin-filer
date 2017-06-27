@@ -1,0 +1,48 @@
+{# This template is based on admin:admin/includes/fieldset.html but adds bootstrap-like tabs to it #}
+<fieldset class="module aligned {{ fieldset.classes }}">
+    {% if fieldset.name %}<h2>{{ fieldset.name }}</h2>{% endif %}
+    {% if fieldset.description %}
+        <div class="description">{{ fieldset.description|safe }}</div>
+    {% endif %}
+
+    {# Tab Header #}
+    <ul class="nav nav-tabs">
+        {% for line in fieldset %}
+            {% for field in line %}
+                <li {% if active_destination == field.field.name %}class="active"{% endif %}>
+                    <a data-toggle="tab" href="#destination-{{ field.field.name }}">
+                        {{ field.field.name|upper }}
+                    </a>
+                </li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+
+    {# Tab Content #}
+    <div class="tab-content">
+        {% for line in fieldset %}
+            {% for field in line %}
+                <div id="destination-{{ field.field.name }}"
+                     class="tab-pane fade {% if active_destination == field.field.name %}in active{% endif %}
+                     form-row{% if line.fields|length_is:'1' and line.errors %} errors{% endif %}{% if not line.has_visible_field %} hidden{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% endfor %}">
+                        <div{% if not line.fields|length_is:'1' %} class="field-box{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% if not field.is_readonly and field.errors %} errors{% endif %}{% if field.field.is_hidden %} hidden{% endif %}"{% elif field.is_checkbox %} class="checkbox-row"{% endif %}>
+                        {% if not line.fields|length_is:'1' and not field.is_readonly %}{{ field.errors }}{% endif %}
+                        {% if field.is_checkbox %}
+                            {{ field.field }}{{ field.label_tag }}
+                        {% else %}
+                            {{ field.label_tag }}
+                            {% if field.is_readonly %}
+                                <p>{{ field.contents }}</p>
+                            {% else %}
+                                {{ field.field }}
+                            {% endif %}
+                        {% endif %}
+                        {% if field.field.help_text %}
+                            <p class="help">{{ field.field.help_text|safe }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+</fieldset>

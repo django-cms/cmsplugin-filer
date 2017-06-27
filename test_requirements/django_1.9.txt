@@ -1,5 +1,0 @@
-django>=1.8,<1.9
-django-reversion>=1.10.2,<1.11
-django-mptt>=0.8,<0.9
-
--r base.txt
