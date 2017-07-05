@@ -97,4 +97,5 @@ class FilerTeaserPlugin(CMSPluginBase):
         ))
         return template
 
+
 plugin_pool.register_plugin(FilerTeaserPlugin)

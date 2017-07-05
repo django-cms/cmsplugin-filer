@@ -144,4 +144,6 @@ class FilerImagePlugin(CMSPluginBase):
                 return thumbnail.url
         else:
             return static("filer/icons/missingfile_%sx%s.png" % (32, 32,))
+
+
 plugin_pool.register_plugin(FilerImagePlugin)
