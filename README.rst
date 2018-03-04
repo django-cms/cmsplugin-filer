@@ -33,13 +33,17 @@ Installation
 
 To get started using ``cmsplugin-filer``:
 
-- install it with ``pip``::
+- install it with ``pip``:
+
+  .. code-block:: bash
 
     $ pip install cmsplugin-filer
 
 - configure ``django-filer`` as documented in https://django-filer.readthedocs.io/en/latest/installation.html#configuration
 
-- add the plugins to ``INSTALLED_APPS``::
+- add the plugins to ``INSTALLED_APPS``:
+
+  .. code-block:: python
 
     INSTALLED_APPS = (
         ...
@@ -83,7 +87,9 @@ Upgrade process involves updating your models and migrations.
 model.py
 ^^^^^^^^
 
-Add::
+Add:
+
+.. code-block:: python
 
     try:
         from filer.models import ThumbnailOption
@@ -99,7 +105,9 @@ If using the model directly you don't have to change the fields definition
 Django 1.7+ migrations
 ^^^^^^^^^^^^^^^^^^^^^^
 
-For every migration file that references ``ThumbnailOption`` add the following import::
+For every migration file that references ``ThumbnailOption`` add the following import:
+
+.. code-block:: python
 
     from myapp.models import thumbnail_model
 
@@ -108,7 +116,9 @@ and change all ``'cmsplugin_filer_image.ThumbnailOption'`` to ``thumbnail_model`
 South migrations
 ^^^^^^^^^^^^^^^^
 
-In every migration file add the following import::
+In every migration file add the following import:
+
+.. code-block:: python
 
     from myapp.models import thumbnail_model
 
@@ -135,7 +145,9 @@ Integrations
 
 ``cmsplugin_filer_image`` provides integration with
 `djangocms-text-ckeditor <http://pypi.python.org/pypi/djangocms-text-ckeditor/>`__.
-Add this setting to enable it::
+Add this setting to enable it:
+
+.. code-block:: python
 
     TEXT_SAVE_IMAGE_FUNCTION='cmsplugin_filer_image.integrations.ckeditor.create_image_plugin'
 
@@ -149,7 +161,9 @@ Customisation
 Most plugins (file, folder, image and teaser) support configuring custom
 "styles" (templates).
 
-e.g add the following settings for the image plugin::
+e.g add the following settings for the image plugin:
+
+.. code-block:: python
 
     CMSPLUGIN_FILER_IMAGE_STYLE_CHOICES = (
         ('default', 'Default'),
