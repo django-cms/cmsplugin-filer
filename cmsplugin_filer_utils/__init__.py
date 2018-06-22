@@ -2,9 +2,10 @@
 from cmsplugin_filer_file import __version__  # NOQA
 
 from django.db import models
+from treebeard.mp_tree import MP_NodeManager
 
 
-class FilerPluginManager(models.Manager):
+class FilerPluginManager(MP_NodeManager):
     def __init__(self, select_related=None):
         self._select_related = select_related
         super(FilerPluginManager, self).__init__()
