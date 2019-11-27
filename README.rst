@@ -4,6 +4,13 @@ This project is no longer supported.
 
 Divio will undertake no further development or maintenance of this project. If you are interested in  taking responsibility for this project as its maintainer, please contact us via www.divio.com.
 
+Please have a look at the following forks or alternatives:
+
+* https://github.com/pawelmarkowski/cmsplugin-filer
+* https://github.com/divio/djangocms-picture
+* https://github.com/divio/djangocms-file
+* https://github.com/divio/djangocms-link
+* https://github.com/divio/djangocms-video
 
 ===============
 cmsplugin-filer
