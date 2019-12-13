@@ -15,7 +15,7 @@ from .models import FilerFile
 
 class FilerFilePlugin(CMSPluginBase):
     form = FilerFileForm
-    module = 'Filer'
+    module = _('Filer')
     model = FilerFile
     name = _("File")
     TEMPLATE_NAME = 'cmsplugin_filer_file/plugins/file/%s.html'

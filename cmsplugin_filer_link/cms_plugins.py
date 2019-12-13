@@ -14,7 +14,7 @@ from .models import FilerLinkPlugin as FilerLinkPluginModel
 class FilerLinkPlugin(CMSPluginBase):
     form = FilerLinkForm
     model = FilerLinkPluginModel
-    module = 'Filer'
+    module = _('Filer')
     name = _("Link")
     raw_id_fields = ('page_link', )
     render_template = "cmsplugin_filer_link/link.html"

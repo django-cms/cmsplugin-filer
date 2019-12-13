@@ -10,7 +10,7 @@ from cmsplugin_filer_video.forms import VideoForm
 
 
 class FilerVideoPlugin(CMSPluginBase):
-    module = 'Filer'
+    module = _('Filer')
     model = FilerVideo
     name = _("Video")
     form = VideoForm
