@@ -60,5 +60,6 @@ def run():
     from djangocms_helper import runner
     runner.cms('cmsplugin_filer_file')
 
+
 if __name__ == "__main__":
     run()

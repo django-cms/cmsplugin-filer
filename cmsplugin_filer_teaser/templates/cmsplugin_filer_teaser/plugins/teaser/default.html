@@ -1,4 +1,4 @@
-{% load i18n thumbnail %}
+{% load i18n easy_thumbnails_tags %}
 <div{% if instance.style %} class="{{ instance.style }}"{% endif %}>
 <h2>{{ instance.title }}</h2>
 {% if instance.image or instance.image_url %}

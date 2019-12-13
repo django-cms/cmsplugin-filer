@@ -59,4 +59,5 @@ class FilerVideoPlugin(CMSPluginBase):
     def icon_src(self, instance):
         return static("filer/icons/video_%sx%s.png" % (32, 32,))
 
+
 plugin_pool.register_plugin(FilerVideoPlugin)

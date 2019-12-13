@@ -27,7 +27,7 @@ setup(
 
         "django-cms >= 3.1",
         "django-sekizai >= 0.4.2",
-        "easy_thumbnails >= 1.0",
+        "easy_thumbnails >= 2.4.1",
         "django-appconf",
         "djangocms-attributes-field>=0.1.1",
     ],

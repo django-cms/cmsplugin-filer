@@ -58,4 +58,5 @@ class FilerFilePlugin(CMSPluginBase):
             return file_icon
         return static("filer/icons/file_%sx%s.png" % (32, 32,))
 
+
 plugin_pool.register_plugin(FilerFilePlugin)
