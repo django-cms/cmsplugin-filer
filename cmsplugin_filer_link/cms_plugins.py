@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.templatetags.static import static
 from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy
 
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
@@ -15,7 +16,7 @@ class FilerLinkPlugin(CMSPluginBase):
     form = FilerLinkForm
     model = FilerLinkPluginModel
     module = 'Filer'
-    name = _("Link")
+    name = ugettext_lazy("Link")
     raw_id_fields = ('page_link', )
     render_template = "cmsplugin_filer_link/link.html"
     text_enabled = True
