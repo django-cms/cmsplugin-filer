@@ -29,6 +29,8 @@ class FilerImagePlugin(CMSPluginBase):
         (None, {
             'fields': [
                 'caption_text',
+                'caption_alignment',
+                'attribution_text',
                 'image',
                 'image_url',
                 'alt_text',
